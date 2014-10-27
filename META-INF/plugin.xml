@@ -4,4 +4,19 @@
     <change-notes></change-notes>
     <description></description>
     <version>1.0</version>
+    <vendor>IntelliJ</vendor>
+
+
+    <application-components>
+        <component>
+            <implementation-class>com.codingbaby.ohmyidea.OhPlugin</implementation-class>
+        </component>
+    </application-components>
+
+
+    <actions>
+        <action id="MotionLeft" class="com.codingbaby.ohmyidea.action.MotionLeftAction" text="Left"/>
+    </actions>
+
+
 </idea-plugin>
