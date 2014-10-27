@@ -9,6 +9,8 @@ import org.jetbrains.annotations.NotNull;
 
 public class OhPlugin implements ApplicationComponent {
 
+    private static final String COMPONENT_NAME = "Oh My IDEA";
+
     private boolean enabled = true;
 
     @Override
@@ -24,13 +26,13 @@ public class OhPlugin implements ApplicationComponent {
     @NotNull
     @Override
     public String getComponentName() {
-        return "Oh My IDEA";
+        return COMPONENT_NAME;
     }
 
 
     @NotNull
     private static OhPlugin getInstance() {
-        return (OhPlugin) ApplicationManager.getApplication().getComponent("Oh My IDEA");
+        return (OhPlugin) ApplicationManager.getApplication().getComponent(COMPONENT_NAME);
     }
 
     public static boolean isEnabled() {
