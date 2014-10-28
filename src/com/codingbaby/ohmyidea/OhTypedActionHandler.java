@@ -20,7 +20,6 @@ public class OhTypedActionHandler implements TypedActionHandler {
     public OhTypedActionHandler(TypedActionHandler origHandler) {
         this.origHandler = origHandler;
         handler = KeyHandler.getInstance();
-        handler.setOriginalHandler(origHandler);
     }
 
 

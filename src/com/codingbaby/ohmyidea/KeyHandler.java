@@ -8,7 +8,6 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.editor.Editor;
-import com.intellij.openapi.editor.actionSystem.TypedActionHandler;
 import com.intellij.openapi.project.Project;
 import org.jetbrains.annotations.NotNull;
 
@@ -20,16 +19,13 @@ import java.util.Map;
  */
 public class KeyHandler {
 
-    private TypedActionHandler origHandler;
-
     private static KeyHandler instance;
 
     private Map<KeyStroke,CommandNode> keyStrokeCommandNodeMap = new HashMap();
 
     {
-        ActionManager aMgr = ActionManager.getInstance();
-        AnAction action = aMgr.getAction("MotionLeft");
-        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('h'), new CommandNode("MotionLeft", action));
+        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('h'), new CommandNode("MotionLeft"));
+        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('j'), new CommandNode("MotionRight"));
     }
 
     @NotNull
@@ -42,6 +38,9 @@ public class KeyHandler {
 
     public void handleKey(@NotNull Editor editor, @NotNull KeyStroke key, @NotNull DataContext context) {
         CommandNode commandNode = keyStrokeCommandNodeMap.get(key);
+        if (commandNode == null) {
+            return;
+        }
         Project project = editor.getProject();
         if (ApplicationManager.getApplication().isDispatchThread()) {
             Runnable action = new ActionRunner(editor, context, commandNode, key);
@@ -72,9 +71,7 @@ public class KeyHandler {
         }
 
         public void run() {
-
             executeAction(cmd.getAction(), context);
-
         }
 
         private final Editor editor;
@@ -84,21 +81,4 @@ public class KeyHandler {
     }
 
 
-    /**
-     * Sets the original key handler
-     *
-     * @param origHandler The original key handler
-     */
-    public void setOriginalHandler(TypedActionHandler origHandler) {
-        this.origHandler = origHandler;
-    }
-
-    /**
-     * Gets the original key handler
-     *
-     * @return The original key handler
-     */
-    public TypedActionHandler getOriginalHandler() {
-        return origHandler;
-    }
 }

@@ -1,5 +1,6 @@
 package com.codingbaby.ohmyidea.key;
 
+import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.AnAction;
 
 /**
@@ -9,11 +10,13 @@ import com.intellij.openapi.actionSystem.AnAction;
 public class CommandNode {
 
     protected final AnAction action;
+
     protected final String actionId;
 
-    public CommandNode(String actName, AnAction action) {
+    public CommandNode(String actName) {
         this.actionId = actName;
-        this.action = action;
+        ActionManager aMgr = ActionManager.getInstance();
+        this.action = aMgr.getAction(actionId);
     }
 
     public String getActionId() {

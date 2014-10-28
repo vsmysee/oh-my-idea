@@ -16,6 +16,7 @@
 
     <actions>
         <action id="MotionLeft" class="com.codingbaby.ohmyidea.action.MotionLeftAction" text="Left"/>
+        <action id="MotionRight" class="com.codingbaby.ohmyidea.action.MotionRightAction" text="Right"/>
     </actions>
 
 
