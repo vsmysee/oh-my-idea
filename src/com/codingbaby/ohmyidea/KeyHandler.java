@@ -21,13 +21,15 @@ public class KeyHandler {
 
     private static KeyHandler instance;
 
-    private Map<KeyStroke,CommandNode> keyStrokeCommandNodeMap = new HashMap();
+    private Map<KeyStroke, CommandNode> keyStrokeCommandNodeMap = new HashMap();
 
     {
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('h'), new CommandNode("MotionLeft"));
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('l'), new CommandNode("MotionRight"));
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('j'), new CommandNode("MotionDown"));
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('k'), new CommandNode("MotionUp"));
+        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('t'), new CommandNode("MotionNextTab"));
+        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('T'), new CommandNode("MotionPreviousTab"));
     }
 
     @NotNull
@@ -53,15 +55,7 @@ public class KeyHandler {
 
 
     public static void executeAction(@NotNull AnAction action, @NotNull DataContext context) {
-        // Hopefully all the arguments are sufficient. So far they all seem to work OK.
-        // We don't have a specific InputEvent so that is null
-        // What is "place"? Leave it the empty string for now.
-        // Is the template presentation sufficient?
-        // What are the modifiers? Is zero OK?
-        action.actionPerformed(
-                new AnActionEvent(null, context, "", action.getTemplatePresentation(), ActionManager.getInstance(),
-                        // API change - don't merge
-                        0));
+        action.actionPerformed(new AnActionEvent(null, context, "", action.getTemplatePresentation(), ActionManager.getInstance(), 0));
     }
 
     static class ActionRunner implements Runnable {

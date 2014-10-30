@@ -7,7 +7,6 @@ import com.intellij.openapi.editor.actionSystem.TypedAction;
 import com.intellij.openapi.editor.actionSystem.TypedActionHandler;
 import com.intellij.openapi.editor.event.EditorFactoryListener;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 /**
  *
@@ -16,9 +15,6 @@ public class EventFacade {
 
     @NotNull
     private static final EventFacade ourInstance = new EventFacade();
-
-    @Nullable
-    private TypedActionHandler myOriginalTypedActionHandler;
 
     private EventFacade() {
     }
@@ -29,8 +25,7 @@ public class EventFacade {
     }
 
     public void setupTypedActionHandler(@NotNull TypedActionHandler handler) {
-        final TypedAction typedAction = getTypedAction();
-        myOriginalTypedActionHandler = typedAction.getHandler();
+        final TypedAction typedAction = EditorActionManager.getInstance().getTypedAction();
         typedAction.setupHandler(handler);
     }
 
@@ -38,10 +33,6 @@ public class EventFacade {
         EditorFactory.getInstance().addEditorFactoryListener(listener, parentDisposable);
     }
 
-    @NotNull
-    private TypedAction getTypedAction() {
-        return EditorActionManager.getInstance().getTypedAction();
-    }
 
 
 }

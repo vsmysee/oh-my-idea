@@ -14,6 +14,7 @@ import javax.swing.*;
 public class OhTypedActionHandler implements TypedActionHandler {
 
     private final TypedActionHandler origHandler;
+
     @NotNull
     private final KeyHandler handler;
 

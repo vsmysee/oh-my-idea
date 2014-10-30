@@ -9,7 +9,6 @@ import com.intellij.psi.impl.source.tree.injected.InjectedLanguageUtil;
 public class MotionRightAction extends EditorAction {
 
     public MotionRightAction() {
-
         super(new EditorActionHandler() {
             @Override
             public void execute(Editor editor, DataContext dataContext) {

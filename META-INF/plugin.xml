@@ -15,10 +15,25 @@
 
 
     <actions>
+
+        <action id="PluginToggle" class="com.codingbaby.ohmyidea.PluginToggle" text="Oh My IDEA"
+                description="Toggle the Plugin On/Off">
+            <keyboard-shortcut first-keystroke="control shift o" keymap="$default"/>
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+        </action>
+
+
         <action id="MotionLeft" class="com.codingbaby.ohmyidea.action.MotionLeftAction" text="Left"/>
         <action id="MotionRight" class="com.codingbaby.ohmyidea.action.MotionRightAction" text="Right"/>
         <action id="MotionUp" class="com.codingbaby.ohmyidea.action.MotionUpAction" text="Up"/>
         <action id="MotionDown" class="com.codingbaby.ohmyidea.action.MotionDownAction" text="Down"/>
+
+
+        <action id="MotionNextTab" class="com.codingbaby.ohmyidea.action.MotionTabNextAction" text="Next Tab"/>
+        <action id="MotionPreviousTab" class="com.codingbaby.ohmyidea.action.MotionTabPreviousAction"
+                text="Previous Tab"/>
+
+
     </actions>
 
 
