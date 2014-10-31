@@ -1,6 +1,7 @@
 package com.codingbaby.ohmyidea;
 
 
+import com.intellij.openapi.actionSystem.CustomShortcutSet;
 import com.intellij.openapi.application.Application;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.ApplicationComponent;
@@ -12,6 +13,8 @@ import com.intellij.openapi.editor.event.EditorFactoryAdapter;
 import com.intellij.openapi.editor.event.EditorFactoryEvent;
 import org.jetbrains.annotations.NotNull;
 
+import javax.swing.*;
+
 public class OhPlugin implements ApplicationComponent {
 
     private static final String COMPONENT_NAME = "Oh My IDEA";
@@ -19,6 +22,8 @@ public class OhPlugin implements ApplicationComponent {
     private boolean enabled = true;
 
     private final Application myApp;
+
+    public CommandStatus status = CommandStatus.Command;
 
     public OhPlugin(Application application) {
         this.myApp = application;
@@ -38,6 +43,7 @@ public class OhPlugin implements ApplicationComponent {
                 final Editor editor = event.getEditor();
                 if (OhPlugin.isEnabled()) {
                     editor.getSettings().setBlockCursor(true);
+                    ShortcutKeyAction.getInstance().registerCustomShortcutSet(new CustomShortcutSet(KeyStroke.getKeyStroke(27,0,false)), editor.getComponent());
                 }
             }
             @Override
@@ -58,7 +64,7 @@ public class OhPlugin implements ApplicationComponent {
 
 
     @NotNull
-    private static OhPlugin getInstance() {
+    public static OhPlugin getInstance() {
         return (OhPlugin) ApplicationManager.getApplication().getComponent(COMPONENT_NAME);
     }
 
@@ -80,15 +86,17 @@ public class OhPlugin implements ApplicationComponent {
     }
 
     private void turnOnPlugin() {
+        status = CommandStatus.Command;
         setCursors(true);
     }
 
     private void turnOffPlugin() {
         setCursors(false);
+        status = CommandStatus.Insert;
     }
 
 
-    private void setCursors(boolean isBlock) {
+    public void setCursors(boolean isBlock) {
         Editor[] editors = EditorFactory.getInstance().getAllEditors();
         for (Editor editor : editors) {
             editor.getSettings().setBlockCursor(isBlock);

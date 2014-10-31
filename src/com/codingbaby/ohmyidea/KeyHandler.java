@@ -41,6 +41,14 @@ public class KeyHandler {
     }
 
     public void handleKey(@NotNull Editor editor, @NotNull KeyStroke key, @NotNull DataContext context) {
+        OhPlugin oh = OhPlugin.getInstance();
+
+        if (KeyStroke.getKeyStroke('i') == key) {
+            oh.status = CommandStatus.Insert;
+            oh.setCursors(false);
+            return;
+        }
+
         CommandNode commandNode = keyStrokeCommandNodeMap.get(key);
         if (commandNode == null) {
             return;
