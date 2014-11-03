@@ -29,6 +29,11 @@
         <action id="MotionDown" class="com.codingbaby.ohmyidea.action.MotionDownAction" text="Down"/>
 
 
+
+        <action id="MotionFirstLine" class="com.codingbaby.ohmyidea.action.MotionGotoLineFirstAction" text="First Line"/>
+        <action id="MotionLastLine" class="com.codingbaby.ohmyidea.action.MotionGotoLineLastAction" text="Last Line"/>
+
+
         <action id="MotionNextTab" class="com.codingbaby.ohmyidea.action.MotionTabNextAction" text="Next Tab"/>
         <action id="MotionPreviousTab" class="com.codingbaby.ohmyidea.action.MotionTabPreviousAction"
                 text="Previous Tab"/>

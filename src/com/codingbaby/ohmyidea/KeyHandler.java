@@ -30,6 +30,10 @@ public class KeyHandler {
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('k'), new CommandNode("MotionUp"));
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('t'), new CommandNode("MotionNextTab"));
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('T'), new CommandNode("MotionPreviousTab"));
+
+
+        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('K'), new CommandNode("MotionFirstLine"));
+        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('J'), new CommandNode("MotionLastLine"));
     }
 
     @NotNull
