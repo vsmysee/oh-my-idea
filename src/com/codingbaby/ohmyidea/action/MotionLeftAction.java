@@ -1,5 +1,6 @@
 package com.codingbaby.ohmyidea.action;
 
+import com.codingbaby.ohmyidea.helper.EditorHelper;
 import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.editor.actionSystem.EditorAction;
@@ -16,6 +17,8 @@ public class MotionLeftAction extends EditorAction {
                 editor = InjectedLanguageUtil.getTopLevelEditor(editor);
                 int oldOffset = editor.getCaretModel().getOffset();
                 editor.getCaretModel().moveToOffset(oldOffset - 1);
+                EditorHelper.scrollCaretIntoView(editor);
+
             }
 
         });

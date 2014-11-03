@@ -1,5 +1,6 @@
 package com.codingbaby.ohmyidea.action;
 
+import com.codingbaby.ohmyidea.helper.EditorHelper;
 import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.editor.LogicalPosition;
@@ -22,6 +23,8 @@ public class MotionUpAction extends EditorAction {
                 LogicalPosition logicalPosition = editor.visualToLogicalPosition(new VisualPosition(pos.getLine() - 1, pos.getColumn()));
                 int offset = editor.logicalPositionToOffset(logicalPosition);
                 editor.getCaretModel().moveToOffset(offset);
+                EditorHelper.scrollCaretIntoView(editor);
+
             }
 
         });

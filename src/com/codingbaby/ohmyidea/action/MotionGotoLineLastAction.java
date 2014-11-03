@@ -1,5 +1,6 @@
 package com.codingbaby.ohmyidea.action;
 
+import com.codingbaby.ohmyidea.helper.EditorHelper;
 import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.editor.actionSystem.EditorAction;
@@ -17,6 +18,8 @@ public class MotionGotoLineLastAction extends EditorAction {
             public void execute(Editor editor, DataContext dataContext) {
                 final int len = editor.getDocument().getTextLength();
                 editor.getCaretModel().moveToOffset(len);
+                EditorHelper.scrollCaretIntoView(editor);
+
             }
         });
     }

@@ -24,7 +24,11 @@
 
 
         <action id="MotionLeft" class="com.codingbaby.ohmyidea.action.MotionLeftAction" text="Left"/>
+        <action id="MotionFirstColumn" class="com.codingbaby.ohmyidea.action.MotionFirstColumnAction" text="First Column"/>
+
         <action id="MotionRight" class="com.codingbaby.ohmyidea.action.MotionRightAction" text="Right"/>
+        <action id="MotionLastColumn" class="com.codingbaby.ohmyidea.action.MotionLastColumnAction" text="Last Column"/>
+
         <action id="MotionUp" class="com.codingbaby.ohmyidea.action.MotionUpAction" text="Up"/>
         <action id="MotionDown" class="com.codingbaby.ohmyidea.action.MotionDownAction" text="Down"/>
 

@@ -25,9 +25,14 @@ public class KeyHandler {
 
     {
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('h'), new CommandNode("MotionLeft"));
+        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('H'), new CommandNode("MotionFirstColumn"));
+
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('l'), new CommandNode("MotionRight"));
+        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('L'), new CommandNode("MotionLastColumn"));
+
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('j'), new CommandNode("MotionDown"));
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('k'), new CommandNode("MotionUp"));
+
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('t'), new CommandNode("MotionNextTab"));
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('T'), new CommandNode("MotionPreviousTab"));
 
