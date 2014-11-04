@@ -16,9 +16,9 @@ public class MotionTabPreviousAction extends EditorAction {
         super(new EditorActionHandler() {
             @Override
             public void execute(Editor editor, DataContext dataContext) {
-                final AnAction nextTab = ActionManager.getInstance().getAction("PreviousTab");
+                final AnAction anAction = ActionManager.getInstance().getAction("PreviousTab");
                 final AnActionEvent e = new AnActionEvent(null, dataContext, "", new Presentation(), ActionManager.getInstance(), 0);
-                nextTab.actionPerformed(e);
+                anAction.actionPerformed(e);
             }
         });
     }

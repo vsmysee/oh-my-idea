@@ -19,7 +19,6 @@ public class MotionGotoLineLastAction extends EditorAction {
                 final int len = editor.getDocument().getTextLength();
                 editor.getCaretModel().moveToOffset(len);
                 EditorHelper.scrollCaretIntoView(editor);
-
             }
         });
     }

@@ -43,6 +43,9 @@ public class KeyHandler {
 
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('m'), new CommandNode("OhMethodDown"));
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('M'), new CommandNode("OhMethodUp"));
+
+        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('w'), new CommandNode("NextWord"));
+        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('W'), new CommandNode("PreviousWord"));
     }
 
     @NotNull

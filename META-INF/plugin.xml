@@ -36,6 +36,10 @@
         <action id="OhMethodDown" class="com.codingbaby.ohmyidea.action.structure.EditorDownAction" text="Method Down of Oh"/>
         <action id="OhMethodUp" class="com.codingbaby.ohmyidea.action.structure.EditorUpAction" text="Method Up of Oh"/>
 
+        <action id="NextWord" class="com.codingbaby.ohmyidea.action.structure.NextWordAction" text="Next Word"/>
+        <action id="PreviousWord" class="com.codingbaby.ohmyidea.action.structure.PreviousWordAction" text="Previous Word"/>
+
+
 
 
         <action id="MotionFirstLine" class="com.codingbaby.ohmyidea.action.MotionGotoLineFirstAction" text="First Line"/>

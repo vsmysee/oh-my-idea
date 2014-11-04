@@ -9,13 +9,13 @@ import com.intellij.openapi.editor.actionSystem.EditorActionHandler;
  *
  *
  */
-public class EditorUpAction extends EditorAction {
+public class PreviousWordAction extends EditorAction {
 
-    public EditorUpAction() {
+    public PreviousWordAction() {
         super(new EditorActionHandler() {
             @Override
             public void execute(Editor editor, DataContext dataContext) {
-                final AnAction anAction = ActionManager.getInstance().getAction("MethodUp");
+                final AnAction anAction = ActionManager.getInstance().getAction("EditorPreviousWord");
                 final AnActionEvent e = new AnActionEvent(null, dataContext, "", new Presentation(), ActionManager.getInstance(), 0);
                 anAction.actionPerformed(e);
             }
