@@ -39,6 +39,10 @@ public class KeyHandler {
 
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('K'), new CommandNode("MotionFirstLine"));
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('J'), new CommandNode("MotionLastLine"));
+
+
+        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('m'), new CommandNode("OhMethodDown"));
+        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('M'), new CommandNode("OhMethodUp"));
     }
 
     @NotNull

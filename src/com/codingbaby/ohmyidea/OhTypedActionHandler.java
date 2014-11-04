@@ -28,7 +28,7 @@ public class OhTypedActionHandler implements TypedActionHandler {
     public void execute(@NotNull final Editor editor, final char charTyped, @NotNull final DataContext dataContext) {
 
         if (isEnabled(editor) && OhPlugin.getInstance().status != CommandStatus.Insert) {
-            // Run key handler outside of the key typed command for creating our own undoable commands
+
             SwingUtilities.invokeLater(new Runnable() {
                 @Override
                 public void run() {
