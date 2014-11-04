@@ -23,33 +23,8 @@
         </action>
 
 
-        <action id="MotionLeft" class="com.codingbaby.ohmyidea.action.MotionLeftAction" text="Left"/>
-        <action id="MotionFirstColumn" class="com.codingbaby.ohmyidea.action.MotionFirstColumnAction" text="First Column"/>
-
-        <action id="MotionRight" class="com.codingbaby.ohmyidea.action.MotionRightAction" text="Right"/>
-        <action id="MotionLastColumn" class="com.codingbaby.ohmyidea.action.MotionLastColumnAction" text="Last Column"/>
-
-        <action id="MotionUp" class="com.codingbaby.ohmyidea.action.MotionUpAction" text="Up"/>
-        <action id="MotionDown" class="com.codingbaby.ohmyidea.action.MotionDownAction" text="Down"/>
-
-
-        <action id="OhMethodDown" class="com.codingbaby.ohmyidea.action.structure.EditorDownAction" text="Method Down of Oh"/>
-        <action id="OhMethodUp" class="com.codingbaby.ohmyidea.action.structure.EditorUpAction" text="Method Up of Oh"/>
-
-        <action id="NextWord" class="com.codingbaby.ohmyidea.action.structure.NextWordAction" text="Next Word"/>
-        <action id="PreviousWord" class="com.codingbaby.ohmyidea.action.structure.PreviousWordAction" text="Previous Word"/>
-
-
-
-
         <action id="MotionFirstLine" class="com.codingbaby.ohmyidea.action.MotionGotoLineFirstAction" text="First Line"/>
         <action id="MotionLastLine" class="com.codingbaby.ohmyidea.action.MotionGotoLineLastAction" text="Last Line"/>
-
-
-        <action id="MotionNextTab" class="com.codingbaby.ohmyidea.action.MotionTabNextAction" text="Next Tab"/>
-        <action id="MotionPreviousTab" class="com.codingbaby.ohmyidea.action.MotionTabPreviousAction"
-                text="Previous Tab"/>
-
 
         <action id="ShortcutKeyAction" class="com.codingbaby.ohmyidea.ShortcutKeyAction" text="Shortcuts"/>
 

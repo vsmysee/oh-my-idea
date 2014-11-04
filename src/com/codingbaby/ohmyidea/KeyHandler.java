@@ -24,28 +24,39 @@ public class KeyHandler {
     private Map<KeyStroke, CommandNode> keyStrokeCommandNodeMap = new HashMap();
 
     {
-        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('h'), new CommandNode("MotionLeft"));
-        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('H'), new CommandNode("MotionFirstColumn"));
+        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('h'), new CommandNode("EditorLeft"));
+        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('H'), new CommandNode("EditorLineStart"));
 
-        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('l'), new CommandNode("MotionRight"));
-        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('L'), new CommandNode("MotionLastColumn"));
+        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('l'), new CommandNode("EditorRight"));
+        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('L'), new CommandNode("EditorLineEnd"));
 
-        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('j'), new CommandNode("MotionDown"));
-        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('k'), new CommandNode("MotionUp"));
-
-        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('t'), new CommandNode("MotionNextTab"));
-        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('T'), new CommandNode("MotionPreviousTab"));
-
-
-        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('K'), new CommandNode("MotionFirstLine"));
+        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('j'), new CommandNode("EditorDown"));
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('J'), new CommandNode("MotionLastLine"));
 
+        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('t'), new CommandNode("NextTab"));
+        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('T'), new CommandNode("PreviousTab"));
 
-        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('m'), new CommandNode("OhMethodDown"));
-        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('M'), new CommandNode("OhMethodUp"));
 
-        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('w'), new CommandNode("NextWord"));
-        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('W'), new CommandNode("PreviousWord"));
+        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('k'), new CommandNode("EditorUp"));
+        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('K'), new CommandNode("MotionFirstLine"));
+
+
+        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('m'), new CommandNode("MethodDown"));
+        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('M'), new CommandNode("MethodUp"));
+
+        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('w'), new CommandNode("EditorNextWord"));
+        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('W'), new CommandNode("EditorPreviousWord"));
+
+
+        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('b'), new CommandNode("Back"));
+        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('B'), new CommandNode("Forward"));
+
+
+        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('u'), new CommandNode("$Undo"));
+        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('x'), new CommandNode("$Delete"));
+        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('o'), new CommandNode("EditorStartNewLine"));
+        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('d'), new CommandNode("EditorDeleteLine"));
+
     }
 
     @NotNull
