@@ -36,6 +36,9 @@ public class KeyHandler {
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('t'), new CommandNode("NextTab"));
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('T'), new CommandNode("PreviousTab"));
 
+        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('s'), new CommandNode("NextSplitter"));
+        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('S'), new CommandNode("PrevSplitter"));
+
 
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('k'), new CommandNode("EditorUp"));
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('K'), new CommandNode("MotionFirstLine"));
@@ -56,6 +59,8 @@ public class KeyHandler {
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('x'), new CommandNode("$Delete"));
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('o'), new CommandNode("EditorStartNewLine"));
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('d'), new CommandNode("EditorDeleteLine"));
+        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('g'), new CommandNode("Generate"));
+        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('c'), new CommandNode("CloseContent"));
 
     }
 
