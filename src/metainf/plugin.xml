@@ -1,8 +1,7 @@
 <idea-plugin url="http://plugins.jetbrains.com/plugin/164">
     <name>Oh My IDEA</name>
     <id>oh-my-idea</id>
-    <change-notes></change-notes>
-    <description></description>
+    <description>plugin like vim,but only for java</description>
     <version>1.0</version>
     <vendor>IntelliJ</vendor>
 
