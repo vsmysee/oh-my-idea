@@ -3,8 +3,6 @@ package com.codingbaby.ohmyidea;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.actionSystem.PlatformDataKeys;
-import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.project.DumbAware;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -26,9 +24,10 @@ public class ShortcutKeyAction extends AnAction implements DumbAware  {
     public void actionPerformed(AnActionEvent anActionEvent) {
         KeyStroke keyStroke = getKeyStroke(anActionEvent);
         if (keyStroke != null) {
-            if (keyStroke.getKeyCode() == KeyEvent.VK_ESCAPE && OhPlugin.getInstance().status == CommandStatus.Insert) {
+            if (keyStroke.getKeyCode() == KeyEvent.VK_ESCAPE && OhPlugin.getInstance().status == EditorStatus.Insert) {
                 OhPlugin.getInstance().setCursors(true);
-                OhPlugin.getInstance().status = CommandStatus.Command;
+                OhPlugin.getInstance().status = EditorStatus.Command;
+                OhPlugin.getInstance().commandStatus.reset();
             }
         }
     }

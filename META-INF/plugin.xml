@@ -15,7 +15,7 @@
 
     <actions>
 
-        <action id="PluginToggle" class="com.codingbaby.ohmyidea.PluginToggle" text="Oh My IDEA"
+        <action id="PluginToggle" class="com.codingbaby.ohmyidea.PluginToggle" text="Oh My IDEA DEV"
                 description="Toggle the Plugin On/Off">
             <keyboard-shortcut first-keystroke="control shift o" keymap="$default"/>
             <add-to-group group-id="ToolsMenu" anchor="last"/>

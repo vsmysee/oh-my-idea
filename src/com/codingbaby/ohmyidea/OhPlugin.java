@@ -23,7 +23,9 @@ public class OhPlugin implements ApplicationComponent {
 
     private final Application myApp;
 
-    public CommandStatus status = CommandStatus.Command;
+    public EditorStatus status = EditorStatus.Command;
+
+    public CommandStatus commandStatus = new CommandStatus();
 
     public OhPlugin(Application application) {
         this.myApp = application;
@@ -37,15 +39,16 @@ public class OhPlugin implements ApplicationComponent {
         //替换系统的TypedActionHandler
         eventFacade.setupTypedActionHandler(new OhTypedActionHandler(typedAction.getHandler()));
 
-        eventFacade.addEditorFactoryListener(new EditorFactoryAdapter() {
+        EditorFactory.getInstance().addEditorFactoryListener(new EditorFactoryAdapter() {
             @Override
             public void editorCreated(@NotNull EditorFactoryEvent event) {
                 final Editor editor = event.getEditor();
                 if (OhPlugin.isEnabled()) {
                     editor.getSettings().setBlockCursor(true);
-                    ShortcutKeyAction.getInstance().registerCustomShortcutSet(new CustomShortcutSet(KeyStroke.getKeyStroke(27,0,false)), editor.getComponent());
+                    ShortcutKeyAction.getInstance().registerCustomShortcutSet(new CustomShortcutSet(KeyStroke.getKeyStroke(27, 0, false)), editor.getComponent());
                 }
             }
+
             @Override
             public void editorReleased(@NotNull EditorFactoryEvent event) {
             }
@@ -86,13 +89,13 @@ public class OhPlugin implements ApplicationComponent {
     }
 
     private void turnOnPlugin() {
-        status = CommandStatus.Command;
+        status = EditorStatus.Command;
         setCursors(true);
     }
 
     private void turnOffPlugin() {
         setCursors(false);
-        status = CommandStatus.Insert;
+        status = EditorStatus.Insert;
     }
 
 

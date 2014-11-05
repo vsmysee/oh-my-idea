@@ -22,6 +22,7 @@ public class KeyHandler {
     private static KeyHandler instance;
 
     private Map<KeyStroke, CommandNode> keyStrokeCommandNodeMap = new HashMap();
+    private Map<String, CommandNode> stringShortCommandNodeMap = new HashMap();
 
     {
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('h'), new CommandNode("EditorLeft"));
@@ -59,9 +60,13 @@ public class KeyHandler {
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('x'), new CommandNode("$Delete"));
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('o'), new CommandNode("EditorStartNewLine"));
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('d'), new CommandNode("EditorDeleteLine"));
-        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('g'), new CommandNode("Generate"));
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('c'), new CommandNode("CloseContent"));
 
+    }
+
+    {
+        stringShortCommandNodeMap.put("gd", new CommandNode("GotoDeclaration"));
+        stringShortCommandNodeMap.put("gen", new CommandNode("Generate"));
     }
 
     @NotNull
@@ -76,12 +81,21 @@ public class KeyHandler {
         OhPlugin oh = OhPlugin.getInstance();
 
         if (KeyStroke.getKeyStroke('i') == key) {
-            oh.status = CommandStatus.Insert;
+            oh.status = EditorStatus.Insert;
             oh.setCursors(false);
+            oh.commandStatus.reset();
             return;
         }
 
-        CommandNode commandNode = keyStrokeCommandNodeMap.get(key);
+        oh.commandStatus.addChar(key.getKeyChar());
+
+        CommandNode commandNode;
+        if (oh.commandStatus.hasStroke()) {
+            commandNode = keyStrokeCommandNodeMap.get(oh.commandStatus.getStroke());
+        } else {
+            commandNode = stringShortCommandNodeMap.get(oh.commandStatus.getCommand());
+        }
+
         if (commandNode == null) {
             return;
         }
@@ -91,6 +105,8 @@ public class KeyHandler {
             String name = commandNode.getAction().getTemplatePresentation().getText();
             RunnableHelper.runReadCommand(project, action, name, action);
         }
+
+        oh.commandStatus.reset();
     }
 
 
