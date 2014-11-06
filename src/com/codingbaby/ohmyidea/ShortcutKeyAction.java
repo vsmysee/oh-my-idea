@@ -23,12 +23,12 @@ public class ShortcutKeyAction extends AnAction implements DumbAware  {
     @Override
     public void actionPerformed(AnActionEvent anActionEvent) {
         KeyStroke keyStroke = getKeyStroke(anActionEvent);
-        if (keyStroke != null) {
-            if (keyStroke.getKeyCode() == KeyEvent.VK_ESCAPE && OhPlugin.getInstance().status == EditorStatus.Insert) {
+        if (keyStroke != null && keyStroke.getKeyCode() == KeyEvent.VK_ESCAPE) {
+            if (OhPlugin.getInstance().status == EditorStatus.Insert) {
                 OhPlugin.getInstance().setCursors(true);
                 OhPlugin.getInstance().status = EditorStatus.Command;
-                OhPlugin.getInstance().commandStatus.reset();
             }
+            OhPlugin.getInstance().commandStatus.reset();
         }
     }
 

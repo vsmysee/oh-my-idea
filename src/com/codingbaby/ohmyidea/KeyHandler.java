@@ -52,21 +52,26 @@ public class KeyHandler {
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('W'), new CommandNode("EditorPreviousWord"));
 
 
-        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('b'), new CommandNode("Back"));
-        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('B'), new CommandNode("Forward"));
+        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('b'), new CommandNode("JumpToLastChange"));
+        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('B'), new CommandNode("JumpToNextChange"));
 
 
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('u'), new CommandNode("$Undo"));
+        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('r'), new CommandNode("$Redo"));
+
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('x'), new CommandNode("$Delete"));
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('o'), new CommandNode("EditorStartNewLine"));
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('d'), new CommandNode("EditorDeleteLine"));
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('c'), new CommandNode("CloseContent"));
+        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('p'), new CommandNode("$Paste"));
 
     }
 
     {
         stringShortCommandNodeMap.put("gd", new CommandNode("GotoDeclaration"));
         stringShortCommandNodeMap.put("gen", new CommandNode("Generate"));
+        stringShortCommandNodeMap.put("yy", new CommandNode("$Copy"));
+        stringShortCommandNodeMap.put("yc", new CommandNode("$Cut"));
     }
 
     @NotNull
