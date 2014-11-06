@@ -61,17 +61,25 @@ public class KeyHandler {
 
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('x'), new CommandNode("$Delete"));
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('o'), new CommandNode("EditorStartNewLine"));
-        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('d'), new CommandNode("EditorDeleteLine"));
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('c'), new CommandNode("CloseContent"));
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('p'), new CommandNode("$Paste"));
+        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('e'), new CommandNode("EditorSelectWord"));
+        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('q'), new CommandNode("FindUsages"));
+
+        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('f'), new CommandNode("FindWordAtCaret"));
+        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('n'), new CommandNode("FindNext"));
+        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('N'), new CommandNode("FindPrevious"));
 
     }
 
     {
         stringShortCommandNodeMap.put("gd", new CommandNode("GotoDeclaration"));
         stringShortCommandNodeMap.put("gen", new CommandNode("Generate"));
+        stringShortCommandNodeMap.put("gv", new CommandNode("IntroduceVariable"));
+
         stringShortCommandNodeMap.put("yy", new CommandNode("$Copy"));
         stringShortCommandNodeMap.put("yc", new CommandNode("$Cut"));
+        stringShortCommandNodeMap.put("dd", new CommandNode("EditorDeleteLine"));
     }
 
     @NotNull
@@ -102,6 +110,7 @@ public class KeyHandler {
         }
 
         if (commandNode == null) {
+            oh.commandStatus.reset();
             return;
         }
         Project project = editor.getProject();
