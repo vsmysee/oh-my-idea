@@ -22,6 +22,15 @@ public class CommandStatus {
         return KeyStroke.getKeyStroke(sb.charAt(0));
     }
 
+    public String getCodeKey() {
+        String command = sb.toString();
+        int p = command.indexOf(";");
+        if (p != -1 && sb.length() > 2) {
+            return command.substring(p + 1);
+        }
+        return null;
+    }
+
     public void reset() {
         sb = new StringBuffer();
     }

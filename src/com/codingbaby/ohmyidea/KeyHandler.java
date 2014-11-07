@@ -2,9 +2,11 @@ package com.codingbaby.ohmyidea;
 
 import com.codingbaby.ohmyidea.helper.RunnableHelper;
 import com.codingbaby.ohmyidea.key.CommandNode;
+import com.codingbaby.ohmyidea.script.CodeQuick;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
+
 import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.editor.Editor;
@@ -96,8 +98,8 @@ public class KeyHandler {
         return instance;
     }
 
-    public void handleKey(@NotNull Editor editor, @NotNull KeyStroke key, @NotNull DataContext context) {
-        OhPlugin oh = OhPlugin.getInstance();
+    public void handleKey(@NotNull final Editor editor, @NotNull KeyStroke key, @NotNull DataContext context) {
+        final OhPlugin oh = OhPlugin.getInstance();
 
         if (KeyStroke.getKeyStroke('i') == key || KeyStroke.getKeyStroke('I') == key) {
             oh.status = EditorStatus.Insert;
@@ -115,17 +117,32 @@ public class KeyHandler {
             commandNode = stringShortCommandNodeMap.get(oh.commandStatus.getCommand());
         }
 
-        if (commandNode == null) {
+        if (commandNode != null) {
+            Project project = editor.getProject();
+            if (ApplicationManager.getApplication().isDispatchThread()) {
+                Runnable action = new ActionRunner(context, commandNode);
+                String name = commandNode.getAction().getTemplatePresentation().getText();
+                RunnableHelper.runReadCommand(project, action, name, action);
+            }
+            oh.commandStatus.reset();
             return;
         }
-        Project project = editor.getProject();
-        if (ApplicationManager.getApplication().isDispatchThread()) {
-            Runnable action = new ActionRunner(editor, context, commandNode, key);
-            String name = commandNode.getAction().getTemplatePresentation().getText();
-            RunnableHelper.runReadCommand(project, action, name, action);
-        }
 
-        oh.commandStatus.reset();
+        if (oh.commandStatus.getCodeKey() != null) {
+            Project project = editor.getProject();
+            final String mapping = CodeQuick.getMapping(oh.commandStatus.getCodeKey());
+            if (mapping != null) {
+                Runnable cmd = new Runnable() {
+                    @Override
+                    public void run() {
+                        int oldOffset = editor.getCaretModel().getOffset();
+                        editor.getDocument().insertString(oldOffset, mapping);
+                        oh.commandStatus.reset();
+                    }
+                };
+                RunnableHelper.runWriteCommand(project, cmd, "insertCode", cmd);
+            }
+        }
     }
 
 
@@ -134,21 +151,17 @@ public class KeyHandler {
     }
 
     static class ActionRunner implements Runnable {
-        public ActionRunner(Editor editor, DataContext context, CommandNode cmd, KeyStroke key) {
-            this.editor = editor;
+        public ActionRunner(DataContext context, CommandNode cmd) {
             this.context = context;
             this.cmd = cmd;
-            this.key = key;
         }
 
         public void run() {
             executeAction(cmd.getAction(), context);
         }
 
-        private final Editor editor;
         private final DataContext context;
         private final CommandNode cmd;
-        private final KeyStroke key;
     }
 
 

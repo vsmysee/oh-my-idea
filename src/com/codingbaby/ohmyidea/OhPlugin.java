@@ -1,6 +1,7 @@
 package com.codingbaby.ohmyidea;
 
 
+import com.codingbaby.ohmyidea.script.OhScript;
 import com.intellij.openapi.actionSystem.CustomShortcutSet;
 import com.intellij.openapi.application.Application;
 import com.intellij.openapi.application.ApplicationManager;
@@ -53,6 +54,8 @@ public class OhPlugin implements ApplicationComponent {
             public void editorReleased(@NotNull EditorFactoryEvent event) {
             }
         }, myApp);
+
+        OhScript.parseScriptFile();
     }
 
     @Override
