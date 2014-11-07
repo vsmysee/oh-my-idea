@@ -53,7 +53,7 @@ public class KeyHandler {
 
 
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('b'), new CommandNode("JumpToLastChange"));
-        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('B'), new CommandNode("JumpToNextChange"));
+        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('B'), new CommandNode("Back"));
 
 
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('u'), new CommandNode("$Undo"));
@@ -63,7 +63,10 @@ public class KeyHandler {
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('o'), new CommandNode("EditorStartNewLine"));
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('c'), new CommandNode("CloseContent"));
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('p'), new CommandNode("$Paste"));
+
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('e'), new CommandNode("EditorSelectWord"));
+        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('E'), new CommandNode("EditorUnSelectWord"));
+
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('q'), new CommandNode("FindUsages"));
 
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('f'), new CommandNode("FindWordAtCaret"));
@@ -74,12 +77,15 @@ public class KeyHandler {
 
     {
         stringShortCommandNodeMap.put("gd", new CommandNode("GotoDeclaration"));
+        stringShortCommandNodeMap.put("gm", new CommandNode("GotoImplementation"));
+        stringShortCommandNodeMap.put("gu", new CommandNode("GotoSuperMethod"));
         stringShortCommandNodeMap.put("gen", new CommandNode("Generate"));
         stringShortCommandNodeMap.put("gv", new CommandNode("IntroduceVariable"));
 
         stringShortCommandNodeMap.put("yy", new CommandNode("$Copy"));
         stringShortCommandNodeMap.put("yc", new CommandNode("$Cut"));
         stringShortCommandNodeMap.put("dd", new CommandNode("EditorDeleteLine"));
+
     }
 
     @NotNull
@@ -93,7 +99,7 @@ public class KeyHandler {
     public void handleKey(@NotNull Editor editor, @NotNull KeyStroke key, @NotNull DataContext context) {
         OhPlugin oh = OhPlugin.getInstance();
 
-        if (KeyStroke.getKeyStroke('i') == key) {
+        if (KeyStroke.getKeyStroke('i') == key || KeyStroke.getKeyStroke('I') == key) {
             oh.status = EditorStatus.Insert;
             oh.setCursors(false);
             oh.commandStatus.reset();
@@ -110,7 +116,6 @@ public class KeyHandler {
         }
 
         if (commandNode == null) {
-            oh.commandStatus.reset();
             return;
         }
         Project project = editor.getProject();
