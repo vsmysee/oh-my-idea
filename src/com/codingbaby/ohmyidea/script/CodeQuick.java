@@ -12,8 +12,9 @@ public class CodeQuick {
     private static Map<String, String> codeGen = new HashMap<String, String>();
 
     public static void add(String key, String value) {
-        codeGen.put(key, value);
+        codeGen.put(key.trim(), value.trim());
     }
+
 
     public static String getMapping(String key) {
         return codeGen.get(key);
