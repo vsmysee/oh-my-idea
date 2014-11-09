@@ -24,6 +24,8 @@
 
         <action id="MotionFirstLine" class="com.codingbaby.ohmyidea.action.MotionGotoLineFirstAction" text="First Line"/>
         <action id="MotionLastLine" class="com.codingbaby.ohmyidea.action.MotionGotoLineLastAction" text="Last Line"/>
+        <action id="MotionAndInsert" class="com.codingbaby.ohmyidea.action.MotionAndInsertAction" text="Motion And Insert"/>
+
 
         <action id="ShortcutKeyAction" class="com.codingbaby.ohmyidea.ShortcutKeyAction" text="Shortcuts"/>
 

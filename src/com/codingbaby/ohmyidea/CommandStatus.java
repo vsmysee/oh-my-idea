@@ -9,8 +9,15 @@ import javax.swing.*;
 public class CommandStatus {
 
     private StringBuffer sb = new StringBuffer();
+    //用于过期未击中的命令
+    private long firstType = 0;
 
     public void addChar(char c) {
+        if (firstType == 0) {
+            firstType = System.currentTimeMillis();
+        } else if (System.currentTimeMillis() - firstType > 1500) {
+            reset();
+        }
         sb.append(c);
     }
 
@@ -33,6 +40,7 @@ public class CommandStatus {
 
     public void reset() {
         sb = new StringBuffer();
+        firstType = 0;
     }
 
     public String getCommand() {

@@ -75,6 +75,9 @@ public class KeyHandler {
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('n'), new CommandNode("FindNext"));
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('N'), new CommandNode("FindPrevious"));
 
+
+        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('a'), new CommandNode("MotionAndInsert"));
+
     }
 
     {
@@ -98,15 +101,14 @@ public class KeyHandler {
         return instance;
     }
 
-    public void handleKey(@NotNull final Editor editor, @NotNull KeyStroke key, @NotNull DataContext context) {
-        final OhPlugin oh = OhPlugin.getInstance();
+    public void handleKey(@NotNull final Editor editor, @NotNull KeyStroke key, @NotNull final DataContext context) {
 
         if (KeyStroke.getKeyStroke('i') == key || KeyStroke.getKeyStroke('I') == key) {
-            oh.status = EditorStatus.Insert;
-            oh.setCursors(false);
-            oh.commandStatus.reset();
+            toInsertMod();
             return;
         }
+
+        final OhPlugin oh = OhPlugin.getInstance();
 
         oh.commandStatus.addChar(key.getKeyChar());
 
@@ -138,6 +140,8 @@ public class KeyHandler {
                         int oldOffset = editor.getCaretModel().getOffset();
                         editor.getDocument().insertString(oldOffset, mapping);
                         oh.commandStatus.reset();
+
+                        executeAction("ReformatCode",context);
                     }
                 };
                 RunnableHelper.runWriteCommand(project, cmd, "insertCode", cmd);
@@ -145,6 +149,20 @@ public class KeyHandler {
         }
     }
 
+    public static void toInsertMod() {
+        final OhPlugin oh = OhPlugin.getInstance();
+        oh.status = EditorStatus.Insert;
+        oh.setCursors(false);
+        oh.commandStatus.reset();
+    }
+
+    public static void executeAction(@NotNull String name, @NotNull DataContext context) {
+        ActionManager aMgr = ActionManager.getInstance();
+        AnAction action = aMgr.getAction(name);
+        if (action != null) {
+            executeAction(action, context);
+        }
+    }
 
     public static void executeAction(@NotNull AnAction action, @NotNull DataContext context) {
         action.actionPerformed(new AnActionEvent(null, context, "", action.getTemplatePresentation(), ActionManager.getInstance(), 0));
