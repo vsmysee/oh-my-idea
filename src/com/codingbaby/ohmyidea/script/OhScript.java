@@ -14,14 +14,18 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 /**
- *
- *
+ * _ls
+ * List<String> list = new ArrayList<String>();
+ * <p/>
+ * _mso
+ * Map<String,Object> map = new HashMap<String,Object>();
  */
 public class OhScript {
 
     public static final String OH_FILE = ".oh-my-idea";
     public static final int BUFSIZE = 4096;
     private static final Pattern EOL_SPLIT_PATTERN = Pattern.compile("(\r\n|\n)");
+
     private static LineHolder holder;
 
     private OhScript() {
@@ -33,74 +37,69 @@ public class OhScript {
         if (homeDirName != null) {
             final File file = new File(homeDirName, OH_FILE);
             if (file.exists()) {
-                List<CodeKV> codeKVs = ParseTokens(file);
-                for (CodeKV codeKV : codeKVs) {
-                    CodeQuick.add(codeKV.key, codeKV.value);
+                parseTokens(file);
+
+                List<CodeKV> codeKV = holder.getCodeKV();
+                for (CodeKV kv : codeKV) {
+                    CodeQuick.add(kv.key, kv.value);
                 }
             }
         }
     }
 
-    private static List<CodeKV> ParseTokens(@NotNull File file) {
+    private static void parseTokens(@NotNull File file) {
         String data = "";
         try {
             data = readFile(file);
         } catch (IOException ignored) {
             Collections.emptyList();
         }
-        List<CodeKV> tokens = new ArrayList<CodeKV>();
         String[] lines = EOL_SPLIT_PATTERN.split(data);
         holder = new LineHolder(lines);
-        String line = holder.next();
-        statements(tokens, line);
-        return tokens;
+        holder.buildCodeQuick(holder.next());
     }
-
-    private static void statements(List<CodeKV> tokens, String line) {
-        if (Pattern.compile("[a-zA-Z0-9]").matcher(line).find()) {
-            int start = line.indexOf("=>");
-            //发现有映射
-            if (start != -1) {
-                String key = line.substring(0, start).trim();
-                String value = line.substring(start + 2);
-                if (StringUtils.isNotBlank(value)) {
-                    tokens.add(new CodeKV(key, value.trim()));
-                } else {
-                    parseCodeBlock(tokens, key);
-                }
-                if (holder.done()) {
-                    return;
-                }
-                statements(tokens, holder.next());
-            }
-        } else if (!holder.done()) {
-            statements(tokens, holder.next());
-        }
-    }
-
-    private static void parseCodeBlock(List<CodeKV> tokens, String key) {
-        String line = holder.next();
-        if (line.startsWith("```")) {
-            StringBuffer sb = new StringBuffer();
-            String next = holder.next();
-            while (!next.startsWith("```")) {
-                sb.append(next);
-                sb.append("\n");
-                next = holder.next();
-            }
-            tokens.add(new CodeKV(key, sb.toString()));
-        }
-    }
-
 
     private static class LineHolder {
-
         private String[] lines;
         private int begin = 0;
+        private List<String> keys = new ArrayList<String>();
+        private List<String> values = new ArrayList<String>();
 
         public LineHolder(String[] lines) {
             this.lines = lines;
         }
+
+        public List<CodeKV> getCodeKV() {
+            List<CodeKV> list = new ArrayList<CodeKV>();
+            for (int i = 0; i < keys.size(); i++) {
+                list.add(new CodeKV(keys.get(i), values.get(i)));
+            }
+            return list;
+        }
+
+        public void buildCodeQuick(String line) {
+            if (StringUtils.isNotBlank(line) && line.startsWith("_")) {
+                keys.add(line.trim().substring(1));
+                StringBuffer sb = new StringBuffer();
+                line = next();
+
+                while (!line.startsWith("_")) {
+                    sb.append(line);
+                    sb.append("\n");
+                    if (done()) {
+                        break;
+                    }
+                    line = next();
+                }
+
+                values.add(sb.toString());
+            }
+
+            if (!done()) {
+                buildCodeQuick(line);
+            }
+        }
+
 
         public String next() {
             String line = lines[begin];
