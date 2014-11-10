@@ -91,6 +91,8 @@ public class KeyHandler {
         stringShortCommandNodeMap.put("yc", new CommandNode("$Cut"));
         stringShortCommandNodeMap.put("dd", new CommandNode("EditorDeleteLine"));
 
+        stringShortCommandNodeMap.put("vs", new CommandNode("SplitVertically"));
+
     }
 
     @NotNull
