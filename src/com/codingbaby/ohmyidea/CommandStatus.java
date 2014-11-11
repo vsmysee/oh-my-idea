@@ -27,6 +27,10 @@ public class CommandStatus {
         sb.append(c);
     }
 
+    public boolean isWaiting() {
+        return sb.length() == 0;
+    }
+
     public boolean hasStroke() {
         return sb.length() == 1;
     }

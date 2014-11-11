@@ -10,5 +10,5 @@ public enum EditorStatus {
 
     Command,
 
-    BottomLine
+    Visual
 }
