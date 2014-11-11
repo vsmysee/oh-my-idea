@@ -6,12 +6,10 @@ import com.codingbaby.ohmyidea.script.CodeQuick;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
-
 import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.project.Project;
-import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.math.NumberUtils;
 import org.jetbrains.annotations.NotNull;
 
@@ -82,6 +80,9 @@ public class KeyHandler {
 
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('a'), new CommandNode("MotionAndInsert"));
 
+        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('d'), new CommandNode("EditorPageDown"));
+        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('D'), new CommandNode("EditorPageUp"));
+
     }
 
     {
@@ -91,10 +92,10 @@ public class KeyHandler {
         stringShortCommandNodeMap.put("gen", new CommandNode("Generate"));
         stringShortCommandNodeMap.put("gv", new CommandNode("IntroduceVariable"));
         stringShortCommandNodeMap.put("gs", new CommandNode("SurroundWith"));
+        stringShortCommandNodeMap.put("gy", new CommandNode("EditorDeleteLine"));
 
         stringShortCommandNodeMap.put("yy", new CommandNode("$Copy"));
         stringShortCommandNodeMap.put("yc", new CommandNode("$Cut"));
-        stringShortCommandNodeMap.put("dd", new CommandNode("EditorDeleteLine"));
 
         stringShortCommandNodeMap.put("vs", new CommandNode("SplitVertically"));
     }
