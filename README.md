@@ -1,1 +1,1 @@
-这是一个在IDEA插件，你只需要将手指放在asdf,jkl;上就可以快速的编写Java代码。移动方式部分类似vim。
+This is a IDEA plugin, you just require put your finger on the asdfjkl;,the you can write java code quickly,the mode like vim.
