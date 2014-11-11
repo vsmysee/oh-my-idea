@@ -11,6 +11,8 @@ import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.project.Project;
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.math.NumberUtils;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -22,6 +24,8 @@ import java.util.Map;
 public class KeyHandler {
 
     private static KeyHandler instance;
+
+    public static int toLine;
 
     private Map<KeyStroke, CommandNode> keyStrokeCommandNodeMap = new HashMap();
     private Map<String, CommandNode> stringShortCommandNodeMap = new HashMap();
@@ -86,13 +90,13 @@ public class KeyHandler {
         stringShortCommandNodeMap.put("gu", new CommandNode("GotoSuperMethod"));
         stringShortCommandNodeMap.put("gen", new CommandNode("Generate"));
         stringShortCommandNodeMap.put("gv", new CommandNode("IntroduceVariable"));
+        stringShortCommandNodeMap.put("gs", new CommandNode("SurroundWith"));
 
         stringShortCommandNodeMap.put("yy", new CommandNode("$Copy"));
         stringShortCommandNodeMap.put("yc", new CommandNode("$Cut"));
         stringShortCommandNodeMap.put("dd", new CommandNode("EditorDeleteLine"));
 
         stringShortCommandNodeMap.put("vs", new CommandNode("SplitVertically"));
-
     }
 
     @NotNull
@@ -121,6 +125,7 @@ public class KeyHandler {
             commandNode = stringShortCommandNodeMap.get(oh.commandStatus.getCommand());
         }
 
+        //快捷模式
         if (commandNode != null) {
             Project project = editor.getProject();
             if (ApplicationManager.getApplication().isDispatchThread()) {
@@ -132,6 +137,7 @@ public class KeyHandler {
             return;
         }
 
+        //分号代码模板
         if (oh.commandStatus.getCodeKey() != null) {
             Project project = editor.getProject();
             final String mapping = CodeQuick.getMapping(oh.commandStatus.getCodeKey());
@@ -143,10 +149,22 @@ public class KeyHandler {
                         editor.getDocument().insertString(oldOffset, mapping);
                         oh.commandStatus.reset();
 
-                        executeAction("ReformatCode",context);
+                        executeAction("ReformatCode", context);
                     }
                 };
                 RunnableHelper.runWriteCommand(project, cmd, "insertCode", cmd);
+            }
+            return;
+        }
+
+        //冒号命令模式
+        String commandLineKey = oh.commandStatus.getCommandLineKey();
+        if (commandLineKey != null && commandLineKey.endsWith("e")) {
+            String lineNumber = commandLineKey.substring(0, commandLineKey.length() - 1);
+            if (NumberUtils.isNumber(lineNumber)) {
+                toLine = Integer.parseInt(lineNumber);
+                executeAction("MotionToLine", context);
+                oh.commandStatus.reset();
             }
         }
     }
