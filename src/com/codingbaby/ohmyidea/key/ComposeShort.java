@@ -21,9 +21,11 @@ public class ComposeShort {
         stringShortCommandNodeMap.put("gy", new CommandNode("EditorDeleteLine"));
         stringShortCommandNodeMap.put("gpv", new CommandNode("SplitVertically"));
         stringShortCommandNodeMap.put("gph", new CommandNode("SplitHorizontally"));
+        stringShortCommandNodeMap.put("gh", new CommandNode("HideAllWindows"));
 
         stringShortCommandNodeMap.put("yy", new CommandNode("$Copy"));
         stringShortCommandNodeMap.put("yc", new CommandNode("$Cut"));
+        stringShortCommandNodeMap.put("yd", new CommandNode("EditorDuplicate"));
     }
 
 
