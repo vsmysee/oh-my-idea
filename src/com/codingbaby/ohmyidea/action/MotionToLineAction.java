@@ -18,7 +18,7 @@ public class MotionToLineAction extends EditorAction {
         super(new EditorActionHandler() {
             @Override
             public void execute(Editor editor, DataContext dataContext) {
-                int offset = EditorHelper.getLineStartOffset(editor, KeyHandler.toLine);
+                int offset = EditorHelper.getLineStartOffset(editor, KeyHandler.toLine - 1);
                 editor.getCaretModel().moveToOffset(offset);
                 EditorHelper.scrollCaretIntoView(editor);
             }
