@@ -41,18 +41,16 @@ public class CommandStatus {
 
     public String getCodeKey() {
         String command = sb.toString();
-        int p = command.indexOf(";");
-        if (p != -1 && sb.length() > 2) {
-            return command.substring(p + 1);
+        if (command.startsWith(";") && sb.length() > 2) {
+            return command.substring(1);
         }
         return null;
     }
 
     public String getCommandLineKey() {
         String command = sb.toString();
-        int p = command.indexOf(":");
-        if (p != -1 && sb.length() > 1) {
-            return command.substring(p + 1);
+        if (command.startsWith(":")  && sb.length() > 1) {
+            return command.substring(1);
         }
         return null;
     }

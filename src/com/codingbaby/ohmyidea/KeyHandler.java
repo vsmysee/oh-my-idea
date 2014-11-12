@@ -98,7 +98,7 @@ public class KeyHandler {
 
         //冒号命令模式
         String commandLineKey = oh.commandStatus.getCommandLineKey();
-        if (commandLineKey != null && commandLineKey.endsWith("e")) {
+        if (commandLineKey != null && commandLineKey.endsWith(":")) {
             String lineNumber = commandLineKey.substring(0, commandLineKey.length() - 1);
             if (NumberUtils.isNumber(lineNumber)) {
                 toLine = Integer.parseInt(lineNumber);
