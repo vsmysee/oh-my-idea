@@ -13,7 +13,7 @@ import java.awt.event.KeyEvent;
 
 /**
  *
- *
+ * 绑定到编辑组件上的控制键行为
  */
 public class ShortcutKeyAction extends AnAction implements DumbAware  {
 
@@ -28,6 +28,7 @@ public class ShortcutKeyAction extends AnAction implements DumbAware  {
                 OhPlugin.getInstance().setCursors(true);
                 OhPlugin.getInstance().status = EditorStatus.Command;
             }
+            KeyHandler.executeAction("EditorEscape",anActionEvent.getDataContext());
             OhPlugin.getInstance().commandStatus.reset();
         }
     }
