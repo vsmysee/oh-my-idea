@@ -3,7 +3,11 @@ package com.codingbaby.ohmyidea.helper;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.editor.LogicalPosition;
 import com.intellij.openapi.editor.VisualPosition;
+import com.intellij.openapi.fileEditor.FileDocumentManager;
+import com.intellij.openapi.vfs.VirtualFile;
+import com.intellij.testFramework.LightVirtualFile;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.awt.*;
 
@@ -13,6 +17,16 @@ import java.awt.*;
  */
 public class EditorHelper {
 
+    @Nullable
+    public static VirtualFile getVirtualFile(@NotNull Editor editor) {
+        return FileDocumentManager.getInstance().getFile(editor.getDocument());
+    }
+
+    public static boolean isFileEditor(@NotNull Editor editor) {
+        final VirtualFile virtualFile = getVirtualFile(editor);
+        return virtualFile != null && !(virtualFile instanceof LightVirtualFile);
+    }
+
     public static int moveCaretToLineStart(@NotNull Editor editor) {
         int logicalLine = editor.getCaretModel().getLogicalPosition().line;
         return getLineStartOffset(editor, logicalLine);
@@ -21,18 +35,16 @@ public class EditorHelper {
     public static int getLineStartOffset(@NotNull final Editor editor, final int line) {
         if (line < 0) {
             return 0;
-        }
-        else if (line >= getLineCount(editor)) {
+        } else if (line >= getLineCount(editor)) {
             return getFileSize(editor);
-        }
-        else {
+        } else {
             return editor.getDocument().getLineStartOffset(line);
         }
     }
 
     public static int getFileSize(@NotNull final Editor editor) {
         final int len = editor.getDocument().getTextLength();
-        return  len;
+        return len;
     }
 
     public static int getVisualLineAtTopOfScreen(@NotNull final Editor editor) {
@@ -87,8 +99,7 @@ public class EditorHelper {
         if (cline < visualTop) {
             diff = cline - visualTop;
             sjSize = -sjSize;
-        }
-        else {
+        } else {
             diff = cline - visualBottom + 1;
             if (diff < 0) {
                 diff = 0;
@@ -116,9 +127,9 @@ public class EditorHelper {
         int width = EditorHelper.getScreenWidth(editor);
         scrollOffset = 0;
         sjSize = 0;
-            if (sjSize == 0) {
-                sjSize = width / 2;
-            }
+        if (sjSize == 0) {
+            sjSize = width / 2;
+        }
 
         int visualLeft = visualColumn + scrollOffset;
         int visualRight = visualColumn + width - scrollOffset;
@@ -136,8 +147,7 @@ public class EditorHelper {
         if (caretColumn < visualLeft) {
             diff = caretColumn - visualLeft + 1;
             sjSize = -sjSize;
-        }
-        else {
+        } else {
             diff = caretColumn - visualRight + 1;
             if (diff < 0) {
                 diff = 0;
@@ -148,8 +158,7 @@ public class EditorHelper {
             int col;
             if (Math.abs(diff) > width / 2) {
                 col = caretColumn - width / 2 - 1;
-            }
-            else {
+            } else {
                 col = visualColumn + diff + sjSize;
             }
 

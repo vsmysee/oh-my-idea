@@ -68,8 +68,6 @@ public class SingleShort {
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('d'), new CommandNode("EditorPageDown"));
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('D'), new CommandNode("EditorPageUp"));
 
-        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('z'), new CommandNode("EditorDownWithSelection"));
-
     }
 
     public static CommandNode get(KeyStroke keyStroke) {

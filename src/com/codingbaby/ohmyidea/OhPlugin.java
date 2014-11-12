@@ -1,6 +1,7 @@
 package com.codingbaby.ohmyidea;
 
 
+import com.codingbaby.ohmyidea.helper.EditorHelper;
 import com.codingbaby.ohmyidea.script.OhScript;
 import com.intellij.openapi.actionSystem.CustomShortcutSet;
 import com.intellij.openapi.application.Application;
@@ -34,17 +35,16 @@ public class OhPlugin implements ApplicationComponent {
 
     @Override
     public void initComponent() {
-        final TypedAction typedAction = EditorActionManager.getInstance().getTypedAction();
-        EventFacade eventFacade = EventFacade.getInstance();
 
         //替换系统的TypedActionHandler
-        eventFacade.setupTypedActionHandler(new OhTypedActionHandler(typedAction.getHandler()));
+        final TypedAction typedAction = EditorActionManager.getInstance().getTypedAction();
+        typedAction.setupHandler(new OhTypedActionHandler(typedAction.getHandler()));
 
         EditorFactory.getInstance().addEditorFactoryListener(new EditorFactoryAdapter() {
             @Override
             public void editorCreated(@NotNull EditorFactoryEvent event) {
                 final Editor editor = event.getEditor();
-                if (OhPlugin.isEnabled()) {
+                if (OhPlugin.isEnabled() && EditorHelper.isFileEditor(editor) && editor.getDocument().isWritable()) {
                     editor.getSettings().setBlockCursor(true);
                     ShortcutKeyAction.getInstance().registerCustomShortcutSet(new CustomShortcutSet(KeyStroke.getKeyStroke(27, 0, false)), editor.getComponent());
                 }
