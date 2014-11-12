@@ -24,6 +24,8 @@ public class ComposeShort {
         stringShortCommandNodeMap.put("gh", new CommandNode("HideAllWindows"));
         stringShortCommandNodeMap.put("gp", new CommandNode("NextProjectWindow"));
         stringShortCommandNodeMap.put("gc", new CommandNode("ActivateChangesToolWindow"));
+        stringShortCommandNodeMap.put("gn", new CommandNode("GotoClass"));
+        stringShortCommandNodeMap.put("gf", new CommandNode("GotoFile"));
 
         stringShortCommandNodeMap.put("yy", new CommandNode("$Copy"));
         stringShortCommandNodeMap.put("yc", new CommandNode("$Cut"));
