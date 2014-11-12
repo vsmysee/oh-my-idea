@@ -19,13 +19,16 @@ public class ComposeShort {
         stringShortCommandNodeMap.put("gv", new CommandNode("IntroduceVariable"));
         stringShortCommandNodeMap.put("gs", new CommandNode("SurroundWith"));
         stringShortCommandNodeMap.put("gy", new CommandNode("EditorDeleteLine"));
-        stringShortCommandNodeMap.put("gpv", new CommandNode("SplitVertically"));
-        stringShortCommandNodeMap.put("gph", new CommandNode("SplitHorizontally"));
+        stringShortCommandNodeMap.put("glv", new CommandNode("SplitVertically"));
+        stringShortCommandNodeMap.put("glh", new CommandNode("SplitHorizontally"));
         stringShortCommandNodeMap.put("gh", new CommandNode("HideAllWindows"));
+        stringShortCommandNodeMap.put("gp", new CommandNode("NextProjectWindow"));
+        stringShortCommandNodeMap.put("gc", new CommandNode("ActivateChangesToolWindow"));
 
         stringShortCommandNodeMap.put("yy", new CommandNode("$Copy"));
         stringShortCommandNodeMap.put("yc", new CommandNode("$Cut"));
         stringShortCommandNodeMap.put("yd", new CommandNode("EditorDuplicate"));
+
     }
 
 
