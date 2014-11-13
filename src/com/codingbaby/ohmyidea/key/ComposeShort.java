@@ -12,6 +12,7 @@ public class ComposeShort {
     private static Map<String, CommandNode> stringShortCommandNodeMap = new HashMap();
 
     static {
+
         stringShortCommandNodeMap.put("gd", new CommandNode("GotoDeclaration"));
         stringShortCommandNodeMap.put("gm", new CommandNode("GotoImplementation"));
         stringShortCommandNodeMap.put("gu", new CommandNode("GotoSuperMethod"));
@@ -33,6 +34,7 @@ public class ComposeShort {
         stringShortCommandNodeMap.put("gtc", new CommandNode("ActivateChangesToolWindow"));
         stringShortCommandNodeMap.put("gts", new CommandNode("ActivateStructureToolWindow"));
         stringShortCommandNodeMap.put("gtp", new CommandNode("ActivateProjectToolWindow"));
+        stringShortCommandNodeMap.put("gtt", new CommandNode("ActivateTerminalToolWindow"));
 
 
         stringShortCommandNodeMap.put("yy", new CommandNode("$Copy"));

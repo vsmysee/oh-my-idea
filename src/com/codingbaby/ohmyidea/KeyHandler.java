@@ -1,10 +1,7 @@
 package com.codingbaby.ohmyidea;
 
 import com.codingbaby.ohmyidea.helper.RunnableHelper;
-import com.codingbaby.ohmyidea.key.CommandNode;
-import com.codingbaby.ohmyidea.key.ComposeShort;
-import com.codingbaby.ohmyidea.key.SingleShort;
-import com.codingbaby.ohmyidea.key.VisualShort;
+import com.codingbaby.ohmyidea.key.*;
 import com.codingbaby.ohmyidea.script.CodeQuick;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.AnAction;
@@ -39,13 +36,19 @@ public class KeyHandler {
         final OhPlugin oh = OhPlugin.getInstance();
 
         if (oh.commandStatus.isWaiting()) {
+
             if (KeyStroke.getKeyStroke('i') == key || KeyStroke.getKeyStroke('I') == key) {
                 toInsertMod();
                 return;
             }
 
-            if (KeyStroke.getKeyStroke('v') == key || KeyStroke.getKeyStroke('V') == key) {
+            if (KeyStroke.getKeyStroke('v') == key) {
                 toVisualMod();
+                return;
+            }
+
+            if ( KeyStroke.getKeyStroke('V') == key) {
+                toMoveMod();
                 return;
             }
         }
@@ -59,6 +62,9 @@ public class KeyHandler {
             }
             if (oh.status == EditorStatus.Visual) {
                 commandNode = VisualShort.get(oh.commandStatus.getStroke());
+            }
+            if (oh.status == EditorStatus.Move) {
+                commandNode = MoveShort.get(oh.commandStatus.getStroke());
             }
         } else {
             commandNode = ComposeShort.get(oh.commandStatus.getCommand());
@@ -118,6 +124,12 @@ public class KeyHandler {
     public static void toVisualMod() {
         final OhPlugin oh = OhPlugin.getInstance();
         oh.status = EditorStatus.Visual;
+        oh.commandStatus.reset();
+    }
+
+    public static void toMoveMod() {
+        final OhPlugin oh = OhPlugin.getInstance();
+        oh.status = EditorStatus.Move;
         oh.commandStatus.reset();
     }
 

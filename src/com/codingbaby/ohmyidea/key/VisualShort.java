@@ -12,7 +12,6 @@ public class VisualShort {
 
     private static Map<KeyStroke, CommandNode> keyStrokeCommandNodeMap = new HashMap();
 
-
     static {
 
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('h'), new CommandNode("EditorLeftWithSelection"));
@@ -21,6 +20,9 @@ public class VisualShort {
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('k'), new CommandNode("EditorUpWithSelection"));
 
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('p'), new CommandNode("$Paste"));
+        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('U'), new CommandNode("EditorToggleCase"));
+        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('/'), new CommandNode("CommentByBlockComment"));
+        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('x'), new CommandNode("$Delete"));
 
     }
 

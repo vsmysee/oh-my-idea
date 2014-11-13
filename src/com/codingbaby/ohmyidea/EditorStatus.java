@@ -10,5 +10,7 @@ public enum EditorStatus {
 
     Command,
 
-    Visual
+    Visual,
+
+    Move
 }

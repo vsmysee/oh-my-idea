@@ -14,6 +14,7 @@ public class SingleShort {
 
 
     static {
+
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('h'), new CommandNode("EditorLeft"));
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('H'), new CommandNode("EditorLineStart"));
 
@@ -46,6 +47,8 @@ public class SingleShort {
 
 
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('u'), new CommandNode("$Undo"));
+        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('U'), new CommandNode("EditorToggleCase"));
+
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('r'), new CommandNode("$Redo"));
 
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('x'), new CommandNode("$Delete"));
