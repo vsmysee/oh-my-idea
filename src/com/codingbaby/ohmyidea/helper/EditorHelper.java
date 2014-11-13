@@ -27,11 +27,6 @@ public class EditorHelper {
         return virtualFile != null && !(virtualFile instanceof LightVirtualFile);
     }
 
-    public static int moveCaretToLineStart(@NotNull Editor editor) {
-        int logicalLine = editor.getCaretModel().getLogicalPosition().line;
-        return getLineStartOffset(editor, logicalLine);
-    }
-
     public static int getLineStartOffset(@NotNull final Editor editor, final int line) {
         if (line < 0) {
             return 0;
@@ -43,8 +38,7 @@ public class EditorHelper {
     }
 
     public static int getFileSize(@NotNull final Editor editor) {
-        final int len = editor.getDocument().getTextLength();
-        return len;
+        return editor.getDocument().getTextLength();
     }
 
     public static int getVisualLineAtTopOfScreen(@NotNull final Editor editor) {
@@ -126,10 +120,7 @@ public class EditorHelper {
         int visualColumn = EditorHelper.getVisualColumnAtLeftOfScreen(editor);
         int width = EditorHelper.getScreenWidth(editor);
         scrollOffset = 0;
-        sjSize = 0;
-        if (sjSize == 0) {
-            sjSize = width / 2;
-        }
+        sjSize = width / 2;
 
         int visualLeft = visualColumn + scrollOffset;
         int visualRight = visualColumn + width - scrollOffset;

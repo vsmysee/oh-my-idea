@@ -2,7 +2,6 @@ package com.codingbaby.ohmyidea.script;
 
 import org.apache.commons.lang.StringUtils;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -31,7 +30,6 @@ public class OhScript {
     private OhScript() {
     }
 
-    @Nullable
     public static void parseScriptFile() {
         final String homeDirName = System.getProperty("user.home");
         if (homeDirName != null) {
@@ -80,7 +78,7 @@ public class OhScript {
         public void buildCodeQuick(String line) {
             if (StringUtils.isNotBlank(line) && line.startsWith("_")) {
                 keys.add(line.trim().substring(1));
-                StringBuffer sb = new StringBuffer();
+                StringBuilder sb = new StringBuilder();
                 line = next();
 
                 while (!line.startsWith("_")) {
