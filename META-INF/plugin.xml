@@ -3,7 +3,7 @@
     <id>oh-my-idea</id>
     <description>plugin like ideavim,but only for java</description>
     <version>1.0</version>
-    <vendor>IntelliJ</vendor>
+    <vendor>JetBrains</vendor>
 
 
     <application-components>
