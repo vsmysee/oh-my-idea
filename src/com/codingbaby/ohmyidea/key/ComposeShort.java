@@ -25,6 +25,7 @@ public class ComposeShort {
 
         stringShortCommandNodeMap.put("glv", new CommandNode("SplitVertically"));
         stringShortCommandNodeMap.put("glh", new CommandNode("SplitHorizontally"));
+        stringShortCommandNodeMap.put("gln", new CommandNode("EditorJoinLines"));
 
         stringShortCommandNodeMap.put("gh", new CommandNode("HideAllWindows"));
         stringShortCommandNodeMap.put("gp", new CommandNode("NextProjectWindow"));
@@ -36,6 +37,12 @@ public class ComposeShort {
         stringShortCommandNodeMap.put("gts", new CommandNode("ActivateStructureToolWindow"));
         stringShortCommandNodeMap.put("gtp", new CommandNode("ActivateProjectToolWindow"));
         stringShortCommandNodeMap.put("gtt", new CommandNode("ActivateTerminalToolWindow"));
+
+
+        stringShortCommandNodeMap.put("gk", new CommandNode("EditorCodeBlockEnd"));
+        stringShortCommandNodeMap.put("gj", new CommandNode("EditorCodeBlockStart"));
+
+
 
 
         stringShortCommandNodeMap.put("yy", new CommandNode("$Copy"));
