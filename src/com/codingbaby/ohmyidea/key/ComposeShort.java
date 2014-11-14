@@ -16,6 +16,7 @@ public class ComposeShort {
         stringShortCommandNodeMap.put("gd", new CommandNode("GotoDeclaration"));
         stringShortCommandNodeMap.put("gm", new CommandNode("GotoImplementation"));
         stringShortCommandNodeMap.put("gu", new CommandNode("GotoSuperMethod"));
+        stringShortCommandNodeMap.put("gg", new CommandNode("SmartTypeCompletion"));
 
         stringShortCommandNodeMap.put("gen", new CommandNode("Generate"));
         stringShortCommandNodeMap.put("gv", new CommandNode("IntroduceVariable"));
