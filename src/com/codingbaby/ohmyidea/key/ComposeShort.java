@@ -1,6 +1,5 @@
 package com.codingbaby.ohmyidea.key;
 
-import javax.swing.*;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,7 +30,8 @@ public class ComposeShort {
         stringShortCommandNodeMap.put("gh", new CommandNode("HideAllWindows"));
         stringShortCommandNodeMap.put("gp", new CommandNode("NextProjectWindow"));
 
-        stringShortCommandNodeMap.put("gn", new CommandNode("GotoClass"));
+        stringShortCommandNodeMap.put("gc", new CommandNode("GotoClass"));
+        stringShortCommandNodeMap.put("gn", new CommandNode("Inline"));
         stringShortCommandNodeMap.put("gf", new CommandNode("GotoFile"));
 
         stringShortCommandNodeMap.put("gtc", new CommandNode("ActivateChangesToolWindow"));
@@ -50,6 +50,11 @@ public class ComposeShort {
         stringShortCommandNodeMap.put("yy", new CommandNode("$Copy"));
         stringShortCommandNodeMap.put("yc", new CommandNode("$Cut"));
         stringShortCommandNodeMap.put("yd", new CommandNode("EditorDuplicate"));
+
+
+        stringShortCommandNodeMap.put("yhc", new CommandNode("CallHierarchy"));
+        stringShortCommandNodeMap.put("yht", new CommandNode("TypeHierarchy"));
+        stringShortCommandNodeMap.put("yhm", new CommandNode("MethodHierarchy"));
 
 
     }
