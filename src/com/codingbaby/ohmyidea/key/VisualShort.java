@@ -28,6 +28,9 @@ public class VisualShort {
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('x'), new CommandNode("$Delete"));
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('r'), new CommandNode("ReformatCode"));
 
+        //debug的时候切换过来对表达式求值
+        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('e'), new CommandNode("QuickEvaluateExpression"));
+
     }
 
     public static CommandNode get(KeyStroke keyStroke) {

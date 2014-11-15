@@ -47,8 +47,13 @@ public class KeyHandler {
                 return;
             }
 
-            if ( KeyStroke.getKeyStroke('V') == key) {
+            if (KeyStroke.getKeyStroke('V') == key) {
                 toMoveMod();
+                return;
+            }
+
+            if (KeyStroke.getKeyStroke('z') == key) {
+                toDebugMod();
                 return;
             }
         }
@@ -65,6 +70,9 @@ public class KeyHandler {
             }
             if (oh.status == EditorStatus.Move) {
                 commandNode = MoveShort.get(oh.commandStatus.getStroke());
+            }
+            if (oh.status == EditorStatus.Debug) {
+                commandNode = DebugShort.get(oh.commandStatus.getStroke());
             }
         } else {
             commandNode = ComposeShort.get(oh.commandStatus.getCommand());
@@ -130,6 +138,13 @@ public class KeyHandler {
     public static void toMoveMod() {
         final OhPlugin oh = OhPlugin.getInstance();
         oh.status = EditorStatus.Move;
+        oh.commandStatus.reset();
+    }
+
+
+    public static void toDebugMod() {
+        final OhPlugin oh = OhPlugin.getInstance();
+        oh.status = EditorStatus.Debug;
         oh.commandStatus.reset();
     }
 

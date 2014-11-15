@@ -27,7 +27,7 @@ public class OhTypedActionHandler implements TypedActionHandler {
     @Override
     public void execute(@NotNull final Editor editor, final char charTyped, @NotNull final DataContext dataContext) {
 
-        if (isEnabled(editor) && (OhPlugin.getInstance().status == EditorStatus.Command || OhPlugin.getInstance().status == EditorStatus.Visual || OhPlugin.getInstance().status == EditorStatus.Move)) {
+        if (isEnabled(editor) && (OhPlugin.getInstance().status != EditorStatus.Insert)) {
 
             SwingUtilities.invokeLater(new Runnable() {
                 @Override

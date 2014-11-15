@@ -1,5 +1,6 @@
 package com.codingbaby.ohmyidea.key;
 
+import javax.swing.*;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -38,16 +39,18 @@ public class ComposeShort {
         stringShortCommandNodeMap.put("gtp", new CommandNode("ActivateProjectToolWindow"));
         stringShortCommandNodeMap.put("gtt", new CommandNode("ActivateTerminalToolWindow"));
 
+        stringShortCommandNodeMap.put("gbk", new CommandNode("ToggleLineBreakpoint"));
+
+        //意图
+        stringShortCommandNodeMap.put("gi", new CommandNode("ShowIntentionActions"));
 
         stringShortCommandNodeMap.put("gk", new CommandNode("EditorCodeBlockEnd"));
         stringShortCommandNodeMap.put("gj", new CommandNode("EditorCodeBlockStart"));
 
-
-
-
         stringShortCommandNodeMap.put("yy", new CommandNode("$Copy"));
         stringShortCommandNodeMap.put("yc", new CommandNode("$Cut"));
         stringShortCommandNodeMap.put("yd", new CommandNode("EditorDuplicate"));
+
 
     }
 

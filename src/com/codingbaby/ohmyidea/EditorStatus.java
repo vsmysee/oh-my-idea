@@ -12,5 +12,7 @@ public enum EditorStatus {
 
     Visual,
 
+    Debug,
+
     Move
 }
