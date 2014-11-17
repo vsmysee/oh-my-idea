@@ -27,6 +27,7 @@ public class VisualShort {
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('/'), new CommandNode("CommentByBlockComment"));
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('x'), new CommandNode("$Delete"));
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('r'), new CommandNode("ReformatCode"));
+        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('o'), new CommandNode("OptimizeImports"));
 
         //debug的时候切换过来对表达式求值
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('e'), new CommandNode("QuickEvaluateExpression"));
