@@ -13,6 +13,8 @@ public class ComposeShort {
 
     static {
 
+        stringShortCommandNodeMap.put("gx", new CommandNode("CloseContent"));
+
         stringShortCommandNodeMap.put("gd", new CommandNode("GotoDeclaration"));
         stringShortCommandNodeMap.put("gm", new CommandNode("GotoImplementation"));
         stringShortCommandNodeMap.put("gu", new CommandNode("GotoSuperMethod"));

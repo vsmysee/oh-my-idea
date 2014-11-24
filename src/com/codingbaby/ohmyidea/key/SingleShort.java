@@ -52,7 +52,6 @@ public class SingleShort {
 
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('x'), new CommandNode("$Delete"));
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('o'), new CommandNode("EditorStartNewLine"));
-        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('c'), new CommandNode("CloseContent"));
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('p'), new CommandNode("$Paste"));
 
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('e'), new CommandNode("EditorSelectWord"));
