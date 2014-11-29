@@ -30,6 +30,8 @@
 
         <action id="ShortcutKeyAction" class="com.codingbaby.ohmyidea.ShortcutKeyAction" text="Shortcuts"/>
 
+        <action id="MotionToMatchChar" class="com.codingbaby.ohmyidea.action.MotionToMatchCharAction" text="Shortcuts"/>
+
 
     </actions>
 

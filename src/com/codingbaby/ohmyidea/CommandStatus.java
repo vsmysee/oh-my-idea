@@ -1,6 +1,7 @@
 package com.codingbaby.ohmyidea;
 
 import javax.swing.*;
+import javax.swing.text.ChangedCharSetException;
 
 /**
  *
@@ -11,17 +12,17 @@ public class CommandStatus {
     private StringBuffer sb = new StringBuffer();
 
     //用于过期未击中的命令
-    private long firstType = 0;
+    private long firstTypeTime = 0;
 
     private int timeout = 1500;
 
     public void addChar(char c) {
-        if (firstType == 0) {
+        if (firstTypeTime == 0) {
             if (c == ':') {
                 timeout = 2500;
             }
-            firstType = System.currentTimeMillis();
-        } else if (System.currentTimeMillis() - firstType > timeout) {
+            firstTypeTime = System.currentTimeMillis();
+        } else if (System.currentTimeMillis() - firstTypeTime > timeout) {
             reset();
         }
         sb.append(c);
@@ -47,6 +48,14 @@ public class CommandStatus {
         return null;
     }
 
+    public Character getForwardChar() {
+        String command = sb.toString();
+        if (command.startsWith(";") && sb.length() == 2) {
+            return command.substring(1).charAt(0);
+        }
+        return null;
+    }
+
     public String getCommandLineKey() {
         String command = sb.toString();
         if (command.startsWith(":")  && sb.length() > 1) {
@@ -57,7 +66,7 @@ public class CommandStatus {
 
     public void reset() {
         sb = new StringBuffer();
-        firstType = 0;
+        firstTypeTime = 0;
     }
 
     public String getCommand() {

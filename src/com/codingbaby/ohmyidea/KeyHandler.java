@@ -22,6 +22,7 @@ public class KeyHandler {
     private static KeyHandler instance;
 
     public static int toLine;
+    public static char toChar;
 
     @NotNull
     public static KeyHandler getInstance() {
@@ -37,8 +38,13 @@ public class KeyHandler {
 
         if (oh.commandStatus.isWaiting()) {
 
-            if (KeyStroke.getKeyStroke('i') == key || KeyStroke.getKeyStroke('I') == key) {
+            if (KeyStroke.getKeyStroke('i') == key) {
                 toInsertMod();
+                return;
+            }
+
+            if (KeyStroke.getKeyStroke('I') == key) {
+                toDebugMod();
                 return;
             }
 
@@ -52,10 +58,6 @@ public class KeyHandler {
                 return;
             }
 
-            if (KeyStroke.getKeyStroke('z') == key) {
-                toDebugMod();
-                return;
-            }
         }
 
         oh.commandStatus.addChar(key.getKeyChar());
@@ -86,6 +88,22 @@ public class KeyHandler {
                 String name = commandNode.getAction().getTemplatePresentation().getText();
                 RunnableHelper.runReadCommand(project, action, name, action);
             }
+            oh.commandStatus.reset();
+            return;
+        }
+
+
+        //行字符搜索
+        if (oh.commandStatus.getForwardChar() != null) {
+            Project project = editor.getProject();
+            toChar = oh.commandStatus.getForwardChar();
+            Runnable cmd = new Runnable() {
+                @Override
+                public void run() {
+                    executeAction("MotionToMatchChar", context);
+                }
+            };
+            RunnableHelper.runReadCommand(project, cmd, "moveCharInLine", cmd);
             oh.commandStatus.reset();
             return;
         }

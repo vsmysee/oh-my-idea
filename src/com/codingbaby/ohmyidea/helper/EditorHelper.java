@@ -200,4 +200,32 @@ public class EditorHelper {
         return editor.logicalToVisualPosition(new LogicalPosition(line, 0)).line;
     }
 
+
+    public static int findNextCharacterOnLine(@NotNull Editor editor, char ch) {
+        int line = editor.getCaretModel().getLogicalPosition().line;
+        int start = EditorHelper.getLineStartOffset(editor, line);
+        int end = EditorHelper.getLineEndOffset(editor, line, true);
+        CharSequence chars = editor.getDocument().getCharsSequence();
+        int current = editor.getCaretModel().getOffset();
+        int pos = current + 1;
+        boolean find = false;
+        while (pos >= start && pos < end && pos >= 0 && pos < chars.length()) {
+            if (chars.charAt(pos) == ch) {
+                find = true;
+                break;
+            }
+            pos += 1;
+        }
+        return find ? pos : current;
+    }
+
+    public static int getLineEndOffset(@NotNull final Editor editor, final int line, final boolean allowEnd) {
+        if (line < 0) {
+            return 0;
+        } else if (line >= getLineCount(editor)) {
+            return getFileSize(editor);
+        } else {
+            return editor.getDocument().getLineEndOffset(line) - (allowEnd ? 0 : 1);
+        }
+    }
 }
