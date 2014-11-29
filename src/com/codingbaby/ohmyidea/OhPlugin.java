@@ -44,7 +44,9 @@ public class OhPlugin implements ApplicationComponent {
             @Override
             public void editorCreated(@NotNull EditorFactoryEvent event) {
                 final Editor editor = event.getEditor();
-                if (OhPlugin.isEnabled() && EditorHelper.isFileEditor(editor) && editor.getDocument().isWritable()) {
+                if (OhPlugin.isEnabled() && !EditorHelper.isFileEditor(editor)) {
+                    KeyHandler.toInsertMod();
+                } else if (OhPlugin.isEnabled() && EditorHelper.isFileEditor(editor) && editor.getDocument().isWritable()) {
                     editor.getSettings().setBlockCursor(true);
                     ShortcutKeyAction.getInstance().registerCustomShortcutSet(new CustomShortcutSet(KeyStroke.getKeyStroke(27, 0, false)), editor.getComponent());
                 }
