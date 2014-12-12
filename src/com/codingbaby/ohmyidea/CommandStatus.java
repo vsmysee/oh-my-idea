@@ -42,7 +42,7 @@ public class CommandStatus {
 
     public String getCodeKey() {
         String command = sb.toString();
-        if (command.startsWith(";") && sb.length() > 2) {
+        if (command.startsWith("'") && sb.length() > 2) {
             return command.substring(1);
         }
         return null;
