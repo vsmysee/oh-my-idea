@@ -72,6 +72,9 @@ public class SingleShort {
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('.'), new CommandNode("EditorCompleteStatement"));
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke(','), new CommandNode("GotoNextError"));
 
+
+        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('z'), new CommandNode("CloseContent"));
+
     }
 
     public static CommandNode get(KeyStroke keyStroke) {
