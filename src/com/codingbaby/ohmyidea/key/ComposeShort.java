@@ -57,6 +57,8 @@ public class ComposeShort {
         stringShortCommandNodeMap.put("yhm", new CommandNode("MethodHierarchy"));
 
 
+        stringShortCommandNodeMap.put("gw", new CommandNode("JumpToLastWindow"));
+
     }
 
 
