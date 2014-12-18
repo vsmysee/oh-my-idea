@@ -38,6 +38,8 @@ public class ComposeShort {
         stringShortCommandNodeMap.put("gts", new CommandNode("ActivateStructureToolWindow"));
         stringShortCommandNodeMap.put("gtp", new CommandNode("ActivateProjectToolWindow"));
         stringShortCommandNodeMap.put("gtt", new CommandNode("ActivateTerminalToolWindow"));
+        stringShortCommandNodeMap.put("gtr", new CommandNode("ActivateRunToolWindow"));
+        stringShortCommandNodeMap.put("gtd", new CommandNode("ActivateDebugToolWindow"));
 
         stringShortCommandNodeMap.put("gbk", new CommandNode("ToggleLineBreakpoint"));
 
