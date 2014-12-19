@@ -166,6 +166,13 @@ public class KeyHandler {
         oh.commandStatus.reset();
     }
 
+    public static void toCommandMod() {
+        final OhPlugin oh = OhPlugin.getInstance();
+        oh.getInstance().setCursors(true);
+        oh.getInstance().status = EditorStatus.Command;
+        oh.commandStatus.reset();
+    }
+
     public static void executeAction(@NotNull String name, @NotNull DataContext context) {
         ActionManager aMgr = ActionManager.getInstance();
         AnAction action = aMgr.getAction(name);
