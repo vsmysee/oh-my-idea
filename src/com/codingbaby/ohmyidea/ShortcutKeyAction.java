@@ -27,9 +27,11 @@ public class ShortcutKeyAction extends AnAction implements DumbAware  {
 
             if (OhPlugin.getInstance().status != EditorStatus.Command) {
                 KeyHandler.toCommandMod();
-            }else if (OhPlugin.getInstance().status == EditorStatus.Command) {
-                KeyHandler.toInsertMod();
             }
+
+            /*else if (OhPlugin.getInstance().status == EditorStatus.Command) {
+                KeyHandler.toInsertMod();
+            }*/
 
             KeyHandler.executeAction("EditorEscape",anActionEvent.getDataContext());
             OhPlugin.getInstance().commandStatus.reset();
