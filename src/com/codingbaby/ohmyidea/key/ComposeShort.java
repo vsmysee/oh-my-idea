@@ -52,6 +52,8 @@ public class ComposeShort {
         stringShortCommandNodeMap.put("yy", new CommandNode("$Copy"));
         stringShortCommandNodeMap.put("yc", new CommandNode("$Cut"));
         stringShortCommandNodeMap.put("yd", new CommandNode("EditorDuplicate"));
+        stringShortCommandNodeMap.put("yi", new CommandNode("ImplementMethods"));
+        stringShortCommandNodeMap.put("yb", new CommandNode("CompileDirty"));
 
 
         stringShortCommandNodeMap.put("yhc", new CommandNode("CallHierarchy"));
