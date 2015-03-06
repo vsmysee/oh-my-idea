@@ -9,10 +9,13 @@ import javax.swing.*;
 public class CommandStatus {
 
     public static final String CODE_KEY = "'";
+
     public static final String FORWARD_KEY = ";";
+
     public static final String LINE_KEY = ":";
 
 
+    //command buffer
     private StringBuffer sb = new StringBuffer();
 
     //用于过期未击中的命令
@@ -22,7 +25,7 @@ public class CommandStatus {
 
     public void addChar(char c) {
         if (firstTypeTime == 0) {
-            if (c == ':') {
+            if (c == LINE_KEY.charAt(0)) {
                 timeout = 2500;
             }
             firstTypeTime = System.currentTimeMillis();

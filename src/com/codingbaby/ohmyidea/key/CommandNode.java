@@ -19,10 +19,6 @@ public class CommandNode {
         this.action = aMgr.getAction(actionId);
     }
 
-    public String getActionId() {
-        return actionId;
-    }
-
     /**
      * Gets the command's action
      *
