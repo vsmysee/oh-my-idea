@@ -22,6 +22,7 @@ public class KeyHandler {
     private static KeyHandler instance;
 
     public static int toLine;
+
     public static char toChar;
 
     @NotNull
@@ -108,7 +109,7 @@ public class KeyHandler {
             return;
         }
 
-        //分号代码模板
+        //代码模板
         if (oh.commandStatus.getCodeKey() != null) {
             Project project = editor.getProject();
             final String mapping = CodeQuick.getMapping(oh.commandStatus.getCodeKey());
@@ -129,9 +130,8 @@ public class KeyHandler {
         }
 
         //冒号命令模式
-        String commandLineKey = oh.commandStatus.getCommandLineKey();
-        if (commandLineKey != null && commandLineKey.endsWith(":")) {
-            String lineNumber = commandLineKey.substring(0, commandLineKey.length() - 1);
+        String lineNumber = oh.commandStatus.getCommandLineKey();
+        if (lineNumber != null) {
             if (NumberUtils.isNumber(lineNumber)) {
                 toLine = Integer.parseInt(lineNumber);
                 executeAction("MotionToLine", context);

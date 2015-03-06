@@ -210,10 +210,17 @@ public class EditorHelper {
         int pos = current + 1;
         boolean find = false;
         while (pos >= start && pos < end && pos >= 0 && pos < chars.length()) {
+
             if (chars.charAt(pos) == ch) {
                 find = true;
                 break;
             }
+
+            if (Character.isLowerCase(ch) && chars.charAt(pos) == Character.toUpperCase(ch)) {
+                find = true;
+                break;
+            }
+
             pos += 1;
         }
         return find ? pos : current;

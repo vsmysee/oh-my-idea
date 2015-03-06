@@ -1,13 +1,17 @@
 package com.codingbaby.ohmyidea;
 
 import javax.swing.*;
-import javax.swing.text.ChangedCharSetException;
 
 /**
  *
  *
  */
 public class CommandStatus {
+
+    public static final String CODE_KEY = "'";
+    public static final String FORWARD_KEY = ";";
+    public static final String LINE_KEY = ":";
+
 
     private StringBuffer sb = new StringBuffer();
 
@@ -42,7 +46,7 @@ public class CommandStatus {
 
     public String getCodeKey() {
         String command = sb.toString();
-        if (command.startsWith("'") && sb.length() > 2) {
+        if (command.startsWith(CODE_KEY) && sb.length() > 2) {
             return command.substring(1);
         }
         return null;
@@ -50,7 +54,7 @@ public class CommandStatus {
 
     public Character getForwardChar() {
         String command = sb.toString();
-        if (command.startsWith(";") && sb.length() == 2) {
+        if (command.startsWith(FORWARD_KEY) && sb.length() == 2) {
             return command.substring(1).charAt(0);
         }
         return null;
@@ -58,8 +62,9 @@ public class CommandStatus {
 
     public String getCommandLineKey() {
         String command = sb.toString();
-        if (command.startsWith(":")  && sb.length() > 1) {
-            return command.substring(1);
+        if (command.startsWith(LINE_KEY) && command.endsWith(LINE_KEY)  && sb.length() > 1) {
+            String line =  command.substring(1);
+            return line.substring(0, line.length() - 1);
         }
         return null;
     }
