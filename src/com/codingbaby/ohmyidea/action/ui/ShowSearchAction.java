@@ -9,16 +9,16 @@ import com.intellij.openapi.editor.actionSystem.EditorActionHandler;
 /**
  * Created by baby on 15/3/7.
  */
-public class ShowCommandAction extends EditorAction {
+public class ShowSearchAction extends EditorAction {
 
-    public ShowCommandAction() {
+    public ShowSearchAction() {
 
         super(new EditorActionHandler() {
 
             @Override
             public void execute(Editor editor, DataContext dataContext) {
                 ExEntryPanel panel = ExEntryPanel.getInstance();
-                panel.activate(editor, dataContext, ":", "", 1);
+                panel.activate(editor, dataContext, "/", "", 1);
             }
         });
     }
