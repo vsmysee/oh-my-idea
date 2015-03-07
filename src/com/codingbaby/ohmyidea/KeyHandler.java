@@ -10,7 +10,6 @@ import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.project.Project;
-import org.apache.commons.lang.math.NumberUtils;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -129,15 +128,6 @@ public class KeyHandler {
             return;
         }
 
-        //冒号命令模式
-        String lineNumber = oh.commandStatus.getCommandLineKey();
-        if (lineNumber != null) {
-            if (NumberUtils.isNumber(lineNumber)) {
-                toLine = Integer.parseInt(lineNumber);
-                executeAction("MotionToLine", context);
-                oh.commandStatus.reset();
-            }
-        }
     }
 
     public static void toInsertMod() {

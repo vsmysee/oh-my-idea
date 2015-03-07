@@ -216,10 +216,12 @@ public class ExEditorKit extends DefaultEditorKit {
       logger.debug("complete entry");
       KeyStroke stroke = KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0);
 
-      KeyHandler.getInstance().handleKey(
-        ExEntryPanel.getInstance().getEntry().getEditor(),
-        stroke,
-        ExEntryPanel.getInstance().getEntry().getContext());
+      KeyHandler.toLine = Integer.parseInt(ExEntryPanel.getInstance().getText());
+
+      ExEntryPanel.getInstance().cancelExEntry();
+
+      KeyHandler.executeAction("MotionToLine", ExEntryPanel.getInstance().getEntry().getContext());
+
     }
   }
 

@@ -12,8 +12,6 @@ public class CommandStatus {
 
     public static final String FORWARD_KEY = ";";
 
-    public static final String LINE_KEY = ":";
-
 
     //command buffer
     private StringBuffer sb = new StringBuffer();
@@ -25,9 +23,6 @@ public class CommandStatus {
 
     public void addChar(char c) {
         if (firstTypeTime == 0) {
-            if (c == LINE_KEY.charAt(0)) {
-                timeout = 2500;
-            }
             firstTypeTime = System.currentTimeMillis();
         } else if (System.currentTimeMillis() - firstTypeTime > timeout) {
             reset();
@@ -63,14 +58,6 @@ public class CommandStatus {
         return null;
     }
 
-    public String getCommandLineKey() {
-        String command = sb.toString();
-        if (command.startsWith(LINE_KEY) && command.endsWith(LINE_KEY)  && sb.length() > 1) {
-            String line =  command.substring(1);
-            return line.substring(0, line.length() - 1);
-        }
-        return null;
-    }
 
     public void reset() {
         sb = new StringBuffer();
