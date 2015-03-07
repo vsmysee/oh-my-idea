@@ -77,6 +77,8 @@ public class SingleShort {
 
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('c'), new CommandNode("ActivateChangesToolWindow"));
 
+        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('/'), new CommandNode("ShowCommandAction"));
+
     }
 
     public static CommandNode get(KeyStroke keyStroke) {

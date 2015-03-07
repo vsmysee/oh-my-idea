@@ -1,7 +1,7 @@
 <idea-plugin url="http://plugins.jetbrains.com/plugin/164">
     <name>Oh My IDEA</name>
     <id>oh-my-idea</id>
-    <description>plugin like ideavim,but only for java</description>
+    <description>plugin like ideavim,but not like ideavim</description>
     <version>1.0</version>
     <vendor>JetBrains</vendor>
 
@@ -31,6 +31,10 @@
         <action id="ShortcutKeyAction" class="com.codingbaby.ohmyidea.ShortcutKeyAction" text="Shortcuts"/>
 
         <action id="MotionToMatchChar" class="com.codingbaby.ohmyidea.action.MotionToMatchCharAction" text="Shortcuts"/>
+
+        <action id="ShowCommandAction" class="com.codingbaby.ohmyidea.action.ui.ShowCommandAction" text="Shortcuts"/>
+
+
 
 
     </actions>
