@@ -2,7 +2,6 @@ package com.codingbaby.ohmyidea;
 
 import com.codingbaby.ohmyidea.helper.RunnableHelper;
 import com.codingbaby.ohmyidea.key.*;
-import com.codingbaby.ohmyidea.script.CodeQuick;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
@@ -107,27 +106,6 @@ public class KeyHandler {
             oh.commandStatus.reset();
             return;
         }
-
-        //代码模板
-        if (oh.commandStatus.getCodeKey() != null) {
-            Project project = editor.getProject();
-            final String mapping = CodeQuick.getMapping(oh.commandStatus.getCodeKey());
-            if (mapping != null) {
-                Runnable cmd = new Runnable() {
-                    @Override
-                    public void run() {
-                        int oldOffset = editor.getCaretModel().getOffset();
-                        editor.getDocument().insertString(oldOffset, mapping);
-                        oh.commandStatus.reset();
-
-                        executeAction("ReformatCode", context);
-                    }
-                };
-                RunnableHelper.runWriteCommand(project, cmd, "insertCode", cmd);
-            }
-            return;
-        }
-
     }
 
     public static void toInsertMod() {

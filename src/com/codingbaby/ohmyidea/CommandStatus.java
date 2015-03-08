@@ -8,8 +8,6 @@ import javax.swing.*;
  */
 public class CommandStatus {
 
-    public static final String CODE_KEY = "'";
-
     public static final String FORWARD_KEY = ";";
 
 
@@ -40,14 +38,6 @@ public class CommandStatus {
 
     public KeyStroke getStroke() {
         return KeyStroke.getKeyStroke(sb.charAt(0));
-    }
-
-    public String getCodeKey() {
-        String command = sb.toString();
-        if (command.startsWith(CODE_KEY) && sb.length() > 2) {
-            return command.substring(1);
-        }
-        return null;
     }
 
     public Character getForwardChar() {
