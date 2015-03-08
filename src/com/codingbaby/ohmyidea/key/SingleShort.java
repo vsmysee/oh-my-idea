@@ -59,6 +59,11 @@ public class SingleShort {
 
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('q'), new CommandNode("FindUsages"));
 
+        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('/'), new CommandNode("Find"));
+        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('?'), new CommandNode("Replace"));
+
+        keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('F'), new CommandNode("FindInPath"));
+
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('f'), new CommandNode("FindWordAtCaret"));
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('n'), new CommandNode("FindNext"));
         keyStrokeCommandNodeMap.put(KeyStroke.getKeyStroke('N'), new CommandNode("FindPrevious"));
