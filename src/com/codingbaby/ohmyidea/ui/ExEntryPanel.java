@@ -6,7 +6,6 @@ package com.codingbaby.ohmyidea.ui;
 
 import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.editor.colors.EditorColorsScheme;
@@ -14,6 +13,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
+import javax.swing.text.PlainDocument;
 import java.awt.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
@@ -95,15 +95,13 @@ public class ExEntryPanel extends JPanel {
     public void activate(@NotNull Editor editor, DataContext context, @NotNull String label, String initText, int count) {
         entry.setEditor(editor, context);
         this.label.setText(label);
-        this.count = count;
         setFontForElements();
-        entry.setDocument(entry.createDefaultModel());
+        entry.setDocument(new PlainDocument());
         entry.setText(initText);
-        entry.setType(label);
         parent = editor.getContentComponent();
         if (!ApplicationManager.getApplication().isUnitTestMode()) {
             JRootPane root = SwingUtilities.getRootPane(parent);
-            oldGlass = (JComponent)root.getGlassPane();
+            oldGlass = (JComponent) root.getGlassPane();
             oldLayout = oldGlass.getLayout();
             wasOpaque = oldGlass.isOpaque();
             oldGlass.setLayout(null);
@@ -117,38 +115,12 @@ public class ExEntryPanel extends JPanel {
         active = true;
     }
 
-    /**
-     * Gets the label for the ex entry. This should be one of ":", "/", or "?"
-     *
-     * @return The ex entry label
-     */
-    public String getLabel() {
-        return label.getText();
-    }
-
-    /**
-     * Gets the count given during activation
-     *
-     * @return The count
-     */
-    public int getCount() {
-        return count;
-    }
-
-    /**
-     * Pass the keystroke on to the text edit for handling
-     *
-     * @param stroke The keystroke
-     */
-    public void handleKey(@NotNull KeyStroke stroke) {
-        entry.handleKey(stroke);
-    }
 
     private void positionPanel() {
         if (parent == null) return;
 
         Container scroll = SwingUtilities.getAncestorOfClass(JScrollPane.class, parent);
-        int height = (int)getPreferredSize().getHeight();
+        int height = (int) getPreferredSize().getHeight();
         if (scroll != null) {
             Rectangle bounds = scroll.getBounds();
             bounds.translate(0, scroll.getHeight() - height);
@@ -178,7 +150,6 @@ public class ExEntryPanel extends JPanel {
      * Turns off the ex entry field and optionally puts the focus back to the original component
      */
     public void deactivate(boolean refocusOwningEditor) {
-        logger.info("deactivate");
         if (!active) return;
         active = false;
         if (!ApplicationManager.getApplication().isUnitTestMode()) {
@@ -195,27 +166,22 @@ public class ExEntryPanel extends JPanel {
         parent = null;
     }
 
-    /**
-     * Checks if the ex entry panel is currently active
-     *
-     * @return true if active, false if not
-     */
-    public boolean isActive() {
-        return active;
-    }
 
-    @Nullable private JComponent parent;
-    @NotNull private final JLabel label;
-    @NotNull private final ExTextField entry;
+    @Nullable
+    private JComponent parent;
+    @NotNull
+    private final JLabel label;
+    @NotNull
+    private final ExTextField entry;
     private JComponent oldGlass;
     private LayoutManager oldLayout;
     private boolean wasOpaque;
-    @NotNull private final ComponentAdapter adapter;
-    private int count;
+    @NotNull
+    private final ComponentAdapter adapter;
 
     private boolean active;
 
     private static ExEntryPanel instance;
 
-    private static final Logger logger = Logger.getInstance(ExEntryPanel.class.getName());
+
 }

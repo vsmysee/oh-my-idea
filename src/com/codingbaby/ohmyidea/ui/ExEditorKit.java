@@ -21,6 +21,11 @@ import java.awt.event.KeyEvent;
  *
  */
 public class ExEditorKit extends DefaultEditorKit {
+
+    private static ExEditorKit instance;
+
+    private static final Logger logger = Logger.getInstance(ExEditorKit.class.getName());
+
     public static ExEditorKit getInstance() {
         if (instance == null) {
             instance = new ExEditorKit();
@@ -54,163 +59,35 @@ public class ExEditorKit extends DefaultEditorKit {
         return res;
     }
 
-    /**
-     * Creates an uninitialized text storage model
-     * that is appropriate for this type of editor.
-     *
-     * @return the model
-     */
-    @NotNull
-    public Document createDefaultDocument() {
-        return new ExDocument();
-    }
 
-    @Nullable
-    public static KeyStroke convert(@NotNull ActionEvent event) {
-        String cmd = event.getActionCommand();
-        int mods = event.getModifiers();
-        if (cmd != null && cmd.length() > 0) {
-            char ch = cmd.charAt(0);
-            if (ch < ' ') {
-                if (mods == KeyEvent.CTRL_MASK) {
-                    return KeyStroke.getKeyStroke(KeyEvent.VK_A + ch - 1, mods);
-                }
-            } else {
-                return KeyStroke.getKeyStroke(new Character(ch), mods);
-            }
-        }
-
-        return null;
-    }
-
-    public static final String DefaultExKey = "default-ex-key";
     public static final String CancelEntry = "cancel-entry";
     public static final String CompleteEntry = "complete-entry";
     public static final String EscapeChar = "escape";
+
     public static final String DeletePreviousChar = "delete-prev-char";
     public static final String DeletePreviousWord = "delete-prev-word";
+
     public static final String DeleteToCursor = "delete-to-cursor";
     public static final String DeleteFromCursor = "delete-from-cursor";
-    public static final String ToggleInsertReplace = "toggle-insert";
-    public static final String InsertRegister = "insert-register";
-    public static final String InsertWord = "insert-word";
-    public static final String InsertWORD = "insert-WORD";
-    public static final String HistoryUp = "history-up";
-    public static final String HistoryDown = "history-down";
-    public static final String HistoryUpFilter = "history-up-filter";
-    public static final String HistoryDownFilter = "history-down-filter";
-    public static final String StartDigraph = "start-digraph";
+
 
     @NotNull
     protected final Action[] exActions = new Action[]{
+
             new ExEditorKit.CancelEntryAction(),
+
             new ExEditorKit.CompleteEntryAction(),
+
             new ExEditorKit.EscapeCharAction(),
+
             new ExEditorKit.DeletePreviousCharAction(),
+
             new ExEditorKit.DeleteToCursorAction(),
+
             new ExEditorKit.DeleteFromCursorAction(),
-            new ExEditorKit.HistoryUpAction(),
-            new ExEditorKit.HistoryDownAction(),
-            new ExEditorKit.HistoryUpFilterAction(),
-            new ExEditorKit.HistoryDownFilterAction(),
-            new ExEditorKit.ToggleInsertReplaceAction(),
-            new InsertRegisterAction(),
     };
 
-    public static class DefaultExKeyHandler extends DefaultKeyTypedAction {
-        public void actionPerformed(@NotNull ActionEvent e) {
-            ExTextField target = (ExTextField) getTextComponent(e);
-            final Action currentAction = target.getCurrentAction();
-            if (currentAction != null) {
-                currentAction.actionPerformed(e);
-            } else {
-                KeyStroke key = convert(e);
-                if (key != null) {
-                    final char c = key.getKeyChar();
-                    if (c > 0) {
-                        ActionEvent event = new ActionEvent(e.getSource(), e.getID(), "" + c, e.getWhen(), e.getModifiers());
-                        super.actionPerformed(event);
-                        target.saveLastEntry();
-                    }
-                } else {
-                    super.actionPerformed(e);
 
-                    target.saveLastEntry();
-                }
-            }
-        }
-    }
-
-    public static class HistoryUpAction extends TextAction {
-        public HistoryUpAction() {
-            super(HistoryUp);
-        }
-
-        public void actionPerformed(ActionEvent actionEvent) {
-            ExTextField target = (ExTextField) getTextComponent(actionEvent);
-        }
-    }
-
-    public static class HistoryDownAction extends TextAction {
-        public HistoryDownAction() {
-            super(HistoryDown);
-        }
-
-        public void actionPerformed(ActionEvent actionEvent) {
-            ExTextField target = (ExTextField) getTextComponent(actionEvent);
-        }
-    }
-
-    public static class HistoryUpFilterAction extends TextAction {
-        public HistoryUpFilterAction() {
-            super(HistoryUpFilter);
-        }
-
-        public void actionPerformed(ActionEvent actionEvent) {
-            ExTextField target = (ExTextField) getTextComponent(actionEvent);
-        }
-    }
-
-    public static class HistoryDownFilterAction extends TextAction {
-        public HistoryDownFilterAction() {
-            super(HistoryDownFilter);
-        }
-
-        public void actionPerformed(ActionEvent actionEvent) {
-            ExTextField target = (ExTextField) getTextComponent(actionEvent);
-        }
-    }
-
-    public static class InsertRegisterAction extends TextAction {
-        private static enum State {
-            SKIP_CTRL_R,
-            WAIT_REGISTER,
-        }
-
-        @NotNull
-        private State state = State.SKIP_CTRL_R;
-
-        public InsertRegisterAction() {
-            super(InsertRegister);
-        }
-
-        public void actionPerformed(@NotNull ActionEvent e) {
-            final ExTextField target = (ExTextField) getTextComponent(e);
-            final KeyStroke key = convert(e);
-            if (key != null) {
-                switch (state) {
-                    case SKIP_CTRL_R:
-                        state = State.WAIT_REGISTER;
-                        target.setCurrentAction(this);
-                        break;
-                    case WAIT_REGISTER:
-                        state = State.SKIP_CTRL_R;
-                        target.setCurrentAction(null);
-                        final char c = key.getKeyChar();
-                }
-            }
-        }
-    }
 
     public static class CompleteEntryAction extends TextAction {
         public CompleteEntryAction() {
@@ -282,7 +159,6 @@ public class ExEditorKit extends DefaultEditorKit {
          */
         public void actionPerformed(ActionEvent e) {
             ExTextField target = (ExTextField) getTextComponent(e);
-            target.saveLastEntry();
 
             try {
                 Document doc = target.getDocument();
@@ -326,7 +202,6 @@ public class ExEditorKit extends DefaultEditorKit {
          */
         public void actionPerformed(ActionEvent e) {
             ExTextField target = (ExTextField) getTextComponent(e);
-            target.saveLastEntry();
 
             Document doc = target.getDocument();
             Caret caret = target.getCaret();
@@ -348,7 +223,6 @@ public class ExEditorKit extends DefaultEditorKit {
          */
         public void actionPerformed(ActionEvent e) {
             ExTextField target = (ExTextField) getTextComponent(e);
-            target.saveLastEntry();
 
             Document doc = target.getDocument();
             Caret caret = target.getCaret();
@@ -360,25 +234,5 @@ public class ExEditorKit extends DefaultEditorKit {
         }
     }
 
-    public static class ToggleInsertReplaceAction extends TextAction {
-        public ToggleInsertReplaceAction() {
-            super(ToggleInsertReplace);
 
-            logger.debug("ToggleInsertReplaceAction()");
-        }
-
-        /**
-         * Invoked when an action occurs.
-         */
-        public void actionPerformed(ActionEvent e) {
-            logger.debug("actionPerformed");
-            ExTextField target = (ExTextField) getTextComponent(e);
-            target.toggleInsertReplace();
-        }
-    }
-
-
-    private static ExEditorKit instance;
-
-    private static final Logger logger = Logger.getInstance(ExEditorKit.class.getName());
 }
