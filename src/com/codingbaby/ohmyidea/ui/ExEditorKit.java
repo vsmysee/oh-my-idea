@@ -4,7 +4,7 @@ package com.codingbaby.ohmyidea.ui;
 import com.codingbaby.ohmyidea.KeyHandler;
 import com.codingbaby.ohmyidea.OhPlugin;
 import com.codingbaby.ohmyidea.helper.RunnableHelper;
-import com.codingbaby.ohmyidea.script.CodeQuick;
+import com.codingbaby.ohmyidea.script.OhScript;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.project.Project;
 import org.apache.commons.lang.math.NumberUtils;
@@ -101,7 +101,7 @@ public class ExEditorKit extends DefaultEditorKit {
                 Project project = editor.getProject();
                 final OhPlugin oh = OhPlugin.getInstance();
 
-                final String mapping = CodeQuick.getMapping(text);
+                final String mapping = OhScript.getMapping(text);
                 if (mapping != null) {
                     Runnable cmd = new Runnable() {
                         @Override
@@ -109,7 +109,6 @@ public class ExEditorKit extends DefaultEditorKit {
                             int oldOffset = editor.getCaretModel().getOffset();
                             editor.getDocument().insertString(oldOffset, mapping);
                             oh.commandStatus.reset();
-                            KeyHandler.executeAction("ReformatCode", entryPanel.getEntry().getContext());
                         }
                     };
                     RunnableHelper.runWriteCommand(project, cmd, "insertCode", cmd);

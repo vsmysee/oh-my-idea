@@ -9,65 +9,65 @@ import java.util.Map;
  */
 public class ComposeShort {
 
-    private static Map<String, CommandNode> stringShortCommandNodeMap = new HashMap();
+    private static Map<String, CommandNode> shortMap = new HashMap();
 
     static {
 
-        stringShortCommandNodeMap.put("gd", new CommandNode("GotoDeclaration"));
-        stringShortCommandNodeMap.put("gm", new CommandNode("GotoImplementation"));
-        stringShortCommandNodeMap.put("gu", new CommandNode("GotoSuperMethod"));
-        stringShortCommandNodeMap.put("gg", new CommandNode("SmartTypeCompletion"));
+        shortMap.put("gd", new CommandNode("GotoDeclaration"));
+        shortMap.put("gm", new CommandNode("GotoImplementation"));
+        shortMap.put("gu", new CommandNode("GotoSuperMethod"));
+        shortMap.put("gg", new CommandNode("SmartTypeCompletion"));
 
-        stringShortCommandNodeMap.put("gen", new CommandNode("Generate"));
-        stringShortCommandNodeMap.put("gv", new CommandNode("IntroduceVariable"));
-        stringShortCommandNodeMap.put("gs", new CommandNode("SurroundWith"));
-        stringShortCommandNodeMap.put("gy", new CommandNode("EditorDeleteLine"));
+        shortMap.put("gen", new CommandNode("Generate"));
+        shortMap.put("gv", new CommandNode("IntroduceVariable"));
+        shortMap.put("gs", new CommandNode("SurroundWith"));
+        shortMap.put("gy", new CommandNode("EditorDeleteLine"));
 
-        stringShortCommandNodeMap.put("glv", new CommandNode("SplitVertically"));
-        stringShortCommandNodeMap.put("glh", new CommandNode("SplitHorizontally"));
-        stringShortCommandNodeMap.put("gln", new CommandNode("EditorJoinLines"));
-        stringShortCommandNodeMap.put("gll", new CommandNode("LoadScriptAction"));
+        shortMap.put("glv", new CommandNode("SplitVertically"));
+        shortMap.put("glh", new CommandNode("SplitHorizontally"));
+        shortMap.put("gln", new CommandNode("EditorJoinLines"));
+        shortMap.put("gll", new CommandNode("LoadScriptAction"));
 
-        stringShortCommandNodeMap.put("gh", new CommandNode("HideAllWindows"));
-        stringShortCommandNodeMap.put("gp", new CommandNode("NextProjectWindow"));
+        shortMap.put("gh", new CommandNode("HideAllWindows"));
+        shortMap.put("gp", new CommandNode("NextProjectWindow"));
 
-        stringShortCommandNodeMap.put("gc", new CommandNode("GotoClass"));
-        stringShortCommandNodeMap.put("gn", new CommandNode("Inline"));
-        stringShortCommandNodeMap.put("gf", new CommandNode("GotoFile"));
+        shortMap.put("gc", new CommandNode("GotoClass"));
+        shortMap.put("gn", new CommandNode("Inline"));
+        shortMap.put("gf", new CommandNode("GotoFile"));
 
 
-        stringShortCommandNodeMap.put("gts", new CommandNode("ActivateStructureToolWindow"));
-        stringShortCommandNodeMap.put("gtp", new CommandNode("ActivateProjectToolWindow"));
-        stringShortCommandNodeMap.put("gtt", new CommandNode("ActivateTerminalToolWindow"));
-        stringShortCommandNodeMap.put("gtr", new CommandNode("ActivateRunToolWindow"));
-        stringShortCommandNodeMap.put("gtd", new CommandNode("ActivateDebugToolWindow"));
+        shortMap.put("gts", new CommandNode("ActivateStructureToolWindow"));
+        shortMap.put("gtp", new CommandNode("ActivateProjectToolWindow"));
+        shortMap.put("gtt", new CommandNode("ActivateTerminalToolWindow"));
+        shortMap.put("gtr", new CommandNode("ActivateRunToolWindow"));
+        shortMap.put("gtd", new CommandNode("ActivateDebugToolWindow"));
 
-        stringShortCommandNodeMap.put("gbk", new CommandNode("ToggleLineBreakpoint"));
+        shortMap.put("gbk", new CommandNode("ToggleLineBreakpoint"));
 
         //意图
-        stringShortCommandNodeMap.put("gi", new CommandNode("ShowIntentionActions"));
+        shortMap.put("gi", new CommandNode("ShowIntentionActions"));
 
-        stringShortCommandNodeMap.put("gk", new CommandNode("EditorCodeBlockEnd"));
-        stringShortCommandNodeMap.put("gj", new CommandNode("EditorCodeBlockStart"));
+        shortMap.put("gk", new CommandNode("EditorCodeBlockEnd"));
+        shortMap.put("gj", new CommandNode("EditorCodeBlockStart"));
 
-        stringShortCommandNodeMap.put("yy", new CommandNode("$Copy"));
-        stringShortCommandNodeMap.put("yc", new CommandNode("$Cut"));
-        stringShortCommandNodeMap.put("yd", new CommandNode("EditorDuplicate"));
-        stringShortCommandNodeMap.put("yi", new CommandNode("ImplementMethods"));
-        stringShortCommandNodeMap.put("yb", new CommandNode("CompileDirty"));
-
-
-        stringShortCommandNodeMap.put("yhc", new CommandNode("CallHierarchy"));
-        stringShortCommandNodeMap.put("yht", new CommandNode("TypeHierarchy"));
-        stringShortCommandNodeMap.put("yhm", new CommandNode("MethodHierarchy"));
+        shortMap.put("yy", new CommandNode("$Copy"));
+        shortMap.put("yc", new CommandNode("$Cut"));
+        shortMap.put("yd", new CommandNode("EditorDuplicate"));
+        shortMap.put("yi", new CommandNode("ImplementMethods"));
+        shortMap.put("yb", new CommandNode("CompileDirty"));
 
 
-        stringShortCommandNodeMap.put("gw", new CommandNode("JumpToLastWindow"));
+        shortMap.put("yhc", new CommandNode("CallHierarchy"));
+        shortMap.put("yht", new CommandNode("TypeHierarchy"));
+        shortMap.put("yhm", new CommandNode("MethodHierarchy"));
+
+
+        shortMap.put("gw", new CommandNode("JumpToLastWindow"));
 
     }
 
 
     public static CommandNode get(String key) {
-        return stringShortCommandNodeMap.get(key);
+        return shortMap.get(key);
     }
 }

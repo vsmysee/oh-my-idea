@@ -7,9 +7,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.regex.Pattern;
 
 /**
@@ -29,8 +27,17 @@ public class OhScript {
 
     private static LineHolder holder;
 
-    private OhScript() {
+    private static Map<String, String> codeGen = new HashMap<String, String>();
+
+    private static void putKey(String key, String value) {
+        codeGen.put(key.trim(), value.trim());
     }
+
+
+    public static String getMapping(String key) {
+        return codeGen.get(key);
+    }
+
 
     public static void loadScriptFile() {
         final String homeDirName = System.getProperty("user.home");
@@ -41,7 +48,7 @@ public class OhScript {
 
                 List<CodeKV> codeKV = holder.getCodeKV();
                 for (CodeKV kv : codeKV) {
-                    CodeQuick.add(kv.key, kv.value);
+                    putKey(kv.key, kv.value);
                 }
             }
         }
