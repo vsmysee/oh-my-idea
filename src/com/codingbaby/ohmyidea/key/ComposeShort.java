@@ -26,6 +26,7 @@ public class ComposeShort {
         stringShortCommandNodeMap.put("glv", new CommandNode("SplitVertically"));
         stringShortCommandNodeMap.put("glh", new CommandNode("SplitHorizontally"));
         stringShortCommandNodeMap.put("gln", new CommandNode("EditorJoinLines"));
+        stringShortCommandNodeMap.put("gll", new CommandNode("LoadScriptAction"));
 
         stringShortCommandNodeMap.put("gh", new CommandNode("HideAllWindows"));
         stringShortCommandNodeMap.put("gp", new CommandNode("NextProjectWindow"));

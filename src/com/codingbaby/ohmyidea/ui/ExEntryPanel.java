@@ -18,10 +18,33 @@ import java.awt.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 
-/**
- * This is used to enter ex commands such as searches and "colon" commands
- */
+
+
 public class ExEntryPanel extends JPanel {
+
+    @Nullable
+    private JComponent parent;
+
+    @NotNull
+    private final JLabel label;
+
+    @NotNull
+    private final ExTextField entry;
+
+    private JComponent oldGlass;
+
+    private LayoutManager oldLayout;
+
+    private boolean wasOpaque;
+
+    @NotNull
+    private final ComponentAdapter adapter;
+
+    private boolean active;
+
+    private static ExEntryPanel instance;
+
+
 
     public boolean cancelExEntry() {
         ExEntryPanel panel = ExEntryPanel.getInstance();
@@ -167,21 +190,6 @@ public class ExEntryPanel extends JPanel {
     }
 
 
-    @Nullable
-    private JComponent parent;
-    @NotNull
-    private final JLabel label;
-    @NotNull
-    private final ExTextField entry;
-    private JComponent oldGlass;
-    private LayoutManager oldLayout;
-    private boolean wasOpaque;
-    @NotNull
-    private final ComponentAdapter adapter;
-
-    private boolean active;
-
-    private static ExEntryPanel instance;
 
 
 }

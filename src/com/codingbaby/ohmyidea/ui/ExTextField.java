@@ -19,6 +19,16 @@ import java.awt.event.KeyEvent;
  */
 
 public class ExTextField extends JTextField {
+
+    private Editor editor;
+
+    private DataContext context;
+
+    @Nullable
+    private Action currentAction;
+
+
+
     /**
      */
     public ExTextField() {
@@ -81,12 +91,7 @@ public class ExTextField extends JTextField {
     }
 
 
-    private Editor editor;
 
-    private DataContext context;
-
-    @Nullable
-    private Action currentAction;
 
 
 }

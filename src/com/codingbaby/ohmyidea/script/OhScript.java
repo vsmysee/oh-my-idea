@@ -22,7 +22,9 @@ import java.util.regex.Pattern;
 public class OhScript {
 
     public static final String OH_FILE = ".oh-my-idea";
+
     public static final int BUFSIZE = 4096;
+
     private static final Pattern EOL_SPLIT_PATTERN = Pattern.compile("(\r\n|\n)");
 
     private static LineHolder holder;
@@ -30,7 +32,7 @@ public class OhScript {
     private OhScript() {
     }
 
-    public static void parseScriptFile() {
+    public static void loadScriptFile() {
         final String homeDirName = System.getProperty("user.home");
         if (homeDirName != null) {
             final File file = new File(homeDirName, OH_FILE);
@@ -121,7 +123,7 @@ public class OhScript {
     }
 
     public static void main(String[] args) {
-        OhScript.parseScriptFile();
+        OhScript.loadScriptFile();
     }
 
     @NotNull

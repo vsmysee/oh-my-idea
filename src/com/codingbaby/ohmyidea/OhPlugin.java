@@ -58,7 +58,7 @@ public class OhPlugin implements ApplicationComponent {
             }
         }, myApp);
 
-        OhScript.parseScriptFile();
+        OhScript.loadScriptFile();
     }
 
     @Override

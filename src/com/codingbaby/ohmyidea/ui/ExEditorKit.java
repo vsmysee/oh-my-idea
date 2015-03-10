@@ -5,17 +5,14 @@ import com.codingbaby.ohmyidea.KeyHandler;
 import com.codingbaby.ohmyidea.OhPlugin;
 import com.codingbaby.ohmyidea.helper.RunnableHelper;
 import com.codingbaby.ohmyidea.script.CodeQuick;
-import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.project.Project;
 import org.apache.commons.lang.math.NumberUtils;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 import javax.swing.text.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
 
 /**
  *
@@ -23,8 +20,6 @@ import java.awt.event.KeyEvent;
 public class ExEditorKit extends DefaultEditorKit {
 
     private static ExEditorKit instance;
-
-    private static final Logger logger = Logger.getInstance(ExEditorKit.class.getName());
 
     public static ExEditorKit getInstance() {
         if (instance == null) {
@@ -54,8 +49,6 @@ public class ExEditorKit extends DefaultEditorKit {
      */
     public Action[] getActions() {
         Action[] res = TextAction.augmentList(super.getActions(), this.exActions);
-        if (logger.isDebugEnabled()) logger.debug("res.length=" + res.length);
-
         return res;
     }
 
@@ -95,8 +88,6 @@ public class ExEditorKit extends DefaultEditorKit {
         }
 
         public void actionPerformed(ActionEvent actionEvent) {
-            logger.debug("complete entry");
-            KeyStroke stroke = KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0);
 
             final ExEntryPanel entryPanel = ExEntryPanel.getInstance();
             String text = entryPanel.getText();

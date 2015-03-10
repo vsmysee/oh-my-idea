@@ -34,6 +34,8 @@
 
         <action id="ShowCommandAction" class="com.codingbaby.ohmyidea.action.ui.ShowCommandAction" text="Shortcuts"/>
 
+        <action id="LoadScriptAction" class="com.codingbaby.ohmyidea.action.LoadScriptAction" text="Shortcuts"/>
+
     </actions>
 
 
