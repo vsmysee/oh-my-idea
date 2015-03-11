@@ -8,6 +8,7 @@ import java.util.Map;
  *
  *
  */
+
 public class VisualShort {
 
     private static Map<KeyStroke, CommandNode> charShort = new HashMap();
@@ -23,7 +24,9 @@ public class VisualShort {
         charShort.put(KeyStroke.getKeyStroke('H'), new CommandNode("EditorLineStartWithSelection"));
 
         charShort.put(KeyStroke.getKeyStroke('p'), new CommandNode("$Paste"));
+
         charShort.put(KeyStroke.getKeyStroke('U'), new CommandNode("EditorToggleCase"));
+
         charShort.put(KeyStroke.getKeyStroke('/'), new CommandNode("CommentByBlockComment"));
         charShort.put(KeyStroke.getKeyStroke('x'), new CommandNode("$Delete"));
         charShort.put(KeyStroke.getKeyStroke('r'), new CommandNode("ReformatCode"));
