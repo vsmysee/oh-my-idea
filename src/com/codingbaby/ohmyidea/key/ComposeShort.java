@@ -18,18 +18,19 @@ public class ComposeShort {
         shortMap.put("gu", new CommandNode("GotoSuperMethod"));
         shortMap.put("gg", new CommandNode("SmartTypeCompletion"));
 
-        shortMap.put("gen", new CommandNode("Generate"));
+        shortMap.put("ge", new CommandNode("Generate"));
         shortMap.put("gv", new CommandNode("IntroduceVariable"));
         shortMap.put("gs", new CommandNode("SurroundWith"));
         shortMap.put("gy", new CommandNode("EditorDeleteLine"));
 
-        shortMap.put("glv", new CommandNode("SplitVertically"));
-        shortMap.put("glh", new CommandNode("SplitHorizontally"));
+
         shortMap.put("gln", new CommandNode("EditorJoinLines"));
         shortMap.put("gll", new CommandNode("LoadScriptAction"));
 
         shortMap.put("gh", new CommandNode("HideAllWindows"));
         shortMap.put("gp", new CommandNode("NextProjectWindow"));
+        shortMap.put("gw", new CommandNode("JumpToLastWindow"));
+
 
         shortMap.put("gc", new CommandNode("GotoClass"));
         shortMap.put("gn", new CommandNode("Inline"));
@@ -60,9 +61,6 @@ public class ComposeShort {
         shortMap.put("yhc", new CommandNode("CallHierarchy"));
         shortMap.put("yht", new CommandNode("TypeHierarchy"));
         shortMap.put("yhm", new CommandNode("MethodHierarchy"));
-
-
-        shortMap.put("gw", new CommandNode("JumpToLastWindow"));
 
     }
 

@@ -23,6 +23,7 @@ public class SingleShort {
 
         charShort.put(KeyStroke.getKeyStroke('j'), new CommandNode("EditorDown"));
         charShort.put(KeyStroke.getKeyStroke('J'), new CommandNode("MotionLastLine"));
+        charShort.put(KeyStroke.getKeyStroke('G'), new CommandNode("MotionLastLine"));
 
         charShort.put(KeyStroke.getKeyStroke('k'), new CommandNode("EditorUp"));
         charShort.put(KeyStroke.getKeyStroke('K'), new CommandNode("MotionFirstLine"));

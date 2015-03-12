@@ -97,17 +97,31 @@ public class ExEditorKit extends DefaultEditorKit {
                 KeyHandler.toLine = Integer.parseInt(entryPanel.getText());
                 KeyHandler.executeAction("MotionToLine", entryPanel.getEntry().getContext());
             } else {
+
                 final Editor editor = entryPanel.getEntry().getEditor();
                 Project project = editor.getProject();
                 final OhPlugin oh = OhPlugin.getInstance();
 
-                final String mapping = OhScript.getMapping(text);
-                if (mapping != null) {
+
+                if (text.equals("v")) {
+                    KeyHandler.executeAction("SplitVertically",entryPanel.getEntry().getContext());
+                    return;
+                }
+
+
+                if (text.equals("h")) {
+                    KeyHandler.executeAction("SplitHorizontally",entryPanel.getEntry().getContext());
+                    return;
+                }
+
+
+                final String code = OhScript.getMapping(text);
+                if (code != null) {
                     Runnable cmd = new Runnable() {
                         @Override
                         public void run() {
                             int oldOffset = editor.getCaretModel().getOffset();
-                            editor.getDocument().insertString(oldOffset, mapping);
+                            editor.getDocument().insertString(oldOffset, code);
                             oh.commandStatus.reset();
                         }
                     };
