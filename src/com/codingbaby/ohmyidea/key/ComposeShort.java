@@ -37,12 +37,6 @@ public class ComposeShort {
         shortMap.put("gf", new CommandNode("GotoFile"));
 
 
-        shortMap.put("gts", new CommandNode("ActivateStructureToolWindow"));
-        shortMap.put("gtp", new CommandNode("ActivateProjectToolWindow"));
-        shortMap.put("gtt", new CommandNode("ActivateTerminalToolWindow"));
-        shortMap.put("gtr", new CommandNode("ActivateRunToolWindow"));
-        shortMap.put("gtd", new CommandNode("ActivateDebugToolWindow"));
-
         shortMap.put("gbk", new CommandNode("ToggleLineBreakpoint"));
 
         //意图

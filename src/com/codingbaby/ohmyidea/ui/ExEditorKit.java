@@ -4,6 +4,8 @@ package com.codingbaby.ohmyidea.ui;
 import com.codingbaby.ohmyidea.KeyHandler;
 import com.codingbaby.ohmyidea.OhPlugin;
 import com.codingbaby.ohmyidea.helper.RunnableHelper;
+import com.codingbaby.ohmyidea.key.BottomShort;
+import com.codingbaby.ohmyidea.key.CommandNode;
 import com.codingbaby.ohmyidea.script.OhScript;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.project.Project;
@@ -102,18 +104,13 @@ public class ExEditorKit extends DefaultEditorKit {
                 Project project = editor.getProject();
                 final OhPlugin oh = OhPlugin.getInstance();
 
-
-                if (text.equals("v")) {
-                    KeyHandler.executeAction("SplitVertically",entryPanel.getEntry().getContext());
-                    return;
+                if (text.length() == 1) {
+                    CommandNode commandNode = BottomShort.get(KeyStroke.getKeyStroke(text.charAt(0)));
+                    if (commandNode != null) {
+                        KeyHandler.executeAction(commandNode.getAction(),entryPanel.getEntry().getContext());
+                        return;
+                    }
                 }
-
-
-                if (text.equals("h")) {
-                    KeyHandler.executeAction("SplitHorizontally",entryPanel.getEntry().getContext());
-                    return;
-                }
-
 
                 final String code = OhScript.getMapping(text);
                 if (code != null) {
