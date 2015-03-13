@@ -5,7 +5,7 @@ import java.util.Map;
 
 /**
  *
- *
+ * 组合命令，必须是两个字符
  */
 public class ComposeShort {
 
@@ -16,6 +16,7 @@ public class ComposeShort {
         shortMap.put("gd", new CommandNode("GotoDeclaration"));
         shortMap.put("gm", new CommandNode("GotoImplementation"));
         shortMap.put("gu", new CommandNode("GotoSuperMethod"));
+
         shortMap.put("gg", new CommandNode("SmartTypeCompletion"));
 
         shortMap.put("ge", new CommandNode("Generate"));
@@ -23,9 +24,6 @@ public class ComposeShort {
         shortMap.put("gs", new CommandNode("SurroundWith"));
         shortMap.put("gy", new CommandNode("EditorDeleteLine"));
 
-
-        shortMap.put("gln", new CommandNode("EditorJoinLines"));
-        shortMap.put("gll", new CommandNode("LoadScriptAction"));
 
         shortMap.put("gh", new CommandNode("HideAllWindows"));
         shortMap.put("gp", new CommandNode("NextProjectWindow"));
@@ -37,13 +35,9 @@ public class ComposeShort {
         shortMap.put("gf", new CommandNode("GotoFile"));
 
 
-        shortMap.put("gbk", new CommandNode("ToggleLineBreakpoint"));
-
         //意图
         shortMap.put("gi", new CommandNode("ShowIntentionActions"));
 
-        shortMap.put("gk", new CommandNode("EditorCodeBlockEnd"));
-        shortMap.put("gj", new CommandNode("EditorCodeBlockStart"));
 
         shortMap.put("yy", new CommandNode("$Copy"));
         shortMap.put("yc", new CommandNode("$Cut"));
@@ -52,9 +46,13 @@ public class ComposeShort {
         shortMap.put("yb", new CommandNode("CompileDirty"));
 
 
-        shortMap.put("yhc", new CommandNode("CallHierarchy"));
-        shortMap.put("yht", new CommandNode("TypeHierarchy"));
-        shortMap.put("yhm", new CommandNode("MethodHierarchy"));
+        shortMap.put("zc", new CommandNode("CallHierarchy"));
+        shortMap.put("zt", new CommandNode("TypeHierarchy"));
+        shortMap.put("zm", new CommandNode("MethodHierarchy"));
+
+        shortMap.put("zj", new CommandNode("EditorJoinLines"));
+        shortMap.put("zs", new CommandNode("LoadScriptAction"));
+
 
     }
 

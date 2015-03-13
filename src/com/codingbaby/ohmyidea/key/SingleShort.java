@@ -79,8 +79,6 @@ public class SingleShort {
         charShort.put(KeyStroke.getKeyStroke(','), new CommandNode("GotoNextError"));
 
 
-        charShort.put(KeyStroke.getKeyStroke('z'), new CommandNode("CloseContent"));
-
         charShort.put(KeyStroke.getKeyStroke('c'), new CommandNode("ActivateChangesToolWindow"));
 
         charShort.put(KeyStroke.getKeyStroke(':'), new CommandNode("ShowCommandAction"));

@@ -17,10 +17,14 @@ public class BottomShort {
 
         charShort.put(KeyStroke.getKeyStroke('v'), new CommandNode("SplitVertically"));
         charShort.put(KeyStroke.getKeyStroke('h'), new CommandNode("SplitHorizontally"));
+
         charShort.put(KeyStroke.getKeyStroke('q'), new CommandNode("CloseContent"));
         charShort.put(KeyStroke.getKeyStroke('s'), new CommandNode("ActivateStructureToolWindow"));
         charShort.put(KeyStroke.getKeyStroke('p'), new CommandNode("ActivateProjectToolWindow"));
         charShort.put(KeyStroke.getKeyStroke('t'), new CommandNode("ActivateTerminalToolWindow"));
+
+        charShort.put(KeyStroke.getKeyStroke('<'), new CommandNode("EditorCodeBlockStart"));
+        charShort.put(KeyStroke.getKeyStroke('>'), new CommandNode("EditorCodeBlockEnd"));
 
     }
 
