@@ -1,47 +1,21 @@
-Oh My IDEA
-=======
-oh my idea is a IDEA plugin, you just require put your finger on the asdfjkl;,then you can write java code quickly,the mode like vim.
+Oh My Idea是一个IDEA插件，这个取名模仿了Oh My ZSH，用这个插件可以在IDEA中神乎其神的编写代码.
 
-The Short Cut
----------------------------------
+## 为什么要写这个插件
+在MaxOS或者Linux下开发，你或许会用VIM或者Emacs，给人的感觉就是快,IDEA是Java开发的最好IDE，如何在里面找到VIM的感觉？于是有了这个插件
+虽然IDEA官方已经存在了VIM插件，但是我在写Java代码的时候不希望用VIM的操作方式。
 
-* hjkl HJKL  left right up down
-* t|T   change the tab
-* q  find useages
-* w  word motion
-* e  select word
-* r redo
-* u undo
-* o  new line
-* p paste
-* a append and insert
-* s change between split window
-* f find then type n or N
-* d|D  page down or up
-* c close window
-* b back to last edit postion
-* m|M goto next method
 
-* gu go to super class
-* gm go to implements class
-* gen generate code
-* gy edite line
+## 操作约定
+以字母的大小写表达反向和加速操作，比如t是正向tab切换,T就是反向tab切换,l是右移，那么L就是移到行尾巴.这是部分快捷键
 
-* gpv split window
-* gpy split window
+~~~ java
+'h' 左移动
+'H' 移动到行首
+~~~
 
-* :22n  to 22 line
 
-Code Template
----------------------------------
-exmaple: ;lr   gen code template
+## 模式种类
 
-code tempalte file is at user.home/.oh-my-idea
+待续
 
-example:
-
-_ls
-List<String> list = new ArrayList<String>();
-
-_mso
-Map<String,Object> map = new HashMap();
+## 代码模板
