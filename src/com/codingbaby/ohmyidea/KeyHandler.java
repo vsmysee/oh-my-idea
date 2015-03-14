@@ -62,6 +62,8 @@ public class KeyHandler {
         oh.commandStatus.addChar(key.getKeyChar());
 
         CommandNode commandNode = null;
+        boolean composeCommand = false;
+
         if (oh.commandStatus.hasStroke()) {
             if (oh.status == EditorStatus.Command) {
                 commandNode = SingleShort.get(oh.commandStatus.getStroke());
@@ -77,6 +79,9 @@ public class KeyHandler {
             }
         } else {
             commandNode = ComposeShort.get(oh.commandStatus.getCommand());
+            if (commandNode != null) {
+                composeCommand = true;
+            }
         }
 
         //快捷模式
@@ -88,6 +93,12 @@ public class KeyHandler {
                 RunnableHelper.runReadCommand(project, action, name, action);
             }
             oh.commandStatus.reset();
+
+            //如果是组合命令，执行完回到命令模式
+            if (composeCommand && oh.status != EditorStatus.Command) {
+                KeyHandler.toCommandMod();
+            }
+
             return;
         }
 
