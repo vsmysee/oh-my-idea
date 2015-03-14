@@ -106,6 +106,11 @@ public class KeyHandler {
             oh.commandStatus.reset();
             return;
         }
+
+
+        if (oh.commandStatus.getLastChar() != null) {
+            KeyHandler.executeAction(SingleShort.get(KeyStroke.getKeyStroke(oh.commandStatus.getLastChar())).getAction(),context);
+        }
     }
 
     public static void toInsertMod() {

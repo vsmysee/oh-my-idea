@@ -10,21 +10,10 @@ public class CommandStatus {
 
     public static final String FORWARD_KEY = ";";
 
-
     //command buffer
     private StringBuffer sb = new StringBuffer();
 
-    //用于过期未击中的命令
-    private long firstTypeTime = 0;
-
-    private int timeout = 1500;
-
     public void addChar(char c) {
-        if (firstTypeTime == 0) {
-            firstTypeTime = System.currentTimeMillis();
-        } else if (System.currentTimeMillis() - firstTypeTime > timeout) {
-            reset();
-        }
         sb.append(c);
     }
 
@@ -49,9 +38,17 @@ public class CommandStatus {
     }
 
 
+    //比如gj，j生效
+    public  Character getLastChar() {
+        if (sb.length() > 1) {
+            return sb.charAt(sb.length() - 1);
+        }
+        return null;
+    }
+
+
     public void reset() {
         sb = new StringBuffer();
-        firstTypeTime = 0;
     }
 
     public String getCommand() {
