@@ -63,9 +63,9 @@ public class SingleShort {
         charShort.put(KeyStroke.getKeyStroke('/'), new CommandNode("Find"));
         charShort.put(KeyStroke.getKeyStroke('?'), new CommandNode("Replace"));
 
-        charShort.put(KeyStroke.getKeyStroke('F'), new CommandNode("FindInPath"));
+        charShort.put(KeyStroke.getKeyStroke('f'), new CommandNode("SmartTypeCompletion"));
+        charShort.put(KeyStroke.getKeyStroke('F'), new CommandNode("FindWordAtCaret"));
 
-        charShort.put(KeyStroke.getKeyStroke('f'), new CommandNode("FindWordAtCaret"));
         charShort.put(KeyStroke.getKeyStroke('n'), new CommandNode("FindNext"));
         charShort.put(KeyStroke.getKeyStroke('N'), new CommandNode("FindPrevious"));
 

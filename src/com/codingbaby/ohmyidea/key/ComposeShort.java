@@ -17,7 +17,7 @@ public class ComposeShort {
         shortMap.put("gm", new CommandNode("GotoImplementation"));
         shortMap.put("gu", new CommandNode("GotoSuperMethod"));
 
-        shortMap.put("gg", new CommandNode("SmartTypeCompletion"));
+        shortMap.put("gg", new CommandNode("MotionFirstLine"));
 
         shortMap.put("ge", new CommandNode("Generate"));
         shortMap.put("gv", new CommandNode("IntroduceVariable"));
