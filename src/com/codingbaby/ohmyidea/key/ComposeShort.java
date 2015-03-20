@@ -54,6 +54,10 @@ public class ComposeShort {
         shortMap.put("zs", new CommandNode("LoadScriptAction"));
 
 
+        shortMap.put("zf", new CommandNode("ExpandRegion"));
+        shortMap.put("zv", new CommandNode("CollapseRegion"));
+
+
     }
 
 
