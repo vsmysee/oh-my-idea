@@ -13,6 +13,7 @@ public class VisualShort {
 
     private static Map<KeyStroke, CommandNode> charShort = new HashMap();
 
+
     static {
 
         charShort.put(KeyStroke.getKeyStroke('h'), new CommandNode("EditorLeftWithSelection"));
@@ -32,8 +33,7 @@ public class VisualShort {
         charShort.put(KeyStroke.getKeyStroke('r'), new CommandNode("ReformatCode"));
         charShort.put(KeyStroke.getKeyStroke('o'), new CommandNode("OptimizeImports"));
 
-        //debug的时候切换过来对表达式求值
-        charShort.put(KeyStroke.getKeyStroke('e'), new CommandNode("QuickEvaluateExpression"));
+        charShort.put(KeyStroke.getKeyStroke('e'), new CommandNode("JumpToLastChange"));
 
     }
 

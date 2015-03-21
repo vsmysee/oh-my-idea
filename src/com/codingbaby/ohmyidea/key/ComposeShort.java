@@ -39,10 +39,12 @@ public class ComposeShort {
         shortMap.put("gi", new CommandNode("ShowIntentionActions"));
 
 
-        shortMap.put("yy", new CommandNode("$Copy"));
         shortMap.put("yc", new CommandNode("$Cut"));
         shortMap.put("yd", new CommandNode("EditorDuplicate"));
+
         shortMap.put("yi", new CommandNode("ImplementMethods"));
+        shortMap.put("yo", new CommandNode("OverrideMethods"));
+
         shortMap.put("yb", new CommandNode("CompileDirty"));
 
 

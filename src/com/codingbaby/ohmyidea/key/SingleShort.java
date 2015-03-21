@@ -42,17 +42,22 @@ public class SingleShort {
         charShort.put(KeyStroke.getKeyStroke('W'), new CommandNode("EditorPreviousWord"));
 
 
-        charShort.put(KeyStroke.getKeyStroke('b'), new CommandNode("JumpToLastChange"));
-        charShort.put(KeyStroke.getKeyStroke('B'), new CommandNode("Back"));
+        charShort.put(KeyStroke.getKeyStroke('B'), new CommandNode("Forward"));
+        charShort.put(KeyStroke.getKeyStroke('b'), new CommandNode("Back"));
 
 
         charShort.put(KeyStroke.getKeyStroke('u'), new CommandNode("$Undo"));
         charShort.put(KeyStroke.getKeyStroke('U'), new CommandNode("EditorToggleCase"));
 
+
         charShort.put(KeyStroke.getKeyStroke('r'), new CommandNode("$Redo"));
 
         charShort.put(KeyStroke.getKeyStroke('x'), new CommandNode("$Delete"));
+        charShort.put(KeyStroke.getKeyStroke('X'), new CommandNode("CloseContent"));
+
+        charShort.put(KeyStroke.getKeyStroke('O'), new CommandNode("EditorStartNewLineBefore"));
         charShort.put(KeyStroke.getKeyStroke('o'), new CommandNode("EditorStartNewLine"));
+
         charShort.put(KeyStroke.getKeyStroke('p'), new CommandNode("$Paste"));
 
         charShort.put(KeyStroke.getKeyStroke('e'), new CommandNode("EditorSelectWord"));
@@ -76,6 +81,11 @@ public class SingleShort {
         charShort.put(KeyStroke.getKeyStroke('D'), new CommandNode("EditorPageUp"));
 
         charShort.put(KeyStroke.getKeyStroke('.'), new CommandNode("EditorCompleteStatement"));
+        charShort.put(KeyStroke.getKeyStroke('>'), new CommandNode("$Copy"));
+
+
+
+        charShort.put(KeyStroke.getKeyStroke('<'), new CommandNode("GotoPreviousError"));
         charShort.put(KeyStroke.getKeyStroke(','), new CommandNode("GotoNextError"));
 
 

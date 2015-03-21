@@ -86,12 +86,8 @@ public class KeyHandler {
 
         //快捷模式
         if (commandNode != null) {
-            Project project = editor.getProject();
-            if (ApplicationManager.getApplication().isDispatchThread()) {
-                Runnable action = new ActionRunner(context, commandNode);
-                String name = commandNode.getAction().getTemplatePresentation().getText();
-                RunnableHelper.runReadCommand(project, action, name, action);
-            }
+
+            KeyHandler.executeAction(commandNode.getAction(),context);
             oh.commandStatus.reset();
 
             //如果是组合命令，执行完回到命令模式
@@ -168,20 +164,5 @@ public class KeyHandler {
     public static void executeAction(@NotNull AnAction action, @NotNull DataContext context) {
         action.actionPerformed(new AnActionEvent(null, context, "", action.getTemplatePresentation(), ActionManager.getInstance(), 0));
     }
-
-    static class ActionRunner implements Runnable {
-        public ActionRunner(DataContext context, CommandNode cmd) {
-            this.context = context;
-            this.cmd = cmd;
-        }
-
-        public void run() {
-            executeAction(cmd.getAction(), context);
-        }
-
-        private final DataContext context;
-        private final CommandNode cmd;
-    }
-
 
 }
