@@ -35,6 +35,9 @@ public class VisualShort {
 
         charShort.put(KeyStroke.getKeyStroke('e'), new CommandNode("JumpToLastChange"));
 
+        charShort.put(KeyStroke.getKeyStroke('>'), new CommandNode("$Copy"));
+
+
     }
 
     public static CommandNode get(KeyStroke keyStroke) {
