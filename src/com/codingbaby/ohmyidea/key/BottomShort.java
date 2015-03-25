@@ -25,6 +25,8 @@ public class BottomShort {
         charShort.put(KeyStroke.getKeyStroke('<'), new CommandNode("EditorCodeBlockStart"));
         charShort.put(KeyStroke.getKeyStroke('>'), new CommandNode("EditorCodeBlockEnd"));
 
+        charShort.put(KeyStroke.getKeyStroke('n'), new CommandNode("EditorToggleShowLineNumbers"));
+
     }
 
     public static CommandNode get(KeyStroke keyStroke) {
