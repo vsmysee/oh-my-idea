@@ -51,9 +51,9 @@ public class SingleShort {
 
 
         charShort.put(KeyStroke.getKeyStroke('r'), new CommandNode("$Redo"));
+        charShort.put(KeyStroke.getKeyStroke('R'), new CommandNode("CloseContent"));
 
         charShort.put(KeyStroke.getKeyStroke('x'), new CommandNode("$Delete"));
-        charShort.put(KeyStroke.getKeyStroke('X'), new CommandNode("CloseContent"));
 
         charShort.put(KeyStroke.getKeyStroke('O'), new CommandNode("EditorStartNewLineBefore"));
         charShort.put(KeyStroke.getKeyStroke('o'), new CommandNode("EditorStartNewLine"));
