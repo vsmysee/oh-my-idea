@@ -12,26 +12,40 @@ public class MoveShort {
 
     private static Map<KeyStroke, CommandNode> charShort = new HashMap();
 
+    private static Map<Character,String> mapping = new HashMap<Character, String>();
+
+
     static {
 
-        charShort.put(KeyStroke.getKeyStroke('h'), new CommandNode("EditorLeft"));
-        charShort.put(KeyStroke.getKeyStroke('H'), new CommandNode("EditorLineStart"));
+        mapping.put('h',"EditorLeft");
+        mapping.put('H',"EditorLineStart");
 
-        charShort.put(KeyStroke.getKeyStroke('l'), new CommandNode("EditorRight"));
-        charShort.put(KeyStroke.getKeyStroke('L'), new CommandNode("EditorLineEnd"));
+        mapping.put('l',"EditorRight");
+        mapping.put('L',"EditorLineEnd");
 
-        charShort.put(KeyStroke.getKeyStroke('j'), new CommandNode("EditorDown"));
-        charShort.put(KeyStroke.getKeyStroke('J'), new CommandNode("MotionLastLine"));
+        mapping.put('j',"EditorDown");
+        mapping.put('J',"MotionLastLine");
 
-        charShort.put(KeyStroke.getKeyStroke('k'), new CommandNode("EditorUp"));
-        charShort.put(KeyStroke.getKeyStroke('K'), new CommandNode("MotionFirstLine"));
+        mapping.put('k',"EditorUp");
+        mapping.put('K',"MotionFirstLine");
 
 
-        charShort.put(KeyStroke.getKeyStroke('e'), new CommandNode("MoveLineUp"));
-        charShort.put(KeyStroke.getKeyStroke('E'), new CommandNode("MoveStatementUp"));
+        mapping.put('e',"MoveLineUp");
+        mapping.put('E',"MoveStatementUp");
 
-        charShort.put(KeyStroke.getKeyStroke('d'), new CommandNode("MoveLineDown"));
-        charShort.put(KeyStroke.getKeyStroke('D'), new CommandNode("MoveStatementDown"));
+        mapping.put('d',"MoveLineDown");
+        mapping.put('D',"MoveStatementDown");
+
+        mapping.put('u',"$Undo");
+
+    }
+
+
+    static {
+
+        for (Map.Entry<Character, String> entry : mapping.entrySet()) {
+            charShort.put(KeyStroke.getKeyStroke(entry.getKey()),new CommandNode(entry.getValue()));
+        }
 
     }
 

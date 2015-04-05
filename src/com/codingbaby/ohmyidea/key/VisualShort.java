@@ -12,31 +12,42 @@ import java.util.Map;
 public class VisualShort {
 
     private static Map<KeyStroke, CommandNode> charShort = new HashMap();
+    
+    private static Map<Character,String> mapping = new HashMap<Character, String>();
+    
+    static {
+        mapping.put('h', "EditorLeftWithSelection");
+        mapping.put('l',"EditorRightWithSelection");
+        mapping.put('j',"EditorDownWithSelection");
+        mapping.put('k',"EditorUpWithSelection");
+
+        mapping.put('L',"EditorLineEndWithSelection");
+        mapping.put('H',"EditorLineStartWithSelection");
+
+        mapping.put('p',"$Paste");
+
+        mapping.put('U',"EditorToggleCase");
+
+        mapping.put('/',"CommentByBlockComment");
+        mapping.put('x',"$Delete");
+        mapping.put('r',"ReformatCode");
+        mapping.put('o',"OptimizeImports");
+
+        mapping.put('e',"JumpToLastChange");
+
+        mapping.put('>',"$Copy");
+        mapping.put('?',"Replace");
+
+        mapping.put('u',"$Undo");
+
+    }
 
 
     static {
 
-        charShort.put(KeyStroke.getKeyStroke('h'), new CommandNode("EditorLeftWithSelection"));
-        charShort.put(KeyStroke.getKeyStroke('l'), new CommandNode("EditorRightWithSelection"));
-        charShort.put(KeyStroke.getKeyStroke('j'), new CommandNode("EditorDownWithSelection"));
-        charShort.put(KeyStroke.getKeyStroke('k'), new CommandNode("EditorUpWithSelection"));
-
-        charShort.put(KeyStroke.getKeyStroke('L'), new CommandNode("EditorLineEndWithSelection"));
-        charShort.put(KeyStroke.getKeyStroke('H'), new CommandNode("EditorLineStartWithSelection"));
-
-        charShort.put(KeyStroke.getKeyStroke('p'), new CommandNode("$Paste"));
-
-        charShort.put(KeyStroke.getKeyStroke('U'), new CommandNode("EditorToggleCase"));
-
-        charShort.put(KeyStroke.getKeyStroke('/'), new CommandNode("CommentByBlockComment"));
-        charShort.put(KeyStroke.getKeyStroke('x'), new CommandNode("$Delete"));
-        charShort.put(KeyStroke.getKeyStroke('r'), new CommandNode("ReformatCode"));
-        charShort.put(KeyStroke.getKeyStroke('o'), new CommandNode("OptimizeImports"));
-
-        charShort.put(KeyStroke.getKeyStroke('e'), new CommandNode("JumpToLastChange"));
-
-        charShort.put(KeyStroke.getKeyStroke('>'), new CommandNode("$Copy"));
-
+        for (Map.Entry<Character, String> entry : mapping.entrySet()) {
+            charShort.put(KeyStroke.getKeyStroke(entry.getKey()),new CommandNode(entry.getValue()));
+        }
 
     }
 

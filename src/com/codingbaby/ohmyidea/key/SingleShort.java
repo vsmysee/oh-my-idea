@@ -12,86 +12,97 @@ public class SingleShort {
 
     private static Map<KeyStroke, CommandNode> charShort = new HashMap();
 
+    private static Map<Character,String> mapping = new HashMap<Character, String>();
+
 
     static {
 
-        charShort.put(KeyStroke.getKeyStroke('h'), new CommandNode("EditorLeft"));
-        charShort.put(KeyStroke.getKeyStroke('H'), new CommandNode("EditorLineStart"));
+        mapping.put('h',"EditorLeft");
+        mapping.put('H',"EditorLineStart");
 
-        charShort.put(KeyStroke.getKeyStroke('l'), new CommandNode("EditorRight"));
-        charShort.put(KeyStroke.getKeyStroke('L'), new CommandNode("EditorLineEnd"));
+        mapping.put('l',"EditorRight");
+        mapping.put('L',"EditorLineEnd");
 
-        charShort.put(KeyStroke.getKeyStroke('j'), new CommandNode("EditorDown"));
-        charShort.put(KeyStroke.getKeyStroke('J'), new CommandNode("MotionLastLine"));
-        charShort.put(KeyStroke.getKeyStroke('G'), new CommandNode("MotionLastLine"));
+        mapping.put('j',"EditorDown");
+        mapping.put('J',"MotionLastLine");
+        mapping.put('G',"MotionLastLine");
 
-        charShort.put(KeyStroke.getKeyStroke('k'), new CommandNode("EditorUp"));
-        charShort.put(KeyStroke.getKeyStroke('K'), new CommandNode("MotionFirstLine"));
+        mapping.put('k',"EditorUp");
+        mapping.put('K',"MotionFirstLine");
 
-        charShort.put(KeyStroke.getKeyStroke('t'), new CommandNode("NextTab"));
-        charShort.put(KeyStroke.getKeyStroke('T'), new CommandNode("PreviousTab"));
+        mapping.put('t',"NextTab");
+        mapping.put('T',"PreviousTab");
 
-        charShort.put(KeyStroke.getKeyStroke('s'), new CommandNode("NextSplitter"));
-        charShort.put(KeyStroke.getKeyStroke('S'), new CommandNode("PrevSplitter"));
-
-
-        charShort.put(KeyStroke.getKeyStroke('m'), new CommandNode("MethodDown"));
-        charShort.put(KeyStroke.getKeyStroke('M'), new CommandNode("MethodUp"));
-
-        charShort.put(KeyStroke.getKeyStroke('w'), new CommandNode("EditorNextWord"));
-        charShort.put(KeyStroke.getKeyStroke('W'), new CommandNode("EditorPreviousWord"));
+        mapping.put('s',"NextSplitter");
+        mapping.put('S',"PrevSplitter");
 
 
-        charShort.put(KeyStroke.getKeyStroke('B'), new CommandNode("Forward"));
-        charShort.put(KeyStroke.getKeyStroke('b'), new CommandNode("Back"));
+        mapping.put('m',"MethodDown");
+        mapping.put('M',"MethodUp");
+
+        mapping.put('w',"EditorNextWord");
+        mapping.put('W',"EditorPreviousWord");
 
 
-        charShort.put(KeyStroke.getKeyStroke('u'), new CommandNode("$Undo"));
-        charShort.put(KeyStroke.getKeyStroke('U'), new CommandNode("EditorToggleCase"));
+        mapping.put('B',"Forward");
+        mapping.put('b',"Back");
 
 
-        charShort.put(KeyStroke.getKeyStroke('r'), new CommandNode("$Redo"));
-        charShort.put(KeyStroke.getKeyStroke('R'), new CommandNode("CloseContent"));
-
-        charShort.put(KeyStroke.getKeyStroke('x'), new CommandNode("$Delete"));
-
-        charShort.put(KeyStroke.getKeyStroke('O'), new CommandNode("EditorStartNewLineBefore"));
-        charShort.put(KeyStroke.getKeyStroke('o'), new CommandNode("EditorStartNewLine"));
-
-        charShort.put(KeyStroke.getKeyStroke('p'), new CommandNode("$Paste"));
-
-        charShort.put(KeyStroke.getKeyStroke('e'), new CommandNode("EditorSelectWord"));
-        charShort.put(KeyStroke.getKeyStroke('E'), new CommandNode("EditorUnSelectWord"));
-
-        charShort.put(KeyStroke.getKeyStroke('q'), new CommandNode("FindUsages"));
-
-        charShort.put(KeyStroke.getKeyStroke('/'), new CommandNode("Find"));
-        charShort.put(KeyStroke.getKeyStroke('?'), new CommandNode("Replace"));
-
-        charShort.put(KeyStroke.getKeyStroke('f'), new CommandNode("SmartTypeCompletion"));
-        charShort.put(KeyStroke.getKeyStroke('F'), new CommandNode("FindWordAtCaret"));
-
-        charShort.put(KeyStroke.getKeyStroke('n'), new CommandNode("FindNext"));
-        charShort.put(KeyStroke.getKeyStroke('N'), new CommandNode("FindPrevious"));
+        mapping.put('u',"$Undo");
+        mapping.put('U',"EditorToggleCase");
 
 
-        charShort.put(KeyStroke.getKeyStroke('a'), new CommandNode("MotionAndInsert"));
+        mapping.put('r',"$Redo");
+        mapping.put('R',"CloseContent");
 
-        charShort.put(KeyStroke.getKeyStroke('d'), new CommandNode("EditorPageDown"));
-        charShort.put(KeyStroke.getKeyStroke('D'), new CommandNode("EditorPageUp"));
+        mapping.put('x',"$Delete");
 
-        charShort.put(KeyStroke.getKeyStroke('.'), new CommandNode("EditorCompleteStatement"));
-        charShort.put(KeyStroke.getKeyStroke('>'), new CommandNode("$Copy"));
+        mapping.put('O',"EditorStartNewLineBefore");
+        mapping.put('o',"EditorStartNewLine");
+
+        mapping.put('p',"$Paste");
+
+        mapping.put('e',"EditorSelectWord");
+        mapping.put('E',"EditorUnSelectWord");
+
+        mapping.put('q',"FindUsages");
+
+        mapping.put('/',"Find");
+        mapping.put('?',"Replace");
+
+        mapping.put('f',"SmartTypeCompletion");
+        mapping.put('F',"FindWordAtCaret");
+
+        mapping.put('n',"FindNext");
+        mapping.put('N',"FindPrevious");
+
+
+        mapping.put('a',"MotionAndInsert");
+
+        mapping.put('d',"EditorPageDown");
+        mapping.put('D',"EditorPageUp");
+
+        mapping.put('.',"EditorCompleteStatement");
+        mapping.put('>',"$Copy");
 
 
 
-        charShort.put(KeyStroke.getKeyStroke('<'), new CommandNode("GotoPreviousError"));
-        charShort.put(KeyStroke.getKeyStroke(','), new CommandNode("GotoNextError"));
+        mapping.put('<',"GotoPreviousError");
+        mapping.put(',',"GotoNextError");
 
 
-        charShort.put(KeyStroke.getKeyStroke('c'), new CommandNode("ActivateChangesToolWindow"));
+        mapping.put('c',"ActivateChangesToolWindow");
 
-        charShort.put(KeyStroke.getKeyStroke(':'), new CommandNode("ShowCommandAction"));
+        mapping.put(':',"ShowCommandAction");
+
+    }
+
+
+    static {
+
+        for (Map.Entry<Character, String> entry : mapping.entrySet()) {
+            charShort.put(KeyStroke.getKeyStroke(entry.getKey()),new CommandNode(entry.getValue()));
+        }
 
     }
 
