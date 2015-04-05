@@ -10,6 +10,8 @@ import org.jetbrains.annotations.NotNull;
 import javax.swing.*;
 
 /**
+ * 当编辑器发生文本输入的时候，由这个action来响应
+ * 此action内部维护了系统的handler，当自己不处理的时候就交给系统的handler
  */
 public class OhTypedActionHandler implements TypedActionHandler {
 
