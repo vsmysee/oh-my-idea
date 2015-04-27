@@ -6,6 +6,9 @@
     <vendor>JetBrains</vendor>
 
 
+    <depends>com.intellij.modules.lang</depends>
+
+
     <application-components>
         <component>
             <implementation-class>com.codingbaby.ohmyidea.OhPlugin</implementation-class>
