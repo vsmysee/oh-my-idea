@@ -31,15 +31,22 @@ public class EditorHelper {
         if (line < 0) {
             return 0;
         } else if (line >= getLineCount(editor)) {
-            return getFileSize(editor);
+            return editor.getDocument().getTextLength();
         } else {
             return editor.getDocument().getLineStartOffset(line);
         }
     }
 
-    public static int getFileSize(@NotNull final Editor editor) {
-        return editor.getDocument().getTextLength();
+    public static int getLineEndOffset(@NotNull final Editor editor, final int line) {
+        if (line < 0) {
+            return 0;
+        } else if (line >= getLineCount(editor)) {
+            return editor.getDocument().getTextLength();
+        } else {
+            return editor.getDocument().getLineEndOffset(line);
+        }
     }
+
 
     public static int getVisualLineAtTopOfScreen(@NotNull final Editor editor) {
         int lh = editor.getLineHeight();
@@ -65,7 +72,6 @@ public class EditorHelper {
         Rectangle rect = editor.getScrollingModel().getVisibleArea();
         Point pt = new Point(rect.width, 0);
         VisualPosition vp = editor.xyToVisualPosition(pt);
-
         return vp.column;
     }
 
@@ -204,7 +210,7 @@ public class EditorHelper {
     public static int findNextCharacterOnLine(@NotNull Editor editor, char ch) {
         int line = editor.getCaretModel().getLogicalPosition().line;
         int start = EditorHelper.getLineStartOffset(editor, line);
-        int end = EditorHelper.getLineEndOffset(editor, line, true);
+        int end = EditorHelper.getLineEndOffset(editor, line);
         CharSequence chars = editor.getDocument().getCharsSequence();
         int current = editor.getCaretModel().getOffset();
         int pos = current + 1;
@@ -226,13 +232,4 @@ public class EditorHelper {
         return find ? pos : current;
     }
 
-    public static int getLineEndOffset(@NotNull final Editor editor, final int line, final boolean allowEnd) {
-        if (line < 0) {
-            return 0;
-        } else if (line >= getLineCount(editor)) {
-            return getFileSize(editor);
-        } else {
-            return editor.getDocument().getLineEndOffset(line) - (allowEnd ? 0 : 1);
-        }
-    }
 }
