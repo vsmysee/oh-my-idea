@@ -76,6 +76,58 @@ public class EditorHelper {
     }
 
     public static void scrollCaretIntoView(@NotNull Editor editor) {
+
+        moveToTop(editor);
+        moveToLeft(editor);
+
+    }
+
+    private static void moveToLeft(Editor editor) {
+        int caretColumn = editor.getCaretModel().getVisualPosition().column;
+        int visualColumn = EditorHelper.getVisualColumnAtLeftOfScreen(editor);
+        int width = EditorHelper.getScreenWidth(editor);
+
+        int scrollOffset = 0;
+        int sjSize = width / 2;
+
+        int visualLeft = visualColumn + scrollOffset;
+        int visualRight = visualColumn + width - scrollOffset;
+        if (scrollOffset >= width / 2) {
+            scrollOffset = width / 2;
+            visualLeft = visualColumn + scrollOffset;
+            visualRight = visualColumn + width - scrollOffset;
+            if (visualLeft == visualRight) {
+                visualRight++;
+            }
+        }
+
+        sjSize = Math.min(sjSize, width / 2 - scrollOffset);
+        int diff;
+
+        if (caretColumn < visualLeft) {
+            diff = caretColumn - visualLeft + 1;
+            sjSize = -sjSize;
+        } else {
+            diff = caretColumn - visualRight + 1;
+            if (diff < 0) {
+                diff = 0;
+            }
+        }
+
+        if (diff != 0) {
+            int col;
+            if (Math.abs(diff) > width / 2) {
+                col = caretColumn - width / 2 - 1;
+            } else {
+                col = visualColumn + diff + sjSize;
+            }
+
+            col = Math.max(0, col);
+            scrollColumnToLeftOfScreen(editor, col);
+        }
+    }
+
+    private static void moveToTop(Editor editor) {
         int cline = editor.getCaretModel().getVisualPosition().line;
         int visualLine = EditorHelper.getVisualLineAtTopOfScreen(editor);
 
@@ -121,48 +173,6 @@ public class EditorHelper {
             line = Math.max(0, line);
             scrollLineToTopOfScreen(editor, line);
         }
-
-        int caretColumn = editor.getCaretModel().getVisualPosition().column;
-        int visualColumn = EditorHelper.getVisualColumnAtLeftOfScreen(editor);
-        int width = EditorHelper.getScreenWidth(editor);
-        scrollOffset = 0;
-        sjSize = width / 2;
-
-        int visualLeft = visualColumn + scrollOffset;
-        int visualRight = visualColumn + width - scrollOffset;
-        if (scrollOffset >= width / 2) {
-            scrollOffset = width / 2;
-            visualLeft = visualColumn + scrollOffset;
-            visualRight = visualColumn + width - scrollOffset;
-            if (visualLeft == visualRight) {
-                visualRight++;
-            }
-        }
-
-        sjSize = Math.min(sjSize, width / 2 - scrollOffset);
-
-        if (caretColumn < visualLeft) {
-            diff = caretColumn - visualLeft + 1;
-            sjSize = -sjSize;
-        } else {
-            diff = caretColumn - visualRight + 1;
-            if (diff < 0) {
-                diff = 0;
-            }
-        }
-
-        if (diff != 0) {
-            int col;
-            if (Math.abs(diff) > width / 2) {
-                col = caretColumn - width / 2 - 1;
-            } else {
-                col = visualColumn + diff + sjSize;
-            }
-
-            col = Math.max(0, col);
-            scrollColumnToLeftOfScreen(editor, col);
-        }
-
     }
 
     private static void scrollColumnToLeftOfScreen(@NotNull Editor editor, int column) {

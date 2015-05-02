@@ -19,9 +19,11 @@ public class SingleShort {
 
         mapping.put('h',"EditorLeft");
         mapping.put('H',"EditorLineStart");
+        mapping.put('0',"EditorLineStart");
 
         mapping.put('l',"EditorRight");
         mapping.put('L',"EditorLineEnd");
+        mapping.put('9',"EditorLineEnd");
 
         mapping.put('j',"EditorDown");
         mapping.put('J',"MotionLastLine");

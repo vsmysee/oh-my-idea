@@ -27,6 +27,7 @@ public class VisualShort {
         mapping.put('p',"$Paste");
 
         mapping.put('U',"EditorToggleCase");
+        mapping.put('u',"$Undo");
 
         mapping.put('/',"CommentByBlockComment");
         mapping.put('x',"$Delete");
@@ -38,7 +39,9 @@ public class VisualShort {
         mapping.put('>',"$Copy");
         mapping.put('?',"Replace");
 
-        mapping.put('u',"$Undo");
+
+        mapping.put('K',"EditorScrollDown");
+        mapping.put('J',"EditorScrollUp");
 
     }
 
