@@ -32,6 +32,7 @@ public class ShortcutKeyAction extends AnAction implements DumbAware  {
 
             //将esc传递到IDE
             KeyHandler.executeAction("EditorEscape",anActionEvent.getDataContext());
+            KeyHandler.toChar = null;
 
             OhPlugin.getInstance().commandStatus.reset();
         }

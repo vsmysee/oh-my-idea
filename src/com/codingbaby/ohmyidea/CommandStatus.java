@@ -29,6 +29,10 @@ public class CommandStatus {
         return KeyStroke.getKeyStroke(sb.charAt(0));
     }
 
+    public boolean isForward() {
+        return sb.toString().startsWith(FORWARD_KEY);
+    }
+
     public Character getForwardChar() {
         String command = sb.toString();
         if (command.startsWith(FORWARD_KEY) && sb.length() == 2) {

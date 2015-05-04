@@ -12,6 +12,7 @@ import com.intellij.openapi.project.Project;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
+import javax.swing.text.ChangedCharSetException;
 
 /**
  */
@@ -21,7 +22,7 @@ public class KeyHandler {
 
     public static int toLine;
 
-    public static char toChar;
+    public static Character toChar;
 
     @NotNull
     public static KeyHandler getInstance() {
@@ -79,7 +80,7 @@ public class KeyHandler {
         //快捷模式
         if (commandNode != null) {
 
-            KeyHandler.executeAction(commandNode.getAction(),context);
+            KeyHandler.executeAction(commandNode.getAction(), context);
             oh.commandStatus.reset();
 
             //如果是组合命令，执行完回到命令模式
@@ -92,9 +93,18 @@ public class KeyHandler {
 
 
         //行字符搜索
-        if (oh.commandStatus.getForwardChar() != null) {
+
+        if (oh.commandStatus.isForward()) {
+
+            if (oh.commandStatus.getForwardChar() != null) {
+                toChar = oh.commandStatus.getForwardChar();
+            }
+
+            if (toChar == null) {
+                return;
+            }
+
             Project project = editor.getProject();
-            toChar = oh.commandStatus.getForwardChar();
             Runnable cmd = new Runnable() {
                 @Override
                 public void run() {
@@ -108,7 +118,7 @@ public class KeyHandler {
 
 
         if (oh.commandStatus.getLastChar() != null) {
-            KeyHandler.executeAction(SingleShort.get(KeyStroke.getKeyStroke(oh.commandStatus.getLastChar())).getAction(),context);
+            KeyHandler.executeAction(SingleShort.get(KeyStroke.getKeyStroke(oh.commandStatus.getLastChar())).getAction(), context);
         }
     }
 
