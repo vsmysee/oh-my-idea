@@ -48,9 +48,8 @@ public class ComposeShort {
         shortMap.put("yb", new CommandNode("CompileDirty"));
 
 
-        shortMap.put("zc", new CommandNode("CallHierarchy"));
-        shortMap.put("zt", new CommandNode("TypeHierarchy"));
-        shortMap.put("zm", new CommandNode("MethodHierarchy"));
+        shortMap.put("zt", new CommandNode("ScrollToTop"));
+
 
         shortMap.put("zj", new CommandNode("EditorJoinLines"));
         shortMap.put("zs", new CommandNode("LoadScriptAction"));

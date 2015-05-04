@@ -82,6 +82,15 @@ public class EditorHelper {
 
     }
 
+    public static void scrollLineToScreenLine(@NotNull Editor editor) {
+        int visualLine = editor.getCaretModel().getVisualPosition().line ;
+        scrollLineToTopOfScreen(editor, EditorHelper.normalizeVisualLine(editor, visualLine));
+    }
+
+    public static int normalizeVisualLine(@NotNull final Editor editor, final int line) {
+        return Math.max(0, Math.min(line, getVisualLineCount(editor) - 1));
+    }
+
     private static void moveToLeft(Editor editor) {
         int caretColumn = editor.getCaretModel().getVisualPosition().column;
         int visualColumn = EditorHelper.getVisualColumnAtLeftOfScreen(editor);

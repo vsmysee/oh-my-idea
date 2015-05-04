@@ -39,6 +39,8 @@
 
         <action id="LoadScriptAction" class="com.codingbaby.ohmyidea.action.LoadScriptAction" text="Shortcuts"/>
 
+        <action id="ScrollToTop" class="com.codingbaby.ohmyidea.action.ScrollToScreenFirstAction" text="Shortcuts"/>
+
     </actions>
 
 
