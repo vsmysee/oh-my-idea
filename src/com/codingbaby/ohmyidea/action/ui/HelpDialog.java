@@ -2,6 +2,7 @@ package com.codingbaby.ohmyidea.action.ui;
 
 import com.intellij.openapi.ui.DialogWrapper;
 import com.intellij.openapi.wm.ex.WindowManagerEx;
+import com.intellij.ui.components.JBTabbedPane;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
@@ -26,7 +27,12 @@ public class HelpDialog extends DialogWrapper {
     @Nullable
     @Override
     protected JComponent createCenterPanel() {
-        return new HelpPanel();
+        JTabbedPane tabs = new JBTabbedPane();
+        tabs.add("单击",new HelpPanel());
+        tabs.add("组合",new HelpPanel());
+        tabs.add("选择",new HelpPanel());
+        tabs.add("底行",new HelpPanel());
+        return tabs;
     }
 
 
