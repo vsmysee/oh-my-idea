@@ -27,6 +27,8 @@ public class BottomShort {
 
         charShort.put(KeyStroke.getKeyStroke('n'), new CommandNode("EditorToggleShowLineNumbers"));
 
+        charShort.put(KeyStroke.getKeyStroke('k'), new CommandNode("ShowHelpDialog"));
+
     }
 
     public static CommandNode get(KeyStroke keyStroke) {
