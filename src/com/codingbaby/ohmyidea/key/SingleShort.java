@@ -97,6 +97,8 @@ public class SingleShort {
 
         mapping.put(':',"ShowCommandAction");
 
+        mapping.put('I',"NotQuickInsert");
+
     }
 
 

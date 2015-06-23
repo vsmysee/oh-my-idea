@@ -33,13 +33,15 @@
 
         <action id="ShortcutKeyAction" class="com.codingbaby.ohmyidea.ShortcutKeyAction" text="Shortcuts"/>
 
-        <action id="MotionToMatchChar" class="com.codingbaby.ohmyidea.action.MotionToMatchCharAction" text="Shortcuts"/>
+        <action id="MotionToMatchChar" class="com.codingbaby.ohmyidea.action.MotionToMatchCharAction" text="Motion To Match"/>
 
-        <action id="ShowCommandAction" class="com.codingbaby.ohmyidea.action.ui.ShowCommandAction" text="Shortcuts"/>
+        <action id="ShowCommandAction" class="com.codingbaby.ohmyidea.action.ui.ShowCommandAction" text="Show Command"/>
 
-        <action id="LoadScriptAction" class="com.codingbaby.ohmyidea.action.LoadScriptAction" text="Shortcuts"/>
+        <action id="LoadScriptAction" class="com.codingbaby.ohmyidea.action.LoadScriptAction" text="Load Script"/>
 
-        <action id="ScrollToTop" class="com.codingbaby.ohmyidea.action.ScrollToScreenFirstAction" text="Shortcuts"/>
+        <action id="ScrollToTop" class="com.codingbaby.ohmyidea.action.ScrollToScreenFirstAction" text="Scroll Top"/>
+
+        <action id="NotQuickInsert" class="com.codingbaby.ohmyidea.action.NotQuickInsertAction" text="Insert Not Quick"/>
 
     </actions>
 
