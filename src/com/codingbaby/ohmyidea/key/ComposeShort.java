@@ -1,68 +1,64 @@
 package com.codingbaby.ohmyidea.key;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  *
  * 组合命令，必须是两个字符
  */
 public class ComposeShort {
 
-    private static Map<String, CommandNode> shortMap = new HashMap();
+    public static CommandHolder commandHolder  = new CommandHolder();
 
     static {
 
-        shortMap.put("gd", new CommandNode("GotoDeclaration"));
-        shortMap.put("gm", new CommandNode("GotoImplementation"));
-        shortMap.put("gu", new CommandNode("GotoSuperMethod"));
+        commandHolder.add("gd", "GotoDeclaration","到声明");
+        commandHolder.add("gm", "GotoImplementation","到实现");
+        commandHolder.add("gu", "GotoSuperMethod","到超类");
 
-        shortMap.put("gg", new CommandNode("MotionFirstLine"));
+        commandHolder.add("gg", "MotionFirstLine","到第一行");
 
-        shortMap.put("ge", new CommandNode("Generate"));
-        shortMap.put("gv", new CommandNode("IntroduceVariable"));
-        shortMap.put("gs", new CommandNode("SurroundWith"));
-        shortMap.put("gy", new CommandNode("EditorDeleteLine"));
-
-
-        shortMap.put("gh", new CommandNode("HideAllWindows"));
-        shortMap.put("gp", new CommandNode("NextProjectWindow"));
-        shortMap.put("gw", new CommandNode("JumpToLastWindow"));
+        commandHolder.add("ge", "Generate","生成代码");
+        commandHolder.add("gv", "IntroduceVariable","提取变量");
+        commandHolder.add("gs", "SurroundWith","代码环绕");
+        commandHolder.add("gy", "EditorDeleteLine","删除行");
 
 
-        shortMap.put("gc", new CommandNode("GotoClass"));
-        shortMap.put("gn", new CommandNode("Inline"));
-        shortMap.put("gf", new CommandNode("GotoFile"));
+        commandHolder.add("gh", "HideAllWindows","隐藏窗口");
+        commandHolder.add("gp", "NextProjectWindow","下一个项目窗口");
+        commandHolder.add("gw", "JumpToLastWindow","最近窗口");
+
+
+        commandHolder.add("gc", "GotoClass","导航到类");
+        commandHolder.add("gn", "Inline","合并变量");
+        commandHolder.add("gf", "GotoFile","导航到文件");
 
 
         //意图
-        shortMap.put("gi", new CommandNode("ShowIntentionActions"));
+        commandHolder.add("gi", "ShowIntentionActions","显示意图");
 
 
-        shortMap.put("yc", new CommandNode("$Cut"));
-        shortMap.put("yd", new CommandNode("EditorDuplicate"));
+        commandHolder.add("yc", "$Cut","剪切");
+        commandHolder.add("yd", "EditorDuplicate","复制行");
 
-        shortMap.put("yi", new CommandNode("ImplementMethods"));
-        shortMap.put("yo", new CommandNode("OverrideMethods"));
+        commandHolder.add("yi", "ImplementMethods","实现方法");
+        commandHolder.add("yo", "OverrideMethods","重载方法");
 
-        shortMap.put("yb", new CommandNode("CompileDirty"));
-
-
-        shortMap.put("zt", new CommandNode("ScrollToTop"));
+        commandHolder.add("yb", "CompileDirty","编译");
 
 
-        shortMap.put("zj", new CommandNode("EditorJoinLines"));
-        shortMap.put("zs", new CommandNode("LoadScriptAction"));
+        commandHolder.add("zt", "ScrollToTop","当前行置顶");
 
 
-        shortMap.put("zf", new CommandNode("ExpandRegion"));
-        shortMap.put("zv", new CommandNode("CollapseRegion"));
+        commandHolder.add("zj", "EditorJoinLines","合并行");
+        commandHolder.add("zs", "LoadScriptAction","加载模板");
 
+
+        commandHolder.add("zf", "ExpandRegion","打开折叠");
+        commandHolder.add("zv", "CollapseRegion","折叠代码");
 
     }
 
 
     public static CommandNode get(String key) {
-        return shortMap.get(key);
+        return commandHolder.get(key);
     }
 }

@@ -10,29 +10,29 @@ import java.util.Map;
  */
 public class BottomShort {
 
-    private static Map<KeyStroke, CommandNode> charShort = new HashMap();
+    public static CommandHolder commandHolder  = new CommandHolder();
 
 
     static {
 
-        charShort.put(KeyStroke.getKeyStroke('v'), new CommandNode("SplitVertically"));
-        charShort.put(KeyStroke.getKeyStroke('h'), new CommandNode("SplitHorizontally"));
+        commandHolder.add("v","SplitVertically","水平拆分");
+        commandHolder.add("h","SplitHorizontally","垂直拆分");
 
-        charShort.put(KeyStroke.getKeyStroke('s'), new CommandNode("ActivateStructureToolWindow"));
-        charShort.put(KeyStroke.getKeyStroke('p'), new CommandNode("ActivateProjectToolWindow"));
-        charShort.put(KeyStroke.getKeyStroke('t'), new CommandNode("ActivateTerminalToolWindow"));
+        commandHolder.add("s","ActivateStructureToolWindow","显示结构Tool");
+        commandHolder.add("p","ActivateProjectToolWindow","显示项目Tool");
+        commandHolder.add("t","ActivateTerminalToolWindow","显示终端Tool");
 
-        charShort.put(KeyStroke.getKeyStroke('<'), new CommandNode("EditorCodeBlockStart"));
-        charShort.put(KeyStroke.getKeyStroke('>'), new CommandNode("EditorCodeBlockEnd"));
+        commandHolder.add("<","EditorCodeBlockStart","到代码块开始");
+        commandHolder.add(">","EditorCodeBlockEnd","到代码块结束");
 
-        charShort.put(KeyStroke.getKeyStroke('n'), new CommandNode("EditorToggleShowLineNumbers"));
+        commandHolder.add("n","EditorToggleShowLineNumbers","显示行号");
 
-        charShort.put(KeyStroke.getKeyStroke('k'), new CommandNode("ShowHelpDialog"));
+        commandHolder.add("k","ShowHelpDialog","显示帮助");
 
     }
 
     public static CommandNode get(KeyStroke keyStroke) {
-        return  charShort.get(keyStroke);
+        return  commandHolder.get(keyStroke);
     }
 
 }

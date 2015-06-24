@@ -10,46 +10,42 @@ import java.util.Map;
  */
 public class MoveShort {
 
-    private static Map<KeyStroke, CommandNode> charShort = new HashMap();
-
-    private static Map<Character,String> mapping = new HashMap<Character, String>();
+    public static CommandHolder commandHolder  = new CommandHolder();
 
 
     static {
 
-        mapping.put('h',"EditorLeft");
-        mapping.put('H',"EditorLineStart");
+        commandHolder.add("h","EditorLeft","左移动");
+        commandHolder.add("H","EditorLineStart","左开始");
 
-        mapping.put('l',"EditorRight");
-        mapping.put('L',"EditorLineEnd");
+        commandHolder.add("0","EditorLineStart","左开始");
 
-        mapping.put('j',"EditorDown");
-        mapping.put('J',"MotionLastLine");
+        commandHolder.add("l","EditorRight","右移动");
+        commandHolder.add("L","EditorLineEnd","右结束");
+        commandHolder.add("9","EditorLineEnd","右结束");
 
-        mapping.put('k',"EditorUp");
-        mapping.put('K',"MotionFirstLine");
+        commandHolder.add("j","EditorDown","下移动");
+        commandHolder.add("J","MotionLastLine","最后一行");
 
+        commandHolder.add("G","MotionLastLine","最后一行");
 
-        mapping.put('e',"MoveLineUp");
-        mapping.put('E',"MoveStatementUp");
-
-        mapping.put('d',"MoveLineDown");
-        mapping.put('D',"MoveStatementDown");
-
-        mapping.put('u',"$Undo");
-
-    }
+        commandHolder.add("k","EditorUp","上移动");
+        commandHolder.add("K","MotionFirstLine","第一行");
 
 
-    static {
+        commandHolder.add("e","MoveLineUp","上移动一行");
+        commandHolder.add("E","MoveStatementUp","上移动块");
 
-        for (Map.Entry<Character, String> entry : mapping.entrySet()) {
-            charShort.put(KeyStroke.getKeyStroke(entry.getKey()),new CommandNode(entry.getValue()));
-        }
+        commandHolder.add("d","MoveLineDown","下移动行");
+        commandHolder.add("D","MoveStatementDown","下移动块");
+
+        commandHolder.add("u","$Undo","撤销");
 
     }
+
+
 
     public static CommandNode get(KeyStroke keyStroke) {
-        return  charShort.get(keyStroke);
+        return  commandHolder.get(keyStroke);
     }
 }

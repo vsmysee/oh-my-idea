@@ -11,51 +11,43 @@ import java.util.Map;
 
 public class VisualShort {
 
-    private static Map<KeyStroke, CommandNode> charShort = new HashMap();
-    
-    private static Map<Character,String> mapping = new HashMap<Character, String>();
+    public static CommandHolder commandHolder  = new CommandHolder();
+
     
     static {
-        mapping.put('h', "EditorLeftWithSelection");
-        mapping.put('l',"EditorRightWithSelection");
-        mapping.put('j',"EditorDownWithSelection");
-        mapping.put('k',"EditorUpWithSelection");
+        commandHolder.add("h", "EditorLeftWithSelection","左选择");
+        commandHolder.add("l","EditorRightWithSelection","右选择");
+        commandHolder.add("j","EditorDownWithSelection","上选择");
+        commandHolder.add("k","EditorUpWithSelection","下选择");
 
-        mapping.put('L',"EditorLineEndWithSelection");
-        mapping.put('H',"EditorLineStartWithSelection");
+        commandHolder.add("L","EditorLineEndWithSelection","选择到行尾");
+        commandHolder.add("H","EditorLineStartWithSelection","选择到行首");
 
-        mapping.put('p',"$Paste");
+        commandHolder.add("p","$Paste","粘贴");
 
-        mapping.put('U',"EditorToggleCase");
-        mapping.put('u',"$Undo");
+        commandHolder.add("U","EditorToggleCase","转位大写");
+        commandHolder.add("u","$Undo","撤销");
 
-        mapping.put('/',"CommentByBlockComment");
-        mapping.put('x',"$Delete");
-        mapping.put('r',"ReformatCode");
-        mapping.put('o',"OptimizeImports");
+        commandHolder.add("/","CommentByBlockComment","块注释");
+        commandHolder.add("x","$Delete","删除字符");
+        commandHolder.add("r","ReformatCode","格式化代码");
+        commandHolder.add("o","OptimizeImports","优化导入");
 
-        mapping.put('e',"JumpToLastChange");
+        commandHolder.add("e","JumpToLastChange","跳转到最近改动");
 
-        mapping.put('>',"$Copy");
-        mapping.put('?',"Replace");
+        commandHolder.add(">","$Copy","复制行");
+        commandHolder.add("?","Replace","替换");
 
 
-        mapping.put('K',"EditorScrollDown");
-        mapping.put('J',"EditorScrollUp");
+        commandHolder.add("K","EditorScrollDown","编辑器下滚动");
+        commandHolder.add("J","EditorScrollUp","编辑器上滚动");
 
     }
 
-
-    static {
-
-        for (Map.Entry<Character, String> entry : mapping.entrySet()) {
-            charShort.put(KeyStroke.getKeyStroke(entry.getKey()),new CommandNode(entry.getValue()));
-        }
-
-    }
+    
 
     public static CommandNode get(KeyStroke keyStroke) {
-        return charShort.get(keyStroke);
+        return commandHolder.get(keyStroke);
     }
 
 }
