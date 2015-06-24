@@ -20,7 +20,7 @@ public class HelpPanel extends JPanel {
             }
         };
 
-        model.setDataVector(createTableModel(data), new Object[] {"Name", "Value"});
+        model.setDataVector(createTableModel(data), new Object[] {"快捷键", "描述"});
 
         myTable.setModel(model);
         myTable.setShowVerticalLines(true);
