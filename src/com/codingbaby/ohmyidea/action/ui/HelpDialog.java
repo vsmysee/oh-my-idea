@@ -1,6 +1,7 @@
 package com.codingbaby.ohmyidea.action.ui;
 
 import com.codingbaby.ohmyidea.key.*;
+import com.codingbaby.ohmyidea.script.OhScript;
 import com.intellij.openapi.ui.DialogWrapper;
 import com.intellij.openapi.wm.ex.WindowManagerEx;
 import com.intellij.ui.components.JBTabbedPane;
@@ -33,6 +34,7 @@ public class HelpDialog extends DialogWrapper {
         tabs.add("选择", new HelpPanel(VisualShort.commandHolder.getCommandDesc()));
         tabs.add("底行", new HelpPanel(BottomShort.commandHolder.getCommandDesc()));
         tabs.add("移动", new HelpPanel(MoveShort.commandHolder.getCommandDesc()));
+        tabs.add("模板", new HelpPanel(OhScript.getHelpDesc()));
         return tabs;
     }
 

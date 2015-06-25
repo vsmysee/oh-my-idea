@@ -54,6 +54,10 @@ public class OhScript {
         }
     }
 
+    public static Map<String,String> getHelpDesc() {
+        return holder.getDescMap();
+    }
+
     private static void parseTokens(@NotNull File file) {
         String data = "";
         try {
@@ -70,6 +74,7 @@ public class OhScript {
         private String[] lines;
         private int begin = 0;
         private List<String> keys = new ArrayList<String>();
+        private List<String> descriptions = new ArrayList<String>();
         private List<String> values = new ArrayList<String>();
 
         public LineHolder(String[] lines) {
@@ -84,9 +89,26 @@ public class OhScript {
             return list;
         }
 
+        public Map<String,String> getDescMap() {
+            Map<String,String> map = new HashMap<String,String>();
+            for (int i =0 ;i<keys.size();i++) {
+                map.put(keys.get(i),descriptions.get(i));
+            }
+            return map;
+        }
+
         public void buildCodeQuick(String line) {
             if (StringUtils.isNotBlank(line) && line.startsWith("_")) {
-                keys.add(line.trim().substring(1));
+
+                String key = line.trim().substring(1);
+                String[] split = key.split("\\|");
+                keys.add(split[0]);
+                if (split.length == 2) {
+                    descriptions.add(split[1]);
+                } else {
+                    descriptions.add("");
+                }
+
                 StringBuilder sb = new StringBuilder();
                 line = next();
 
