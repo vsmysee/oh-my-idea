@@ -35,7 +35,6 @@ public class ExTextField extends JTextField {
         Font font = EditorColorsManager.getInstance().getGlobalScheme().getFont(EditorFontType.PLAIN);
         setFont(font);
 
-        // Do not override getActions() method, because it is has side effect: propogates these actions to defaults.
         final Action[] actions = ExEditorKit.getInstance().getActions();
         final ActionMap actionMap = getActionMap();
         for (Action a : actions) {
@@ -89,9 +88,5 @@ public class ExTextField extends JTextField {
             ExEntryPanel.getInstance().cancelExEntry();
         }
     }
-
-
-
-
 
 }

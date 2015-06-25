@@ -11,11 +11,13 @@ import java.util.*;
 import java.util.regex.Pattern;
 
 /**
- * _ls
+ * _ls|描述
  * List<String> list = new ArrayList<String>();
- * <p/>
- * _mso
+ *
+ *
+ * _mso|描述
  * Map<String,Object> map = new HashMap<String,Object>();
+ *
  */
 public class OhScript {
 
