@@ -1,6 +1,9 @@
 package com.codingbaby.ohmyidea;
 
+import org.apache.commons.lang.math.NumberUtils;
+
 import javax.swing.*;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -9,6 +12,8 @@ import javax.swing.*;
 public class CommandStatus {
 
     public static final String FORWARD_KEY = ";";
+
+    private Pattern numberActionPattern = Pattern.compile("^\\d+[a-z]$");
 
     //command buffer
     private StringBuffer sb = new StringBuffer();
@@ -41,9 +46,22 @@ public class CommandStatus {
         return null;
     }
 
+    public NumberAction getNumberAction() {
+        if (numberActionPattern.matcher(sb.toString()).matches()) {
+            String countString = sb.substring(0,sb.length() - 1);
+            int count = Integer.parseInt(countString);
+            char key = sb.charAt(sb.length()-1);
+            NumberAction numberAction = new NumberAction();
+            numberAction.setCount(count);
+            numberAction.setKey(key);
+            return numberAction;
+        }
+        return null;
+    }
+
 
     //比如gj，j生效
-    public  Character getLastChar() {
+    public Character getLastChar() {
         if (sb.length() > 1) {
             return sb.charAt(sb.length() - 1);
         }

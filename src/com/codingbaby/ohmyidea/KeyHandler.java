@@ -114,6 +114,17 @@ public class KeyHandler {
             return;
         }
 
+        //可以在单字母命令敲入数字加速
+        NumberAction numberAction = oh.commandStatus.getNumberAction();
+        if (numberAction != null) {
+            int count = numberAction.getCount();
+            for (int i = 1; i <= count; i++) {
+                KeyHandler.executeAction(SingleShort.get(KeyStroke.getKeyStroke(numberAction.getKey())).getAction(), context);
+            }
+            oh.commandStatus.reset();
+            return;
+        }
+
 
         if (oh.commandStatus.getLastChar() != null) {
             KeyHandler.executeAction(SingleShort.get(KeyStroke.getKeyStroke(oh.commandStatus.getLastChar())).getAction(), context);
