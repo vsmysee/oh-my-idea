@@ -91,7 +91,6 @@ public class KeyHandler {
 
 
         //行字符搜索
-
         if (oh.commandStatus.isForward()) {
 
             if (oh.commandStatus.getForwardChar() != null) {
