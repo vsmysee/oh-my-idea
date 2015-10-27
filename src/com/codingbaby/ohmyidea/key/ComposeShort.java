@@ -55,6 +55,9 @@ public class ComposeShort {
         commandHolder.add("zf", "ExpandRegion","打开折叠");
         commandHolder.add("zv", "CollapseRegion","折叠代码");
 
+
+        commandHolder.add("gr", "RenameElement","重命名");
+
     }
 
 
