@@ -19,7 +19,7 @@ public class ComposeShort {
         commandHolder.add("ge", "Generate","生成代码");
         commandHolder.add("gv", "IntroduceVariable","提取变量");
         commandHolder.add("gs", "SurroundWith","代码环绕");
-        commandHolder.add("gy", "EditorDeleteLine","删除行");
+        commandHolder.add("dd", "EditorDeleteLine","删除行");
 
 
         commandHolder.add("gh", "HideAllWindows","隐藏窗口");

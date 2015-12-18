@@ -80,8 +80,6 @@ public class SingleShort {
 
         commandHolder.add("a","MotionAndInsert","追加");
 
-        commandHolder.add("d","EditorPageDown","下一页");
-        commandHolder.add("D","EditorPageUp","上一页");
 
         commandHolder.add(".","EditorCompleteStatement","语句完成");
         commandHolder.add(">","$Copy","复制行");
