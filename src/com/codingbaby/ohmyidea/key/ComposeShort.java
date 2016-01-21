@@ -27,9 +27,14 @@ public class ComposeShort {
         commandHolder.add("gw", "JumpToLastWindow","最近窗口");
 
 
-        commandHolder.add("gc", "GotoClass","导航到类");
+        commandHolder.add("go", "GotoClass","导航到类");
         commandHolder.add("gn", "Inline","合并变量");
         commandHolder.add("gf", "GotoFile","导航到文件");
+
+
+
+        commandHolder.add("yr", "ReplaceInPath","文件中替换");
+        commandHolder.add("yf", "FindInPath","文件中查找");
 
 
         //意图
