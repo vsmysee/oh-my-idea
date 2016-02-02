@@ -35,6 +35,7 @@ public class ComposeShort {
 
         commandHolder.add("yr", "ReplaceInPath","文件中替换");
         commandHolder.add("yf", "FindInPath","文件中查找");
+        commandHolder.add("yn", "NullCheckInsert","插入null判断");
 
 
         //意图

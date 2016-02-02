@@ -43,6 +43,8 @@
 
         <action id="NotQuickInsert" class="com.codingbaby.ohmyidea.action.NotQuickInsertAction" text="Insert Not Quick"/>
 
+        <action id="NullCheckInsert" class="com.codingbaby.ohmyidea.action.NullCheckInsertAction" text="Insert Null Check "/>
+
         <action id="ShowHelpDialog" class="com.codingbaby.ohmyidea.action.ui.ShowHelpDialogAction" text="Show Help Dialog"/>
 
     </actions>
