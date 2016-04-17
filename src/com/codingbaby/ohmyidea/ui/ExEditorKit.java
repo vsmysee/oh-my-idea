@@ -95,6 +95,7 @@ public class ExEditorKit extends DefaultEditorKit {
             String text = entryPanel.getText();
             entryPanel.cancelExEntry();
 
+            //如果是数字理解为行号
             if (NumberUtils.isNumber(text)) {
                 KeyHandler.toLine = Integer.parseInt(entryPanel.getText());
                 KeyHandler.executeAction("MotionToLine", entryPanel.getEntry().getContext());
@@ -104,6 +105,7 @@ public class ExEditorKit extends DefaultEditorKit {
                 Project project = editor.getProject();
                 final OhPlugin oh = OhPlugin.getInstance();
 
+                //如果是单字符理解单字命令
                 if (text.length() == 1) {
                     CommandNode commandNode = BottomShort.get(KeyStroke.getKeyStroke(text.charAt(0)));
                     if (commandNode != null) {
@@ -112,6 +114,7 @@ public class ExEditorKit extends DefaultEditorKit {
                     }
                 }
 
+                //理解为代码块
                 final String code = OhScript.getMapping(text);
                 if (code != null) {
                     Runnable cmd = new Runnable() {

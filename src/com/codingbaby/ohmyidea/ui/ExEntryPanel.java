@@ -19,7 +19,6 @@ import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 
 
-
 public class ExEntryPanel extends JPanel {
 
     @Nullable
@@ -43,7 +42,6 @@ public class ExEntryPanel extends JPanel {
     private boolean active;
 
     private static ExEntryPanel instance;
-
 
 
     public boolean cancelExEntry() {
@@ -146,7 +144,7 @@ public class ExEntryPanel extends JPanel {
         int height = (int) getPreferredSize().getHeight();
         if (scroll != null) {
             Rectangle bounds = scroll.getBounds();
-            bounds.translate(0, scroll.getHeight() - height);
+            bounds.translate(0, (scroll.getHeight() - height) / 2);
             bounds.height = height;
             Point pos = SwingUtilities.convertPoint(scroll.getParent(), bounds.getLocation(), oldGlass);
             bounds.setLocation(pos);
@@ -188,8 +186,6 @@ public class ExEntryPanel extends JPanel {
         }
         parent = null;
     }
-
-
 
 
 }
