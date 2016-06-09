@@ -36,17 +36,22 @@ public class KeyHandler {
 
         if (oh.commandStatus.isWaiting()) {
 
-            if (KeyStroke.getKeyStroke('i') == key) {
+            if (key.getKeyChar() == ' ') {
                 toInsertMod();
                 return;
             }
 
-            if (KeyStroke.getKeyStroke('v') == key) {
+            if (key.getKeyChar() == 'i') {
+                toInsertMod();
+                return;
+            }
+
+            if (key.getKeyChar() == 'v') {
                 toVisualMod();
                 return;
             }
 
-            if (KeyStroke.getKeyStroke('V') == key) {
+            if (key.getKeyChar() == 'V') {
                 toMoveMod();
                 return;
             }
