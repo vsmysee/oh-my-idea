@@ -47,6 +47,8 @@
 
         <action id="ShowHelpDialog" class="com.codingbaby.ohmyidea.action.ui.ShowHelpDialogAction" text="Show Help Dialog"/>
 
+        <action id="EditCodeTemplate" class="com.codingbaby.ohmyidea.action.CodeTemplateEditAction" text="Edit Code Template"/>
+
     </actions>
 
 

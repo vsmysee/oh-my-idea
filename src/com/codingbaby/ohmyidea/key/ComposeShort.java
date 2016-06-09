@@ -38,6 +38,9 @@ public class ComposeShort {
         commandHolder.add("yn", "NullCheckInsert","插入null判断");
 
 
+        commandHolder.add("ye", "EditCodeTemplate","编辑代码模板");
+
+
         //意图
         commandHolder.add("gi", "ShowIntentionActions","显示意图");
 

@@ -1,5 +1,6 @@
 package com.codingbaby.ohmyidea.script;
 
+import com.intellij.openapi.util.io.FileUtil;
 import org.apache.commons.lang.StringUtils;
 import org.jetbrains.annotations.NotNull;
 
@@ -13,11 +14,10 @@ import java.util.regex.Pattern;
 /**
  * _ls|描述
  * List<String> list = new ArrayList<String>();
- *
- *
+ * <p>
+ * <p>
  * _mso|描述
  * Map<String,Object> map = new HashMap<String,Object>();
- *
  */
 public class OhScript {
 
@@ -42,32 +42,54 @@ public class OhScript {
 
 
     public static void loadScriptFile() {
-        final String homeDirName = System.getProperty("user.home");
-        if (homeDirName != null) {
-            final File file = new File(homeDirName, OH_FILE);
-            if (file.exists()) {
-                parseTokens(file);
 
-                List<CodeKV> codeKV = holder.getCodeKV();
-                for (CodeKV kv : codeKV) {
-                    putKey(kv.key, kv.value);
+        parseTokens(loadContent());
+
+        List<CodeKV> codeKV = holder.getCodeKV();
+        for (CodeKV kv : codeKV) {
+            putKey(kv.key, kv.value);
+        }
+    }
+
+    public static void saveScript(String text) {
+        if (StringUtils.isNotBlank(text)) {
+            final String homeDirName = System.getProperty("user.home");
+            if (homeDirName != null) {
+                final File file = new File(homeDirName, OH_FILE);
+                try {
+                    FileUtil.writeToFile(file, text);
+                    loadScriptFile();
+                } catch (IOException e) {
                 }
             }
         }
     }
 
-    public static Map<String,String> getHelpDesc() {
+    public static String loadContent() {
+        final String homeDirName = System.getProperty("user.home");
+        if (homeDirName != null) {
+            final File file = new File(homeDirName, OH_FILE);
+            if (file.exists()) {
+                try {
+                    return readFile(file);
+                } catch (IOException e) {
+                    return "";
+                }
+            }
+        }
+
+        return "";
+    }
+
+    public static Map<String, String> getHelpDesc() {
         return holder.getDescMap();
     }
 
-    private static void parseTokens(@NotNull File file) {
-        String data = "";
-        try {
-            data = readFile(file);
-        } catch (IOException ignored) {
-            Collections.emptyList();
+    private static void parseTokens(String content) {
+        if (StringUtils.isBlank(content)) {
+            return;
         }
-        String[] lines = EOL_SPLIT_PATTERN.split(data);
+        String[] lines = EOL_SPLIT_PATTERN.split(content);
         holder = new LineHolder(lines);
         holder.buildCodeQuick(holder.next());
     }
@@ -91,10 +113,10 @@ public class OhScript {
             return list;
         }
 
-        public Map<String,String> getDescMap() {
-            Map<String,String> map = new HashMap<String,String>();
-            for (int i =0 ;i<keys.size();i++) {
-                map.put(keys.get(i),descriptions.get(i));
+        public Map<String, String> getDescMap() {
+            Map<String, String> map = new HashMap<String, String>();
+            for (int i = 0; i < keys.size(); i++) {
+                map.put(keys.get(i), descriptions.get(i));
             }
             return map;
         }
@@ -153,9 +175,6 @@ public class OhScript {
         }
     }
 
-    public static void main(String[] args) {
-        OhScript.loadScriptFile();
-    }
 
     @NotNull
     private static String readFile(@NotNull File file) throws IOException {
