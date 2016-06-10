@@ -146,6 +146,8 @@ public class OhScript {
                 }
 
                 values.add(sb.toString());
+            }else {
+                line = next();
             }
 
             if (!done()) {
