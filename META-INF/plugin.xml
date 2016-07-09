@@ -49,6 +49,8 @@
 
         <action id="EditCodeTemplate" class="com.codingbaby.ohmyidea.action.CodeTemplateEditAction" text="Edit Code Template"/>
 
+        <action id="EditorDeleteToFileEnd" class="com.codingbaby.ohmyidea.action.DeleteToFileEndAction" text="Delete To File End"/>
+
     </actions>
 
 
