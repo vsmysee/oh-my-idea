@@ -3,7 +3,7 @@
   <property file="build.properties"/>
 
   <property name="src" value="${basedir}/src"/>
-  <property name="idea.home" value="/Applications/IntelliJ IDEA 15 CE.app/Contents"/>
+  <property name="idea.home" value="/Applications/IntelliJ IDEA CE.app/Contents"/>
   <property environment="env"/>
   <property name="version" value="${version-id}"/>
   <property name="filename" value="ohmyidea-${version}"/>

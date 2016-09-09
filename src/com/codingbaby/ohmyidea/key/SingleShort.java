@@ -90,7 +90,7 @@ public class SingleShort {
         commandHolder.add(",","GotoNextError","后一个错误");
 
 
-        commandHolder.add("c","ActivateChangesToolWindow","打开版本改动");
+        commandHolder.add("c","ActivateVersionControlToolWindow","打开版本改动");
 
         commandHolder.add(":","ShowCommandAction","命令底行开启");
 
