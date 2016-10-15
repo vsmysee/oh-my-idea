@@ -45,6 +45,10 @@ public class OhScript {
 
         parseTokens(loadContent());
 
+        if (holder == null) {
+            return;
+        }
+
         List<CodeKV> codeKV = holder.getCodeKV();
         for (CodeKV kv : codeKV) {
             putKey(kv.key, kv.value);
@@ -146,7 +150,7 @@ public class OhScript {
                 }
 
                 values.add(sb.toString());
-            }else {
+            } else {
                 line = next();
             }
 
