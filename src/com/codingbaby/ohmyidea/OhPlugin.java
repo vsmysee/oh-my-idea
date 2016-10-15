@@ -23,6 +23,9 @@ public class OhPlugin implements ApplicationComponent {
 
     private boolean enabled = true;
 
+    //打开的小窗口特殊处理
+    public boolean openPopWindow = false;
+
     private final Application myApp;
 
     public EditorStatus status = EditorStatus.Command;
@@ -44,7 +47,7 @@ public class OhPlugin implements ApplicationComponent {
             @Override
             public void editorCreated(@NotNull EditorFactoryEvent event) {
                 final Editor editor = event.getEditor();
-                if (OhPlugin.isEnabled() && EditorHelper.isFileEditor(editor)) {
+                if (OhPlugin.isEnabled() && EditorHelper.isFileEditor(editor) && !openPopWindow) {
                     ShortcutKeyAction.getInstance().registerCustomShortcutSet(new CustomShortcutSet(KeyStroke.getKeyStroke(27, 0, false)), editor.getComponent());
                     KeyHandler.toCommandMod();
                 } else {
@@ -81,6 +84,9 @@ public class OhPlugin implements ApplicationComponent {
         return getInstance().enabled;
     }
 
+    public static void setPopWindowOpen(boolean open) {
+        getInstance().openPopWindow = true;
+    }
 
     public static void setEnabled(final boolean enabled) {
         if (!enabled) {
