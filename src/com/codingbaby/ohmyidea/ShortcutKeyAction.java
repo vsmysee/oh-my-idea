@@ -30,6 +30,7 @@ public class ShortcutKeyAction extends AnAction implements DumbAware  {
 
             if (OhPlugin.getInstance().status != EditorStatus.Command) {
                 KeyHandler.toCommandMod();
+                OhPlugin.setPopWindowOpen(false);
             }
 
             //将esc传递到IDE
