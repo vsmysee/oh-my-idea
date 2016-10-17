@@ -73,6 +73,9 @@ public class ComposeShort {
         commandHolder.add("yr", "ReplaceInPath", "文件中替换");
         commandHolder.add("yf", "FindInPath", "文件中查找");
 
+
+        commandHolder.add("yy", "MoveTabRight", "编辑器右移");
+        commandHolder.add("yx", "MoveTabDown", "编辑器下移");
     }
 
 
