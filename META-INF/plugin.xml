@@ -51,6 +51,8 @@
 
         <action id="EditorDeleteToFileEnd" class="com.codingbaby.ohmyidea.action.DeleteToFileEndAction" text="Delete To File End"/>
 
+        <action id="RepeatCurrentAction" class="com.codingbaby.ohmyidea.action.RepeatCurrentAction" text="Repeat Current Action"/>
+
     </actions>
 
 

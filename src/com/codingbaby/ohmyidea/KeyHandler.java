@@ -1,5 +1,6 @@
 package com.codingbaby.ohmyidea;
 
+import com.codingbaby.ohmyidea.action.RepeatCurrentAction;
 import com.codingbaby.ohmyidea.helper.RunnableHelper;
 import com.codingbaby.ohmyidea.key.*;
 import com.intellij.openapi.actionSystem.ActionManager;
@@ -7,6 +8,7 @@ import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.editor.Editor;
+import com.intellij.openapi.editor.actions.EscapeAction;
 import com.intellij.openapi.project.Project;
 import org.jetbrains.annotations.NotNull;
 
@@ -21,6 +23,11 @@ public class KeyHandler {
     public static int toLine;
 
     public static Character toChar;
+
+    private static AnAction currentAction;
+
+    private static DataContext currentDataContext;
+
 
     @NotNull
     public static KeyHandler getInstance() {
@@ -170,7 +177,17 @@ public class KeyHandler {
     }
 
     public static void executeAction(@NotNull AnAction action, @NotNull DataContext context) {
+        if (!(action instanceof EscapeAction) && !(action instanceof RepeatCurrentAction)) {
+            currentAction = action;
+            currentDataContext = context;
+        }
         action.actionPerformed(new AnActionEvent(null, context, "", action.getTemplatePresentation(), ActionManager.getInstance(), 0));
     }
 
+    public static void repeatCurrentAction() {
+        if (currentAction != null && currentDataContext != null) {
+            currentAction.actionPerformed(new AnActionEvent(null, currentDataContext, "", currentAction.getTemplatePresentation(), ActionManager.getInstance(), 0));
+
+        }
+    }
 }
