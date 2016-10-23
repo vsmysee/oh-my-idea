@@ -17,3 +17,5 @@ Oh My Idea是一个IDEA插件，这个取名模仿了Oh My ZSH，用这个插件
 ## 模式种类
 命令,插入,可视
 
+
+![](https://github.com/vsmysee/oh-my-idea/blob/master/ohmyidea.gif?raw=true)
