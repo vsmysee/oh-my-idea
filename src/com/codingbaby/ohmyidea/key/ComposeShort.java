@@ -75,6 +75,7 @@ public class ComposeShort {
 
 
         commandHolder.add("ys", "Switcher", "选择组件");
+        commandHolder.add("yv", "ShowUIToggleActions", "控制UI");
     }
 
 

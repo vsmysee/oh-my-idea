@@ -33,6 +33,7 @@ public class BottomShort {
         commandHolder.add("n", "EditorToggleShowLineNumbers", "显示行号");
 
         commandHolder.add("k", "ShowHelpDialog", "显示帮助");
+        commandHolder.add("K", "ShowHelpDialog", "显示帮助");
 
     }
 

@@ -18,13 +18,6 @@
 
     <actions>
 
-        <action id="PluginToggle" class="com.codingbaby.ohmyidea.PluginToggle" text="Oh My IDEA"
-                description="Toggle the Plugin On/Off">
-            <keyboard-shortcut first-keystroke="control shift o" keymap="$default"/>
-            <add-to-group group-id="ToolsMenu" anchor="last"/>
-        </action>
-
-
         <action id="MotionFirstLine" class="com.codingbaby.ohmyidea.action.MotionGotoLineFirstAction" text="First Line"/>
         <action id="MotionLastLine" class="com.codingbaby.ohmyidea.action.MotionGotoLineLastAction" text="Last Line"/>
         <action id="MotionAndInsert" class="com.codingbaby.ohmyidea.action.MotionAndInsertAction" text="Motion And Insert"/>
@@ -52,6 +45,8 @@
         <action id="EditorDeleteToFileEnd" class="com.codingbaby.ohmyidea.action.DeleteToFileEndAction" text="Delete To File End"/>
 
         <action id="RepeatCurrentAction" class="com.codingbaby.ohmyidea.action.RepeatCurrentAction" text="Repeat Current Action"/>
+
+        <action id="ShowUIToggleActions" class="com.codingbaby.ohmyidea.action.ui.ShowUIToggleActions" text="Control UIToggle Actions"/>
 
     </actions>
 
