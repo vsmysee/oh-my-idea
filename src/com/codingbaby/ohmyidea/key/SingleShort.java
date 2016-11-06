@@ -67,6 +67,7 @@ public class SingleShort {
         commandHolder.add("E","EditorUnSelectWord","取消选择单词");
 
         commandHolder.add("q","FindUsages","查找使用");
+        commandHolder.add("Q","ShowPopupMenu","模拟鼠标右键");
 
         commandHolder.add("/","Find","查找");
         commandHolder.add("?","Replace","替换");

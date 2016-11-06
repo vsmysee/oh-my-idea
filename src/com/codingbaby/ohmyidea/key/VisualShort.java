@@ -45,6 +45,13 @@ public class VisualShort {
 
         commandHolder.add("f", "RecentFiles", "最近文件");
 
+
+        commandHolder.add("r", "RunClass", "运行当前类");
+        commandHolder.add("b", "DebugClass", "调试当前类");
+        commandHolder.add("t", "ToggleTemporaryLineBreakpoint", "临时断点");
+        commandHolder.add("g", "StepOver", "行跳过");
+        commandHolder.add("i", "StepOver", "行进入");
+
     }
 
 
