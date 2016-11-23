@@ -11,6 +11,14 @@ Oh My Idea是一个IDEA插件，这个取名模仿了Oh My ZSH，用这个插件
 ~~~ java
 'h' 左移动
 'H' 移动到行首
+'l' 右移动
+'L' 移动到行尾
+'t' 'T' Tab切换
+'gh' 隐藏Tool
+'yb' 编译
+',' 跳转到错误
+'vc' 运行当前类
+'vb' 调试当前类
 ~~~
 
 
@@ -19,3 +27,7 @@ Oh My Idea是一个IDEA插件，这个取名模仿了Oh My ZSH，用这个插件
 
 
 ![](https://github.com/vsmysee/oh-my-idea/blob/master/ohmyidea.gif?raw=true)
+
+
+## 编译
+./gradlew buildPlugin
