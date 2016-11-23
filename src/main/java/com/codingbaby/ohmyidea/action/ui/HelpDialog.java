@@ -1,10 +1,10 @@
 package com.codingbaby.ohmyidea.action.ui;
 
-import com.codingbaby.ohmyidea.key.*;
-import com.codingbaby.ohmyidea.script.OhScript;
 import com.intellij.openapi.ui.DialogWrapper;
 import com.intellij.openapi.wm.ex.WindowManagerEx;
 import com.intellij.ui.components.JBTabbedPane;
+import com.codingbaby.ohmyidea.key.*;
+import com.codingbaby.ohmyidea.script.OhScript;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;

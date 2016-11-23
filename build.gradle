@@ -1,0 +1,35 @@
+buildscript {
+
+    repositories {
+        mavenCentral()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+}
+
+plugins {
+    id "org.jetbrains.intellij" version "0.1.10"
+}
+
+apply plugin: 'org.jetbrains.intellij'
+apply plugin: 'java'
+
+sourceCompatibility = 1.6
+targetCompatibility = 1.6
+
+tasks.withType(JavaCompile) { options.encoding = 'UTF-8' }
+
+intellij {
+    version '162.1121.32'
+    pluginName 'Oh My IDEA'
+    updateSinceUntilBuild false
+
+}
+
+group 'com.codingbaby'
+version '1.0.0'
+
+repositories {
+    mavenCentral()
+}

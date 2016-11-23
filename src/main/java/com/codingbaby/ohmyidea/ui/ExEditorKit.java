@@ -1,14 +1,14 @@
 
 package com.codingbaby.ohmyidea.ui;
 
+import com.intellij.openapi.editor.Editor;
+import com.intellij.openapi.project.Project;
 import com.codingbaby.ohmyidea.KeyHandler;
 import com.codingbaby.ohmyidea.OhPlugin;
 import com.codingbaby.ohmyidea.helper.RunnableHelper;
 import com.codingbaby.ohmyidea.key.BottomShort;
 import com.codingbaby.ohmyidea.key.CommandNode;
 import com.codingbaby.ohmyidea.script.OhScript;
-import com.intellij.openapi.editor.Editor;
-import com.intellij.openapi.project.Project;
 import org.apache.commons.lang.math.NumberUtils;
 import org.jetbrains.annotations.NotNull;
 

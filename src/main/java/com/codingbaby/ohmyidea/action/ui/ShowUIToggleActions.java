@@ -1,9 +1,9 @@
 package com.codingbaby.ohmyidea.action.ui;
 
-import com.codingbaby.ohmyidea.KeyHandler;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.project.DumbAware;
+import com.codingbaby.ohmyidea.KeyHandler;
 
 /**
  * Created by baby on 16/11/6.

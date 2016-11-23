@@ -1,8 +1,5 @@
 package com.codingbaby.ohmyidea;
 
-import com.codingbaby.ohmyidea.action.RepeatCurrentAction;
-import com.codingbaby.ohmyidea.helper.RunnableHelper;
-import com.codingbaby.ohmyidea.key.*;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
@@ -10,6 +7,9 @@ import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.editor.actions.EscapeAction;
 import com.intellij.openapi.project.Project;
+import com.codingbaby.ohmyidea.action.RepeatCurrentAction;
+import com.codingbaby.ohmyidea.helper.RunnableHelper;
+import com.codingbaby.ohmyidea.key.*;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
