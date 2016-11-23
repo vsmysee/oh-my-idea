@@ -44,6 +44,7 @@ public class VisualShort {
         commandHolder.add(".", "RepeatCurrentAction", "重复上一个动作");
 
         commandHolder.add("f", "AceJumpAction", "ACE模式");
+        commandHolder.add("a", "AceJumpLineAction", "ACE快速模式");
 
 
         commandHolder.add("c", "RunClass", "运行当前类");
