@@ -2,18 +2,12 @@ package com.codingbaby.ohmyidea.key;
 
 import javax.swing.*;
 
-/**
- *
- *
- */
 public class SingleShort {
-
 
     public static CommandHolder commandHolder  = new CommandHolder();
 
     static {
 
- 
         commandHolder.add("h","EditorLeft","左移动");
         commandHolder.add("H","EditorLineStart","左开始");
 

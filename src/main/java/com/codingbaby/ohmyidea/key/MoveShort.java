@@ -2,10 +2,6 @@ package com.codingbaby.ohmyidea.key;
 
 import javax.swing.*;
 
-/**
- *
- *
- */
 public class MoveShort {
 
     public static CommandHolder commandHolder  = new CommandHolder();

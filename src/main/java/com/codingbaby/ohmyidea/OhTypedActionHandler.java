@@ -5,7 +5,7 @@ import com.intellij.codeInsight.lookup.LookupManager;
 import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.editor.actionSystem.TypedActionHandler;
-import org.jetbrains.annotations.NotNull;
+
 
 import javax.swing.*;
 
@@ -17,7 +17,7 @@ public class OhTypedActionHandler implements TypedActionHandler {
 
     private final TypedActionHandler origHandler;
 
-    @NotNull
+
     private final KeyHandler handler;
 
     public OhTypedActionHandler(TypedActionHandler origHandler) {
@@ -27,7 +27,7 @@ public class OhTypedActionHandler implements TypedActionHandler {
 
 
     @Override
-    public void execute(@NotNull final Editor editor, final char charTyped, @NotNull final DataContext dataContext) {
+    public void execute( final Editor editor, final char charTyped,  final DataContext dataContext) {
 
         if (isEnabled(editor) && (OhPlugin.getInstance().status != EditorStatus.Insert)) {
 
@@ -46,7 +46,7 @@ public class OhTypedActionHandler implements TypedActionHandler {
         }
     }
 
-    private boolean isEnabled(@NotNull Editor editor) {
+    private boolean isEnabled( Editor editor) {
         if (OhPlugin.isEnabled()) {
             final Lookup lookup = LookupManager.getActiveLookup(editor);
             return lookup == null || !lookup.isFocused();

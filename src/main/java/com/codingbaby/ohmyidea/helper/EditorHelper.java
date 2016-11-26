@@ -6,28 +6,24 @@ import com.intellij.openapi.editor.VisualPosition;
 import com.intellij.openapi.fileEditor.FileDocumentManager;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.testFramework.LightVirtualFile;
-import org.jetbrains.annotations.NotNull;
+
 import org.jetbrains.annotations.Nullable;
 
 import java.awt.*;
 
-/**
- *
- *
- */
 public class EditorHelper {
 
     @Nullable
-    public static VirtualFile getVirtualFile(@NotNull Editor editor) {
+    public static VirtualFile getVirtualFile( Editor editor) {
         return FileDocumentManager.getInstance().getFile(editor.getDocument());
     }
 
-    public static boolean isFileEditor(@NotNull Editor editor) {
+    public static boolean isFileEditor( Editor editor) {
         final VirtualFile virtualFile = getVirtualFile(editor);
         return virtualFile != null && !(virtualFile instanceof LightVirtualFile);
     }
 
-    public static int getLineStartOffset(@NotNull final Editor editor, final int line) {
+    public static int getLineStartOffset( final Editor editor, final int line) {
         if (line < 0) {
             return 0;
         } else if (line >= getLineCount(editor)) {
@@ -37,7 +33,7 @@ public class EditorHelper {
         }
     }
 
-    public static int getLineEndOffset(@NotNull final Editor editor, final int line) {
+    public static int getLineEndOffset( final Editor editor, final int line) {
         if (line < 0) {
             return 0;
         } else if (line >= getLineCount(editor)) {
@@ -48,12 +44,12 @@ public class EditorHelper {
     }
 
 
-    public static int getVisualLineAtTopOfScreen(@NotNull final Editor editor) {
+    public static int getVisualLineAtTopOfScreen( final Editor editor) {
         int lh = editor.getLineHeight();
         return (editor.getScrollingModel().getVerticalScrollOffset() + lh - 1) / lh;
     }
 
-    public static int getScreenHeight(@NotNull final Editor editor) {
+    public static int getScreenHeight( final Editor editor) {
         int lh = editor.getLineHeight();
         int height = editor.getScrollingModel().getVisibleArea().y +
                 editor.getScrollingModel().getVisibleArea().height -
@@ -61,33 +57,33 @@ public class EditorHelper {
         return height / lh;
     }
 
-    public static int getVisualColumnAtLeftOfScreen(@NotNull final Editor editor) {
+    public static int getVisualColumnAtLeftOfScreen( final Editor editor) {
         int cw = getColumnWidth(editor);
         if (cw == 0) return 0;
         return (editor.getScrollingModel().getHorizontalScrollOffset() + cw - 1) / cw;
     }
 
 
-    public static int getScreenWidth(@NotNull final Editor editor) {
+    public static int getScreenWidth( final Editor editor) {
         Rectangle rect = editor.getScrollingModel().getVisibleArea();
         Point pt = new Point(rect.width, 0);
         VisualPosition vp = editor.xyToVisualPosition(pt);
         return vp.column;
     }
 
-    public static void scrollCaretIntoView(@NotNull Editor editor) {
+    public static void scrollCaretIntoView( Editor editor) {
 
         moveToTop(editor);
         moveToLeft(editor);
 
     }
 
-    public static void scrollLineToScreenLine(@NotNull Editor editor) {
+    public static void scrollLineToScreenLine( Editor editor) {
         int visualLine = editor.getCaretModel().getVisualPosition().line ;
         scrollLineToTopOfScreen(editor, EditorHelper.normalizeVisualLine(editor, visualLine));
     }
 
-    public static int normalizeVisualLine(@NotNull final Editor editor, final int line) {
+    public static int normalizeVisualLine( final Editor editor, final int line) {
         return Math.max(0, Math.min(line, getVisualLineCount(editor) - 1));
     }
 
@@ -184,11 +180,11 @@ public class EditorHelper {
         }
     }
 
-    private static void scrollColumnToLeftOfScreen(@NotNull Editor editor, int column) {
+    private static void scrollColumnToLeftOfScreen( Editor editor, int column) {
         editor.getScrollingModel().scrollHorizontally(column * EditorHelper.getColumnWidth(editor));
     }
 
-    public static int getColumnWidth(@NotNull final Editor editor) {
+    public static int getColumnWidth( final Editor editor) {
         Rectangle rect = editor.getScrollingModel().getVisibleArea();
         if (rect.width == 0) return 0;
         Point pt = new Point(rect.width, 0);
@@ -198,7 +194,7 @@ public class EditorHelper {
         return rect.width / vp.column;
     }
 
-    private static boolean scrollLineToTopOfScreen(@NotNull Editor editor, int line) {
+    private static boolean scrollLineToTopOfScreen( Editor editor, int line) {
         int pos = line * editor.getLineHeight();
         int verticalPos = editor.getScrollingModel().getVerticalScrollOffset();
         editor.getScrollingModel().scrollVertically(pos);
@@ -206,7 +202,7 @@ public class EditorHelper {
         return verticalPos != editor.getScrollingModel().getVerticalScrollOffset();
     }
 
-    public static int getLineCount(@NotNull final Editor editor) {
+    public static int getLineCount( final Editor editor) {
         int len = editor.getDocument().getLineCount();
         if (editor.getDocument().getTextLength() > 0 &&
                 editor.getDocument().getCharsSequence().charAt(editor.getDocument().getTextLength() - 1) == '\n') {
@@ -216,17 +212,17 @@ public class EditorHelper {
         return len;
     }
 
-    public static int getVisualLineCount(@NotNull final Editor editor) {
+    public static int getVisualLineCount( final Editor editor) {
         int count = getLineCount(editor);
         return count == 0 ? 0 : logicalLineToVisualLine(editor, count - 1) + 1;
     }
 
-    public static int logicalLineToVisualLine(@NotNull final Editor editor, final int line) {
+    public static int logicalLineToVisualLine( final Editor editor, final int line) {
         return editor.logicalToVisualPosition(new LogicalPosition(line, 0)).line;
     }
 
 
-    public static int findNextCharacterOnLine(@NotNull Editor editor, char ch) {
+    public static int findNextCharacterOnLine( Editor editor, char ch) {
         int line = editor.getCaretModel().getLogicalPosition().line;
         int start = EditorHelper.getLineStartOffset(editor, line);
         int end = EditorHelper.getLineEndOffset(editor, line);

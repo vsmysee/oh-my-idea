@@ -10,12 +10,11 @@ import com.intellij.openapi.project.Project;
 import com.codingbaby.ohmyidea.action.RepeatCurrentAction;
 import com.codingbaby.ohmyidea.helper.RunnableHelper;
 import com.codingbaby.ohmyidea.key.*;
-import org.jetbrains.annotations.NotNull;
+
 
 import javax.swing.*;
 
-/**
- */
+
 public class KeyHandler {
 
     private static KeyHandler instance;
@@ -29,7 +28,6 @@ public class KeyHandler {
     private static DataContext currentDataContext;
 
 
-    @NotNull
     public static KeyHandler getInstance() {
         if (instance == null) {
             instance = new KeyHandler();
@@ -37,7 +35,7 @@ public class KeyHandler {
         return instance;
     }
 
-    public void handleKey(@NotNull final Editor editor, @NotNull KeyStroke key, @NotNull final DataContext context) {
+    public void handleKey(final Editor editor, KeyStroke key, final DataContext context) {
 
         final OhPlugin oh = OhPlugin.getInstance();
 
@@ -168,7 +166,7 @@ public class KeyHandler {
         oh.commandStatus.reset();
     }
 
-    public static void executeAction(@NotNull String name, @NotNull DataContext context) {
+    public static void executeAction(String name, DataContext context) {
         ActionManager aMgr = ActionManager.getInstance();
         AnAction action = aMgr.getAction(name);
         if (action != null) {
@@ -176,7 +174,7 @@ public class KeyHandler {
         }
     }
 
-    public static void executeAction(@NotNull AnAction action, @NotNull DataContext context) {
+    public static void executeAction(AnAction action, DataContext context) {
         if (!(action instanceof EscapeAction) && !(action instanceof RepeatCurrentAction)) {
             currentAction = action;
             currentDataContext = context;

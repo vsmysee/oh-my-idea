@@ -13,7 +13,7 @@ import com.intellij.openapi.editor.event.EditorFactoryAdapter;
 import com.intellij.openapi.editor.event.EditorFactoryEvent;
 import com.codingbaby.ohmyidea.helper.EditorHelper;
 import com.codingbaby.ohmyidea.script.OhScript;
-import org.jetbrains.annotations.NotNull;
+
 
 import javax.swing.*;
 
@@ -45,7 +45,7 @@ public class OhPlugin implements ApplicationComponent {
 
         EditorFactory.getInstance().addEditorFactoryListener(new EditorFactoryAdapter() {
             @Override
-            public void editorCreated(@NotNull EditorFactoryEvent event) {
+            public void editorCreated( EditorFactoryEvent event) {
                 final Editor editor = event.getEditor();
                 ShortcutKeyAction.getInstance().registerCustomShortcutSet(new CustomShortcutSet(KeyStroke.getKeyStroke(27, 0, false)), editor.getComponent());
                 if (OhPlugin.isEnabled() && EditorHelper.isFileEditor(editor) && !openPopWindow) {
@@ -57,7 +57,7 @@ public class OhPlugin implements ApplicationComponent {
             }
 
             @Override
-            public void editorReleased(@NotNull EditorFactoryEvent event) {
+            public void editorReleased( EditorFactoryEvent event) {
             }
         }, myApp);
 
@@ -68,14 +68,14 @@ public class OhPlugin implements ApplicationComponent {
     public void disposeComponent() {
     }
 
-    @NotNull
+
     @Override
     public String getComponentName() {
         return COMPONENT_NAME;
     }
 
 
-    @NotNull
+
     public static OhPlugin getInstance() {
         return (OhPlugin) ApplicationManager.getApplication().getComponent(COMPONENT_NAME);
     }
@@ -88,27 +88,6 @@ public class OhPlugin implements ApplicationComponent {
         getInstance().openPopWindow = true;
     }
 
-    public static void setEnabled(final boolean enabled) {
-        if (!enabled) {
-            getInstance().turnOffPlugin();
-        }
-
-        getInstance().enabled = enabled;
-
-        if (enabled) {
-            getInstance().turnOnPlugin();
-        }
-    }
-
-    private void turnOnPlugin() {
-        status = EditorStatus.Command;
-        setCursors(true);
-    }
-
-    private void turnOffPlugin() {
-        setCursors(false);
-        status = EditorStatus.Insert;
-    }
 
 
     public void setCursors(boolean isBlock) {

@@ -3,10 +3,6 @@ package com.codingbaby.ohmyidea.key;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.AnAction;
 
-/**
- *
- *
- */
 public class CommandNode {
 
     protected final AnAction action;

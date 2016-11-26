@@ -8,7 +8,7 @@ import com.intellij.openapi.ui.DialogWrapper;
 import com.intellij.ui.ScrollPaneFactory;
 import com.intellij.ui.components.JBLabel;
 import com.codingbaby.ohmyidea.script.OhScript;
-import org.jetbrains.annotations.NotNull;
+
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
@@ -31,7 +31,7 @@ public class CodeTemplateEditAction extends DumbAwareAction {
 
     private static class EditDialog extends DialogWrapper {
 
-        @NotNull
+
         private final JTextArea myTextArea;
 
         protected EditDialog(@Nullable Project project, String text) {

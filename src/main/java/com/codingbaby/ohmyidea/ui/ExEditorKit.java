@@ -10,7 +10,7 @@ import com.codingbaby.ohmyidea.key.BottomShort;
 import com.codingbaby.ohmyidea.key.CommandNode;
 import com.codingbaby.ohmyidea.script.OhScript;
 import org.apache.commons.lang.math.NumberUtils;
-import org.jetbrains.annotations.NotNull;
+
 
 import javax.swing.*;
 import javax.swing.text.*;
@@ -37,7 +37,7 @@ public class ExEditorKit extends DefaultEditorKit {
      *
      * @return the type
      */
-    @NotNull
+
     public String getContentType() {
         return "text/ohmyidea";
     }
@@ -66,7 +66,7 @@ public class ExEditorKit extends DefaultEditorKit {
     public static final String DeleteFromCursor = "delete-from-cursor";
 
 
-    @NotNull
+
     protected final Action[] exActions = new Action[]{
 
             new ExEditorKit.CancelEntryAction(),

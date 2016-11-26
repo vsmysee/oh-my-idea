@@ -1,7 +1,7 @@
 
 package com.codingbaby.ohmyidea.ui;
 
-import org.jetbrains.annotations.NotNull;
+
 
 import javax.swing.*;
 import javax.swing.text.JTextComponent.KeyBinding;
@@ -12,7 +12,7 @@ import java.awt.event.KeyEvent;
  */
 public class ExKeyBindings {
 
-  @NotNull
+
   public static KeyBinding[] getBindings() {
     return bindings;
   }

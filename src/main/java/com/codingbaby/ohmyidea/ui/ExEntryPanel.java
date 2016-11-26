@@ -9,7 +9,7 @@ import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.editor.colors.EditorColorsScheme;
-import org.jetbrains.annotations.NotNull;
+
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
@@ -24,10 +24,10 @@ public class ExEntryPanel extends JPanel {
     @Nullable
     private JComponent parent;
 
-    @NotNull
+
     private final JLabel label;
 
-    @NotNull
+
     private final ExTextField entry;
 
     private JComponent oldGlass;
@@ -36,7 +36,7 @@ public class ExEntryPanel extends JPanel {
 
     private boolean wasOpaque;
 
-    @NotNull
+
     private final ComponentAdapter adapter;
 
     private boolean active;
@@ -113,7 +113,7 @@ public class ExEntryPanel extends JPanel {
      * @param initText The initial text for the entry
      * @param count    A holder for the ex entry count
      */
-    public void activate(@NotNull Editor editor, DataContext context, @NotNull String label, String initText, int count) {
+    public void activate( Editor editor, DataContext context,  String label, String initText, int count) {
         entry.setEditor(editor, context);
         this.label.setText(label);
         setFontForElements();
@@ -162,7 +162,7 @@ public class ExEntryPanel extends JPanel {
         return entry.getText();
     }
 
-    @NotNull
+
     public ExTextField getEntry() {
         return entry;
     }

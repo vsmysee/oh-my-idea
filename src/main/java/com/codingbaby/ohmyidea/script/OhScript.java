@@ -2,7 +2,7 @@ package com.codingbaby.ohmyidea.script;
 
 import com.intellij.openapi.util.io.FileUtil;
 import org.apache.commons.lang.StringUtils;
-import org.jetbrains.annotations.NotNull;
+
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -185,8 +185,8 @@ public class OhScript {
     }
 
 
-    @NotNull
-    private static String readFile(@NotNull File file) throws IOException {
+
+    private static String readFile( File file) throws IOException {
         final BufferedReader reader = new BufferedReader(new FileReader(file));
         final StringBuilder builder = new StringBuilder();
         final char[] buffer = new char[BUFSIZE];

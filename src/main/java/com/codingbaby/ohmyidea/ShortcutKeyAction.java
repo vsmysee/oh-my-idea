@@ -6,7 +6,7 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.project.DumbAware;
-import org.jetbrains.annotations.NotNull;
+
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
@@ -44,7 +44,7 @@ public class ShortcutKeyAction extends AnAction implements DumbAware  {
 
 
     @Override
-    public void update(@NotNull AnActionEvent e) {
+    public void update( AnActionEvent e) {
         final Editor editor =  e.getData(PlatformDataKeys.EDITOR);
         if(editor == null){
             e.getPresentation().setEnabled(false);
@@ -60,7 +60,7 @@ public class ShortcutKeyAction extends AnAction implements DumbAware  {
     }
 
     @Nullable
-    private KeyStroke getKeyStroke(@NotNull AnActionEvent e) {
+    private KeyStroke getKeyStroke( AnActionEvent e) {
         final InputEvent inputEvent = e.getInputEvent();
         if (inputEvent instanceof KeyEvent) {
             final KeyEvent keyEvent = (KeyEvent)inputEvent;

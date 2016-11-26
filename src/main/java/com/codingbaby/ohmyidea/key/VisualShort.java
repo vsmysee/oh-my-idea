@@ -2,10 +2,6 @@ package com.codingbaby.ohmyidea.key;
 
 import javax.swing.*;
 
-/**
- *
- *
- */
 
 public class VisualShort {
 
@@ -38,7 +34,7 @@ public class VisualShort {
         commandHolder.add(">", "$Copy", "复制行");
         commandHolder.add("?", "Replace", "替换");
 
-        commandHolder.add("y", "MoveTabRight", "编辑器右移");
+        commandHolder.add("n", "MoveTabRight", "编辑器右移");
         commandHolder.add("d", "MoveTabDown", "编辑器下移");
 
         commandHolder.add(".", "RepeatCurrentAction", "重复上一个动作");

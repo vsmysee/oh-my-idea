@@ -9,10 +9,6 @@ import com.codingbaby.ohmyidea.KeyHandler;
 import com.codingbaby.ohmyidea.helper.EditorHelper;
 import org.jetbrains.annotations.Nullable;
 
-/**
- *
- *
- */
 public class MotionToLineAction extends EditorAction {
 
     public MotionToLineAction() {

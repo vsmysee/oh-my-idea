@@ -3,10 +3,6 @@ package com.codingbaby.ohmyidea;
 import javax.swing.*;
 import java.util.regex.Pattern;
 
-/**
- *
- *
- */
 public class CommandStatus {
 
     public static final String FORWARD_KEY = ";";
@@ -49,9 +45,7 @@ public class CommandStatus {
             String countString = sb.substring(0,sb.length() - 1);
             int count = Integer.parseInt(countString);
             char key = sb.charAt(sb.length()-1);
-            NumberAction numberAction = new NumberAction();
-            numberAction.setCount(count);
-            numberAction.setKey(key);
+            NumberAction numberAction = new NumberAction(count,key);
             return numberAction;
         }
         return null;
