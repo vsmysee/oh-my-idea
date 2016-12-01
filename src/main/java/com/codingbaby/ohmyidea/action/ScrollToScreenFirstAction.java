@@ -6,18 +6,14 @@ import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.editor.actionSystem.EditorAction;
 import com.intellij.openapi.editor.actionSystem.EditorActionHandler;
 import com.codingbaby.ohmyidea.helper.EditorHelper;
-import org.jetbrains.annotations.Nullable;
 
-/**
- *
- *
- */
+
 public class ScrollToScreenFirstAction extends EditorAction {
 
     public ScrollToScreenFirstAction(){
         super(new EditorActionHandler() {
             @Override
-            protected void doExecute(Editor editor, @Nullable Caret caret, DataContext dataContext) {
+            protected void doExecute(Editor editor,  Caret caret, DataContext dataContext) {
                 EditorHelper.scrollLineToScreenLine(editor);
             }
         });

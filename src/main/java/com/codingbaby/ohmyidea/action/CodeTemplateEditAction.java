@@ -9,7 +9,7 @@ import com.intellij.ui.ScrollPaneFactory;
 import com.intellij.ui.components.JBLabel;
 import com.codingbaby.ohmyidea.script.OhScript;
 
-import org.jetbrains.annotations.Nullable;
+
 
 import javax.swing.*;
 
@@ -34,7 +34,7 @@ public class CodeTemplateEditAction extends DumbAwareAction {
 
         private final JTextArea myTextArea;
 
-        protected EditDialog(@Nullable Project project, String text) {
+        protected EditDialog( Project project, String text) {
             super(project, false);
             myTextArea = new JTextArea(30, 100);
             myTextArea.setText(text);
@@ -42,19 +42,19 @@ public class CodeTemplateEditAction extends DumbAwareAction {
             init();
         }
 
-        @Nullable
+
         @Override
         protected JComponent createNorthPanel() {
             return new JBLabel("");
         }
 
-        @Nullable
+
         @Override
         protected JComponent createCenterPanel() {
             return ScrollPaneFactory.createScrollPane(myTextArea);
         }
 
-        @Nullable
+
         @Override
         public JComponent getPreferredFocusedComponent() {
             return myTextArea;

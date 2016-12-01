@@ -6,12 +6,7 @@ import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.editor.actionSystem.EditorAction;
 import com.intellij.openapi.editor.actionSystem.EditorActionHandler;
 import com.codingbaby.ohmyidea.KeyHandler;
-import org.jetbrains.annotations.Nullable;
 
-/**
- *
- *
- */
 
 public class RepeatCurrentAction extends EditorAction {
 
@@ -19,7 +14,7 @@ public class RepeatCurrentAction extends EditorAction {
 
         super(new EditorActionHandler() {
             @Override
-            protected void doExecute(Editor editor, @Nullable Caret caret, DataContext dataContext) {
+            protected void doExecute(Editor editor,  Caret caret, DataContext dataContext) {
                 KeyHandler.repeatCurrentAction();
             }
 

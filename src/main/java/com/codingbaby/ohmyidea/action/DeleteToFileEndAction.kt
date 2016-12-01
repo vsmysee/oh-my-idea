@@ -6,7 +6,7 @@ import com.intellij.openapi.editor.Editor
 import com.intellij.openapi.editor.actionSystem.EditorAction
 import com.intellij.openapi.editor.actionSystem.EditorActionHandler
 
-open class DeleteToFileEndAction : EditorAction {
+class DeleteToFileEndAction : EditorAction {
 
     constructor() : super(object : EditorActionHandler() {
         override fun doExecute(editor: Editor, caret: Caret?, dataContext: DataContext) {

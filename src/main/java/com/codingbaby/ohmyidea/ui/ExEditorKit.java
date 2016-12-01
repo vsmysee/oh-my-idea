@@ -16,9 +16,6 @@ import javax.swing.*;
 import javax.swing.text.*;
 import java.awt.event.ActionEvent;
 
-/**
- *
- */
 public class ExEditorKit extends DefaultEditorKit {
 
     private static ExEditorKit instance;

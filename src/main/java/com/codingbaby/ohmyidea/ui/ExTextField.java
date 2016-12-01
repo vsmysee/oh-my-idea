@@ -5,7 +5,7 @@ import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.editor.colors.EditorFontType;
-import org.jetbrains.annotations.Nullable;
+
 
 import javax.swing.*;
 import javax.swing.text.Keymap;
@@ -24,13 +24,9 @@ public class ExTextField extends JTextField {
 
     private DataContext context;
 
-    @Nullable
     private Action currentAction;
 
 
-
-    /**
-     */
     public ExTextField() {
         Font font = EditorColorsManager.getInstance().getGlobalScheme().getFont(EditorFontType.PLAIN);
         setFont(font);

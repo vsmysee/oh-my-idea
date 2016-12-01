@@ -5,7 +5,7 @@ import com.intellij.openapi.wm.ex.WindowManagerEx;
 import com.intellij.ui.components.JBTabbedPane;
 import com.codingbaby.ohmyidea.key.*;
 import com.codingbaby.ohmyidea.script.OhScript;
-import org.jetbrains.annotations.Nullable;
+
 
 import javax.swing.*;
 
@@ -25,7 +25,7 @@ public class HelpDialog extends DialogWrapper {
     }
 
 
-    @Nullable
+
     @Override
     protected JComponent createCenterPanel() {
         JTabbedPane tabs = new JBTabbedPane();

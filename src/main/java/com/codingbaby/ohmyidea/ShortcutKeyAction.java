@@ -7,7 +7,7 @@ import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.project.DumbAware;
 
-import org.jetbrains.annotations.Nullable;
+
 
 import javax.swing.*;
 import java.awt.event.InputEvent;
@@ -59,7 +59,7 @@ public class ShortcutKeyAction extends AnAction implements DumbAware  {
         return ActionManager.getInstance().getAction(ACTION_ID);
     }
 
-    @Nullable
+
     private KeyStroke getKeyStroke( AnActionEvent e) {
         final InputEvent inputEvent = e.getInputEvent();
         if (inputEvent instanceof KeyEvent) {

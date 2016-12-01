@@ -7,12 +7,7 @@ import com.intellij.openapi.editor.actionSystem.EditorAction;
 import com.intellij.openapi.editor.actionSystem.EditorActionHandler;
 import com.intellij.openapi.ui.Messages;
 import com.codingbaby.ohmyidea.script.OhScript;
-import org.jetbrains.annotations.Nullable;
 
-/**
- *
- *
- */
 
 public class LoadScriptAction extends EditorAction {
 
@@ -20,7 +15,7 @@ public class LoadScriptAction extends EditorAction {
 
         super(new EditorActionHandler() {
             @Override
-            protected void doExecute(Editor editor, @Nullable Caret caret, DataContext dataContext) {
+            protected void doExecute(Editor editor,  Caret caret, DataContext dataContext) {
                 if (Messages.showYesNoDialog("是否重新加载代码模板?", "通知",
                         Messages.getQuestionIcon()) == Messages.YES) {
 

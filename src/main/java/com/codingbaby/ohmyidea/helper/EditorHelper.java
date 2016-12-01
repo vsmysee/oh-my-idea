@@ -7,13 +7,13 @@ import com.intellij.openapi.fileEditor.FileDocumentManager;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.testFramework.LightVirtualFile;
 
-import org.jetbrains.annotations.Nullable;
+
 
 import java.awt.*;
 
 public class EditorHelper {
 
-    @Nullable
+
     public static VirtualFile getVirtualFile( Editor editor) {
         return FileDocumentManager.getInstance().getFile(editor.getDocument());
     }

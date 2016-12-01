@@ -1,14 +1,13 @@
 package com.codingbaby.ohmyidea.action.ui;
 
-import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.project.DumbAware;
+import com.intellij.openapi.project.DumbAwareAction;
 
 /**
  * Created by baby on 15/3/7.
  */
 
-public class ShowHelpDialogAction extends AnAction implements DumbAware {
+public class ShowHelpDialogAction extends DumbAwareAction {
 
     private static HelpDialog helpDialog;
 

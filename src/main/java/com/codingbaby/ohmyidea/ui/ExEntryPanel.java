@@ -10,8 +10,6 @@ import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.editor.colors.EditorColorsScheme;
 
-import org.jetbrains.annotations.Nullable;
-
 import javax.swing.*;
 import javax.swing.text.PlainDocument;
 import java.awt.*;
@@ -21,7 +19,7 @@ import java.awt.event.ComponentEvent;
 
 public class ExEntryPanel extends JPanel {
 
-    @Nullable
+
     private JComponent parent;
 
 

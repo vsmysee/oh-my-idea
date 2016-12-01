@@ -4,15 +4,15 @@ import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.command.CommandProcessor;
 import com.intellij.openapi.project.Project;
 
-import org.jetbrains.annotations.Nullable;
+
 
 public class RunnableHelper {
 
-    public static void runReadCommand(@Nullable Project project,  Runnable cmd, @Nullable String name, @Nullable Object groupId) {
+    public static void runReadCommand( Project project,  Runnable cmd,  String name,  Object groupId) {
         CommandProcessor.getInstance().executeCommand(project, new ReadAction(cmd), name, groupId);
     }
 
-    public static void runWriteCommand(@Nullable Project project,  Runnable cmd, @Nullable String name, @Nullable Object groupId) {
+    public static void runWriteCommand( Project project,  Runnable cmd,  String name,  Object groupId) {
         CommandProcessor.getInstance().executeCommand(project, new WriteAction(cmd), name, groupId);
     }
 
