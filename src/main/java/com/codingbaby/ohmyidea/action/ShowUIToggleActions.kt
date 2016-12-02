@@ -1,4 +1,4 @@
-package com.codingbaby.ohmyidea.action.ui
+package com.codingbaby.ohmyidea.action
 
 import com.codingbaby.ohmyidea.KeyHandler
 import com.intellij.openapi.actionSystem.AnActionEvent

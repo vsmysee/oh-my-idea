@@ -100,11 +100,11 @@ public class ExEditorKit extends DefaultEditorKit {
 
                 final Editor editor = entryPanel.getEntry().getEditor();
                 Project project = editor.getProject();
-                final OhPlugin oh = OhPlugin.getInstance();
+                final OhPlugin oh = OhPlugin.Companion.getInstance();
 
                 //如果是单字符理解单字命令
                 if (text.length() == 1) {
-                    CommandNode commandNode = BottomShort.get(KeyStroke.getKeyStroke(text.charAt(0)));
+                    CommandNode commandNode = BottomShort.INSTANCE.get(KeyStroke.getKeyStroke(text.charAt(0)));
                     if (commandNode != null) {
                         KeyHandler.executeAction(commandNode.getAction(),entryPanel.getEntry().getContext());
                         return;
@@ -112,17 +112,17 @@ public class ExEditorKit extends DefaultEditorKit {
                 }
 
                 //理解为代码块
-                final String code = OhScript.getMapping(text);
+                final String code = OhScript.INSTANCE.getMapping(text);
                 if (code != null) {
                     Runnable cmd = new Runnable() {
                         @Override
                         public void run() {
                             int oldOffset = editor.getCaretModel().getOffset();
                             editor.getDocument().insertString(oldOffset, code);
-                            oh.commandStatus.reset();
+                            oh.getCommandStatus().reset();
                         }
                     };
-                    RunnableHelper.runWriteCommand(project, cmd, "insertCode", cmd);
+                    RunnableHelper.INSTANCE.runWriteCommand(project, cmd, "insertCode", cmd);
                 }
             }
         }

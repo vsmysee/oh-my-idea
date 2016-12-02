@@ -7,9 +7,6 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.util.Map;
 
-/**
- * Created by baby on 15/6/23.
- */
 public class HelpPanel extends JPanel {
 
     public HelpPanel(Map<String,String> data) {

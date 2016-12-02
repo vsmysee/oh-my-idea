@@ -28,7 +28,7 @@
 
         <action id="MotionToMatchChar" class="com.codingbaby.ohmyidea.action.MotionToMatchCharAction" text="Motion To Match"/>
 
-        <action id="ShowCommandAction" class="com.codingbaby.ohmyidea.action.ui.ShowCommandAction" text="Show Command"/>
+        <action id="ShowCommandAction" class="com.codingbaby.ohmyidea.action.ShowCommandAction" text="Show Command"/>
 
         <action id="LoadScriptAction" class="com.codingbaby.ohmyidea.action.LoadScriptAction" text="Load Script"/>
 
@@ -38,7 +38,7 @@
 
         <action id="NullCheckInsert" class="com.codingbaby.ohmyidea.action.NullCheckInsertAction" text="Insert Null Check "/>
 
-        <action id="ShowHelpDialog" class="com.codingbaby.ohmyidea.action.ui.ShowHelpDialogAction" text="Show Help Dialog"/>
+        <action id="ShowHelpDialog" class="com.codingbaby.ohmyidea.action.ShowHelpDialogAction" text="Show Help Dialog"/>
 
         <action id="EditCodeTemplate" class="com.codingbaby.ohmyidea.action.CodeTemplateEditAction" text="Edit Code Template"/>
 
@@ -46,7 +46,7 @@
 
         <action id="RepeatCurrentAction" class="com.codingbaby.ohmyidea.action.RepeatCurrentAction" text="Repeat Current Action"/>
 
-        <action id="ShowUIToggleActions" class="com.codingbaby.ohmyidea.action.ui.ShowUIToggleActions" text="Control UIToggle Actions"/>
+        <action id="ShowUIToggleActions" class="com.codingbaby.ohmyidea.action.ShowUIToggleActions" text="Control UIToggle Actions"/>
 
     </actions>
 

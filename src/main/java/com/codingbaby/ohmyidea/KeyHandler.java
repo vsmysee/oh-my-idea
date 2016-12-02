@@ -37,9 +37,9 @@ public class KeyHandler {
 
     public void handleKey(final Editor editor, KeyStroke key, final DataContext context) {
 
-        final OhPlugin oh = OhPlugin.getInstance();
+        final OhPlugin oh = OhPlugin.Companion.getInstance();
 
-        if (oh.commandStatus.isWaiting()) {
+        if (oh.getCommandStatus().isWaiting()) {
 
             if (key.getKeyChar() == ' ') {
                 toInsertMod();
@@ -63,23 +63,23 @@ public class KeyHandler {
 
         }
 
-        oh.commandStatus.addChar(key.getKeyChar());
+        oh.getCommandStatus().addChar(key.getKeyChar());
 
         CommandNode commandNode = null;
         boolean composeCommand = false;
 
-        if (oh.commandStatus.hasStroke()) {
-            if (oh.status == EditorStatus.Command) {
-                commandNode = SingleShort.get(oh.commandStatus.getStroke());
+        if (oh.getCommandStatus().hasStroke()) {
+            if (oh.getStatus() == EditorStatus.Command) {
+                commandNode = SingleShort.INSTANCE.get(oh.getCommandStatus().getStroke());
             }
-            if (oh.status == EditorStatus.Visual) {
-                commandNode = VisualShort.get(oh.commandStatus.getStroke());
+            if (oh.getStatus() == EditorStatus.Visual) {
+                commandNode = VisualShort.INSTANCE.get(oh.getCommandStatus().getStroke());
             }
-            if (oh.status == EditorStatus.Move) {
-                commandNode = MoveShort.get(oh.commandStatus.getStroke());
+            if (oh.getStatus() == EditorStatus.Move) {
+                commandNode = MoveShort.INSTANCE.get(oh.getCommandStatus().getStroke());
             }
         } else {
-            commandNode = ComposeShort.get(oh.commandStatus.getCommand());
+            commandNode = ComposeShort.INSTANCE.get(oh.getCommandStatus().getCommand());
             if (commandNode != null) {
                 composeCommand = true;
             }
@@ -89,10 +89,10 @@ public class KeyHandler {
         if (commandNode != null) {
 
             KeyHandler.executeAction(commandNode.getAction(), context);
-            oh.commandStatus.reset();
+            oh.getCommandStatus().reset();
 
             //如果是组合命令，执行完回到命令模式
-            if (composeCommand && oh.status != EditorStatus.Command) {
+            if (composeCommand && oh.getStatus() != EditorStatus.Command) {
                 KeyHandler.toCommandMod();
             }
 
@@ -101,10 +101,10 @@ public class KeyHandler {
 
 
         //行字符搜索
-        if (oh.commandStatus.isForward()) {
+        if (oh.getCommandStatus().isForward()) {
 
-            if (oh.commandStatus.getForwardChar() != null) {
-                toChar = oh.commandStatus.getForwardChar();
+            if (oh.getCommandStatus().getForwardChar() != null) {
+                toChar = oh.getCommandStatus().getForwardChar();
             }
 
             if (toChar == null) {
@@ -118,52 +118,52 @@ public class KeyHandler {
                     executeAction("MotionToMatchChar", context);
                 }
             };
-            RunnableHelper.runReadCommand(project, cmd, "moveCharInLine", cmd);
-            oh.commandStatus.reset();
+            RunnableHelper.INSTANCE.runReadCommand(project, cmd, "moveCharInLine", cmd);
+            oh.getCommandStatus().reset();
             return;
         }
 
         //可以在单字母命令敲入数字加速
-        NumberAction numberAction = oh.commandStatus.getNumberAction();
+        NumberAction numberAction = oh.getCommandStatus().getNumberAction();
         if (numberAction != null) {
             int count = numberAction.getCount();
             for (int i = 1; i <= count; i++) {
-                KeyHandler.executeAction(SingleShort.get(KeyStroke.getKeyStroke(numberAction.getKey())).getAction(), context);
+                KeyHandler.executeAction(SingleShort.INSTANCE.get(KeyStroke.getKeyStroke(numberAction.getKey())).getAction(), context);
             }
-            oh.commandStatus.reset();
+            oh.getCommandStatus().reset();
             return;
         }
 
 
-        if (oh.commandStatus.getLastChar() != null) {
-            KeyHandler.executeAction(SingleShort.get(KeyStroke.getKeyStroke(oh.commandStatus.getLastChar())).getAction(), context);
+        if (oh.getCommandStatus().getLastChar() != null) {
+            KeyHandler.executeAction(SingleShort.INSTANCE.get(KeyStroke.getKeyStroke(oh.getCommandStatus().getLastChar())).getAction(), context);
         }
     }
 
     public static void toInsertMod() {
-        final OhPlugin oh = OhPlugin.getInstance();
-        oh.status = EditorStatus.Insert;
+        final OhPlugin oh = OhPlugin.Companion.getInstance();
+        oh.setStatus(EditorStatus.Insert);
         oh.setCursors(false);
-        oh.commandStatus.reset();
+        oh.getCommandStatus().reset();
     }
 
     public static void toVisualMod() {
-        final OhPlugin oh = OhPlugin.getInstance();
-        oh.status = EditorStatus.Visual;
-        oh.commandStatus.reset();
+        final OhPlugin oh = OhPlugin.Companion.getInstance();
+        oh.setStatus(EditorStatus.Visual);
+        oh.getCommandStatus().reset();
     }
 
     public static void toMoveMod() {
-        final OhPlugin oh = OhPlugin.getInstance();
-        oh.status = EditorStatus.Move;
-        oh.commandStatus.reset();
+        final OhPlugin oh = OhPlugin.Companion.getInstance();
+        oh.setStatus(EditorStatus.Move);
+        oh.getCommandStatus().reset();
     }
 
     public static void toCommandMod() {
-        final OhPlugin oh = OhPlugin.getInstance();
-        oh.getInstance().setCursors(true);
-        oh.getInstance().status = EditorStatus.Command;
-        oh.commandStatus.reset();
+        final OhPlugin oh = OhPlugin.Companion.getInstance();
+        oh.Companion.getInstance().setCursors(true);
+        oh.Companion.getInstance().setStatus(EditorStatus.Command);
+        oh.getCommandStatus().reset();
     }
 
     public static void executeAction(String name, DataContext context) {
