@@ -12,7 +12,9 @@ import com.codingbaby.ohmyidea.helper.EditorHelper
 class MotionToMatchCharAction : EditorAction(object : EditorActionHandler() {
     override fun doExecute(editor: Editor, caret: Caret?, dataContext: DataContext) {
         val offset = EditorHelper.findNextCharacterOnLine(editor, KeyHandler.toChar)
-        editor.caretModel.moveToOffset(offset)
-        EditorHelper.scrollCaretIntoView(editor)
+        if (offset != 0) {
+            editor.caretModel.moveToOffset(offset)
+            EditorHelper.scrollCaretIntoView(editor)
+        }
     }
 })

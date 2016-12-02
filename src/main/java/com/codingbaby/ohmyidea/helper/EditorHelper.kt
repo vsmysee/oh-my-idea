@@ -216,7 +216,11 @@ object EditorHelper {
     }
 
 
-    fun findNextCharacterOnLine(editor: Editor, ch: Char): Int {
+    fun findNextCharacterOnLine(editor: Editor, ch: Char?): Int {
+        if (ch == null) {
+            return 0
+        }
+
         val line = editor.caretModel.logicalPosition.line
         val start = EditorHelper.getLineStartOffset(editor, line)
         val end = EditorHelper.getLineEndOffset(editor, line)

@@ -1,15 +1,11 @@
 package com.codingbaby.ohmyidea.script
 
+
 import com.intellij.openapi.util.io.FileUtil
 import org.apache.commons.lang.StringUtils
-
-
-import java.io.BufferedReader
 import java.io.File
-import java.io.FileReader
 import java.io.IOException
-import java.util.ArrayList
-import java.util.HashMap
+import java.util.*
 import java.util.regex.Pattern
 
 /**

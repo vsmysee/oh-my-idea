@@ -94,8 +94,8 @@ public class ExEditorKit extends DefaultEditorKit {
 
             //如果是数字理解为行号
             if (NumberUtils.isNumber(text)) {
-                KeyHandler.toLine = Integer.parseInt(entryPanel.getText());
-                KeyHandler.executeAction("MotionToLine", entryPanel.getEntry().getContext());
+                KeyHandler.Companion.setToLine(Integer.parseInt(entryPanel.getText()));
+                KeyHandler.Companion.executeAction("MotionToLine", entryPanel.getEntry().getContext());
             } else {
 
                 final Editor editor = entryPanel.getEntry().getEditor();
@@ -106,7 +106,7 @@ public class ExEditorKit extends DefaultEditorKit {
                 if (text.length() == 1) {
                     CommandNode commandNode = BottomShort.INSTANCE.get(KeyStroke.getKeyStroke(text.charAt(0)));
                     if (commandNode != null) {
-                        KeyHandler.executeAction(commandNode.getAction(),entryPanel.getEntry().getContext());
+                        KeyHandler.Companion.executeAction(commandNode.getAction(),entryPanel.getEntry().getContext());
                         return;
                     }
                 }

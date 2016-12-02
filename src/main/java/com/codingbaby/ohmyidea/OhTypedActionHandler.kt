@@ -18,7 +18,7 @@ class OhTypedActionHandler(private val origHandler: TypedActionHandler) : TypedA
     private val handler: KeyHandler
 
     init {
-        handler = KeyHandler.getInstance()
+        handler = KeyHandler.ohMyHander()
     }
 
 
