@@ -25,13 +25,8 @@ class OhTypedActionHandler(private val origHandler: TypedActionHandler) : TypedA
     override fun execute(editor: Editor, charTyped: Char, dataContext: DataContext) {
 
         if (isEnabled(editor) && OhPlugin.instance.status !== EditorStatus.Insert) {
-
             SwingUtilities.invokeLater {
-                try {
-                    handler.handleKey(editor, KeyStroke.getKeyStroke(charTyped), dataContext)
-                } catch (e: Throwable) {
-                    e.printStackTrace()
-                }
+                handler.handleKey(editor, KeyStroke.getKeyStroke(charTyped), dataContext)
             }
         } else {
             origHandler.execute(editor, charTyped, dataContext)
@@ -39,10 +34,7 @@ class OhTypedActionHandler(private val origHandler: TypedActionHandler) : TypedA
     }
 
     private fun isEnabled(editor: Editor): Boolean {
-        if (OhPlugin.isEnabled) {
-            val lookup = LookupManager.getActiveLookup(editor)
-            return lookup == null || !lookup.isFocused
-        }
-        return false
+        val lookup = LookupManager.getActiveLookup(editor)
+        return lookup == null || !lookup.isFocused
     }
 }

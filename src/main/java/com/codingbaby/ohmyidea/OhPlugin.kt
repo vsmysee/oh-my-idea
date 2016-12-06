@@ -15,8 +15,6 @@ import javax.swing.KeyStroke
 
 class OhPlugin(private val myApp: Application) : ApplicationComponent {
 
-    private val enabled = true
-
     //打开的小窗口特殊处理
     var openPopWindow = false
 
@@ -34,7 +32,7 @@ class OhPlugin(private val myApp: Application) : ApplicationComponent {
             override fun editorCreated(event: EditorFactoryEvent) {
                 val editor = event.editor
                 ShortcutKeyAction.instance.registerCustomShortcutSet(CustomShortcutSet(KeyStroke.getKeyStroke(27, 0, false)), editor.component)
-                if (OhPlugin.isEnabled && EditorHelper.isFileEditor(editor) && !openPopWindow) {
+                if (EditorHelper.isFileEditor(editor) && !openPopWindow) {
                     KeyHandler.toCommandMod()
                 } else {
                     KeyHandler.toInsertMod()
@@ -69,15 +67,11 @@ class OhPlugin(private val myApp: Application) : ApplicationComponent {
 
         private val COMPONENT_NAME = "Oh My IDEA"
 
-
         val instance: OhPlugin
             get() = ApplicationManager.getApplication().getComponent(COMPONENT_NAME) as OhPlugin
 
-        val isEnabled: Boolean
-            get() = instance.enabled
-
         fun setPopWindowOpen(open: Boolean) {
-            instance.openPopWindow = true
+            instance.openPopWindow = open
         }
     }
 

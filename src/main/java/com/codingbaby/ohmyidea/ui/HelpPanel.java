@@ -1,4 +1,4 @@
-package com.codingbaby.ohmyidea.action.ui;
+package com.codingbaby.ohmyidea.ui;
 
 import com.intellij.ui.table.JBTable;
 import com.intellij.util.containers.HashMap;

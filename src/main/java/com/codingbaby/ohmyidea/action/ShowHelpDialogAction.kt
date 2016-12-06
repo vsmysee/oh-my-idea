@@ -1,6 +1,6 @@
 package com.codingbaby.ohmyidea.action
 
-import com.codingbaby.ohmyidea.action.ui.HelpDialog
+import com.codingbaby.ohmyidea.ui.HelpDialog
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.project.DumbAwareAction
 

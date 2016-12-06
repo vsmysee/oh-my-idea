@@ -37,9 +37,6 @@ object ComposeShort {
         commandHolder.add("gf", "GotoFile", "导航到文件")
 
 
-        commandHolder.add("yn", "NullCheckInsert", "插入null判断")
-
-
         commandHolder.add("ye", "EditCodeTemplate", "编辑代码模板")
 
 

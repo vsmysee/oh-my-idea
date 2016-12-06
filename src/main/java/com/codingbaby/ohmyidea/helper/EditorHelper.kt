@@ -2,16 +2,13 @@ package com.codingbaby.ohmyidea.helper
 
 import com.intellij.openapi.editor.Editor
 import com.intellij.openapi.editor.LogicalPosition
-import com.intellij.openapi.editor.VisualPosition
 import com.intellij.openapi.fileEditor.FileDocumentManager
 import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.testFramework.LightVirtualFile
+import java.awt.Point
 
-
-import java.awt.*
 
 object EditorHelper {
-
 
     fun getVirtualFile(editor: Editor): VirtualFile? {
         return FileDocumentManager.getInstance().getFile(editor.document)

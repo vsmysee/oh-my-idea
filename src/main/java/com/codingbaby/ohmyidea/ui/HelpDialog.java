@@ -1,4 +1,4 @@
-package com.codingbaby.ohmyidea.action.ui;
+package com.codingbaby.ohmyidea.ui;
 
 import com.intellij.openapi.ui.DialogWrapper;
 import com.intellij.openapi.wm.ex.WindowManagerEx;

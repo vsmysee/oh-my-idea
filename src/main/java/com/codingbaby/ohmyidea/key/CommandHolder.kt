@@ -4,11 +4,10 @@ import javax.swing.*
 import java.util.HashMap
 import java.util.LinkedHashMap
 
-/**
- * Created by baby on 15/6/24.
- */
-
 class CommandHolder {
+
+    class CommandMapping(var key: String, val commandNode: CommandNode, val desc: String)
+
 
     private val data = LinkedHashMap<String, CommandMapping>()
 

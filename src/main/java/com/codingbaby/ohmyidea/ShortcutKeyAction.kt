@@ -19,7 +19,7 @@ class ShortcutKeyAction : AnAction(), DumbAware {
     override fun actionPerformed(anActionEvent: AnActionEvent) {
 
         val keyStroke = getKeyStroke(anActionEvent)
-        if (keyStroke != null && keyStroke.keyCode == KeyEvent.VK_ESCAPE && OhPlugin.isEnabled) {
+        if (keyStroke != null && keyStroke.keyCode == KeyEvent.VK_ESCAPE) {
 
             if (OhPlugin.instance.status !== EditorStatus.Command) {
                 KeyHandler.toCommandMod()
