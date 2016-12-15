@@ -2,7 +2,6 @@ package com.codingbaby.ohmyidea
 
 
 import com.codingbaby.ohmyidea.helper.EditorHelper
-import com.codingbaby.ohmyidea.script.OhScript
 import com.intellij.openapi.actionSystem.CustomShortcutSet
 import com.intellij.openapi.application.Application
 import com.intellij.openapi.application.ApplicationManager
@@ -37,14 +36,9 @@ class OhPlugin(private val myApp: Application) : ApplicationComponent {
                 } else {
                     KeyHandler.toInsertMod()
                 }
-
             }
 
-            override fun editorReleased(event: EditorFactoryEvent) {
-            }
         }, myApp)
-
-        OhScript.loadScriptFile()
     }
 
     override fun disposeComponent() {

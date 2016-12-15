@@ -1,6 +1,7 @@
 
 package com.codingbaby.ohmyidea.ui;
 
+import com.codingbaby.ohmyidea.script.CodeSnippet;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.project.Project;
 import com.codingbaby.ohmyidea.KeyHandler;
@@ -112,7 +113,7 @@ public class ExEditorKit extends DefaultEditorKit {
                 }
 
                 //理解为代码块
-                final String code = OhScript.INSTANCE.getMapping(text);
+                final String code = CodeSnippet.code.get(text);
                 if (code != null) {
                     Runnable cmd = new Runnable() {
                         @Override
