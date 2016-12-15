@@ -8,6 +8,7 @@ import org.apache.commons.lang.StringUtils
 import org.codehaus.groovy.runtime.InvokerHelper
 import java.io.File
 import java.io.IOException
+import java.util.*
 
 
 /**
@@ -20,13 +21,19 @@ object OhScript {
     val OH_FILE = ".oh-my-idea"
 
     val dsl = """
-import com.codingbaby.ohmyidea.script.CodeSnippet
+class CodeContainer {
 
-class CodeDefine {
+        def outerList
 
-    private def holder = [:]
+        def holder
+
+        CodeContainer(env){
+            outerList = env
+        }
+
 
     def key(key) {
+        holder = [:]
         holder["key"] = key
     }
 
@@ -37,17 +44,14 @@ class CodeDefine {
 
     def code(code) {
         holder["code"] = code
-
-        cs.code.put(holder["key"],holder["code"])
-        cs.desc.put(holder["key"],holder["desc"])
+        outerList << holder
     }
 
 }
 
 def oh = {
     closure ->
-        def helper = new CodeDefine()
-        closure.delegate = helper
+        closure.delegate = new CodeContainer(envList)
         closure()
 }
 
@@ -57,13 +61,21 @@ def oh = {
 
     fun loadScriptFile() {
         val content = loadContent()
-
         val groovyClassLoader = GroovyClassLoader()
         val scriptClass = groovyClassLoader.parseClass(dsl + content)
-        var script = InvokerHelper.createScript(scriptClass, Binding())
-        script.setProperty("cs", CodeSnippet())
+        var bind = Binding()
+        var holder = ArrayList<HashMap<String, String>>()
+        bind.setVariable("envList", holder)
+        var script = InvokerHelper.createScript(scriptClass, bind)
         script.run()
 
+        for (map in holder) {
+            var key = map["key"]
+            var desc = map["desc"]
+            var code = map["code"]
+            CodeSnippet.desc.put(key as String, desc as String)
+            CodeSnippet.code.put(key, code as String)
+        }
     }
 
     fun saveScript(text: String) {
