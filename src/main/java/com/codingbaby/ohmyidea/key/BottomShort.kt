@@ -24,6 +24,15 @@ object BottomShort {
         commandHolder.add("t", "ActivateTerminalToolWindow", "显示终端Tool")
         commandHolder.add("T", "ActivateTerminalToolWindow", "显示终端Tool")
 
+
+        commandHolder.add("r", "ActivateRunToolWindow", "显示运行Tool")
+        commandHolder.add("R", "ActivateRunToolWindow", "显示运行Tool")
+
+
+        commandHolder.add("b", "ActivateDebugToolWindow", "显示调试Tool")
+        commandHolder.add("B", "ActivateDebugToolWindow", "显示调试Tool")
+
+
         commandHolder.add("d", "ActivateTODOToolWindow", "显示终端TODO")
         commandHolder.add("D", "ActivateTODOToolWindow", "显示终端TODO")
 
