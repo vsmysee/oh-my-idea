@@ -1,25 +1,37 @@
 
 package com.codingbaby.ohmyidea.ui;
 
-import com.codingbaby.ohmyidea.script.CodeSnippet;
-import com.intellij.openapi.editor.Editor;
-import com.intellij.openapi.project.Project;
 import com.codingbaby.ohmyidea.KeyHandler;
 import com.codingbaby.ohmyidea.OhPlugin;
 import com.codingbaby.ohmyidea.helper.RunnableHelper;
 import com.codingbaby.ohmyidea.key.BottomShort;
 import com.codingbaby.ohmyidea.key.CommandNode;
-import com.codingbaby.ohmyidea.script.OhScript;
+import com.codingbaby.ohmyidea.script.CodeSnippet;
+import com.codingbaby.ohmyidea.script.RobotHandler;
+import com.intellij.openapi.editor.Editor;
+import com.intellij.openapi.project.Project;
 import org.apache.commons.lang.math.NumberUtils;
-
 
 import javax.swing.*;
 import javax.swing.text.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.util.List;
 
 public class ExEditorKit extends DefaultEditorKit {
 
     private static ExEditorKit instance;
+
+    private static Robot robot = null;
+
+    static {
+        try {
+            robot = new Robot();
+        } catch (AWTException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     public static ExEditorKit getInstance() {
         if (instance == null) {
@@ -64,7 +76,6 @@ public class ExEditorKit extends DefaultEditorKit {
     public static final String DeleteFromCursor = "delete-from-cursor";
 
 
-
     protected final Action[] exActions = new Action[]{
 
             new ExEditorKit.CancelEntryAction(),
@@ -79,7 +90,6 @@ public class ExEditorKit extends DefaultEditorKit {
 
             new ExEditorKit.DeleteFromCursorAction(),
     };
-
 
 
     public static class CompleteEntryAction extends TextAction {
@@ -107,7 +117,7 @@ public class ExEditorKit extends DefaultEditorKit {
                 if (text.length() == 1) {
                     CommandNode commandNode = BottomShort.INSTANCE.get(KeyStroke.getKeyStroke(text.charAt(0)));
                     if (commandNode != null) {
-                        KeyHandler.Companion.executeAction(commandNode.getAction(),entryPanel.getEntry().getContext());
+                        KeyHandler.Companion.executeAction(commandNode.getAction(), entryPanel.getEntry().getContext());
                         return;
                     }
                 }
@@ -124,6 +134,20 @@ public class ExEditorKit extends DefaultEditorKit {
                         }
                     };
                     RunnableHelper.INSTANCE.runWriteCommand(project, cmd, "insertCode", cmd);
+                }
+
+
+                //最后理解为快捷键映射
+                final List<Integer> events = RobotHandler.holder.get(text);
+                if (events != null) {
+
+                    for (Integer event : events) {
+                        robot.keyPress(event);
+                    }
+
+                    for (Integer event : events) {
+                        robot.keyRelease(event);
+                    }
                 }
             }
         }

@@ -21,6 +21,24 @@ object OhScript {
     val OH_FILE = ".oh-my-idea"
 
     val dsl = """
+
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
+
+class RobotContainer {
+
+        def outerList
+
+        RobotContainer(env){
+            outerList = env
+        }
+
+        def key(key,list) {
+            outerList[key] = list
+        }
+}
+
+
 class CodeContainer {
 
         def outerList
@@ -55,6 +73,12 @@ def oh = {
         closure()
 }
 
+def ho = {
+    closure ->
+        closure.delegate = new RobotContainer(envMap)
+        closure()
+}
+
 
 """
 
@@ -63,13 +87,19 @@ def oh = {
         val content = loadContent()
         val groovyClassLoader = GroovyClassLoader()
         val scriptClass = groovyClassLoader.parseClass(dsl + content)
-        var bind = Binding()
-        var holder = ArrayList<HashMap<String, String>>()
-        bind.setVariable("envList", holder)
-        var script = InvokerHelper.createScript(scriptClass, bind)
-        script.run()
 
-        for (map in holder) {
+        var bind = Binding()
+        var keyHolder = ArrayList<HashMap<String, String>>()
+        var robotHolder = HashMap<String, ArrayList<Int>>()
+
+        bind.setVariable("envList", keyHolder)
+        bind.setVariable("envMap", robotHolder)
+
+        InvokerHelper.createScript(scriptClass, bind).run()
+
+        RobotHandler.holder.putAll(robotHolder)
+
+        for (map in keyHolder) {
             var key = map["key"]
             var desc = map["desc"]
             var code = map["code"]
