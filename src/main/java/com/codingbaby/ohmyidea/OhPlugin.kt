@@ -37,11 +37,8 @@ class OhPlugin(private val myApp: Application) : ApplicationComponent {
                 } else {
                     KeyHandler.toInsertMod()
                 }
-
             }
 
-            override fun editorReleased(event: EditorFactoryEvent) {
-            }
         }, myApp)
 
         OhScript.loadScriptFile()

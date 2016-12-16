@@ -2,11 +2,14 @@ package com.codingbaby.ohmyidea.script
 
 
 import com.intellij.openapi.util.io.FileUtil
+import groovy.lang.Binding
+import groovy.lang.GroovyClassLoader
 import org.apache.commons.lang.StringUtils
+import org.codehaus.groovy.runtime.InvokerHelper
 import java.io.File
 import java.io.IOException
 import java.util.*
-import java.util.regex.Pattern
+
 
 /**
  * _ls|描述
@@ -17,33 +20,61 @@ object OhScript {
 
     val OH_FILE = ".oh-my-idea"
 
-    private val EOL_SPLIT_PATTERN = Pattern.compile("(\r\n|\n)")
+    val dsl = """
+class CodeContainer {
 
-    private var holder: LineHolder? = null
+        def outerList
 
-    private val codeGen = HashMap<String, String>()
+        def holder
 
-    private fun putKey(key: String, value: String) {
-        codeGen.put(key.trim { it <= ' ' }, value.trim { it <= ' ' })
+        CodeContainer(env){
+            outerList = env
+        }
+
+
+    def key(key) {
+        holder = [:]
+        holder["key"] = key
     }
 
+    def desc(desc) {
+        holder["desc"] = desc
 
-    fun getMapping(key: String): String? {
-        return codeGen[key]
     }
+
+    def code(code) {
+        holder["code"] = code
+        outerList << holder
+    }
+
+}
+
+def oh = {
+    closure ->
+        closure.delegate = new CodeContainer(envList)
+        closure()
+}
+
+
+"""
 
 
     fun loadScriptFile() {
+        val content = loadContent()
+        val groovyClassLoader = GroovyClassLoader()
+        val scriptClass = groovyClassLoader.parseClass(dsl + content)
+        var bind = Binding()
+        var holder = ArrayList<HashMap<String, String>>()
+        bind.setVariable("envList", holder)
+        var script = InvokerHelper.createScript(scriptClass, bind)
+        script.run()
 
-        parseTokens(loadContent())
-
-        if (holder == null) {
-            return
-        }
-
-        val codeKV = holder!!.codeKV
-        for (kv in codeKV) {
-            putKey(kv.key, kv.value)
+        for (map in holder) {
+            var key = map["key"]
+            var desc = map["desc"]
+            var code = map["code"]
+            CodeSnippet.desc.put(key as String, desc as String)
+            CodeSnippet.code.put(key, code as String)
         }
     }
 
@@ -77,89 +108,5 @@ object OhScript {
         return ""
     }
 
-    val helpDesc: Map<String, String>
-        get() = holder!!.descMap
-
-    private fun parseTokens(content: String) {
-        if (StringUtils.isBlank(content)) {
-            return
-        }
-        val lines = EOL_SPLIT_PATTERN.split(content)
-        holder = LineHolder(lines)
-        holder!!.buildCodeQuick(holder!!.next())
-    }
-
-    private class LineHolder(private val lines: Array<String>) {
-        private var begin = 0
-        private val keys = ArrayList<String>()
-        private val descriptions = ArrayList<String>()
-        private val values = ArrayList<String>()
-
-        val codeKV: List<CodeKV>
-            get() {
-                val list = ArrayList<CodeKV>()
-                for (i in keys.indices) {
-                    list.add(CodeKV(keys[i], values[i]))
-                }
-                return list
-            }
-
-        val descMap: Map<String, String>
-            get() {
-                val map = HashMap<String, String>()
-                for (i in keys.indices) {
-                    map.put(keys[i], descriptions[i])
-                }
-                return map
-            }
-
-        fun buildCodeQuick(line: String) {
-            var line = line
-            if (StringUtils.isNotBlank(line) && line.startsWith("_")) {
-
-                val key = line.trim { it <= ' ' }.substring(1)
-                val split = key.split("\\|".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
-                keys.add(split[0])
-                if (split.size == 2) {
-                    descriptions.add(split[1])
-                } else {
-                    descriptions.add("")
-                }
-
-                val sb = StringBuilder()
-                line = next()
-
-                while (!line.startsWith("_")) {
-                    sb.append(line)
-                    sb.append("\n")
-                    if (done()) {
-                        break
-                    }
-                    line = next()
-                }
-
-                values.add(sb.toString())
-            } else {
-                line = next()
-            }
-
-            if (!done()) {
-                buildCodeQuick(line)
-            }
-        }
-
-
-        operator fun next(): String {
-            val line = lines[begin]
-            begin++
-            return line
-        }
-
-        fun done(): Boolean {
-            return begin == lines.size
-        }
-    }
-
-    private class CodeKV constructor(internal var key: String, internal var value: String)
 
 }
