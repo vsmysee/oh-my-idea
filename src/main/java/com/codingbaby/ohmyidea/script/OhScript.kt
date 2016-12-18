@@ -11,11 +11,6 @@ import java.io.IOException
 import java.util.*
 
 
-/**
- * _ls|描述
- * List list = new ArrayList()
- *
- */
 object OhScript {
 
     val OH_FILE = ".oh-my-idea"

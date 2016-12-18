@@ -1,7 +1,6 @@
 package com.codingbaby.ohmyidea
 
 
-import com.intellij.openapi.actionSystem.ActionManager
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.PlatformDataKeys
@@ -10,7 +9,6 @@ import java.awt.event.KeyEvent
 import javax.swing.KeyStroke
 
 /**
-
  * 绑定到编辑组件上的控制键行为
  */
 class ShortcutKeyAction : AnAction(), DumbAware {
@@ -53,14 +51,6 @@ class ShortcutKeyAction : AnAction(), DumbAware {
             return KeyStroke.getKeyStrokeForEvent(inputEvent)
         }
         return null
-    }
-
-    companion object {
-
-        private val ACTION_ID = "ShortcutKeyAction"
-
-        val instance: AnAction
-            get() = ActionManager.getInstance().getAction(ACTION_ID)
     }
 
 }

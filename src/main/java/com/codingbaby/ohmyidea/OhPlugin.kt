@@ -3,7 +3,8 @@ package com.codingbaby.ohmyidea
 
 import com.codingbaby.ohmyidea.helper.EditorHelper
 import com.codingbaby.ohmyidea.script.OhScript
-import com.intellij.openapi.actionSystem.CustomShortcutSet
+import com.intellij.openapi.actionSystem.ActionManager
+import com.intellij.openapi.actionSystem.CommonShortcuts
 import com.intellij.openapi.application.Application
 import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.components.ApplicationComponent
@@ -11,9 +12,11 @@ import com.intellij.openapi.editor.EditorFactory
 import com.intellij.openapi.editor.actionSystem.EditorActionManager
 import com.intellij.openapi.editor.event.EditorFactoryAdapter
 import com.intellij.openapi.editor.event.EditorFactoryEvent
-import javax.swing.KeyStroke
 
 class OhPlugin(private val myApp: Application) : ApplicationComponent {
+
+    val ACTION_ID = "ShortcutKeyAction"
+
 
     //打开的小窗口特殊处理
     var openPopWindow = false
@@ -21,6 +24,7 @@ class OhPlugin(private val myApp: Application) : ApplicationComponent {
     var status = EditorStatus.Command
 
     var commandStatus = CommandStatus()
+
 
     override fun initComponent() {
 
@@ -31,7 +35,9 @@ class OhPlugin(private val myApp: Application) : ApplicationComponent {
         EditorFactory.getInstance().addEditorFactoryListener(object : EditorFactoryAdapter() {
             override fun editorCreated(event: EditorFactoryEvent) {
                 val editor = event.editor
-                ShortcutKeyAction.instance.registerCustomShortcutSet(CustomShortcutSet(KeyStroke.getKeyStroke(27, 0, false)), editor.component)
+                ActionManager.getInstance()
+                        .getAction(ACTION_ID)
+                        .registerCustomShortcutSet(CommonShortcuts.ESCAPE, editor.component)
                 if (EditorHelper.isFileEditor(editor) && !openPopWindow) {
                     KeyHandler.toCommandMod()
                 } else {
