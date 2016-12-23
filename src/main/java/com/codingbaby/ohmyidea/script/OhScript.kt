@@ -1,6 +1,6 @@
 package com.codingbaby.ohmyidea.script
 
-
+import clojure.lang.RT
 import com.intellij.openapi.util.io.FileUtil
 import groovy.lang.Binding
 import groovy.lang.GroovyClassLoader
@@ -8,6 +8,7 @@ import org.apache.commons.lang.StringUtils
 import org.codehaus.groovy.runtime.InvokerHelper
 import java.io.File
 import java.io.IOException
+import java.io.StringReader
 import java.util.*
 
 
@@ -79,29 +80,64 @@ def ho = {
 
 
     fun loadScriptFile() {
-        val content = loadContent()
-        val groovyClassLoader = GroovyClassLoader()
-        val scriptClass = groovyClassLoader.parseClass(dsl + content)
 
-        var bind = Binding()
+        if (try {
+            Class.forName("groovy.lang.GroovyClassLoader")
+            false
+        } catch (e: Exception) {
+            true
+        }) {
+            return
+        }
+
+        val content = loadContent()
+        if (content.startsWith("#lang:groovy")) {
+            loadGroovy(content.replace("#lang:groovy", ""))
+        }
+        if (content.startsWith("#lang:clojure")) {
+            loadClojure(content.replace("#lang:clojure", ""))
+        }
+
+    }
+
+    fun loadClojure(text: String) {
+        try {
+            RT.load("clojure/core")
+            clojure.lang.Compiler.load(StringReader(text))
+            val scriptData = RT.`var`("oh-my-idea", "oh").invoke()
+        } catch (e: Exception) {
+        }
+    }
+
+    fun loadGroovy(text: String) {
+        val groovyClassLoader = GroovyClassLoader()
+        val scriptClass = groovyClassLoader.parseClass(dsl + text)
+
         var keyHolder = ArrayList<HashMap<String, String>>()
         var robotHolder = HashMap<String, ArrayList<Int>>()
 
+        var bind = Binding()
         bind.setVariable("envList", keyHolder)
         bind.setVariable("envMap", robotHolder)
 
         InvokerHelper.createScript(scriptClass, bind).run()
 
+        RobotHandler.holder.clear()
         RobotHandler.holder.putAll(robotHolder)
 
         for (map in keyHolder) {
             var key = map["key"]
             var desc = map["desc"]
             var code = map["code"]
+
+            CodeSnippet.desc.clear()
+            CodeSnippet.code.clear()
+
             CodeSnippet.desc.put(key as String, desc as String)
             CodeSnippet.code.put(key, code as String)
         }
     }
+
 
     fun saveScript(text: String) {
         if (StringUtils.isNotBlank(text)) {
