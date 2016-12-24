@@ -108,13 +108,13 @@ def ho = {
         RobotHandler.holder.clear()
         RobotHandler.holder.putAll(robotHolder)
 
+        CodeSnippet.desc.clear()
+        CodeSnippet.code.clear()
+
         for (map in keyHolder) {
             var key = map["key"]
             var desc = map["desc"]
             var code = map["code"]
-
-            CodeSnippet.desc.clear()
-            CodeSnippet.code.clear()
 
             CodeSnippet.desc.put(key as String, desc as String)
             CodeSnippet.code.put(key, code as String)
