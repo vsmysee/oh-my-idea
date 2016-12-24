@@ -1,6 +1,5 @@
 package com.codingbaby.ohmyidea.script
 
-import clojure.lang.RT
 import com.intellij.openapi.util.io.FileUtil
 import groovy.lang.Binding
 import groovy.lang.GroovyClassLoader
@@ -8,7 +7,6 @@ import org.apache.commons.lang.StringUtils
 import org.codehaus.groovy.runtime.InvokerHelper
 import java.io.File
 import java.io.IOException
-import java.io.StringReader
 import java.util.*
 
 
@@ -80,7 +78,6 @@ def ho = {
 
 
     fun loadScriptFile() {
-
         if (try {
             Class.forName("groovy.lang.GroovyClassLoader")
             false
@@ -91,23 +88,9 @@ def ho = {
         }
 
         val content = loadContent()
-        if (content.startsWith("#lang:groovy")) {
-            loadGroovy(content.replace("#lang:groovy", ""))
-        }
-        if (content.startsWith("#lang:clojure")) {
-            loadClojure(content.replace("#lang:clojure", ""))
-        }
-
+        loadGroovy(content)
     }
 
-    fun loadClojure(text: String) {
-        try {
-            RT.load("clojure/core")
-            clojure.lang.Compiler.load(StringReader(text))
-            val scriptData = RT.`var`("oh-my-idea", "oh").invoke()
-        } catch (e: Exception) {
-        }
-    }
 
     fun loadGroovy(text: String) {
         val groovyClassLoader = GroovyClassLoader()
