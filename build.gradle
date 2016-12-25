@@ -1,13 +1,11 @@
 buildscript {
-    ext.kotlin_version = '1.0.5-2'
-
+    ext.kotlin_version = '1.1-M03'
 
     repositories {
-        mavenCentral()
-        maven {
-            url "https://plugins.gradle.org/m2/"
-        }
+        jcenter()
+        maven { url "https://dl.bintray.com/kotlin/kotlin-eap-1.1" }
     }
+
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
@@ -21,27 +19,12 @@ apply plugin: 'org.jetbrains.intellij'
 apply plugin: 'java'
 apply plugin: 'kotlin'
 
-
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
-
-tasks.withType(JavaCompile) { options.encoding = 'UTF-8' }
-
 intellij {
-    version '162.1121.32'
-    pluginName 'Oh My IDEA'
+    version '163.7743.44'
+    pluginName 'Oh-My-IDEA'
     updateSinceUntilBuild false
 
 }
 
 group 'com.codingbaby'
-version '1.0.0'
-
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    compile "org.jetbrains.kotlin:kotlin-runtime:$kotlin_version"
-}
+version '1.0'

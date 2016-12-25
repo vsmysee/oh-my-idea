@@ -73,12 +73,8 @@ object SingleShort {
         commandHolder.add("N", "FindPrevious", "前一个")
 
 
-        commandHolder.add("a", "MotionAndInsert", "追加")
-
-
         commandHolder.add(".", "EditorCompleteStatement", "语句完成")
         commandHolder.add(">", "\$Copy", "复制行")
-
 
 
         commandHolder.add("<", "GotoPreviousError", "前一个错误")

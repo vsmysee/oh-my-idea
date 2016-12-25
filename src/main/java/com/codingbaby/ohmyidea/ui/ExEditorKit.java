@@ -22,16 +22,6 @@ public class ExEditorKit extends DefaultEditorKit {
 
     private static ExEditorKit instance;
 
-    private static Robot robot = null;
-
-    static {
-        try {
-            robot = new Robot();
-        } catch (AWTException e) {
-            e.printStackTrace();
-        }
-    }
-
 
     public static ExEditorKit getInstance() {
         if (instance == null) {
@@ -125,30 +115,15 @@ public class ExEditorKit extends DefaultEditorKit {
                 //理解为代码块
                 final String code = CodeSnippet.code.get(text);
                 if (code != null) {
-                    Runnable cmd = new Runnable() {
-                        @Override
-                        public void run() {
-                            int oldOffset = editor.getCaretModel().getOffset();
-                            editor.getDocument().insertString(oldOffset, code);
-                            oh.getCommandStatus().reset();
-                        }
+                    Runnable cmd = () -> {
+                        int oldOffset = editor.getCaretModel().getOffset();
+                        editor.getDocument().insertString(oldOffset, code);
+                        oh.getCommandStatus().reset();
                     };
                     RunnableHelper.INSTANCE.runWriteCommand(project, cmd, "insertCode", cmd);
                 }
 
 
-                //最后理解为快捷键映射
-                final List<Integer> events = RobotHandler.holder.get(text);
-                if (events != null) {
-
-                    for (Integer event : events) {
-                        robot.keyPress(event);
-                    }
-
-                    for (Integer event : events) {
-                        robot.keyRelease(event);
-                    }
-                }
             }
         }
     }

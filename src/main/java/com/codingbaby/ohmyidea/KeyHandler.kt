@@ -6,10 +6,12 @@ import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.DataContext
 import com.intellij.openapi.editor.Editor
 import com.intellij.openapi.editor.actions.EscapeAction
-import com.intellij.openapi.project.Project
 import com.codingbaby.ohmyidea.action.RepeatCurrentAction
 import com.codingbaby.ohmyidea.helper.RunnableHelper
 import com.codingbaby.ohmyidea.key.*
+import com.codingbaby.ohmyidea.script.RobotHandler
+import com.codingbaby.ohmyidea.ui.RobtHolder
+import java.awt.event.KeyEvent
 
 
 import javax.swing.*
@@ -43,6 +45,12 @@ class KeyHandler {
                 return
             }
 
+            if (key.keyChar == 'a') {
+                toActionMod()
+                return
+            }
+
+
         }
 
         oh.commandStatus.addChar(key.keyChar)
@@ -60,6 +68,22 @@ class KeyHandler {
             if (oh.status === EditorStatus.Move) {
                 commandNode = MoveShort[oh.commandStatus.stroke]
             }
+
+            if (oh.status === EditorStatus.Action) {
+                //最后理解为快捷键映射
+                var events = RobotHandler.holder[oh.commandStatus.fistChar().toString()]
+                Thread.sleep(1000)
+
+                if (events != null) {
+                    for (i in events) {
+                        RobtHolder.robot.keyPress(i)
+                    }
+                    for (i in events) {
+                        RobtHolder.robot.keyRelease(i)
+                    }
+                }
+            }
+
         } else {
             commandNode = ComposeShort[oh.commandStatus.command]
             if (commandNode != null) {
@@ -152,6 +176,13 @@ class KeyHandler {
             oh.status = EditorStatus.Move
             oh.commandStatus.reset()
         }
+
+        fun toActionMod() {
+            val oh = OhPlugin.instance
+            oh.status = EditorStatus.Action
+            oh.commandStatus.reset()
+        }
+
 
         fun toCommandMod() {
             val oh = OhPlugin.instance

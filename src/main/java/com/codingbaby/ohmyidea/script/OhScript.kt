@@ -97,7 +97,7 @@ def ho = {
         val scriptClass = groovyClassLoader.parseClass(dsl + text)
 
         var keyHolder = ArrayList<HashMap<String, String>>()
-        var robotHolder = HashMap<String, ArrayList<Int>>()
+        var robotHolder = HashMap<String, List<Int>>()
 
         var bind = Binding()
         bind.setVariable("envList", keyHolder)

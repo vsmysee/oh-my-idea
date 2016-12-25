@@ -1,13 +1,11 @@
 <idea-plugin url="http://plugins.jetbrains.com/plugin/164">
     <name>Oh My IDEA</name>
     <id>oh-my-idea</id>
-    <description>plugin like ideavim,but not like ideavim</description>
+    <description>write java without mouse</description>
     <version>1.0</version>
     <vendor>JetBrains</vendor>
 
-
     <depends>com.intellij.modules.lang</depends>
-
 
     <application-components>
         <component>
@@ -22,7 +20,6 @@
 
         <action id="MotionFirstLine" class="com.codingbaby.ohmyidea.action.MotionGotoLineFirstAction" text="First Line"/>
         <action id="MotionLastLine" class="com.codingbaby.ohmyidea.action.MotionGotoLineLastAction" text="Last Line"/>
-        <action id="MotionAndInsert" class="com.codingbaby.ohmyidea.action.MotionAndInsertAction" text="Motion And Insert"/>
         <action id="MotionToLine" class="com.codingbaby.ohmyidea.action.MotionToLineAction" text="Motion To Line"/>
 
 

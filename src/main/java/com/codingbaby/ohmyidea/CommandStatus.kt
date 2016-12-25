@@ -23,6 +23,10 @@ class CommandStatus {
         return sb.length == 1
     }
 
+    fun fistChar():Char {
+        return sb[0]
+    }
+
     val stroke: KeyStroke
         get() = KeyStroke.getKeyStroke(sb[0])
 
