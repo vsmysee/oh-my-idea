@@ -20,7 +20,7 @@ apply plugin: 'java'
 apply plugin: 'kotlin'
 
 intellij {
-    version '163.7743.44'
+    version '162.1121.32'
     pluginName 'Oh-My-IDEA'
     updateSinceUntilBuild false
 

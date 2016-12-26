@@ -82,6 +82,11 @@ class KeyHandler {
                         RobtHolder.robot.keyRelease(i)
                     }
                 }
+
+                //todo groovy support outer action
+
+                //VisualShort.commandHolder.add("f", "AceJumpAction", "ACE模式")
+                //VisualShort.commandHolder.add("a", "AceJumpLineAction", "ACE快速模式")
             }
 
         } else {
