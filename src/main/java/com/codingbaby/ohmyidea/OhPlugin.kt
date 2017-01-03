@@ -15,7 +15,7 @@ import com.intellij.openapi.editor.event.EditorFactoryEvent
 
 class OhPlugin(private val myApp: Application) : ApplicationComponent {
 
-    val ACTION_ID = "ShortcutKeyAction"
+    val ACTION_ID = "OH_ShortcutKeyAction"
 
 
     //打开的小窗口特殊处理

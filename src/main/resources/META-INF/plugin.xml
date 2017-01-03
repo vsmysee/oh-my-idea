@@ -15,33 +15,34 @@
 
 
     <actions>
-        <action id="ShortcutKeyAction" class="com.codingbaby.ohmyidea.ShortcutKeyAction" text="Shortcuts"/>
+
+        <action id="OH_ShortcutKeyAction" class="com.codingbaby.ohmyidea.ShortcutKeyAction" text="Shortcuts"/>
 
 
-        <action id="MotionFirstLine" class="com.codingbaby.ohmyidea.action.MotionGotoLineFirstAction" text="First Line"/>
-        <action id="MotionLastLine" class="com.codingbaby.ohmyidea.action.MotionGotoLineLastAction" text="Last Line"/>
-        <action id="MotionToLine" class="com.codingbaby.ohmyidea.action.MotionToLineAction" text="Motion To Line"/>
+        <action id="OH_MotionFirstLine" class="com.codingbaby.ohmyidea.action.MotionGotoLineFirstAction" text="First Line"/>
+        <action id="OH_MotionLastLine" class="com.codingbaby.ohmyidea.action.MotionGotoLineLastAction" text="Last Line"/>
+        <action id="OH_MotionToLine" class="com.codingbaby.ohmyidea.action.MotionToLineAction" text="Motion To Line"/>
 
 
-        <action id="MotionToMatchChar" class="com.codingbaby.ohmyidea.action.MotionToMatchCharAction" text="Motion To Match"/>
+        <action id="OH_MotionToMatchChar" class="com.codingbaby.ohmyidea.action.MotionToMatchCharAction" text="Motion To Match"/>
 
-        <action id="ShowCommandAction" class="com.codingbaby.ohmyidea.action.ShowCommandAction" text="Show Command"/>
+        <action id="OH_ShowCommandAction" class="com.codingbaby.ohmyidea.action.ShowCommandAction" text="Show Command"/>
 
-        <action id="LoadScriptAction" class="com.codingbaby.ohmyidea.action.LoadScriptAction" text="Load Script"/>
+        <action id="OH_LoadScriptAction" class="com.codingbaby.ohmyidea.action.LoadScriptAction" text="Load Script"/>
 
-        <action id="ScrollToTop" class="com.codingbaby.ohmyidea.action.ScrollToScreenFirstAction" text="Scroll Top"/>
+        <action id="OH_ScrollToTop" class="com.codingbaby.ohmyidea.action.ScrollToScreenFirstAction" text="Scroll Top"/>
 
-        <action id="NotQuickInsert" class="com.codingbaby.ohmyidea.action.NotQuickInsertAction" text="Insert Not Quick"/>
+        <action id="OH_NotQuickInsert" class="com.codingbaby.ohmyidea.action.NotQuickInsertAction" text="Insert Not Quick"/>
 
-        <action id="ShowHelpDialog" class="com.codingbaby.ohmyidea.action.ShowHelpDialogAction" text="Show Help Dialog"/>
+        <action id="OH_ShowHelpDialog" class="com.codingbaby.ohmyidea.action.ShowHelpDialogAction" text="Show Help Dialog"/>
 
-        <action id="EditCodeTemplate" class="com.codingbaby.ohmyidea.action.CodeTemplateEditAction" text="Edit Code Template"/>
+        <action id="OH_EditCodeTemplate" class="com.codingbaby.ohmyidea.action.CodeTemplateEditAction" text="Edit Code Template"/>
 
-        <action id="EditorDeleteToFileEnd" class="com.codingbaby.ohmyidea.action.DeleteToFileEndAction" text="Delete To File End"/>
+        <action id="OH_EditorDeleteToFileEnd" class="com.codingbaby.ohmyidea.action.DeleteToFileEndAction" text="Delete To File End"/>
 
-        <action id="RepeatCurrentAction" class="com.codingbaby.ohmyidea.action.RepeatCurrentAction" text="Repeat Current Action"/>
+        <action id="OH_RepeatCurrentAction" class="com.codingbaby.ohmyidea.action.RepeatCurrentAction" text="Repeat Current Action"/>
 
-        <action id="ShowUIToggleActions" class="com.codingbaby.ohmyidea.action.ShowUIToggleActions" text="Control UIToggle Actions"/>
+        <action id="OH_ShowUIToggleActions" class="com.codingbaby.ohmyidea.action.ShowUIToggleActions" text="Control UIToggle Actions"/>
 
     </actions>
 

@@ -1,5 +1,6 @@
 package com.codingbaby.ohmyidea.script
 
+import com.codingbaby.ohmyidea.key.*
 import com.intellij.openapi.util.io.FileUtil
 import groovy.lang.Binding
 import groovy.lang.GroovyClassLoader
@@ -61,6 +62,23 @@ class CodeContainer {
 
 }
 
+class ActorContainer {
+
+        def outerAction
+
+
+        ActorContainer(env){
+            outerAction = env
+        }
+
+
+    def actor(key,action,desc) {
+            outerAction.add(key, action, desc)
+    }
+
+
+}
+
 def oh = {
     closure ->
         closure.delegate = new CodeContainer(envList)
@@ -72,6 +90,37 @@ def ho = {
         closure.delegate = new RobotContainer(envMap)
         closure()
 }
+
+def vv = {
+    closure ->
+        closure.delegate = new ActorContainer(vmode)
+        closure()
+}
+
+def ss = {
+    closure ->
+        closure.delegate = new ActorContainer(smode)
+        closure()
+}
+
+def mm = {
+    closure ->
+        closure.delegate = new ActorContainer(mmode)
+        closure()
+}
+
+def cc = {
+    closure ->
+        closure.delegate = new ActorContainer(cmode)
+        closure()
+}
+
+def bb = {
+    closure ->
+        closure.delegate = new ActorContainer(bmode)
+        closure()
+}
+
 
 
 """
@@ -102,6 +151,13 @@ def ho = {
         var bind = Binding()
         bind.setVariable("envList", keyHolder)
         bind.setVariable("envMap", robotHolder)
+
+
+        bind.setVariable("vmode", VisualShort.commandHolder)
+        bind.setVariable("smode", SingleShort.commandHolder)
+        bind.setVariable("mmode", MoveShort.commandHolder)
+        bind.setVariable("cmode", ComposeShort.commandHolder)
+        bind.setVariable("bmode", BottomShort.commandHolder)
 
         InvokerHelper.createScript(scriptClass, bind).run()
 

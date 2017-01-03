@@ -3,12 +3,17 @@ package com.codingbaby.ohmyidea.key
 import com.intellij.openapi.actionSystem.ActionManager
 import com.intellij.openapi.actionSystem.AnAction
 
-class CommandNode(protected val actionId: String) {
+class CommandNode(actionId: String) {
 
-    val action: AnAction
+    val id: String
 
     init {
-        val aMgr = ActionManager.getInstance()
-        this.action = aMgr.getAction(actionId)
+        this.id = actionId
     }
+
+    fun asAction(): AnAction {
+        return ActionManager.getInstance().getAction(id)
+    }
+
+
 }

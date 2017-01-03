@@ -82,11 +82,6 @@ class KeyHandler {
                         RobtHolder.robot.keyRelease(i)
                     }
                 }
-
-                //todo groovy support outer action
-
-                //VisualShort.commandHolder.add("f", "AceJumpAction", "ACE模式")
-                //VisualShort.commandHolder.add("a", "AceJumpLineAction", "ACE快速模式")
             }
 
         } else {
@@ -99,7 +94,7 @@ class KeyHandler {
         //快捷模式
         if (commandNode != null) {
 
-            KeyHandler.executeAction(commandNode.action, context)
+            KeyHandler.executeAction(commandNode.asAction(), context)
             oh.commandStatus.reset()
 
             //如果是组合命令，执行完回到命令模式
@@ -123,7 +118,7 @@ class KeyHandler {
             }
 
             val project = editor.project
-            val cmd = Runnable { executeAction("MotionToMatchChar", context) }
+            val cmd = Runnable { executeAction("OH_MotionToMatchChar", context) }
             RunnableHelper.runReadCommand(project!!, cmd, "moveCharInLine", cmd)
             oh.commandStatus.reset()
             return
@@ -134,7 +129,7 @@ class KeyHandler {
         if (numberAction != null) {
             val count = numberAction.count
             for (i in 1..count) {
-                KeyHandler.executeAction(SingleShort[KeyStroke.getKeyStroke(numberAction.key)]!!.action, context)
+                KeyHandler.executeAction(SingleShort[KeyStroke.getKeyStroke(numberAction.key)]!!.asAction(), context)
             }
             oh.commandStatus.reset()
             return
@@ -142,7 +137,7 @@ class KeyHandler {
 
 
         if (oh.commandStatus.lastChar != null) {
-            KeyHandler.executeAction(SingleShort[KeyStroke.getKeyStroke(oh.commandStatus.lastChar!!)]!!.action, context)
+            KeyHandler.executeAction(SingleShort[KeyStroke.getKeyStroke(oh.commandStatus.lastChar!!)]!!.asAction(), context)
         }
     }
 
