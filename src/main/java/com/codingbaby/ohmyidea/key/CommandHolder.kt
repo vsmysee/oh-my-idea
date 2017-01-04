@@ -11,6 +11,9 @@ class CommandHolder {
 
     private val data = LinkedHashMap<String, CommandMapping>()
 
+    fun clear() {
+        data.clear()
+    }
 
     fun add(key: String, action: String, desc: String) {
         data.put(key, CommandMapping(key, CommandNode(action), desc))

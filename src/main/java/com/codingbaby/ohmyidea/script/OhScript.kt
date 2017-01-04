@@ -153,6 +153,11 @@ def bb = {
         bind.setVariable("envList", keyHolder)
         bind.setVariable("envMap", robotHolder)
 
+        VisualShort.commandHolder.clear()
+        SingleShort.commandHolder.clear()
+        MoveShort.commandHolder.clear()
+        ComposeShort.commandHolder.clear()
+        BottomShort.commandHolder.clear()
 
         bind.setVariable("vmode", VisualShort.commandHolder)
         bind.setVariable("smode", SingleShort.commandHolder)
