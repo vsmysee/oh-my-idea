@@ -1,6 +1,8 @@
-package com.codingbaby.ohmyidea.key
+package com.codingbaby.ohmyidea.shortcut
 
 import com.codingbaby.ohmyidea.OhPlugin
+import com.codingbaby.ohmyidea.key.CommandHolder
+import com.codingbaby.ohmyidea.key.CommandNode
 
 /**
  * 组合命令，必须是两个字符

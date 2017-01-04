@@ -4,19 +4,16 @@ package com.codingbaby.ohmyidea.ui;
 import com.codingbaby.ohmyidea.KeyHandler;
 import com.codingbaby.ohmyidea.OhPlugin;
 import com.codingbaby.ohmyidea.helper.RunnableHelper;
-import com.codingbaby.ohmyidea.key.BottomShort;
 import com.codingbaby.ohmyidea.key.CommandNode;
 import com.codingbaby.ohmyidea.script.CodeSnippet;
-import com.codingbaby.ohmyidea.script.RobotHandler;
+import com.codingbaby.ohmyidea.shortcut.BottomShort;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.project.Project;
 import org.apache.commons.lang.math.NumberUtils;
 
 import javax.swing.*;
 import javax.swing.text.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.util.List;
 
 public class ExEditorKit extends DefaultEditorKit {
 

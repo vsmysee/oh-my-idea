@@ -10,6 +10,10 @@ import com.codingbaby.ohmyidea.action.RepeatCurrentAction
 import com.codingbaby.ohmyidea.helper.RunnableHelper
 import com.codingbaby.ohmyidea.key.*
 import com.codingbaby.ohmyidea.script.RobotHandler
+import com.codingbaby.ohmyidea.shortcut.ComposeShort
+import com.codingbaby.ohmyidea.shortcut.MoveShort
+import com.codingbaby.ohmyidea.shortcut.SingleShort
+import com.codingbaby.ohmyidea.shortcut.VisualShort
 import com.codingbaby.ohmyidea.ui.RobtHolder
 import java.awt.event.KeyEvent
 
