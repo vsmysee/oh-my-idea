@@ -32,18 +32,18 @@ ss {
     actor("B", "Forward", "回退")
     actor("b", "Back", "向前")
 
-    actor("u", "\${'$'}Undo", "撤销")
+    actor("u", "\$Undo", "撤销")
     actor("U", "EditorToggleCase", "转为大写")
 
-    actor("r", "\${'$'}Redo", "重做")
+    actor("r", "\$Redo", "重做")
     actor("R", "CloseContent", "关闭选项卡")
 
-    actor("x", "\${'$'}Delete", "删除字符")
+    actor("x", "\$Delete", "删除字符")
 
     actor("O", "EditorStartNewLineBefore", "向前开始一个新行")
     actor("o", "EditorStartNewLine", "向后开始一个新行")
 
-    actor("p", "\${'$'}Paste", "粘贴")
+    actor("p", "\$Paste", "粘贴")
 
     actor("e", "EditorSelectWord", "选择一个单词")
     actor("E", "EditorUnSelectWord", "取消选择单词")
@@ -61,7 +61,7 @@ ss {
     actor("N", "FindPrevious", "前一个")
 
     actor(".", "EditorCompleteStatement", "语句完成")
-    actor(">", "\${'$'}Copy", "复制行")
+    actor(">", "\$Copy", "复制行")
 
     actor("<", "GotoPreviousError", "前一个错误")
     actor(",", "GotoNextError", "后一个错误")
@@ -86,19 +86,19 @@ vv {
     actor("J", "EditorScrollUp", "编辑器上滚动")
     actor("K", "EditorScrollDown", "编辑器下滚动")
 
-    actor("p", "\${'$'}Paste", "粘贴")
+    actor("p", "\$Paste", "粘贴")
 
     actor("U", "EditorToggleCase", "转位大写")
-    actor("u", "\${'$'}Undo", "撤销")
+    actor("u", "\$Undo", "撤销")
 
     actor("/", "CommentByBlockComment", "块注释")
-    actor("x", "\${'$'}Delete", "删除字符")
+    actor("x", "\$Delete", "删除字符")
     actor("r", "ReformatCode", "格式化代码")
     actor("o", "OptimizeImports", "优化导入")
 
     actor("e", "JumpToLastChange", "跳转到最近改动")
 
-    actor(">", "\${'$'}Copy", "复制行")
+    actor(">", "\$Copy", "复制行")
     actor("?", "Replace", "替换")
 
     actor("n", "MoveTabRight", "编辑器右移")
@@ -139,7 +139,7 @@ mm {
     actor("d", "MoveLineDown", "下移动行")
     actor("D", "MoveStatementDown", "下移动块")
 
-    actor("u", "\${'$'}Undo", "撤销")
+    actor("u", "\$Undo", "撤销")
 }
 
 cc {
@@ -172,7 +172,7 @@ cc {
     //意图
     actor("gi", "ShowIntentionActions", "显示意图")
 
-    actor("yc", "\${'$'}Cut", "剪切")
+    actor("yc", "\$Cut", "剪切")
     actor("yd", "EditorDuplicate", "复制行")
 
     actor("yi", "ImplementMethods", "实现方法")
