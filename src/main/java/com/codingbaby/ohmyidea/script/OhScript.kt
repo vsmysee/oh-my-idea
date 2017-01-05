@@ -44,21 +44,9 @@ class CodeContainer {
             outerList = env
         }
 
-
-    def key(key) {
-        holder = [:]
-        holder["key"] = key
-    }
-
-    def desc(desc) {
-        holder["desc"] = desc
-
-    }
-
-    def code(code) {
-        holder["code"] = code
-        outerList << holder
-    }
+        def key(key,desc,code) {
+            outerList << ["key":key,"desc":desc,"code":code]
+        }
 
 }
 
@@ -72,57 +60,54 @@ class ActorContainer {
         }
 
 
-    def actor(key,action,desc) {
+    def key(key,action,desc) {
             outerAction.add(key, action, desc)
     }
 
 
 }
 
-def oh = {
+def code_snippet = {
     closure ->
         closure.delegate = new CodeContainer(envList)
         closure()
 }
 
-def ho = {
+def app_quick_open = {
     closure ->
         closure.delegate = new RobotContainer(envMap)
         closure()
 }
 
-def vv = {
+def keyboard_select = {
     closure ->
         closure.delegate = new ActorContainer(vmode)
         closure()
 }
 
-def ss = {
+def keyboard_single = {
     closure ->
         closure.delegate = new ActorContainer(smode)
         closure()
 }
 
-def mm = {
+def keyboard_movement = {
     closure ->
         closure.delegate = new ActorContainer(mmode)
         closure()
 }
 
-def cc = {
+def keyboard_composite = {
     closure ->
         closure.delegate = new ActorContainer(cmode)
         closure()
 }
 
-def bb = {
+def keyboard_bottom = {
     closure ->
         closure.delegate = new ActorContainer(bmode)
         closure()
 }
-
-
-
 
 """
 

@@ -1,233 +1,262 @@
-ss {
 
-    actor "h", "EditorLeft", "左移动"
-    actor "H", "EditorLineStart", "左开始"
+code_snippet {
+	key "bg","blog highlight", """
+    {% highlight scheme %}
+    {% endhighlight %}
+"""
+}
 
-    actor "0", "EditorLineStart", "左开始"
 
-    actor "l", "EditorRight", "右移动"
-    actor "L", "EditorLineEnd", "右结束"
-    actor "9", "EditorLineEnd", "右结束"
+code_snippet {
+	key "ar","SpringAR","""
+    SpringAR.action((n) -> {
+            Data data = new Data();
+            data.set("biz_id", bizId);
+            data.insert();
+    });
+"""
+}
 
-    actor "j", "EditorDown", "下移动"
-    actor "J", "OH_MotionLastLine", "最后一行"
 
-    actor "G", "OH_MotionLastLine", "最后一行"
 
-    actor "k", "EditorUp", "上移动"
-    actor "K", "OH_MotionFirstLine", "第一行"
+app_quick_open {
+    key "r",[KeyEvent.VK_CONTROL , KeyEvent.VK_ALT , KeyEvent.VK_R]
+    key "d",[KeyEvent.VK_CONTROL , KeyEvent.VK_ALT , KeyEvent.VK_D]
+    key "t",[KeyEvent.VK_CONTROL , KeyEvent.VK_META , KeyEvent.VK_T]
+    key "c",[KeyEvent.VK_CONTROL , KeyEvent.VK_META , KeyEvent.VK_C]
+}
 
-    actor "t", "NextTab", "下一个选项卡"
-    actor "T", "PreviousTab", "前一个选项卡"
 
-    actor "s", "NextSplitter", "下一个拆分窗口"
-    actor "S", "PrevSplitter", "钱一个拆分窗口"
 
-    actor "m", "MethodDown", "下一个方法声明"
-    actor "M", "MethodUp", "前一个方法声明"
+keyboard_single {
 
-    actor "w", "EditorNextWord", "下一个单词"
-    actor "W", "EditorPreviousWord", "前一个单词"
+    key "h", "EditorLeft", "左移动"
+    key "H", "EditorLineStart", "左开始"
 
-    actor "B", "Forward", "回退"
-    actor "b", "Back", "向前"
+    key "0", "EditorLineStart", "左开始"
 
-    actor "u", "\$Undo", "撤销"
-    actor "U", "EditorToggleCase", "转为大写"
+    key "l", "EditorRight", "右移动"
+    key "L", "EditorLineEnd", "右结束"
+    key "9", "EditorLineEnd", "右结束"
 
-    actor "r", "\$Redo", "重做"
-    actor "R", "CloseContent", "关闭选项卡"
+    key "j", "EditorDown", "下移动"
+    key "J", "OH_MotionLastLine", "最后一行"
 
-    actor "x", "\$Delete", "删除字符"
+    key "G", "OH_MotionLastLine", "最后一行"
 
-    actor "O", "EditorStartNewLineBefore", "向前开始一个新行"
-    actor "o", "EditorStartNewLine", "向后开始一个新行"
+    key "k", "EditorUp", "上移动"
+    key "K", "OH_MotionFirstLine", "第一行"
 
-    actor "p", "\$Paste", "粘贴"
+    key "t", "NextTab", "下一个选项卡"
+    key "T", "PreviousTab", "前一个选项卡"
 
-    actor "e", "EditorSelectWord", "选择一个单词"
-    actor "E", "EditorUnSelectWord", "取消选择单词"
+    key "s", "NextSplitter", "下一个拆分窗口"
+    key "S", "PrevSplitter", "钱一个拆分窗口"
 
-    actor "q", "FindUsages", "查找使用"
-    actor "Q", "ShowPopupMenu", "模拟鼠标右键"
+    key "m", "MethodDown", "下一个方法声明"
+    key "M", "MethodUp", "前一个方法声明"
 
-    actor "/", "Find", "查找"
-    actor "?", "Replace", "替换"
+    key "w", "EditorNextWord", "下一个单词"
+    key "W", "EditorPreviousWord", "前一个单词"
 
-    actor "f", "SmartTypeCompletion", "智能提示"
-    actor "F", "FindWordAtCaret", "查找当前单词"
+    key "B", "Forward", "回退"
+    key "b", "Back", "向前"
 
-    actor "n", "FindNext", "下一个"
-    actor "N", "FindPrevious", "前一个"
+    key "u", "\$Undo", "撤销"
+    key "U", "EditorToggleCase", "转为大写"
 
-    actor ".", "EditorCompleteStatement", "语句完成"
-    actor ">", "\$Copy", "复制行"
+    key "r", "\$Redo", "重做"
+    key "R", "CloseContent", "关闭选项卡"
 
-    actor "<", "GotoPreviousError", "前一个错误"
-    actor ",", "GotoNextError", "后一个错误"
+    key "x", "\$Delete", "删除字符"
 
-    actor "c", "ActivateVersionControlToolWindow", "打开版本改动"
+    key "O", "EditorStartNewLineBefore", "向前开始一个新行"
+    key "o", "EditorStartNewLine", "向后开始一个新行"
 
-    actor ":", "OH_ShowCommandAction", "命令底行开启"
+    key "p", "\$Paste", "粘贴"
 
-    actor "I", "OH_NotQuickInsert", "快速非运算"
+    key "e", "EditorSelectWord", "选择一个单词"
+    key "E", "EditorUnSelectWord", "取消选择单词"
+
+    key "q", "FindUsages", "查找使用"
+    key "Q", "ShowPopupMenu", "模拟鼠标右键"
+
+    key "/", "Find", "查找"
+    key "?", "Replace", "替换"
+
+    key "f", "SmartTypeCompletion", "智能提示"
+    key "F", "FindWordAtCaret", "查找当前单词"
+
+    key "n", "FindNext", "下一个"
+    key "N", "FindPrevious", "前一个"
+
+    key ".", "EditorCompleteStatement", "语句完成"
+    key ">", "\$Copy", "复制行"
+
+    key "<", "GotoPreviousError", "前一个错误"
+    key ",", "GotoNextError", "后一个错误"
+
+    key "c", "ActivateVersionControlToolWindow", "打开版本改动"
+
+    key ":", "OH_ShowCommandAction", "命令底行开启"
+
+    key "I", "OH_NotQuickInsert", "快速非运算"
 
 }
 
-vv {
+keyboard_select {
 
-    actor "h", "EditorLeftWithSelection", "左选择"
-    actor "l", "EditorRightWithSelection", "右选择"
-    actor "j", "EditorDownWithSelection", "上选择"
-    actor "k", "EditorUpWithSelection", "下选择"
+    key "h", "EditorLeftWithSelection", "左选择"
+    key "l", "EditorRightWithSelection", "右选择"
+    key "j", "EditorDownWithSelection", "上选择"
+    key "k", "EditorUpWithSelection", "下选择"
 
-    actor "H", "EditorLineStartWithSelection", "选择到行首"
-    actor "L", "EditorLineEndWithSelection", "选择到行尾"
-    actor "J", "EditorScrollUp", "编辑器上滚动"
-    actor "K", "EditorScrollDown", "编辑器下滚动"
+    key "H", "EditorLineStartWithSelection", "选择到行首"
+    key "L", "EditorLineEndWithSelection", "选择到行尾"
+    key "J", "EditorScrollUp", "编辑器上滚动"
+    key "K", "EditorScrollDown", "编辑器下滚动"
 
-    actor "p", "\$Paste", "粘贴"
+    key "p", "\$Paste", "粘贴"
 
-    actor "U", "EditorToggleCase", "转位大写"
-    actor "u", "\$Undo", "撤销"
+    key "U", "EditorToggleCase", "转位大写"
+    key "u", "\$Undo", "撤销"
 
-    actor "/", "CommentByBlockComment", "块注释"
-    actor "x", "\$Delete", "删除字符"
-    actor "r", "ReformatCode", "格式化代码"
-    actor "o", "OptimizeImports", "优化导入"
+    key "/", "CommentByBlockComment", "块注释"
+    key "x", "\$Delete", "删除字符"
+    key "r", "ReformatCode", "格式化代码"
+    key "o", "OptimizeImports", "优化导入"
 
-    actor "e", "JumpToLastChange", "跳转到最近改动"
+    key "e", "JumpToLastChange", "跳转到最近改动"
 
-    actor ">", "\$Copy", "复制行"
-    actor "?", "Replace", "替换"
+    key ">", "\$Copy", "复制行"
+    key "?", "Replace", "替换"
 
-    actor "n", "MoveTabRight", "编辑器右移"
-    actor "d", "MoveTabDown", "编辑器下移"
+    key "n", "MoveTabRight", "编辑器右移"
+    key "d", "MoveTabDown", "编辑器下移"
 
-    actor ".", "OH_RepeatCurrentAction", "重复上一个动作"
+    key ".", "OH_RepeatCurrentAction", "重复上一个动作"
 
-    actor "c", "RunClass", "运行当前类"
-    actor "b", "DebugClass", "调试当前类"
-    actor "t", "ToggleTemporaryLineBreakpoint", "临时断点"
-    actor "g", "StepOver", "行跳过"
-    actor "i", "StepOver", "行进入"
+    key "c", "RunClass", "运行当前类"
+    key "b", "DebugClass", "调试当前类"
+    key "t", "ToggleTemporaryLineBreakpoint", "临时断点"
+    key "g", "StepOver", "行跳过"
+    key "i", "StepOver", "行进入"
 
 }
 
-mm {
+keyboard_movement {
 
-    actor "h", "EditorLeft", "左移动"
-    actor "H", "EditorLineStart", "左开始"
+    key "h", "EditorLeft", "左移动"
+    key "H", "EditorLineStart", "左开始"
 
-    actor "0", "EditorLineStart", "左开始"
+    key "0", "EditorLineStart", "左开始"
 
-    actor "l", "EditorRight", "右移动"
-    actor "L", "EditorLineEnd", "右结束"
-    actor "9", "EditorLineEnd", "右结束"
+    key "l", "EditorRight", "右移动"
+    key "L", "EditorLineEnd", "右结束"
+    key "9", "EditorLineEnd", "右结束"
 
-    actor "j", "EditorDown", "下移动"
-    actor "J", "OH_MotionLastLine", "最后一行"
+    key "j", "EditorDown", "下移动"
+    key "J", "OH_MotionLastLine", "最后一行"
 
-    actor "G", "OH_MotionLastLine", "最后一行"
+    key "G", "OH_MotionLastLine", "最后一行"
 
-    actor "k", "EditorUp", "上移动"
-    actor "K", "OH_MotionFirstLine", "第一行"
+    key "k", "EditorUp", "上移动"
+    key "K", "OH_MotionFirstLine", "第一行"
 
-    actor "e", "MoveLineUp", "上移动一行"
-    actor "E", "MoveStatementUp", "上移动块"
+    key "e", "MoveLineUp", "上移动一行"
+    key "E", "MoveStatementUp", "上移动块"
 
-    actor "d", "MoveLineDown", "下移动行"
-    actor "D", "MoveStatementDown", "下移动块"
+    key "d", "MoveLineDown", "下移动行"
+    key "D", "MoveStatementDown", "下移动块"
 
-    actor "u", "\$Undo", "撤销"
+    key "u", "\$Undo", "撤销"
 }
 
-cc {
+keyboard_composite {
 
-    actor "gd", "GotoDeclaration", "到声明"
-    actor "gm", "GotoImplementation", "到实现"
-    actor "gu", "GotoSuperMethod", "到超类"
+    key "gd", "GotoDeclaration", "到声明"
+    key "gm", "GotoImplementation", "到实现"
+    key "gu", "GotoSuperMethod", "到超类"
 
-    actor "gg", "OH_MotionFirstLine", "到第一行"
+    key "gg", "OH_MotionFirstLine", "到第一行"
 
-    actor "ge", "Generate", "生成代码"
-    actor "gv", "IntroduceVariable", "提取变量"
-    actor "gs", "SurroundWith", "代码环绕"
+    key "ge", "Generate", "生成代码"
+    key "gv", "IntroduceVariable", "提取变量"
+    key "gs", "SurroundWith", "代码环绕"
 
-    actor "dd", "EditorDeleteLine", "删除行"
-    actor "de", "EditorDeleteToLineEnd", "删除到行尾"
+    key "dd", "EditorDeleteLine", "删除行"
+    key "de", "EditorDeleteToLineEnd", "删除到行尾"
 
-    actor "dG", "OH_EditorDeleteToFileEnd", "删除到行尾"
+    key "dG", "OH_EditorDeleteToFileEnd", "删除到行尾"
 
-    actor "gh", "HideAllWindows", "隐藏窗口"
-    actor "gp", "NextProjectWindow", "下一个项目窗口"
-    actor "gw", "JumpToLastWindow", "最近窗口"
+    key "gh", "HideAllWindows", "隐藏窗口"
+    key "gp", "NextProjectWindow", "下一个项目窗口"
+    key "gw", "JumpToLastWindow", "最近窗口"
 
-    actor "go", "GotoClass", "导航到类"
-    actor "gn", "Inline", "合并变量"
-    actor "gf", "GotoFile", "导航到文件"
+    key "go", "GotoClass", "导航到类"
+    key "gn", "Inline", "合并变量"
+    key "gf", "GotoFile", "导航到文件"
 
-    actor "ye", "OH_EditCodeTemplate", "编辑代码模板"
+    key "ye", "OH_EditCodeTemplate", "编辑代码模板"
 
-    //意图
-    actor "gi", "ShowIntentionActions", "显示意图"
+    key "gi", "ShowIntentionActions", "显示意图"
 
-    actor "yc", "\$Cut", "剪切"
-    actor "yd", "EditorDuplicate", "复制行"
+    key "yc", "\$Cut", "剪切"
+    key "yd", "EditorDuplicate", "复制行"
 
-    actor "yi", "ImplementMethods", "实现方法"
-    actor "yo", "OverrideMethods", "重载方法"
+    key "yi", "ImplementMethods", "实现方法"
+    key "yo", "OverrideMethods", "重载方法"
 
-    actor "yb", "CompileDirty", "编译"
+    key "yb", "CompileDirty", "编译"
 
-    actor "zt", "OH_ScrollToTop", "当前行置顶"
+    key "zt", "OH_ScrollToTop", "当前行置顶"
 
-    actor "zj", "EditorJoinLines", "合并行"
-    actor "zs", "OH_LoadScriptAction", "加载模板"
+    key "zj", "EditorJoinLines", "合并行"
+    key "zs", "OH_LoadScriptAction", "加载模板"
 
-    actor "zf", "ExpandRegion", "打开折叠"
-    actor "zv", "CollapseRegion", "折叠代码"
+    key "zf", "ExpandRegion", "打开折叠"
+    key "zv", "CollapseRegion", "折叠代码"
 
-    actor "gr", "RenameElement", "重命名"
+    key "gr", "RenameElement", "重命名"
 
     //这两个命令比较特殊,需要让打开的窗口的命令模式失效
-    actor "yr", "ReplaceInPath", "文件中替换"
-    actor "yf", "FindInPath", "文件中查找"
+    key "yr", "ReplaceInPath", "文件中替换"
+    key "yf", "FindInPath", "文件中查找"
 
-    actor "ys", "Switcher", "选择组件"
-    actor "yv", "OH_ShowUIToggleActions", "控制UI"
+    key "ys", "Switcher", "选择组件"
+    key "yv", "OH_ShowUIToggleActions", "控制UI"
 
 }
 
-bb {
+keyboard_bottom {
 
-    actor "v", "SplitVertically", "水平拆分"
-    actor "h", "SplitHorizontally", "垂直拆分"
+    key "v", "SplitVertically", "水平拆分"
+    key "h", "SplitHorizontally", "垂直拆分"
 
-    actor "s", "ActivateStructureToolWindow", "显示结构Tool"
-    actor "S", "ActivateStructureToolWindow", "显示结构Tool"
+    key "s", "ActivateStructureToolWindow", "显示结构Tool"
+    key "S", "ActivateStructureToolWindow", "显示结构Tool"
 
-    actor "p", "ActivateProjectToolWindow", "显示项目Tool"
-    actor "P", "ActivateProjectToolWindow", "显示项目Tool"
+    key "p", "ActivateProjectToolWindow", "显示项目Tool"
+    key "P", "ActivateProjectToolWindow", "显示项目Tool"
 
-    actor "t", "ActivateTerminalToolWindow", "显示终端Tool"
-    actor "T", "ActivateTerminalToolWindow", "显示终端Tool"
+    key "t", "ActivateTerminalToolWindow", "显示终端Tool"
+    key "T", "ActivateTerminalToolWindow", "显示终端Tool"
 
-    actor "r", "ActivateRunToolWindow", "显示运行Tool"
-    actor "R", "ActivateRunToolWindow", "显示运行Tool"
+    key "r", "ActivateRunToolWindow", "显示运行Tool"
+    key "R", "ActivateRunToolWindow", "显示运行Tool"
 
-    actor "b", "ActivateDebugToolWindow", "显示调试Tool"
-    actor "B", "ActivateDebugToolWindow", "显示调试Tool"
+    key "b", "ActivateDebugToolWindow", "显示调试Tool"
+    key "B", "ActivateDebugToolWindow", "显示调试Tool"
 
-    actor "d", "ActivateTODOToolWindow", "显示终端TODO"
-    actor "D", "ActivateTODOToolWindow", "显示终端TODO"
+    key "d", "ActivateTODOToolWindow", "显示终端TODO"
+    key "D", "ActivateTODOToolWindow", "显示终端TODO"
 
-    actor "<", "EditorCodeBlockStart", "到代码块开始"
-    actor ">", "EditorCodeBlockEnd", "到代码块结束"
+    key "<", "EditorCodeBlockStart", "到代码块开始"
+    key ">", "EditorCodeBlockEnd", "到代码块结束"
 
-    actor "n", "EditorToggleShowLineNumbers", "显示行号"
+    key "n", "EditorToggleShowLineNumbers", "显示行号"
 
-    actor "k", "OH_ShowHelpDialog", "显示帮助"
-    actor "K", "OH_ShowHelpDialog", "显示帮助"
+    key "k", "OH_ShowHelpDialog", "显示帮助"
+    key "K", "OH_ShowHelpDialog", "显示帮助"
 
 }
