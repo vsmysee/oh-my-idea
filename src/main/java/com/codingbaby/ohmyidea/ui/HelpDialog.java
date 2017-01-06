@@ -33,7 +33,7 @@ public class HelpDialog extends DialogWrapper {
         tabs.add("选择", new HelpPanel(ShortHolder.INSTANCE.getSelect().getCommandDesc()));
         tabs.add("底行", new HelpPanel(ShortHolder.INSTANCE.getBottom().getCommandDesc()));
         tabs.add("移动", new HelpPanel(ShortHolder.INSTANCE.getMovement().getCommandDesc()));
-        tabs.add("模板", new HelpPanel(CodeSnippet.desc));
+        tabs.add("模板", new HelpPanel(CodeSnippet.INSTANCE.getDesc()));
         return tabs;
     }
 

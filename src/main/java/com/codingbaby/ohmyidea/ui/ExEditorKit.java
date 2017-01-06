@@ -110,7 +110,7 @@ public class ExEditorKit extends DefaultEditorKit {
                 }
 
                 //理解为代码块
-                final String code = CodeSnippet.code.get(text);
+                final String code = CodeSnippet.INSTANCE.getCode().get(text);
                 if (code != null) {
                     Runnable cmd = () -> {
                         int oldOffset = editor.getCaretModel().getOffset();

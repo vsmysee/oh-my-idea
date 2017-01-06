@@ -72,7 +72,7 @@ class KeyHandler {
             if (oh.status === EditorStatus.Action) {
                 //最后理解为快捷键映射
                 var events = RobotHandler.holder[oh.commandStatus.fistChar().toString()]
-                Thread.sleep(1000)
+                Thread.sleep(500)
 
                 if (events != null) {
                     for (i in events) {
