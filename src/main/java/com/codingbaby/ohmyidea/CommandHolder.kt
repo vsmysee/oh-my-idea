@@ -25,6 +25,10 @@ class CommandHolder {
         data.clear()
     }
 
+    fun add(key: String, action: String, desc: String) {
+        data.put(key, CommandMapping(key, CommandNode(action), desc))
+    }
+
     operator fun get(stroke: KeyStroke): CommandNode? {
         val keyChar = stroke.keyChar
         val commandMapping = data["" + keyChar] ?: return null
