@@ -10,12 +10,8 @@ import com.codingbaby.ohmyidea.action.RepeatCurrentAction
 import com.codingbaby.ohmyidea.helper.RunnableHelper
 import com.codingbaby.ohmyidea.key.*
 import com.codingbaby.ohmyidea.script.RobotHandler
-import com.codingbaby.ohmyidea.shortcut.ComposeShort
-import com.codingbaby.ohmyidea.shortcut.MoveShort
-import com.codingbaby.ohmyidea.shortcut.SingleShort
-import com.codingbaby.ohmyidea.shortcut.VisualShort
+import com.codingbaby.ohmyidea.script.ShortHolder
 import com.codingbaby.ohmyidea.ui.RobtHolder
-import java.awt.event.KeyEvent
 
 
 import javax.swing.*
@@ -40,7 +36,7 @@ class KeyHandler {
             }
 
             if (key.keyChar == 'v') {
-                toVisualMod()
+                toSelectMod()
                 return
             }
 
@@ -64,13 +60,13 @@ class KeyHandler {
 
         if (oh.commandStatus.hasStroke()) {
             if (oh.status === EditorStatus.Command) {
-                commandNode = SingleShort[oh.commandStatus.stroke]
+                commandNode = ShortHolder.single[oh.commandStatus.stroke]
             }
-            if (oh.status === EditorStatus.Visual) {
-                commandNode = VisualShort[oh.commandStatus.stroke]
+            if (oh.status === EditorStatus.Select) {
+                commandNode = ShortHolder.select[oh.commandStatus.stroke]
             }
             if (oh.status === EditorStatus.Move) {
-                commandNode = MoveShort[oh.commandStatus.stroke]
+                commandNode = ShortHolder.movement[oh.commandStatus.stroke]
             }
 
             if (oh.status === EditorStatus.Action) {
@@ -89,7 +85,7 @@ class KeyHandler {
             }
 
         } else {
-            commandNode = ComposeShort[oh.commandStatus.command]
+            commandNode = ShortHolder.compose[oh.commandStatus.command]
             if (commandNode != null) {
                 composeCommand = true
             }
@@ -133,7 +129,7 @@ class KeyHandler {
         if (numberAction != null) {
             val count = numberAction.count
             for (i in 1..count) {
-                KeyHandler.executeAction(SingleShort[KeyStroke.getKeyStroke(numberAction.key)]!!.asAction(), context)
+                KeyHandler.executeAction(ShortHolder.single[KeyStroke.getKeyStroke(numberAction.key)]!!.asAction(), context)
             }
             oh.commandStatus.reset()
             return
@@ -141,7 +137,7 @@ class KeyHandler {
 
 
         if (oh.commandStatus.lastChar != null) {
-            KeyHandler.executeAction(SingleShort[KeyStroke.getKeyStroke(oh.commandStatus.lastChar!!)]!!.asAction(), context)
+            KeyHandler.executeAction(ShortHolder.single[KeyStroke.getKeyStroke(oh.commandStatus.lastChar!!)]!!.asAction(), context)
         }
     }
 
@@ -169,9 +165,9 @@ class KeyHandler {
             oh.commandStatus.reset()
         }
 
-        fun toVisualMod() {
+        fun toSelectMod() {
             val oh = OhPlugin.instance
-            oh.status = EditorStatus.Visual
+            oh.status = EditorStatus.Select
             oh.commandStatus.reset()
         }
 

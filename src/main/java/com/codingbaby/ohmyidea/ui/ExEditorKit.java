@@ -6,7 +6,7 @@ import com.codingbaby.ohmyidea.OhPlugin;
 import com.codingbaby.ohmyidea.helper.RunnableHelper;
 import com.codingbaby.ohmyidea.key.CommandNode;
 import com.codingbaby.ohmyidea.script.CodeSnippet;
-import com.codingbaby.ohmyidea.shortcut.BottomShort;
+import com.codingbaby.ohmyidea.script.ShortHolder;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.project.Project;
 import org.apache.commons.lang.math.NumberUtils;
@@ -102,7 +102,7 @@ public class ExEditorKit extends DefaultEditorKit {
 
                 //如果是单字符理解单字命令
                 if (text.length() == 1) {
-                    CommandNode commandNode = BottomShort.INSTANCE.get(KeyStroke.getKeyStroke(text.charAt(0)));
+                    CommandNode commandNode = ShortHolder.INSTANCE.getBottom().get(KeyStroke.getKeyStroke(text.charAt(0)));
                     if (commandNode != null) {
                         KeyHandler.Companion.executeAction(commandNode.asAction(), entryPanel.getEntry().getContext());
                         return;

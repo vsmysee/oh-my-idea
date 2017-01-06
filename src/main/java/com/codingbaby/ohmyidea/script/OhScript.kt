@@ -1,6 +1,5 @@
 package com.codingbaby.ohmyidea.script
 
-import com.codingbaby.ohmyidea.shortcut.*
 import com.intellij.openapi.util.io.FileUtil
 import groovy.lang.Binding
 import groovy.lang.GroovyClassLoader
@@ -138,17 +137,17 @@ def keyboard_bottom = {
         bind.setVariable("envList", keyHolder)
         bind.setVariable("envMap", robotHolder)
 
-        VisualShort.commandHolder.clear()
-        SingleShort.commandHolder.clear()
-        MoveShort.commandHolder.clear()
-        ComposeShort.commandHolder.clear()
-        BottomShort.commandHolder.clear()
+        ShortHolder.select.clear()
+        ShortHolder.single.clear()
+        ShortHolder.movement.clear()
+        ShortHolder.compose.clear()
+        ShortHolder.bottom.clear()
 
-        bind.setVariable("vmode", VisualShort.commandHolder)
-        bind.setVariable("smode", SingleShort.commandHolder)
-        bind.setVariable("mmode", MoveShort.commandHolder)
-        bind.setVariable("cmode", ComposeShort.commandHolder)
-        bind.setVariable("bmode", BottomShort.commandHolder)
+        bind.setVariable("vmode", ShortHolder.select)
+        bind.setVariable("smode", ShortHolder.single)
+        bind.setVariable("mmode", ShortHolder.movement)
+        bind.setVariable("cmode", ShortHolder.compose)
+        bind.setVariable("bmode", ShortHolder.bottom)
 
         InvokerHelper.createScript(scriptClass, bind).run()
 
