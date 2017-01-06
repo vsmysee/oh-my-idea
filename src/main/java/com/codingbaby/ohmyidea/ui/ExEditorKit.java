@@ -1,10 +1,9 @@
-
 package com.codingbaby.ohmyidea.ui;
 
 import com.codingbaby.ohmyidea.KeyHandler;
 import com.codingbaby.ohmyidea.OhPlugin;
 import com.codingbaby.ohmyidea.helper.RunnableHelper;
-import com.codingbaby.ohmyidea.key.CommandNode;
+import com.codingbaby.ohmyidea.CommandNode;
 import com.codingbaby.ohmyidea.script.CodeSnippet;
 import com.codingbaby.ohmyidea.script.ShortHolder;
 import com.intellij.openapi.editor.Editor;

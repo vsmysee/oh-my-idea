@@ -14,13 +14,7 @@ import javax.swing.SwingUtilities
  */
 class OhTypedActionHandler(private val origHandler: TypedActionHandler) : TypedActionHandler {
 
-
-    private val handler: KeyHandler
-
-    init {
-        handler = KeyHandler.ohMyHander()
-    }
-
+    private val handler = KeyHandler.ohMyHander()
 
     override fun execute(editor: Editor, charTyped: Char, dataContext: DataContext) {
 

@@ -3,6 +3,9 @@ package com.codingbaby.ohmyidea
 import javax.swing.*
 import java.util.regex.Pattern
 
+class NumberAction(var count: Int, var key: Char)
+
+
 class CommandStatus {
 
     private val numberActionPattern = Pattern.compile("^\\d+[a-z]$")

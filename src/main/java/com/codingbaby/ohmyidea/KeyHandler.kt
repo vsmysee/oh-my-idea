@@ -8,7 +8,6 @@ import com.intellij.openapi.editor.Editor
 import com.intellij.openapi.editor.actions.EscapeAction
 import com.codingbaby.ohmyidea.action.RepeatCurrentAction
 import com.codingbaby.ohmyidea.helper.RunnableHelper
-import com.codingbaby.ohmyidea.key.*
 import com.codingbaby.ohmyidea.script.RobotHandler
 import com.codingbaby.ohmyidea.script.ShortHolder
 import com.codingbaby.ohmyidea.ui.RobtHolder

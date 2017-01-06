@@ -8,9 +8,6 @@ import com.intellij.ui.components.JBTabbedPane;
 
 import javax.swing.*;
 
-/**
- * Created by baby on 15/6/23.
- */
 public class HelpDialog extends DialogWrapper {
 
 

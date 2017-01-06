@@ -1,8 +1,18 @@
-package com.codingbaby.ohmyidea.key
+package com.codingbaby.ohmyidea
 
+import com.intellij.openapi.actionSystem.ActionManager
+import com.intellij.openapi.actionSystem.AnAction
 import javax.swing.*
 import java.util.HashMap
 import java.util.LinkedHashMap
+
+
+class CommandNode(var actionId: String) {
+    fun asAction(): AnAction {
+        return ActionManager.getInstance().getAction(actionId)
+    }
+}
+
 
 class CommandHolder {
 
@@ -13,10 +23,6 @@ class CommandHolder {
 
     fun clear() {
         data.clear()
-    }
-
-    fun add(key: String, action: String, desc: String) {
-        data.put(key, CommandMapping(key, CommandNode(action), desc))
     }
 
     operator fun get(stroke: KeyStroke): CommandNode? {

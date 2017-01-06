@@ -1,6 +1,6 @@
 package com.codingbaby.ohmyidea.script
 
-import com.codingbaby.ohmyidea.key.CommandHolder
+import com.codingbaby.ohmyidea.CommandHolder
 
 
 object ShortHolder {
