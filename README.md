@@ -5,7 +5,7 @@ Oh My Idea是一个IDEA插件，这个取名模仿了Oh My ZSH，我利用这个
 
 
 ## 操作设计
-所以控制器全部用字母和ESC键进行组合,这个组合由一个groovy dsl文件进行定制,这个文件在自己的工作目录,取名为.oh-my-idea,Intellij安装了本插件之后启动时会加载解析这个文件
+所有控制命令全部用字母和ESC键进行组合,这个组合由一个groovy dsl文件进行定制,这个文件在自己的工作目录,取名为.oh-my-idea,Intellij安装了本插件之后启动时会加载解析这个文件
 编辑过程类似vim的模式,部分命令和vim相同,比如上下左右控制,输入冒号进入底行
 
 
@@ -58,13 +58,13 @@ keyboard_single {
     key "T", "PreviousTab", "前一个选项卡"
 
     key "s", "NextSplitter", "下一个拆分窗口"
-    key "S", "PrevSplitter", "钱一个拆分窗口"
+    key "S", "PrevSplitter", "上一个拆分窗口"
 
     key "m", "MethodDown", "下一个方法声明"
     key "M", "MethodUp", "前一个方法声明"
 
     key "w", "EditorNextWord", "下一个单词"
-    key "W", "EditorPreviousWord", "前一个单词"
+    key "W", "EditorPreviousWord", "上一个单词"
 
     key "B", "Forward", "回退"
     key "b", "Back", "向前"
