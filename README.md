@@ -1,11 +1,12 @@
-Oh My Idea是一个IDEA插件，这个取名模仿了Oh My ZSH，我利用这个插件IDEA插件编写java平台的上的所有代码,天下武功,唯快不破.
+Oh My Idea是一个IDEA插件，这个取名模仿了Oh My ZSH，我利用这个插件编写java平台的上的所有代码,所谓天下武功,唯快不破.
 
 ## 为什么要写这个插件
 大量的程序员工作在编辑器之神和神的编辑器这两个软件之下,还有大量的程序员工作在IDE之下,我工作在神的编辑器的手法和IDE的结合处
 
 
 ## 操作设计
-所以控制器全部用字母和ESC键进行组合,这个组合由一个groovy dsl文件进行定制,这个文件在自己的工作目录,取名为.oh-my-idea
+所以控制器全部用字母和ESC键进行组合,这个组合由一个groovy dsl文件进行定制,这个文件在自己的工作目录,取名为.oh-my-idea,Intellij安装了本插件之后启动时会加载解析这个文件
+编辑过程类似vim的模式,部分命令和vim相同,比如上下左右控制,输入冒号进入底行
 
 
 
@@ -295,9 +296,10 @@ code_snippet {
 }
 ```
 
+#### 动画演示
 
 ![](https://github.com/vsmysee/oh-my-idea/blob/master/ohmyidea.gif?raw=true)
 
 
-## 编译
+## 编译构建
 ./gradlew buildPlugin
