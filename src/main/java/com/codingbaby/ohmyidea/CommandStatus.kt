@@ -6,7 +6,7 @@ import java.util.regex.Pattern
 class NumberAction(var count: Int, var key: Char)
 
 
-class CommandStatus {
+object CommandStatus {
 
     private val numberActionPattern = Pattern.compile("^\\d+[a-z]$")
 
@@ -14,6 +14,7 @@ class CommandStatus {
 
     //command buffer
     private var sb = StringBuffer()
+
 
     fun addChar(c: Char) {
         sb.append(c)
@@ -26,54 +27,53 @@ class CommandStatus {
         return sb.length == 1
     }
 
-    fun fistChar():Char {
+    fun fistChar(): Char {
         return sb[0]
     }
 
-    val stroke: KeyStroke
-        get() = KeyStroke.getKeyStroke(sb[0])
+    fun stroke(): KeyStroke {
+        return KeyStroke.getKeyStroke(sb[0])
+    }
 
-    val isForward: Boolean
-        get() = sb.toString().startsWith(FORWARD_KEY)
+    fun isForward(): Boolean {
+        return sb.toString().startsWith(FORWARD_KEY)
+    }
 
-    val forwardChar: Char?
-        get() {
-            val command = sb.toString()
-            if (command.startsWith(FORWARD_KEY) && sb.length == 2) {
-                return command.substring(1)[0]
-            }
-            return null
+    fun forwardChar(): Char? {
+        val command = sb.toString()
+        if (command.startsWith(FORWARD_KEY) && sb.length == 2) {
+            return command.substring(1)[0]
         }
+        return null
+    }
 
-    val numberAction: NumberAction?
-        get() {
-            if (numberActionPattern.matcher(sb.toString()).matches()) {
-                val countString = sb.substring(0, sb.length - 1)
-                val count = Integer.parseInt(countString)
-                val key = sb[sb.length - 1]
-                val numberAction = NumberAction(count, key)
-                return numberAction
-            }
-            return null
+    fun numberAction(): NumberAction? {
+        if (numberActionPattern.matcher(sb.toString()).matches()) {
+            val countString = sb.substring(0, sb.length - 1)
+            val count = Integer.parseInt(countString)
+            val key = sb[sb.length - 1]
+            val numberAction = NumberAction(count, key)
+            return numberAction
         }
+        return null
+    }
 
 
     //比如gj，j生效
-    val lastChar: Char?
-        get() {
-            if (sb.length > 1) {
-                return sb[sb.length - 1]
-            }
-            return null
+    fun lastChar(): Char? {
+        if (sb.length > 1) {
+            return sb[sb.length - 1]
         }
+        return null
+    }
 
 
     fun reset() {
         sb = StringBuffer()
     }
 
-    val command: String
-        get() = sb.toString()
-
+    fun command(): String {
+        return sb.toString()
+    }
 
 }

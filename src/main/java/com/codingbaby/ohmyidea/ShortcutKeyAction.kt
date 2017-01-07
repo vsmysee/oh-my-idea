@@ -20,7 +20,7 @@ class ShortcutKeyAction : AnAction(), DumbAware {
         if (keyStroke != null && keyStroke.keyCode == KeyEvent.VK_ESCAPE) {
 
             if (OhPlugin.instance.status !== EditorStatus.Command) {
-                KeyHandler.toCommandMod()
+                KeyHandler.mode(EditorStatus.Command)
                 OhPlugin.setPopWindowOpen(false)
             }
 
@@ -28,7 +28,7 @@ class ShortcutKeyAction : AnAction(), DumbAware {
             KeyHandler.executeAction("EditorEscape", anActionEvent.dataContext)
             KeyHandler.toChar = null
 
-            OhPlugin.instance.commandStatus.reset()
+            CommandStatus.reset()
         }
     }
 

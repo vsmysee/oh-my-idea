@@ -1,8 +1,5 @@
 package com.codingbaby.ohmyidea.ui;
 
-/**
- * Created by baby on 15/3/7.
- */
 
 import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.application.ApplicationManager;

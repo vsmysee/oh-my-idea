@@ -15,7 +15,7 @@ object OhScript {
     val OH_FILE = ".oh-my-idea"
 
 
-    fun loadScriptFile() {
+    fun loadGroovyScriptFile() {
         if (try {
             Class.forName("groovy.lang.GroovyClassLoader")
             false
@@ -26,13 +26,9 @@ object OhScript {
         }
 
         val content = loadContent()
-        loadGroovy(content)
-    }
 
-
-    fun loadGroovy(text: String) {
         val groovyClassLoader = GroovyClassLoader()
-        val scriptClass = groovyClassLoader.parseClass(GroovyDef.groovy + text)
+        val scriptClass = groovyClassLoader.parseClass(GroovyDef.groovy + content)
 
         var keyHolder = ArrayList<HashMap<String, String>>()
         var robotHolder = HashMap<String, List<Int>>()
@@ -41,11 +37,7 @@ object OhScript {
         bind.setVariable("envList", keyHolder)
         bind.setVariable("envMap", robotHolder)
 
-        ShortHolder.select.clear()
-        ShortHolder.single.clear()
-        ShortHolder.movement.clear()
-        ShortHolder.compose.clear()
-        ShortHolder.bottom.clear()
+        ShortHolder.clear()
 
         bind.setVariable("vmode", ShortHolder.select)
         bind.setVariable("smode", ShortHolder.single)
@@ -58,16 +50,11 @@ object OhScript {
         RobotHandler.holder.clear()
         RobotHandler.holder.putAll(robotHolder)
 
-        CodeSnippet.desc.clear()
-        CodeSnippet.code.clear()
+        CodeSnippet.clear()
 
         for (map in keyHolder) {
-            var key = map["key"]
-            var desc = map["desc"]
-            var code = map["code"]
-
-            CodeSnippet.desc.put(key as String, desc as String)
-            CodeSnippet.code.put(key, code as String)
+            CodeSnippet.desc.put(map["key"] as String, map["desc"] as String)
+            CodeSnippet.code.put(map["key"] as String, map["code"] as String)
         }
     }
 
@@ -79,7 +66,7 @@ object OhScript {
                 val file = File(homeDirName, OH_FILE)
                 try {
                     FileUtil.writeToFile(file, text)
-                    loadScriptFile()
+                    loadGroovyScriptFile()
                 } catch (e: IOException) {
                 }
 

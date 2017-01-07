@@ -16,61 +16,65 @@ import com.codingbaby.ohmyidea.ui.RobtHolder
 import javax.swing.*
 
 
-class KeyHandler {
+object KeyHandler {
+
+    var toLine: Int = 0
+
+    var toChar: Char? = null
+
+    private var currentAction: AnAction? = null
+
+    private var currentDataContext: DataContext? = null
+
+
+    val statusMap = hashMapOf(' ' to EditorStatus.Insert,
+            'i' to EditorStatus.Insert,
+            'a' to EditorStatus.Action,
+            'V' to EditorStatus.Move,
+            'v' to EditorStatus.Select)
+
+    fun mode(status: EditorStatus?) {
+        if (status == null) {
+            return
+        }
+        val oh = OhPlugin.instance
+        oh.status = status
+
+        oh.setCursors(status != EditorStatus.Insert)
+        CommandStatus.reset()
+    }
+
 
     fun handleKey(editor: Editor, key: KeyStroke, context: DataContext) {
 
         val oh = OhPlugin.instance
 
-        if (oh.commandStatus.isWaiting) {
-
-            if (key.keyChar == ' ') {
-                toInsertMod()
+        if (CommandStatus.isWaiting) {
+            if (statusMap[key.keyChar] != null) {
+                mode(statusMap[key.keyChar])
                 return
             }
-
-            if (key.keyChar == 'i') {
-                toInsertMod()
-                return
-            }
-
-            if (key.keyChar == 'v') {
-                toSelectMod()
-                return
-            }
-
-            if (key.keyChar == 'V') {
-                toMoveMod()
-                return
-            }
-
-            if (key.keyChar == 'a') {
-                toActionMod()
-                return
-            }
-
-
         }
 
-        oh.commandStatus.addChar(key.keyChar)
+        CommandStatus.addChar(key.keyChar)
 
         var commandNode: CommandNode? = null
         var composeCommand = false
 
-        if (oh.commandStatus.hasStroke()) {
+        if (CommandStatus.hasStroke()) {
             if (oh.status === EditorStatus.Command) {
-                commandNode = ShortHolder.single[oh.commandStatus.stroke]
+                commandNode = ShortHolder.single[CommandStatus.stroke()]
             }
             if (oh.status === EditorStatus.Select) {
-                commandNode = ShortHolder.select[oh.commandStatus.stroke]
+                commandNode = ShortHolder.select[CommandStatus.stroke()]
             }
             if (oh.status === EditorStatus.Move) {
-                commandNode = ShortHolder.movement[oh.commandStatus.stroke]
+                commandNode = ShortHolder.movement[CommandStatus.stroke()]
             }
 
             if (oh.status === EditorStatus.Action) {
                 //最后理解为快捷键映射
-                var events = RobotHandler.holder[oh.commandStatus.fistChar().toString()]
+                var events = RobotHandler.holder[CommandStatus.fistChar().toString()]
                 Thread.sleep(500)
 
                 if (events != null) {
@@ -84,7 +88,7 @@ class KeyHandler {
             }
 
         } else {
-            commandNode = ShortHolder.compose[oh.commandStatus.command]
+            commandNode = ShortHolder.compose[CommandStatus.command()]
             if (commandNode != null) {
                 composeCommand = true
             }
@@ -94,11 +98,11 @@ class KeyHandler {
         if (commandNode != null) {
 
             KeyHandler.executeAction(commandNode.asAction(), context)
-            oh.commandStatus.reset()
+            CommandStatus.reset()
 
             //如果是组合命令，执行完回到命令模式
             if (composeCommand && oh.status !== EditorStatus.Command) {
-                KeyHandler.toCommandMod()
+                KeyHandler.mode(EditorStatus.Command)
             }
 
             return
@@ -106,10 +110,10 @@ class KeyHandler {
 
 
         //行字符搜索
-        if (oh.commandStatus.isForward) {
+        if (CommandStatus.isForward()) {
 
-            if (oh.commandStatus.forwardChar != null) {
-                toChar = oh.commandStatus.forwardChar
+            if (CommandStatus.forwardChar() != null) {
+                toChar = CommandStatus.forwardChar()
             }
 
             if (toChar == null) {
@@ -119,98 +123,48 @@ class KeyHandler {
             val project = editor.project
             val cmd = Runnable { executeAction("OH_MotionToMatchChar", context) }
             RunnableHelper.runReadCommand(project!!, cmd, "moveCharInLine", cmd)
-            oh.commandStatus.reset()
+            CommandStatus.reset()
             return
         }
 
         //可以在单字母命令敲入数字加速
-        val numberAction = oh.commandStatus.numberAction
+        val numberAction = CommandStatus.numberAction()
         if (numberAction != null) {
             val count = numberAction.count
             for (i in 1..count) {
                 KeyHandler.executeAction(ShortHolder.single[KeyStroke.getKeyStroke(numberAction.key)]!!.asAction(), context)
             }
-            oh.commandStatus.reset()
+            CommandStatus.reset()
             return
         }
 
 
-        if (oh.commandStatus.lastChar != null) {
-            KeyHandler.executeAction(ShortHolder.single[KeyStroke.getKeyStroke(oh.commandStatus.lastChar!!)]!!.asAction(), context)
+        if (CommandStatus.lastChar() != null) {
+            KeyHandler.executeAction(ShortHolder.single[KeyStroke.getKeyStroke(CommandStatus.lastChar()!!)]!!.asAction(), context)
         }
     }
 
-    companion object {
 
-        private var keyHander: KeyHandler = KeyHandler()
-
-        var toLine: Int = 0
-
-        var toChar: Char? = null
-
-        private var currentAction: AnAction? = null
-
-        private var currentDataContext: DataContext? = null
-
-
-        fun ohMyHander(): KeyHandler {
-            return keyHander
+    fun executeAction(name: String, context: DataContext) {
+        val aMgr = ActionManager.getInstance()
+        val action = aMgr.getAction(name)
+        if (action != null) {
+            executeAction(action, context)
         }
+    }
 
-        fun toInsertMod() {
-            val oh = OhPlugin.instance
-            oh.status = EditorStatus.Insert
-            oh.setCursors(false)
-            oh.commandStatus.reset()
+    fun executeAction(action: AnAction, context: DataContext) {
+        if (action !is EscapeAction && action !is RepeatCurrentAction) {
+            currentAction = action
+            currentDataContext = context
         }
+        action.actionPerformed(AnActionEvent(null, context, "", action.templatePresentation, ActionManager.getInstance(), 0))
+    }
 
-        fun toSelectMod() {
-            val oh = OhPlugin.instance
-            oh.status = EditorStatus.Select
-            oh.commandStatus.reset()
-        }
+    fun repeatCurrentAction() {
+        if (currentAction != null && currentDataContext != null) {
+            currentAction!!.actionPerformed(AnActionEvent(null, currentDataContext!!, "", currentAction!!.templatePresentation, ActionManager.getInstance(), 0))
 
-        fun toMoveMod() {
-            val oh = OhPlugin.instance
-            oh.status = EditorStatus.Move
-            oh.commandStatus.reset()
-        }
-
-        fun toActionMod() {
-            val oh = OhPlugin.instance
-            oh.status = EditorStatus.Action
-            oh.commandStatus.reset()
-        }
-
-
-        fun toCommandMod() {
-            val oh = OhPlugin.instance
-            oh.setCursors(true)
-            oh.status = EditorStatus.Command
-            oh.commandStatus.reset()
-        }
-
-        fun executeAction(name: String, context: DataContext) {
-            val aMgr = ActionManager.getInstance()
-            val action = aMgr.getAction(name)
-            if (action != null) {
-                executeAction(action, context)
-            }
-        }
-
-        fun executeAction(action: AnAction, context: DataContext) {
-            if (action !is EscapeAction && action !is RepeatCurrentAction) {
-                currentAction = action
-                currentDataContext = context
-            }
-            action.actionPerformed(AnActionEvent(null, context, "", action.templatePresentation, ActionManager.getInstance(), 0))
-        }
-
-        fun repeatCurrentAction() {
-            if (currentAction != null && currentDataContext != null) {
-                currentAction!!.actionPerformed(AnActionEvent(null, currentDataContext!!, "", currentAction!!.templatePresentation, ActionManager.getInstance(), 0))
-
-            }
         }
     }
 }

@@ -14,13 +14,11 @@ import javax.swing.SwingUtilities
  */
 class OhTypedActionHandler(private val origHandler: TypedActionHandler) : TypedActionHandler {
 
-    private val handler = KeyHandler.ohMyHander()
-
     override fun execute(editor: Editor, charTyped: Char, dataContext: DataContext) {
 
         if (isEnabled(editor) && OhPlugin.instance.status !== EditorStatus.Insert) {
             SwingUtilities.invokeLater {
-                handler.handleKey(editor, KeyStroke.getKeyStroke(charTyped), dataContext)
+                KeyHandler.handleKey(editor, KeyStroke.getKeyStroke(charTyped), dataContext)
             }
         } else {
             origHandler.execute(editor, charTyped, dataContext)

@@ -1,5 +1,6 @@
 package com.codingbaby.ohmyidea.ui;
 
+import com.codingbaby.ohmyidea.CommandStatus;
 import com.codingbaby.ohmyidea.KeyHandler;
 import com.codingbaby.ohmyidea.OhPlugin;
 import com.codingbaby.ohmyidea.helper.RunnableHelper;
@@ -91,8 +92,8 @@ public class ExEditorKit extends DefaultEditorKit {
 
             //如果是数字理解为行号
             if (NumberUtils.isNumber(text)) {
-                KeyHandler.Companion.setToLine(Integer.parseInt(entryPanel.getText()));
-                KeyHandler.Companion.executeAction("OH_MotionToLine", entryPanel.getEntry().getContext());
+                KeyHandler.INSTANCE.setToLine(Integer.parseInt(entryPanel.getText()));
+                KeyHandler.INSTANCE.executeAction("OH_MotionToLine", entryPanel.getEntry().getContext());
             } else {
 
                 final Editor editor = entryPanel.getEntry().getEditor();
@@ -103,7 +104,7 @@ public class ExEditorKit extends DefaultEditorKit {
                 if (text.length() == 1) {
                     CommandNode commandNode = ShortHolder.INSTANCE.getBottom().get(KeyStroke.getKeyStroke(text.charAt(0)));
                     if (commandNode != null) {
-                        KeyHandler.Companion.executeAction(commandNode.asAction(), entryPanel.getEntry().getContext());
+                        KeyHandler.INSTANCE.executeAction(commandNode.asAction(), entryPanel.getEntry().getContext());
                         return;
                     }
                 }
@@ -114,7 +115,7 @@ public class ExEditorKit extends DefaultEditorKit {
                     Runnable cmd = () -> {
                         int oldOffset = editor.getCaretModel().getOffset();
                         editor.getDocument().insertString(oldOffset, code);
-                        oh.getCommandStatus().reset();
+                        CommandStatus.INSTANCE.reset();
                     };
                     RunnableHelper.INSTANCE.runWriteCommand(project, cmd, "insertCode", cmd);
                 }

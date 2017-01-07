@@ -11,4 +11,12 @@ object ShortHolder {
     var single = CommandHolder()
     var select = CommandHolder()
 
+    fun clear() {
+        bottom.clear()
+        compose.clear()
+        movement.clear()
+        single.clear()
+        select.clear()
+    }
+
 }

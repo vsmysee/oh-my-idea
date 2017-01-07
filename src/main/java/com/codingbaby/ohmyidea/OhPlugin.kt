@@ -13,7 +13,14 @@ import com.intellij.openapi.editor.actionSystem.EditorActionManager
 import com.intellij.openapi.editor.event.EditorFactoryAdapter
 import com.intellij.openapi.editor.event.EditorFactoryEvent
 
+
+import com.intellij.openapi.diagnostic.Logger;
+
+
 class OhPlugin(private val myApp: Application) : ApplicationComponent {
+
+    private val LOG = Logger.getInstance(OhPlugin.javaClass)
+
 
     val ACTION_ID = "OH_ShortcutKeyAction"
 
@@ -22,8 +29,6 @@ class OhPlugin(private val myApp: Application) : ApplicationComponent {
     var openPopWindow = false
 
     var status = EditorStatus.Command
-
-    var commandStatus = CommandStatus()
 
 
     override fun initComponent() {
@@ -39,15 +44,16 @@ class OhPlugin(private val myApp: Application) : ApplicationComponent {
                         .getAction(ACTION_ID)
                         .registerCustomShortcutSet(CommonShortcuts.ESCAPE, editor.component)
                 if (EditorHelper.isFileEditor(editor) && !openPopWindow) {
-                    KeyHandler.toCommandMod()
+                    KeyHandler.mode(EditorStatus.Command)
                 } else {
-                    KeyHandler.toInsertMod()
+                    KeyHandler.mode(EditorStatus.Insert)
                 }
             }
 
         }, myApp)
 
-        OhScript.loadScriptFile()
+        LOG.info("begin load groovy script file")
+        OhScript.loadGroovyScriptFile()
     }
 
     override fun disposeComponent() {
