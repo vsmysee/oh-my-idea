@@ -21,15 +21,11 @@ class OhPlugin(private val myApp: Application) : ApplicationComponent {
 
     private val LOG = Logger.getInstance(OhPlugin.javaClass)
 
-
     val ACTION_ID = "OH_ShortcutKeyAction"
-
-
-    //打开的小窗口特殊处理
-    var openPopWindow = false
 
     var status = EditorStatus.Command
 
+    var active = true;
 
     override fun initComponent() {
 
@@ -43,7 +39,7 @@ class OhPlugin(private val myApp: Application) : ApplicationComponent {
                 ActionManager.getInstance()
                         .getAction(ACTION_ID)
                         .registerCustomShortcutSet(CommonShortcuts.ESCAPE, editor.component)
-                if (EditorHelper.isFileEditor(editor) && !openPopWindow) {
+                if (EditorHelper.isFileEditor(editor) && active) {
                     KeyHandler.mode(EditorStatus.Command)
                 } else {
                     KeyHandler.mode(EditorStatus.Insert)
@@ -52,7 +48,6 @@ class OhPlugin(private val myApp: Application) : ApplicationComponent {
 
         }, myApp)
 
-        LOG.info("begin load groovy script file")
         OhScript.loadGroovyScriptFile()
     }
 
@@ -79,8 +74,11 @@ class OhPlugin(private val myApp: Application) : ApplicationComponent {
         val instance: OhPlugin
             get() = ApplicationManager.getApplication().getComponent(COMPONENT_NAME) as OhPlugin
 
-        fun setPopWindowOpen(open: Boolean) {
-            instance.openPopWindow = open
+        fun active() {
+            instance.active = !instance.active
+            if (!instance.active) {
+                KeyHandler.mode(EditorStatus.Insert)
+            }
         }
     }
 

@@ -219,7 +219,6 @@ keyboard_composite {
 
     key "gr", "RenameElement", "重命名"
 
-    //这两个命令比较特殊,需要让打开的窗口的命令模式失效
     key "yr", "ReplaceInPath", "文件中替换"
     key "yf", "FindInPath", "文件中查找"
 

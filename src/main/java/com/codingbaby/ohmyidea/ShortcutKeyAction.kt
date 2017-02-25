@@ -17,11 +17,10 @@ class ShortcutKeyAction : AnAction(), DumbAware {
     override fun actionPerformed(anActionEvent: AnActionEvent) {
 
         val keyStroke = getKeyStroke(anActionEvent)
-        if (keyStroke != null && keyStroke.keyCode == KeyEvent.VK_ESCAPE) {
+        if (keyStroke != null && keyStroke.keyCode == KeyEvent.VK_ESCAPE && OhPlugin.instance.active) {
 
             if (OhPlugin.instance.status !== EditorStatus.Command) {
                 KeyHandler.mode(EditorStatus.Command)
-                OhPlugin.setPopWindowOpen(false)
             }
 
             //将esc传递到IDE
