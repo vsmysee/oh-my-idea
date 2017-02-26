@@ -8,13 +8,11 @@ import com.intellij.openapi.actionSystem.CommonShortcuts
 import com.intellij.openapi.application.Application
 import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.components.ApplicationComponent
+import com.intellij.openapi.diagnostic.Logger
 import com.intellij.openapi.editor.EditorFactory
 import com.intellij.openapi.editor.actionSystem.EditorActionManager
 import com.intellij.openapi.editor.event.EditorFactoryAdapter
 import com.intellij.openapi.editor.event.EditorFactoryEvent
-
-
-import com.intellij.openapi.diagnostic.Logger;
 
 
 class OhPlugin(private val myApp: Application) : ApplicationComponent {
@@ -27,6 +25,9 @@ class OhPlugin(private val myApp: Application) : ApplicationComponent {
 
     var active = true;
 
+    var controlTime = System.currentTimeMillis()
+
+
     override fun initComponent() {
 
         //替换系统的TypedActionHandler
@@ -36,9 +37,10 @@ class OhPlugin(private val myApp: Application) : ApplicationComponent {
         EditorFactory.getInstance().addEditorFactoryListener(object : EditorFactoryAdapter() {
             override fun editorCreated(event: EditorFactoryEvent) {
                 val editor = event.editor
-                ActionManager.getInstance()
-                        .getAction(ACTION_ID)
-                        .registerCustomShortcutSet(CommonShortcuts.ESCAPE, editor.component)
+                val action = ActionManager.getInstance().getAction(ACTION_ID)
+
+                action.registerCustomShortcutSet(CommonShortcuts.ESCAPE, editor.component)
+
                 if (EditorHelper.isFileEditor(editor) && active) {
                     KeyHandler.mode(EditorStatus.Command)
                 } else {
@@ -74,9 +76,9 @@ class OhPlugin(private val myApp: Application) : ApplicationComponent {
         val instance: OhPlugin
             get() = ApplicationManager.getApplication().getComponent(COMPONENT_NAME) as OhPlugin
 
-        fun active() {
-            instance.active = !instance.active
-            if (!instance.active) {
+        fun active(flag:Boolean) {
+            instance.active = flag
+            if (!flag) {
                 KeyHandler.mode(EditorStatus.Insert)
             }
         }

@@ -16,16 +16,7 @@
 
     <actions>
 
-        <action id="ControlAction"
-                class="com.codingbaby.ohmyidea.action.ControlPluginAction"
-                text="Activate Oh My IDEA Mode">
-            <keyboard-shortcut keymap="Mac OS X" first-keystroke="ctrl SEMICOLON"/>
-            <keyboard-shortcut keymap="Mac OS X 10.5+" first-keystroke="ctrl SEMICOLON"/>
-            <keyboard-shortcut keymap="$default" first-keystroke="ctrl SEMICOLON"/>
-        </action>
-
         <action id="OH_ShortcutKeyAction" class="com.codingbaby.ohmyidea.ShortcutKeyAction" text="Shortcuts"/>
-
 
         <action id="OH_MotionFirstLine" class="com.codingbaby.ohmyidea.action.MotionGotoLineFirstAction" text="First Line"/>
         <action id="OH_MotionLastLine" class="com.codingbaby.ohmyidea.action.MotionGotoLineLastAction" text="Last Line"/>
