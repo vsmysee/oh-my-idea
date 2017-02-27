@@ -13,7 +13,7 @@ import javax.swing.KeyStroke
  */
 class ShortcutKeyAction : AnAction(), DumbAware {
 
-    var timeRange = 100
+    var timeRange = 90
 
     override fun actionPerformed(anActionEvent: AnActionEvent) {
 
