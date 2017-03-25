@@ -1,0 +1,12 @@
+(single
+[:h :EditorLeft :左移动]
+[:H :EditorLineStart :左开始]
+[:l :EditorRight :右移动]
+[:L :EditorLineEnd :右结束]
+[:j :EditorDown :下移动]
+[:J :OH_MotionLastLine :最后一行]
+[:G :OH_MotionLastLine :最后一行]
+[:k :EditorUp :上移动]
+[:K :OH_MotionFirstLine :第一行]
+[:t :NextTab :下一个选项卡]
+[:T :PreviousTab :前一个选项卡])

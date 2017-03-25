@@ -17,7 +17,7 @@ class CodeTemplateEditAction : DumbAwareAction() {
 
     override fun actionPerformed(e: AnActionEvent) {
         val project = if (e.project == null) ProjectManager.getInstance().defaultProject else e.project
-        val dialog = EditDialog(project, OhScript.loadContent())
+        val dialog = EditDialog(project, OhScript.loadContent(OhScript.OH_FILE))
         if (dialog.showAndGet()) {
             val text = dialog.myTextArea.text
             OhScript.saveScript(text)
