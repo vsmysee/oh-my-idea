@@ -56,7 +56,10 @@ public class LispTest {
         assertEquals(new BigInteger("4"), lisp("((fn (x) \n (* x x)) 2)"));
 
 
-        assertEquals("[[a, b, c], [d, e, f]]", lisp("(single [:a :b :c][:d :e :f])").toString());
-        assertEquals("[[a, b, c], [d, e, f]]", lisp("(single \n[:a :b :c] \n [:d :e :f])").toString());
+        assertEquals(2, lisp("(single [:a :b :c][:d :e :f])"));
+        assertEquals(2, lisp("(single \n[:a :b :c] \n [:d :e :f])"));
+        assertEquals(2, lisp("(do (single \n[:a :b :c] \n [:d :e :f]) )"));
+        assertEquals(2, lisp("(do\n(single \n[:a :b :c] \n [:d :e :f]) )"));
+        assertEquals(2, lisp("(do\n(composite \n[:a :b :c] \n [:d :e :f]) )"));
     }
 }

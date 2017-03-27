@@ -107,6 +107,7 @@ public class EnvBuilder {
                 .add("list", mh(FunAll.class, args -> asList(args)).asVarargsCollector(Object[].class))
                 .add("list?", mh(Fun.class, l -> l instanceof List))
                 .add("null?", mhRef(List.class, "isEmpty"))
-                .add("single", mh(FunAll.class, args -> FuncArray.parseSingle(args)).asVarargsCollector(Object[].class));
+                .add("single", mh(FunAll.class, args -> FuncArray.parseSingle("single", args)).asVarargsCollector(Object[].class))
+                .add("composite", mh(FunAll.class, args -> FuncArray.parseSingle("composite", args)).asVarargsCollector(Object[].class));
     }
 }

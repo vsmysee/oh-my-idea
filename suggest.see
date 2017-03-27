@@ -1,3 +1,5 @@
+(do
+
 (single
 [:h :EditorLeft :左移动]
 [:H :EditorLineStart :左开始]
@@ -10,3 +12,10 @@
 [:K :OH_MotionFirstLine :第一行]
 [:t :NextTab :下一个选项卡]
 [:T :PreviousTab :前一个选项卡])
+
+
+(composite
+[:gh :HideAllWindows :隐藏窗口])
+
+
+)

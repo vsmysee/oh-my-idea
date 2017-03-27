@@ -1,5 +1,7 @@
 package com.codingbaby.ohmyidea.script.lisp;
 
+import com.codingbaby.ohmyidea.script.ShortHolder;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,13 +20,18 @@ public class FuncArray<T> {
         elements.add(data);
     }
 
-    public static List<List> parseSingle(Object... args) {
-        List<List> list = new ArrayList<>();
+    public static int parseSingle(String key, Object... args) {
         for (Object arg : args) {
             FuncArray funcArray = (FuncArray) arg;
-            list.add(funcArray.elements);
+            List elements = funcArray.elements;
+            if (key.equals("single")) {
+                ShortHolder.INSTANCE.getSingle().add(elements.get(0).toString(), elements.get(1).toString(), elements.get(2).toString());
+            }
+            if (key.equals("composite")) {
+                ShortHolder.INSTANCE.getCompose().add(elements.get(0).toString(), elements.get(1).toString(), elements.get(2).toString());
+            }
         }
-        return list;
+        return args.length;
     }
 
 }

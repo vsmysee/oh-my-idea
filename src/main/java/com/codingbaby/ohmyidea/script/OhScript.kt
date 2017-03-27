@@ -29,11 +29,7 @@ object OhScript {
         }) {
             val content = loadContent(OH_JET_FILE)
             val env = EnvBuilder.globalEnv()
-            val lists = Evaler.eval(FormReader.readFrom(Tokenr.tokenize(content)), env) as java.util.ArrayList<Object>
-            for (list in lists) {
-                var single = list as java.util.ArrayList<String>
-                ShortHolder.single.add(single.get(0), single.get(1), single.get(2))
-            }
+            Evaler.eval(FormReader.readFrom(Tokenr.tokenize(content)), env)
             return
         }
 
