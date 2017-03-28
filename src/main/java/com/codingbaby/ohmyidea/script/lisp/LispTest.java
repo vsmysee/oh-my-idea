@@ -61,5 +61,8 @@ public class LispTest {
         assertEquals(2, lisp("(do (single \n[:a :b :c] \n [:d :e :f]) )"));
         assertEquals(2, lisp("(do\n(single \n[:a :b :c] \n [:d :e :f]) )"));
         assertEquals(2, lisp("(do\n(composite \n[:a :b :c] \n [:d :e :f]) )"));
+        assertEquals(2, lisp("(do\n(select \n[:a :b :c] \n [:d :e :f]) )"));
+        assertEquals(2, lisp("(do\n(movement \n[:a :b :c] \n [:d :e :f]) )"));
+        assertEquals(2, lisp("(do\n(bottom \n[:a :b :c] \n [:d :e :f]) )"));
     }
 }

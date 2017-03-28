@@ -24,12 +24,29 @@ public class FuncArray<T> {
         for (Object arg : args) {
             FuncArray funcArray = (FuncArray) arg;
             List elements = funcArray.elements;
+
             if (key.equals("single")) {
                 ShortHolder.INSTANCE.getSingle().add(elements.get(0).toString(), elements.get(1).toString(), elements.get(2).toString());
             }
+
             if (key.equals("composite")) {
                 ShortHolder.INSTANCE.getCompose().add(elements.get(0).toString(), elements.get(1).toString(), elements.get(2).toString());
             }
+
+            if (key.equals("select")) {
+                ShortHolder.INSTANCE.getSelect().add(elements.get(0).toString(), elements.get(1).toString(), elements.get(2).toString());
+            }
+
+
+            if (key.equals("movement")) {
+                ShortHolder.INSTANCE.getMovement().add(elements.get(0).toString(), elements.get(1).toString(), elements.get(2).toString());
+            }
+
+
+            if (key.equals("bottom")) {
+                ShortHolder.INSTANCE.getBottom().add(elements.get(0).toString(), elements.get(1).toString(), elements.get(2).toString());
+            }
+
         }
         return args.length;
     }

@@ -108,6 +108,9 @@ public class EnvBuilder {
                 .add("list?", mh(Fun.class, l -> l instanceof List))
                 .add("null?", mhRef(List.class, "isEmpty"))
                 .add("single", mh(FunAll.class, args -> FuncArray.parseSingle("single", args)).asVarargsCollector(Object[].class))
-                .add("composite", mh(FunAll.class, args -> FuncArray.parseSingle("composite", args)).asVarargsCollector(Object[].class));
+                .add("composite", mh(FunAll.class, args -> FuncArray.parseSingle("composite", args)).asVarargsCollector(Object[].class))
+                .add("select", mh(FunAll.class, args -> FuncArray.parseSingle("select", args)).asVarargsCollector(Object[].class))
+                .add("movement", mh(FunAll.class, args -> FuncArray.parseSingle("movement", args)).asVarargsCollector(Object[].class))
+                .add("bottom", mh(FunAll.class, args -> FuncArray.parseSingle("bottom", args)).asVarargsCollector(Object[].class));
     }
 }

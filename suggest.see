@@ -17,5 +17,15 @@
 (composite
 [:gh :HideAllWindows :隐藏窗口])
 
+(select
+[:h :EditorLeftWithSelection :左选择])
+
+(movement
+[:h :EditorLeft :左移动])
+
+
+(bottom
+[:v :SplitVertically :水平拆分])
+
 
 )
