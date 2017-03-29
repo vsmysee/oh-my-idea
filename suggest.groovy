@@ -93,6 +93,62 @@ keyboard_single {
 
 }
 
+
+keyboard_composite {
+
+    key "gd", "GotoDeclaration", "到声明"
+    key "gm", "GotoImplementation", "到实现"
+    key "gu", "GotoSuperMethod", "到超类"
+
+    key "gg", "OH_MotionFirstLine", "到第一行"
+
+    key "ge", "Generate", "生成代码"
+    key "gv", "IntroduceVariable", "提取变量"
+    key "gs", "SurroundWith", "代码环绕"
+
+    key "dd", "EditorDeleteLine", "删除行"
+    key "de", "EditorDeleteToLineEnd", "删除到行尾"
+
+    key "dG", "OH_EditorDeleteToFileEnd", "删除到行尾"
+
+    key "gh", "HideAllWindows", "隐藏窗口"
+    key "gp", "NextProjectWindow", "下一个项目窗口"
+    key "gw", "JumpToLastWindow", "最近窗口"
+
+    key "go", "GotoClass", "导航到类"
+    key "gn", "Inline", "合并变量"
+    key "gf", "GotoFile", "导航到文件"
+
+    key "ye", "OH_EditCodeTemplate", "编辑代码模板"
+
+    key "gi", "ShowIntentionActions", "显示意图"
+
+    key "yc", "\$Cut", "剪切"
+    key "yd", "EditorDuplicate", "复制行"
+
+    key "yi", "ImplementMethods", "实现方法"
+    key "yo", "OverrideMethods", "重载方法"
+
+    key "yb", "CompileDirty", "编译"
+
+    key "zt", "OH_ScrollToTop", "当前行置顶"
+
+    key "zj", "EditorJoinLines", "合并行"
+    key "zs", "OH_LoadScriptAction", "加载模板"
+
+    key "zf", "ExpandRegion", "打开折叠"
+    key "zv", "CollapseRegion", "折叠代码"
+
+    key "gr", "RenameElement", "重命名"
+
+    key "yr", "ReplaceInPath", "文件中替换"
+    key "yf", "FindInPath", "文件中查找"
+
+    key "ys", "Switcher", "选择组件"
+    key "yv", "OH_ShowUIToggleActions", "控制UI"
+
+}
+
 keyboard_select {
 
     key "h", "EditorLeftWithSelection", "左选择"
@@ -161,60 +217,7 @@ keyboard_movement {
     key "u", "\$Undo", "撤销"
 }
 
-keyboard_composite {
 
-    key "gd", "GotoDeclaration", "到声明"
-    key "gm", "GotoImplementation", "到实现"
-    key "gu", "GotoSuperMethod", "到超类"
-
-    key "gg", "OH_MotionFirstLine", "到第一行"
-
-    key "ge", "Generate", "生成代码"
-    key "gv", "IntroduceVariable", "提取变量"
-    key "gs", "SurroundWith", "代码环绕"
-
-    key "dd", "EditorDeleteLine", "删除行"
-    key "de", "EditorDeleteToLineEnd", "删除到行尾"
-
-    key "dG", "OH_EditorDeleteToFileEnd", "删除到行尾"
-
-    key "gh", "HideAllWindows", "隐藏窗口"
-    key "gp", "NextProjectWindow", "下一个项目窗口"
-    key "gw", "JumpToLastWindow", "最近窗口"
-
-    key "go", "GotoClass", "导航到类"
-    key "gn", "Inline", "合并变量"
-    key "gf", "GotoFile", "导航到文件"
-
-    key "ye", "OH_EditCodeTemplate", "编辑代码模板"
-
-    key "gi", "ShowIntentionActions", "显示意图"
-
-    key "yc", "\$Cut", "剪切"
-    key "yd", "EditorDuplicate", "复制行"
-
-    key "yi", "ImplementMethods", "实现方法"
-    key "yo", "OverrideMethods", "重载方法"
-
-    key "yb", "CompileDirty", "编译"
-
-    key "zt", "OH_ScrollToTop", "当前行置顶"
-
-    key "zj", "EditorJoinLines", "合并行"
-    key "zs", "OH_LoadScriptAction", "加载模板"
-
-    key "zf", "ExpandRegion", "打开折叠"
-    key "zv", "CollapseRegion", "折叠代码"
-
-    key "gr", "RenameElement", "重命名"
-
-    key "yr", "ReplaceInPath", "文件中替换"
-    key "yf", "FindInPath", "文件中查找"
-
-    key "ys", "Switcher", "选择组件"
-    key "yv", "OH_ShowUIToggleActions", "控制UI"
-
-}
 
 keyboard_bottom {
 
