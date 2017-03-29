@@ -18,7 +18,7 @@ public class Evaler {
                 if (((String) x).length() == 1) {
                     throw new RuntimeException("not symbol");
                 }
-                return ((String) x).replace(":","");
+                return ((String) x).replaceFirst(":","");
             }
 
             // 符号查找

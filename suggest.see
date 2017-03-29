@@ -11,14 +11,17 @@
 [:k :EditorUp :上移动]
 [:K :OH_MotionFirstLine :第一行]
 [:t :NextTab :下一个选项卡]
-[:T :PreviousTab :前一个选项卡])
+[:T :PreviousTab :前一个选项卡]
+[:: :OH_ShowCommandAction :命令底行开启])
 
 
 (composite
 [:gh :HideAllWindows :隐藏窗口])
 
+
 (select
 [:h :EditorLeftWithSelection :左选择])
+
 
 (movement
 [:h :EditorLeft :左移动])

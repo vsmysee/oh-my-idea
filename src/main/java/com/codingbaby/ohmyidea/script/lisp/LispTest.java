@@ -24,6 +24,7 @@ public class LispTest {
         assertEquals(true, lisp("true"));
         assertEquals(false, lisp("false"));
         assertEquals("x", lisp(":x"));
+        assertEquals(":", lisp("::"));
 
         assertEquals(new BigInteger("5"), lisp("(+ 2 3)"));
         assertEquals(new BigInteger("5"), lisp("(+ 2 \n 3)"));

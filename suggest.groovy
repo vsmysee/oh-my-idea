@@ -7,17 +7,6 @@ code_snippet {
 }
 
 
-code_snippet {
-	key "ar","SpringAR","""
-    SpringAR.action((n) -> {
-            Data data = new Data();
-            data.set("biz_id", bizId);
-            data.insert();
-    });
-"""
-}
-
-
 
 app_quick_open {
     key "r",[KeyEvent.VK_CONTROL , KeyEvent.VK_ALT , KeyEvent.VK_R]
