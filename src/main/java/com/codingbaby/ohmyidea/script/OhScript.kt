@@ -29,7 +29,7 @@ object OhScript {
         }) {
             val content = loadContent(OH_JET_FILE)
             val env = EnvBuilder.globalEnv()
-            Evaler.eval(FormReader.readFrom(Tokenr.tokenize(content)), env)
+            Evaler.eval(FormReader.readForm(Tokenr.tokenize(content)), env)
             return
         }
 

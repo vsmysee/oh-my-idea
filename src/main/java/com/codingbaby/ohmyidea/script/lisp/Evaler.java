@@ -12,18 +12,15 @@ public class Evaler {
 
     public static Object eval(Object x, EnvBuilder.Env env) {
 
-        if (x instanceof String) {
-
-            if (((String) x).startsWith(":")) {
-                if (((String) x).length() == 1) {
-                    throw new RuntimeException("not symbol");
-                }
-                return ((String) x).replaceFirst(":","");
-            }
-
-            // 符号查找
-            return env.find(string(x)).dict.get(x);
+        if (x instanceof Keyworld) {
+            return ((Keyworld) x).that;
         }
+
+
+        if (x instanceof Symbol) {
+            return env.find(((Symbol) x).that).dict.get(((Symbol) x).that);
+        }
+
 
         if (x instanceof FuncArray) {
             List list = new ArrayList();
@@ -42,8 +39,9 @@ public class Evaler {
         List<?> l = (List<?>) x;
         String var;
         Object exp, cmd = l.get(0);
-        if (cmd instanceof String) {
-            switch (string(l.get(0))) {
+        if (cmd instanceof Symbol) {
+
+            switch (((Symbol) cmd).that) {
                 case "not":
                     return !(Boolean) eval(l.get(1), env);
                 case "that":                        // (that exp)
@@ -51,11 +49,11 @@ public class Evaler {
                 case "if":                           // (if test conseq alt)
                     return eval(((Boolean) eval(l.get(1), env)) ? l.get(2) : l.get(3), env);
                 case "set!":                         // (set! var exp)
-                    var = string(l.get(1));
+                    var = ((Symbol)l.get(1)).that;
                     env.find(var).add(var, eval(l.get(2), env));
                     return null;
                 case "def":                       // (def var exp)
-                    var = string(l.get(1));
+                    var = ((Symbol)l.get(1)).that;
                     env.add(var, eval(l.get(2), env));
                     return null;
                 case "fn":                       // (fn (vars) exp)

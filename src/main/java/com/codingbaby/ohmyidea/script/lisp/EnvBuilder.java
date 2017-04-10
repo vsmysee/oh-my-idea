@@ -83,7 +83,7 @@ public class EnvBuilder {
         }
 
         Env addAll(List<?> vars, List<?> values) {
-            range(0, vars.size()).forEach(i -> add(string(vars.get(i)), values.get(i)));
+            range(0, vars.size()).forEach(i -> add(((Symbol)vars.get(i)).that, values.get(i)));
             return this;
         }
     }
