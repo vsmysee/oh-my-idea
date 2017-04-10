@@ -3,7 +3,6 @@ package com.codingbaby.ohmyidea.script
 import com.codingbaby.ohmyidea.script.lisp.EnvBuilder
 import com.codingbaby.ohmyidea.script.lisp.Evaler
 import com.codingbaby.ohmyidea.script.lisp.FormReader
-import com.codingbaby.ohmyidea.script.lisp.Tokenr
 import com.intellij.openapi.util.io.FileUtil
 import groovy.lang.Binding
 import groovy.lang.GroovyClassLoader
@@ -29,7 +28,7 @@ object OhScript {
         }) {
             val content = loadContent(OH_JET_FILE)
             val env = EnvBuilder.globalEnv()
-            Evaler.eval(FormReader.readForm(Tokenr.tokenize(content)), env)
+            Evaler.eval(FormReader.readForm(content), env)
             return
         }
 

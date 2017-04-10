@@ -35,7 +35,7 @@ public class Repl {
                     System.out.println("");
                     continue;
                 }
-                Object val = Evaler.eval(FormReader.readForm(Tokenr.tokenize(program)), env);
+                Object val = Evaler.eval(FormReader.readForm(program), env);
                 if (val != null) {
                     System.out.println(toString(val));
                 }

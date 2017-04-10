@@ -13,7 +13,7 @@ public class LispTest {
     
     private Object lisp(String program) {
         EnvBuilder.Env env = EnvBuilder.globalEnv();
-        Object val = Evaler.eval(FormReader.readForm(Tokenr.tokenize(program)), env);
+        Object val = Evaler.eval(FormReader.readForm(program), env);
         return val;
     }
 

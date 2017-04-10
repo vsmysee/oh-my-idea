@@ -2,17 +2,36 @@ package com.codingbaby.ohmyidea.script.lisp;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Queue;
+import java.util.stream.Stream;
+
+import static java.util.stream.Collectors.toCollection;
 
 public class FormReader {
+
+    public static Queue<Character> tokenize(String text) {
+        text = text.replace("(", "( ").replace(")", " )");
+        text = text.replace("[", "[ ").replace("]", " ]");
+        Stream<Character> stream = text.chars().mapToObj(c -> (char) c);
+        return stream.collect(toCollection(ArrayDeque::new));
+    }
 
 
     static boolean isWhitespace(int ch) {
         return Character.isWhitespace(ch) || ch == ',';
     }
 
-    public static Object readForm(Queue<Character> tokens) {
+
+    public static Object readForm(String text) {
+        Queue<Character> tokens = tokenize(text);
+        return readForm(tokens);
+    }
+
+
+    private static Object readForm(Queue<Character> tokens) {
+
         Character peek = tokens.poll();
 
         while (isWhitespace(peek)) {
@@ -73,7 +92,7 @@ public class FormReader {
 
         StringBuilder sb = new StringBuilder();
         sb.append(peek);
-        for (peek = tokens.peek(); peek != null && !peek.isWhitespace(peek) && peek != ')'  && peek != ']'; peek = tokens.peek()) {
+        for (peek = tokens.peek(); peek != null && !peek.isWhitespace(peek) && peek != ')' && peek != ']'; peek = tokens.peek()) {
             sb.append(tokens.poll());
         }
 
@@ -96,7 +115,6 @@ public class FormReader {
         return new Symbol(s);
 
     }
-
 
 
 }
