@@ -300,10 +300,6 @@ code_snippet {
 }
 ```
 
-#### 动画演示
-
-![](https://github.com/vsmysee/oh-my-idea/blob/master/ohmyidea.gif?raw=true)
-
 
 ## 编译构建
 ./gradlew buildPlugin

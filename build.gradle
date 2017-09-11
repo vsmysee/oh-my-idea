@@ -12,7 +12,7 @@ buildscript {
 }
 
 plugins {
-    id "org.jetbrains.intellij" version "0.1.10"
+    id "org.jetbrains.intellij" version "0.2.17"
 }
 
 apply plugin: 'org.jetbrains.intellij'
@@ -20,7 +20,7 @@ apply plugin: 'java'
 apply plugin: 'kotlin'
 
 intellij {
-    version '162.1121.32'
+    version '172.4155.24'
     pluginName 'Oh-My-IDEA'
     updateSinceUntilBuild false
 
