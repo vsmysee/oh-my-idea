@@ -8,7 +8,6 @@ import com.intellij.openapi.actionSystem.CommonShortcuts
 import com.intellij.openapi.application.Application
 import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.components.ApplicationComponent
-import com.intellij.openapi.diagnostic.Logger
 import com.intellij.openapi.editor.EditorFactory
 import com.intellij.openapi.editor.actionSystem.EditorActionManager
 import com.intellij.openapi.editor.event.EditorFactoryAdapter
@@ -16,8 +15,6 @@ import com.intellij.openapi.editor.event.EditorFactoryEvent
 
 
 class OhPlugin(private val myApp: Application) : ApplicationComponent {
-
-    private val LOG = Logger.getInstance(OhPlugin.javaClass)
 
     val ACTION_ID = "OH_ShortcutKeyAction"
 
@@ -35,6 +32,7 @@ class OhPlugin(private val myApp: Application) : ApplicationComponent {
         typedAction.setupHandler(OhTypedActionHandler(typedAction.handler))
 
         EditorFactory.getInstance().addEditorFactoryListener(object : EditorFactoryAdapter() {
+
             override fun editorCreated(event: EditorFactoryEvent) {
                 val editor = event.editor
                 val action = ActionManager.getInstance().getAction(ACTION_ID)
@@ -50,6 +48,7 @@ class OhPlugin(private val myApp: Application) : ApplicationComponent {
 
         }, myApp)
 
+        //on idea has groovy lib
         OhScript.loadGroovyScriptFile()
     }
 

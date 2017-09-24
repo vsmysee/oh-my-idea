@@ -1,7 +1,7 @@
 <idea-plugin url="">
     <name>Oh My IDEA</name>
     <id>oh-my-idea</id>
-    <description>write java without mouse</description>
+    <description>coding with java without mouse</description>
     <version>1.0</version>
     <vendor>JetBrains</vendor>
 

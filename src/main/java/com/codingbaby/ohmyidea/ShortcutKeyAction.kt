@@ -13,13 +13,11 @@ import javax.swing.KeyStroke
  */
 class ShortcutKeyAction : AnAction(), DumbAware {
 
-    var timeRange = 90
+    val timeRange = 90
 
     override fun actionPerformed(anActionEvent: AnActionEvent) {
 
-        val keyStroke = getKeyStroke(anActionEvent)
-
-        //当ESC键速度很快的时候改变插件的状态
+        //长按ESC可让此插件失效
         if (System.currentTimeMillis() - OhPlugin.instance.controlTime < timeRange) {
             OhPlugin.active(false)
         } else {
@@ -28,8 +26,13 @@ class ShortcutKeyAction : AnAction(), DumbAware {
 
         OhPlugin.instance.controlTime = System.currentTimeMillis()
 
+        if (!OhPlugin.instance.active) {
+            return
+        }
 
-        if (keyStroke != null && keyStroke.keyCode == KeyEvent.VK_ESCAPE && OhPlugin.instance.active) {
+        val keyStroke = getKeyStroke(anActionEvent)
+
+        if (keyStroke != null && keyStroke.keyCode == KeyEvent.VK_ESCAPE) {
 
             if (OhPlugin.instance.status !== EditorStatus.Command) {
                 KeyHandler.mode(EditorStatus.Command)
