@@ -180,6 +180,8 @@ object OhScript {
 
        [:. :OH_RepeatCurrentAction :重复上一个动作]
 
+       [:s :EditorToggleColumnMode :列模式]
+
        [:c :RunClass :运行当前类]
        [:b :DebugClass :调试当前类]
        [:t :ToggleTemporaryLineBreakpoint :临时断点]

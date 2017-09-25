@@ -89,7 +89,7 @@
      [:dd :EditorDeleteLine :删除行]
      [:de :EditorDeleteToLineEnd :删除到行尾]
  
-     [:dG :OH_EditorDeleteToFileEnd :删除到行尾]
+     [:dG :OH_EditorDeleteToFileEnd :删除到文件尾]
  
      [:gh :HideAllWindows :隐藏窗口]
      [:gp :NextProjectWindow :下一个项目窗口]
@@ -159,6 +159,9 @@
        [:d :MoveTabDown :编辑器下移]
    
        [:. :OH_RepeatCurrentAction :重复上一个动作]
+
+       [:s :EditorToggleColumnMode :列模式]
+
    
        [:c :RunClass :运行当前类]
        [:b :DebugClass :调试当前类]

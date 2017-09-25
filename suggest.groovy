@@ -109,7 +109,7 @@ keyboard_composite {
     key "dd", "EditorDeleteLine", "删除行"
     key "de", "EditorDeleteToLineEnd", "删除到行尾"
 
-    key "dG", "OH_EditorDeleteToFileEnd", "删除到行尾"
+    key "dG", "OH_EditorDeleteToFileEnd", "删除到文件尾"
 
     key "gh", "HideAllWindows", "隐藏窗口"
     key "gp", "NextProjectWindow", "下一个项目窗口"
