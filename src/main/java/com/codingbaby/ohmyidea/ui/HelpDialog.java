@@ -1,6 +1,5 @@
 package com.codingbaby.ohmyidea.ui;
 
-import com.codingbaby.ohmyidea.script.CodeSnippet;
 import com.codingbaby.ohmyidea.script.ShortHolder;
 import com.intellij.openapi.ui.DialogWrapper;
 import com.intellij.openapi.wm.ex.WindowManagerEx;
@@ -15,8 +14,8 @@ public class HelpDialog extends DialogWrapper {
         super(WindowManagerEx.getInstanceEx().findVisibleFrame(), true);
         setModal(false);
         setTitle("快捷键帮助");
-        setHorizontalStretch(2.33f);
-        setVerticalStretch(1.5f);
+        setHorizontalStretch(2f);
+        setVerticalStretch(2f);
         init();
     }
 
@@ -30,7 +29,6 @@ public class HelpDialog extends DialogWrapper {
         tabs.add("选择", new HelpPanel(ShortHolder.INSTANCE.getSelect().getCommandDesc()));
         tabs.add("底行", new HelpPanel(ShortHolder.INSTANCE.getBottom().getCommandDesc()));
         tabs.add("移动", new HelpPanel(ShortHolder.INSTANCE.getMovement().getCommandDesc()));
-        tabs.add("模板", new HelpPanel(CodeSnippet.INSTANCE.getDesc()));
         return tabs;
     }
 

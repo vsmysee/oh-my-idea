@@ -1,7 +1,7 @@
 Oh My Idea是一个IDEA插件，这个取名模仿了Oh My ZSH，我利用这个插件编写java平台的上的所有代码,所谓天下武功,唯快不破.
 
 ## 为什么要写这个插件
-大量的程序员工作在编辑器之神和神的编辑器这两个软件之下,还有大量的程序员工作在IDE之下,我工作在神的编辑器的手法和IDE的结合处
+大量的程序员工作在编辑器之神和神的编辑器这两个软件之下,还有大量的程序员工作在IDE之下,我工作在神的编辑器的手法和IDE的结合，本插件理解java上下文
 
 
 ## 操作设计
@@ -21,7 +21,7 @@ Oh My Idea是一个IDEA插件，这个取名模仿了Oh My ZSH，我利用这个
 ## DSL参考(我每天使用)
 
 
-#### 快捷打开外部应用
+#### 快捷打开外部应用(a)
 
 ```shell
 app_quick_open {
@@ -32,7 +32,11 @@ app_quick_open {
 }
 ```
 
-#### 键盘单击
+
+#### Insert Mode (i)
+
+
+#### 键盘单击(esc)
 
 ```shell
 keyboard_single {
@@ -113,7 +117,7 @@ keyboard_single {
 ```
 
 
-#### 选择模式
+#### 选择模式(v)
 
 ```shell
 keyboard_select {
@@ -158,7 +162,7 @@ keyboard_select {
 ```
 
 
-#### 移动模式
+#### 移动模式(V)
 
 ```shell
 keyboard_movement {
@@ -219,7 +223,6 @@ keyboard_composite {
     key "gn", "Inline", "合并变量"
     key "gf", "GotoFile", "导航到文件"
 
-    key "ye", "OH_EditCodeTemplate", "编辑代码模板"
 
     key "gi", "ShowIntentionActions", "显示意图"
 
@@ -251,7 +254,7 @@ keyboard_composite {
 }
 ```
 
-#### 底行
+#### 底行(:)
 
 ```shell
 keyboard_bottom {
@@ -288,17 +291,6 @@ keyboard_bottom {
 }
 ```
 
-
-#### 代码片段
-
-```shell
-code_snippet {
-	key "bg","blog highlight", """
-    {% highlight scheme %}
-    {% endhighlight %}
-"""
-}
-```
 
 
 ## 编译构建

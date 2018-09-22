@@ -53,12 +53,6 @@ class ActorContainer {
 }
 
 
-def code_snippet = {
-    closure ->
-        closure.delegate = new CodeContainer(envList)
-        closure()
-}
-
 def app_quick_open = {
     closure ->
         closure.delegate = new RobotContainer(envMap)

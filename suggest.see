@@ -99,8 +99,7 @@
      [:gn :Inline :合并变量]
      [:gf :GotoFile :导航到文件]
  
-     [:ye :OH_EditCodeTemplate :编辑代码模板]
- 
+
      [:gi :ShowIntentionActions :显示意图]
  
      [:yc :$Cut :剪切]

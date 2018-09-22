@@ -1,12 +1,4 @@
 
-code_snippet {
-	key "bg","blog highlight", """
-    {% highlight scheme %}
-    {% endhighlight %}
-"""
-}
-
-
 
 app_quick_open {
     key "r",[KeyEvent.VK_CONTROL , KeyEvent.VK_ALT , KeyEvent.VK_R]
@@ -118,8 +110,6 @@ keyboard_composite {
     key "go", "GotoClass", "导航到类"
     key "gn", "Inline", "合并变量"
     key "gf", "GotoFile", "导航到文件"
-
-    key "ye", "OH_EditCodeTemplate", "编辑代码模板"
 
     key "gi", "ShowIntentionActions", "显示意图"
 

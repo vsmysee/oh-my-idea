@@ -61,6 +61,8 @@ object KeyHandler {
         var commandNode: CommandNode? = null
         var composeCommand = false
 
+
+        //single char
         if (CommandStatus.hasStroke()) {
             if (oh.status === EditorStatus.Command) {
                 commandNode = ShortHolder.single[CommandStatus.stroke()]

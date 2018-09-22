@@ -119,7 +119,6 @@ object OhScript {
      [:gn :Inline :合并变量]
      [:gf :GotoFile :导航到文件]
 
-     [:ye :OH_EditCodeTemplate :编辑代码模板]
 
      [:gi :ShowIntentionActions :显示意图]
 
@@ -270,11 +269,9 @@ object OhScript {
         val groovyClassLoader = GroovyClassLoader()
         val scriptClass = groovyClassLoader.parseClass(GroovyDef.groovy + content)
 
-        var codes = ArrayList<HashMap<String, String>>()
         var robotHolder = HashMap<String, List<Int>>()
 
         var bind = Binding()
-        bind.setVariable("envList", codes)
         bind.setVariable("envMap", robotHolder)
 
         ShortHolder.clear()
@@ -290,12 +287,6 @@ object OhScript {
         RobotHandler.holder.clear()
         RobotHandler.holder.putAll(robotHolder)
 
-        CodeSnippet.clear()
-
-        for (map in codes) {
-            CodeSnippet.desc.put(map["key"] as String, map["desc"] as String)
-            CodeSnippet.code.put(map["key"] as String, map["code"] as String)
-        }
     }
 
 
