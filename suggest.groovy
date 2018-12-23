@@ -177,8 +177,8 @@ keyboard_select {
     key "g", "StepOver", "行跳过"
     key "i", "StepOver", "行进入"
 
-    key "s", "EditorToggleColumnMode", "列模式"
-
+    key "y", "EditorToggleColumnMode", "列模式"
+    key "s", "SurroundWith", "代码环绕"
 
 }
 

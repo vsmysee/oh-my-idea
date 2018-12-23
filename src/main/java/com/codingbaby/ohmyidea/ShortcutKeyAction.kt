@@ -13,16 +13,7 @@ import javax.swing.KeyStroke
  */
 class ShortcutKeyAction : AnAction(), DumbAware {
 
-    val timeRange = 90
-
     override fun actionPerformed(anActionEvent: AnActionEvent) {
-
-        //长按ESC可让此插件失效
-        if (System.currentTimeMillis() - OhPlugin.instance.controlTime < timeRange) {
-            OhPlugin.active(false)
-        } else {
-            OhPlugin.active(true)
-        }
 
         OhPlugin.instance.controlTime = System.currentTimeMillis()
 

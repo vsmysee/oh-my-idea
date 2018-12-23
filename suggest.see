@@ -159,7 +159,8 @@
    
        [:. :OH_RepeatCurrentAction :重复上一个动作]
 
-       [:s :EditorToggleColumnMode :列模式]
+       [:y :EditorToggleColumnMode :列模式]
+       [:s :SurroundWith :代码环绕]
 
    
        [:c :RunClass :运行当前类]
