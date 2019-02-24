@@ -72,7 +72,7 @@ keyboard_single {
     key "N", "FindPrevious", "前一个"
 
     key ".", "EditorCompleteStatement", "语句完成"
-    key ">", "\$Copy", "复制行"
+    key ">", "\$Copy", "复制"
 
     key "<", "GotoPreviousError", "前一个错误"
     key ",", "GotoNextError", "后一个错误"
@@ -173,11 +173,8 @@ keyboard_select {
 
     key "c", "RunClass", "运行当前类"
     key "b", "DebugClass", "调试当前类"
-    key "t", "ToggleTemporaryLineBreakpoint", "临时断点"
-    key "g", "StepOver", "行跳过"
-    key "i", "StepOver", "行进入"
 
-    key "y", "EditorToggleColumnMode", "列模式"
+    key "t", "EditorToggleColumnMode", "列模式"
     key "s", "SurroundWith", "代码环绕"
 
 }
