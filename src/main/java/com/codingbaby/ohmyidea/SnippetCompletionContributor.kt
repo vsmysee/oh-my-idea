@@ -3,10 +3,7 @@ package com.codingbaby.ohmyidea
 import com.intellij.codeInsight.actions.FileInEditorProcessor
 import com.intellij.codeInsight.actions.LastRunReformatCodeOptionsProvider
 import com.intellij.codeInsight.actions.TextRangeType
-import com.intellij.codeInsight.completion.CompletionContributor
-import com.intellij.codeInsight.completion.CompletionParameters
-import com.intellij.codeInsight.completion.CompletionResultSet
-import com.intellij.codeInsight.completion.InsertionContext
+import com.intellij.codeInsight.completion.*
 import com.intellij.codeInsight.lookup.LookupElementBuilder
 import com.intellij.ide.util.PropertiesComponent
 import com.intellij.openapi.editor.Document
@@ -21,8 +18,11 @@ class SnippetCompletionContributor(
         private val psiFileLookup: PsiFileLookup = PsiDocumentManagerPsiFileLookup(),
         private val editorFileFormatter: EditorFileFormatter = DefaultEditorFileFormatter()) : CompletionContributor() {
 
-    override fun fillCompletionVariants(parameters: CompletionParameters, result: CompletionResultSet) =
+    override fun fillCompletionVariants(parameters: CompletionParameters, result: CompletionResultSet) {
+        if (parameters.completionType == CompletionType.BASIC) {
             getSnippets(parameters.editor).forEach { result.addElement(it) }
+        }
+    }
 
     private fun getSnippets(editor: Editor) = snippetLookup.getSnippets(editor.project!!)
             .map { createLookupElementFromSnippet(it, editor) }
