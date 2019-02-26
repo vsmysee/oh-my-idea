@@ -12,6 +12,7 @@ keyboard_single {
 
     key "1", "FindInPath", "文件中查找"
     key "2", "ReplaceInPath", "文件中替换"
+    key "3", "GoToRequestMapping", "URL查找[Request mapper插件]"
 
 
 
