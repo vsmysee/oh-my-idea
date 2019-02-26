@@ -1,15 +1,19 @@
-
-
 app_quick_open {
-    key "r",[KeyEvent.VK_CONTROL , KeyEvent.VK_ALT , KeyEvent.VK_R]
-    key "d",[KeyEvent.VK_CONTROL , KeyEvent.VK_ALT , KeyEvent.VK_D]
-    key "t",[KeyEvent.VK_CONTROL , KeyEvent.VK_META , KeyEvent.VK_T]
-    key "c",[KeyEvent.VK_CONTROL , KeyEvent.VK_META , KeyEvent.VK_C]
+    key "r", [KeyEvent.VK_CONTROL, KeyEvent.VK_ALT, KeyEvent.VK_R]
+    key "d", [KeyEvent.VK_CONTROL, KeyEvent.VK_ALT, KeyEvent.VK_D]
+    key "t", [KeyEvent.VK_CONTROL, KeyEvent.VK_META, KeyEvent.VK_T]
+    key "c", [KeyEvent.VK_CONTROL, KeyEvent.VK_META, KeyEvent.VK_C]
 }
 
 
 
 keyboard_single {
+
+
+    key "1", "FindInPath", "文件中查找"
+    key "2", "ReplaceInPath", "文件中替换"
+
+
 
     key "h", "EditorLeft", "左移动"
     key "H", "EditorLineStart", "左开始"
@@ -19,6 +23,7 @@ keyboard_single {
     key "l", "EditorRight", "右移动"
     key "L", "EditorLineEnd", "右结束"
     key "9", "EditorLineEnd", "右结束"
+
 
     key "j", "EditorDown", "下移动"
     key "J", "OH_MotionLastLine", "最后一行"
@@ -107,7 +112,7 @@ keyboard_composite {
     key "gp", "NextProjectWindow", "下一个项目窗口"
     key "gw", "JumpToLastWindow", "最近窗口"
 
-    key "go", "GotoClass", "导航到类"
+    key "gc", "GotoClass", "导航到类"
     key "gn", "Inline", "合并变量"
     key "gf", "GotoFile", "导航到文件"
 
@@ -131,8 +136,6 @@ keyboard_composite {
 
     key "gr", "RenameElement", "重命名"
 
-    key "yr", "ReplaceInPath", "文件中替换"
-    key "yf", "FindInPath", "文件中查找"
 
     key "ys", "Switcher", "选择组件"
     key "yv", "OH_ShowUIToggleActions", "控制UI"
