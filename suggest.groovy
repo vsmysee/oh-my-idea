@@ -10,20 +10,35 @@ app_quick_open {
 keyboard_single {
 
 
+    key "0", "CompileDirty", "编译"
     key "1", "FindInPath", "文件中查找"
     key "2", "ReplaceInPath", "文件中替换"
     key "3", "GoToRequestMapping", "URL查找[Request mapper插件]"
+
+    key "4", "\$Cut", "剪切"
+    key "5", "EditorDuplicate", "复制行"
+    key "6", "IntroduceVariable", "提取变量"
+
+    key "7", "EditorDeleteLine", "删除行"
+
+
+    key "9", "GotoClass", "导航到类"
+    key "8", "GotoFile", "导航到文件"
+
+
+
+    key "`", "NextProjectWindow", "下一个项目窗口"
+    key "=", "OH_ShowHelpDialog", "显示帮助"
+    key "-", "ShowPopupMenu", "模拟鼠标右键"
 
 
 
     key "h", "EditorLeft", "左移动"
     key "H", "EditorLineStart", "左开始"
 
-    key "0", "EditorLineStart", "左开始"
 
     key "l", "EditorRight", "右移动"
     key "L", "EditorLineEnd", "右结束"
-    key "9", "EditorLineEnd", "右结束"
 
 
     key "j", "EditorDown", "下移动"
@@ -66,7 +81,6 @@ keyboard_single {
     key "E", "EditorUnSelectWord", "取消选择单词"
 
     key "q", "FindUsages", "查找使用"
-    key "Q", "ShowPopupMenu", "模拟鼠标右键"
 
     key "/", "Find", "查找"
     key "?", "Replace", "替换"
@@ -94,6 +108,9 @@ keyboard_single {
 
 keyboard_composite {
 
+    key "gh", "HideAllWindows", "隐藏窗口"
+
+
     key "gd", "GotoDeclaration", "到声明"
     key "gm", "GotoImplementation", "到实现"
     key "gu", "GotoSuperMethod", "到超类"
@@ -101,31 +118,22 @@ keyboard_composite {
     key "gg", "OH_MotionFirstLine", "到第一行"
 
     key "ge", "Generate", "生成代码"
-    key "gv", "IntroduceVariable", "提取变量"
     key "gs", "SurroundWith", "代码环绕"
 
-    key "dd", "EditorDeleteLine", "删除行"
     key "de", "EditorDeleteToLineEnd", "删除到行尾"
-
     key "dG", "OH_EditorDeleteToFileEnd", "删除到文件尾"
 
-    key "gh", "HideAllWindows", "隐藏窗口"
-    key "gp", "NextProjectWindow", "下一个项目窗口"
     key "gw", "JumpToLastWindow", "最近窗口"
 
-    key "gc", "GotoClass", "导航到类"
     key "gn", "Inline", "合并变量"
-    key "gf", "GotoFile", "导航到文件"
 
     key "gi", "ShowIntentionActions", "显示意图"
 
-    key "yc", "\$Cut", "剪切"
-    key "yd", "EditorDuplicate", "复制行"
+
 
     key "yi", "ImplementMethods", "实现方法"
     key "yo", "OverrideMethods", "重载方法"
 
-    key "yb", "CompileDirty", "编译"
 
     key "zt", "OH_ScrollToTop", "当前行置顶"
 
@@ -240,8 +248,5 @@ keyboard_bottom {
     key ">", "EditorCodeBlockEnd", "到代码块结束"
 
     key "n", "EditorToggleShowLineNumbers", "显示行号"
-
-    key "k", "OH_ShowHelpDialog", "显示帮助"
-    key "K", "OH_ShowHelpDialog", "显示帮助"
 
 }
