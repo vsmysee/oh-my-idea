@@ -44,11 +44,13 @@ keyboard_single是一个内置函数，表示单键，另外还有keyboard_compo
 ## 缺点
 不能和IdeaVim共存，你需要改变使用快捷键的习惯
 
-## 配置参考(我每天使用)，敲击0表示编译工作区，敲击9表示搜索类,敲击m表示跳转到下一个方法，敲击gd跳转的声明，可以所以定制所有的动作。
+## 配置参考(我每天使用)
+
+敲击0表示编译工作区，敲击9表示搜索类,敲击m表示跳转到下一个方法，敲击gd跳转的声明，可以所以定制所有的动作。
 
 ```
 
-//连接外部应用
+//连接外部应用,先敲击a
 app_quick_open {
     key "r", [KeyEvent.VK_CONTROL, KeyEvent.VK_ALT, KeyEvent.VK_R]
     key "d", [KeyEvent.VK_CONTROL, KeyEvent.VK_ALT, KeyEvent.VK_D]
@@ -57,7 +59,7 @@ app_quick_open {
 }
 
 
-
+//单键
 keyboard_single {
 
 
@@ -159,6 +161,7 @@ keyboard_single {
 }
 
 
+//复键
 keyboard_composite {
 
     key "gh", "HideAllWindows", "隐藏窗口"
@@ -204,6 +207,7 @@ keyboard_composite {
 
 }
 
+//敲击v，选择模式
 keyboard_select {
 
     key "h", "EditorLeftWithSelection", "左选择"
@@ -244,6 +248,7 @@ keyboard_select {
 
 }
 
+//敲击大写V，开始移动文本
 keyboard_movement {
 
     key "h", "EditorLeft", "左移动"
@@ -273,7 +278,7 @@ keyboard_movement {
 }
 
 
-
+//底行
 keyboard_bottom {
 
     key "v", "SplitVertically", "水平拆分"
@@ -309,3 +314,4 @@ keyboard_bottom {
 
 ## 编译构建
 ./gradlew buildPlugin
+然后从build/distributions里得到安装包进行安装
