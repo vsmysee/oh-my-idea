@@ -46,7 +46,7 @@ keyboard_single是一个内置函数，表示单键，另外还有keyboard_compo
 
 ## 配置参考(我每天使用)
 
-敲击0表示编译工作区，敲击9表示搜索类,敲击m表示跳转到下一个方法，敲击gd跳转的声明，可以所以定制所有的动作。
+敲击0表示编译工作区，敲击9表示搜索类，敲击m表示跳转到下一个方法，敲击gd跳转到声明，可以定制所有的动作。
 
 ```
 
@@ -313,5 +313,8 @@ keyboard_bottom {
 
 
 ## 编译构建
+```
 ./gradlew buildPlugin
-然后从build/distributions里得到安装包进行安装
+```
+
+然后从build/distributions里得到安装包进行安装，兼容idea 2014 - 2018
