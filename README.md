@@ -30,7 +30,7 @@ Oh My Idea是一个IDEA插件，这个取名模仿了Oh My ZSH，当一个工具
 
 
 ## 技术实现
-采用Kotlin静态编程语言加上Groovy DSL，语法如下
+采用Kotlin静态编程语言加上Groovy DSL，如下是一个简单的配置，表示敲击h，做移动一个字符，敲击H，光标移动到行首。
 
 ```
   keyboard_single {
