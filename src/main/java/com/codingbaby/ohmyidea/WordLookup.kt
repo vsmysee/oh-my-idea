@@ -2,18 +2,13 @@ package com.codingbaby.ohmyidea
 
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.vfs.VirtualFile
-import be.sourcedbvba.shading.com.moandjiezana.toml.Toml
-import java.io.StringWriter
-import java.io.InputStreamReader
-import java.io.BufferedReader
 
 
 interface WordLookup {
     fun getSnippets(project: Project, selectText: String): List<String>
 }
 
-class TomlWordLookup : WordLookup {
-    private val toml = Toml()
+class TextWordLookup : WordLookup {
     private var currentSnippets: List<String> = listOf()
     private var modificationStamp: Long = -1
 

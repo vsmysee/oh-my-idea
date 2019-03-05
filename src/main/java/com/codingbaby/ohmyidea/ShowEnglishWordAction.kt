@@ -12,11 +12,10 @@ import com.intellij.openapi.editor.actionSystem.EditorActionHandler
 class ShowEnglishWordAction : EditorAction(object : EditorActionHandler() {
 
 
-    private val wordLookup: WordLookup = TomlWordLookup()
+    private val wordLookup: WordLookup = TextWordLookup()
 
 
     override fun doExecute(editor: Editor, caret: Caret?, dataContext: DataContext) {
-
 
         var project = editor.project ?: return
 
@@ -26,8 +25,7 @@ class ShowEnglishWordAction : EditorAction(object : EditorActionHandler() {
 
         val lookupElements = snippets.map(LookupElementBuilder::create).toTypedArray()
 
-
-        val lookup = LookupManager.getInstance(project).showLookup(editor, *lookupElements) ?: return
+        LookupManager.getInstance(project).showLookup(editor, *lookupElements) ?: return
 
     }
 
