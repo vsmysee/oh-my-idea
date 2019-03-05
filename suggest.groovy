@@ -66,7 +66,7 @@ keyboard_single {
     key "b", "Back", "向前"
 
     key "u", "\$Undo", "撤销"
-    key "U", "EditorToggleCase", "转为大写"
+    key "U", "EditorToggleCase", "大小写转换"
 
     key "r", "\$Redo", "重做"
     key "R", "CloseContent", "关闭选项卡"
@@ -101,6 +101,8 @@ keyboard_single {
     key "c", "ActivateVersionControlToolWindow", "打开版本改动"
 
     key ":", "OH_ShowCommandAction", "命令底行开启"
+
+    key ";", "RunClass", "运行当前类"
 
     key "I", "OH_NotQuickInsert", "快速非运算"
 
@@ -184,7 +186,6 @@ keyboard_select {
 
     key ".", "OH_RepeatCurrentAction", "重复上一个动作"
 
-    key "c", "RunClass", "运行当前类"
     key "b", "DebugClass", "调试当前类"
 
     key "t", "EditorToggleColumnMode", "列模式"

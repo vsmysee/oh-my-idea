@@ -35,18 +35,9 @@ class SnippetCompletionContributor(
                     .withTypeText("custom snippet")
                     .withLookupString(snippet.key)
                     .withInsertHandler({ insertionContext, _ ->
-                        //removeLastInsertedCharacter(insertionContext)
                         doReformat(editor)
                     })
 
-    private fun removeLastInsertedCharacter(insertionContext: InsertionContext) =
-            removeCharacterBeforeOffset(insertionContext, getCurrentCaretPosition(insertionContext))
-
-    private fun removeCharacterBeforeOffset(insertionContext: InsertionContext, offset: Int) =
-            insertionContext.document.deleteString(offset - 1, offset)
-
-    private fun getCurrentCaretPosition(insertionContext: InsertionContext) =
-            insertionContext.editor.caretModel.offset
 
     private fun doReformat(editor: Editor) =
             editorFileFormatter.format(getCurrentEditorFile(editor),
