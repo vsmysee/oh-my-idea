@@ -30,6 +30,7 @@ keyboard_single {
     key "`", "NextProjectWindow", "下一个项目窗口"
     key "=", "OH_ShowHelpDialog", "显示帮助"
     key "-", "ShowPopupMenu", "模拟鼠标右键"
+    key "\\", "OH_ShowEnglishWordActions", "补全单词"
 
 
 

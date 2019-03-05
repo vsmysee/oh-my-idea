@@ -47,6 +47,8 @@
 
         <action id="OH_ShowUIToggleActions" class="com.codingbaby.ohmyidea.action.ShowUIToggleActions" text="Control UIToggle Actions"/>
 
+        <action id="OH_ShowEnglishWordActions" class="com.codingbaby.ohmyidea.ShowEnglishWordAction" text="Control UIToggle Actions"/>
+
     </actions>
 
 
