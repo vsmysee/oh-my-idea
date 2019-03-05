@@ -165,7 +165,7 @@ keyboard_select {
 
     key "p", "\$Paste", "粘贴"
 
-    key "U", "EditorToggleCase", "转位大写"
+    key "U", "EditorToggleCase", "转大写"
     key "u", "\$Undo", "撤销"
 
     key "/", "CommentByBlockComment", "块注释"

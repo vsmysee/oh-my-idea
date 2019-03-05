@@ -2,14 +2,30 @@
 
 (single
 
+    [:0 :CompileDirty :编译]
+    [:1 :FindInPath :编译]
+    [:2 :ReplaceInPath :编译]
+    [:3 :GoToRequestMapping :编译]
+    [:4 :$Cut :编译]
+    [:5 :EditorDuplicate :编译]
+    [:6 :IntroduceVariable :编译]
+    [:7 :EditorDeleteLine :编译]
+    [:8 :GotoFile :编译]
+    [:9 :GotoClass :编译]
+
+
+    [:` :NextProjectWindow :编译]
+    [:= :OH_ShowHelpDialog :编译]
+    [:- :ShowPopupMenu :编译]
+
+
     [:h :EditorLeft :左移动]
     [:H :EditorLineStart :左开始]
 
-    [:0 :EditorLineStart :左开始]
+
 
     [:l :EditorRight :右移动]
     [:L :EditorLineEnd :右结束]
-    [:9 :EditorLineEnd :右结束]
 
     [:j :EditorDown :下移动]
     [:J :OH_MotionLastLine :最后一行]
@@ -76,6 +92,10 @@
 
 
 (composite
+
+     [:gh :HideAllWindows :隐藏窗口]
+
+
      [:gd :GotoDeclaration :到声明]
      [:gm :GotoImplementation :到实现]
      [:gu :GotoSuperMethod :到超类]
@@ -86,30 +106,23 @@
      [:gv :IntroduceVariable :提取变量]
      [:gs :SurroundWith :代码环绕]
  
-     [:dd :EditorDeleteLine :删除行]
      [:de :EditorDeleteToLineEnd :删除到行尾]
  
      [:dG :OH_EditorDeleteToFileEnd :删除到文件尾]
  
-     [:gh :HideAllWindows :隐藏窗口]
-     [:gp :NextProjectWindow :下一个项目窗口]
      [:gw :JumpToLastWindow :最近窗口]
  
-     [:go :GotoClass :导航到类]
      [:gn :Inline :合并变量]
      [:gf :GotoFile :导航到文件]
  
 
      [:gi :ShowIntentionActions :显示意图]
  
-     [:yc :$Cut :剪切]
-     [:yd :EditorDuplicate :复制行]
- 
+
      [:yi :ImplementMethods :实现方法]
      [:yo :OverrideMethods :重载方法]
  
-     [:yb :CompileDirty :编译]
- 
+
      [:zt :OH_ScrollToTop :当前行置顶]
  
      [:zj :EditorJoinLines :合并行]
@@ -141,7 +154,7 @@
    
        [:p :$Paste :粘贴]
    
-       [:U :EditorToggleCase :转位大写]
+       [:U :EditorToggleCase :转大写]
        [:u :$Undo :撤销]
    
        [:/ :CommentByBlockComment :块注释]
@@ -159,12 +172,12 @@
    
        [:. :OH_RepeatCurrentAction :重复上一个动作]
 
-       [:t :EditorToggleColumnMode :列模式]
-       [:s :SurroundWith :代码环绕]
-
    
        [:c :RunClass :运行当前类]
-       [:b :DebugClass :调试当前类])
+       [:b :DebugClass :调试当前类]
+
+       [:t :EditorToggleColumnMode :列模式]
+       [:s :SurroundWith :代码环绕])
 
 
 (movement
@@ -223,8 +236,6 @@
 
     [:n :EditorToggleShowLineNumbers :显示行号]
 
-    [:k :OH_ShowHelpDialog :显示帮助]
-    [:K :OH_ShowHelpDialog :显示帮助])
 
 
 )
