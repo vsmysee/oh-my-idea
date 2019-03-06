@@ -25,7 +25,7 @@ class TextWordLookup : WordLookup {
             return currentSnippets
         }
 
-        return currentSnippets.filter { it.startsWith(selectText) }
+        return currentSnippets.filter { it.startsWith(selectText.toLowerCase()) }
     }
 
     private fun updateLastModified(snippetFile: VirtualFile) {
