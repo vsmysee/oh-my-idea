@@ -32,7 +32,7 @@ class TextWordLookup : WordLookup {
         modificationStamp = snippetFile.modificationStamp
     }
 
-    private fun getSnippetFile(project: Project) = project.baseDir.findChild(".project.word.toml")
+    private fun getSnippetFile(project: Project) = project.baseDir.findChild(".project.word")
 
     private fun fileHasChanged(snippetFile: VirtualFile) = modificationStamp < snippetFile.modificationStamp
 
