@@ -14,7 +14,6 @@
     [:9 :GotoClass :编译]
 
 
-    [:` :NextProjectWindow :编译]
     [:= :OH_ShowHelpDialog :编译]
     [:- :ShowPopupMenu :编译]
 
@@ -39,7 +38,7 @@
     [:T :PreviousTab :前一个选项卡]
 
     [:s :NextSplitter :下一个拆分窗口]
-    [:S :PrevSplitter :钱一个拆分窗口]
+    [:S :PrevSplitter :前一个拆分窗口]
 
     [:m :MethodDown :下一个方法声明]
     [:M :MethodUp :前一个方法声明]

@@ -27,10 +27,10 @@ keyboard_single {
 
 
 
-    key "`", "NextProjectWindow", "下一个项目窗口"
     key "=", "OH_ShowHelpDialog", "显示帮助"
     key "-", "ShowPopupMenu", "模拟鼠标右键"
-    key "\\", "OH_ShowEnglishWordActions", "补全单词"
+
+    key "O", "OH_ShowEnglishWordActions", "补全单词"
 
 
 
@@ -54,7 +54,7 @@ keyboard_single {
     key "T", "PreviousTab", "前一个选项卡"
 
     key "s", "NextSplitter", "下一个拆分窗口"
-    key "S", "PrevSplitter", "钱一个拆分窗口"
+    key "S", "PrevSplitter", "前一个拆分窗口"
 
     key "m", "MethodDown", "下一个方法声明"
     key "M", "MethodUp", "前一个方法声明"
@@ -73,7 +73,6 @@ keyboard_single {
 
     key "x", "\$Delete", "删除字符"
 
-    key "O", "EditorStartNewLineBefore", "向前开始一个新行"
     key "o", "EditorStartNewLine", "向后开始一个新行"
 
     key "p", "\$Paste", "粘贴"
