@@ -44,6 +44,13 @@ keyboard_single是一个内置函数，表示单键，另外还有keyboard_compo
 ## 缺点
 不能和IdeaVim共存，你需要改变使用快捷键的习惯
 
+
+## 内置关联插件
+
+* [翻译](https://yiiguxing.github.io/TranslationPlugin/)
+* [URL导航](https://github.com/viartemev/requestmapper)
+
+
 ## 配置参考(我每天使用)
 
 敲击0表示编译工作区，敲击9表示搜索类，敲击m表示跳转到下一个方法，敲击gd跳转到声明，可以定制所有的动作。

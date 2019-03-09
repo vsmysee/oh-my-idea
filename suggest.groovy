@@ -31,6 +31,7 @@ keyboard_single {
     key "-", "ShowPopupMenu", "模拟鼠标右键"
 
     key "O", "OH_ShowEnglishWordActions", "补全单词"
+    key "P", "\$EditorTranslateAction", "翻译单词"
 
 
 
@@ -45,7 +46,8 @@ keyboard_single {
     key "j", "EditorDown", "下移动"
     key "J", "OH_MotionLastLine", "最后一行"
 
-    key "G", "OH_MotionLastLine", "最后一行"
+    key "G", "DebugClass", "调试当前类"
+
 
     key "k", "EditorUp", "上移动"
     key "K", "OH_MotionFirstLine", "第一行"
@@ -185,7 +187,6 @@ keyboard_select {
 
     key ".", "OH_RepeatCurrentAction", "重复上一个动作"
 
-    key "b", "DebugClass", "调试当前类"
 
     key "t", "EditorToggleColumnMode", "列模式"
     key "s", "SurroundWith", "代码环绕"
