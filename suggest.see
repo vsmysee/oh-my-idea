@@ -3,19 +3,23 @@
 (single
 
     [:0 :CompileDirty :编译]
-    [:1 :FindInPath :编译]
-    [:2 :ReplaceInPath :编译]
-    [:3 :GoToRequestMapping :编译]
-    [:4 :$Cut :编译]
-    [:5 :EditorDuplicate :编译]
-    [:6 :IntroduceVariable :编译]
-    [:7 :EditorDeleteLine :编译]
-    [:8 :GotoFile :编译]
-    [:9 :GotoClass :编译]
+    [:1 :FindInPath :文件中查找]
+    [:2 :ReplaceInPath :文件中替换]
+    [:3 :GoToRequestMapping :URL查找]
+    [:4 :$Cut :剪切]
+    [:5 :EditorDuplicate :复制行]
+    [:6 :IntroduceVariable :提取变量]
+    [:7 :EditorDeleteLine :删除行]
+    [:8 :GotoFile :导航到文件]
+    [:9 :GotoClass :导航到类]
 
 
-    [:= :OH_ShowHelpDialog :编译]
-    [:- :ShowPopupMenu :编译]
+    [:= :OH_ShowHelpDialog :显示帮助]
+    [:- :ShowPopupMenu :模拟鼠标右键]
+
+    [:O :OH_ShowEnglishWordActions :补全单词]
+    [:P :$EditorTranslateAction :翻译单词]
+
 
 
     [:h :EditorLeft :左移动]
@@ -29,7 +33,7 @@
     [:j :EditorDown :下移动]
     [:J :OH_MotionLastLine :最后一行]
 
-    [:G :OH_MotionLastLine :最后一行]
+    [:G :DebugClass :调试当前类]
 
     [:k :EditorUp :上移动]
     [:K :OH_MotionFirstLine :第一行]
@@ -57,7 +61,6 @@
 
     [:x :$Delete :删除字符]
 
-    [:O :EditorStartNewLineBefore :向前开始一个新行]
     [:o :EditorStartNewLine :向后开始一个新行]
 
     [:p :$Paste :粘贴]
@@ -87,6 +90,8 @@
 
     [:: :OH_ShowCommandAction :命令底行开启]
 
+    [:; :RunClass :运行当前类]
+
     [:I :OH_NotQuickInsert :快速非运算])
 
 
@@ -112,8 +117,7 @@
      [:gw :JumpToLastWindow :最近窗口]
  
      [:gn :Inline :合并变量]
-     [:gf :GotoFile :导航到文件]
- 
+
 
      [:gi :ShowIntentionActions :显示意图]
  
@@ -172,8 +176,6 @@
        [:. :OH_RepeatCurrentAction :重复上一个动作]
 
    
-       [:c :RunClass :运行当前类]
-       [:b :DebugClass :调试当前类]
 
        [:t :EditorToggleColumnMode :列模式]
        [:s :SurroundWith :代码环绕])
