@@ -1,6 +1,6 @@
 app_quick_open {
     key "r", [KeyEvent.VK_CONTROL, KeyEvent.VK_ALT, KeyEvent.VK_R]
-    key "d", [KeyEvent.VK_CONTROL, KeyEvent.VK_ALT, KeyEvent.VK_D]
+    key "w", [KeyEvent.VK_CONTROL, KeyEvent.VK_META, KeyEvent.VK_W]
     key "t", [KeyEvent.VK_CONTROL, KeyEvent.VK_META, KeyEvent.VK_T]
     key "c", [KeyEvent.VK_CONTROL, KeyEvent.VK_META, KeyEvent.VK_C]
 }
