@@ -30,6 +30,9 @@ keyboard_single {
     key "=", "OH_ShowHelpDialog", "显示帮助"
     key "-", "ShowPopupMenu", "模拟鼠标右键"
 
+
+    key "`", "OH_SwitchWindowAction", "切换项目窗口"
+
     key "O", "OH_ShowEnglishWordActions", "补全单词"
     key "P", "\$EditorTranslateAction", "翻译单词"
 

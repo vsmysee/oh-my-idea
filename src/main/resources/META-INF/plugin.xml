@@ -47,7 +47,9 @@
 
         <action id="OH_ShowUIToggleActions" class="com.codingbaby.ohmyidea.action.ShowUIToggleActions" text="Control UIToggle Actions"/>
 
-        <action id="OH_ShowEnglishWordActions" class="com.codingbaby.ohmyidea.ShowEnglishWordAction" text="Control UIToggle Actions"/>
+        <action id="OH_SwitchWindowAction" class="com.codingbaby.ohmyidea.action.SwitchWindowAction" text="Switch Project Window"/>
+
+        <action id="OH_ShowEnglishWordActions" class="com.codingbaby.ohmyidea.ShowEnglishWordAction" text="Show Word"/>
 
     </actions>
 

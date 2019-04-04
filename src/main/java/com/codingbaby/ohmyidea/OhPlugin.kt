@@ -22,8 +22,6 @@ class OhPlugin(private val myApp: Application) : ApplicationComponent {
 
     var active = true;
 
-    var controlTime = System.currentTimeMillis()
-
 
     override fun initComponent() {
 

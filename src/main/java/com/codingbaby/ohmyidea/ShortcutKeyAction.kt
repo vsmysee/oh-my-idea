@@ -24,14 +24,6 @@ class ShortcutKeyAction : AnAction(), DumbAware {
 
         if (keyStroke != null && keyStroke.keyCode == KeyEvent.VK_ESCAPE) {
 
-
-            //做一次窗口切换
-            if (System.currentTimeMillis() - OhPlugin.instance.controlTime < 100) {
-                KeyHandler.executeAction("NextProjectWindow", anActionEvent.dataContext)
-                return
-            }
-
-
             if (OhPlugin.instance.status !== EditorStatus.Command) {
                 KeyHandler.mode(EditorStatus.Command)
             }
@@ -43,7 +35,6 @@ class ShortcutKeyAction : AnAction(), DumbAware {
             CommandStatus.reset()
         }
 
-        OhPlugin.instance.controlTime = System.currentTimeMillis()
 
     }
 
