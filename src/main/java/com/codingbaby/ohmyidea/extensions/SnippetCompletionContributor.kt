@@ -1,4 +1,4 @@
-package com.codingbaby.ohmyidea
+package com.codingbaby.ohmyidea.extensions
 
 import com.intellij.codeInsight.actions.FileInEditorProcessor
 import com.intellij.codeInsight.actions.LastRunReformatCodeOptionsProvider

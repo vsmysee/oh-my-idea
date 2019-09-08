@@ -15,7 +15,7 @@
 
 
     <extensions defaultExtensionNs="com.intellij">
-        <completion.contributor language="any" implementationClass="com.codingbaby.ohmyidea.SnippetCompletionContributor"/>
+        <completion.contributor language="any" implementationClass="com.codingbaby.ohmyidea.extensions.SnippetCompletionContributor"/>
     </extensions>
 
 

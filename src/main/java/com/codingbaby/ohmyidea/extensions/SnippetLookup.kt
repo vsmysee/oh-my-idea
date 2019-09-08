@@ -1,4 +1,4 @@
-package com.codingbaby.ohmyidea
+package com.codingbaby.ohmyidea.extensions
 
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.vfs.VirtualFile
