@@ -1,4 +1,5 @@
-app_quick_open {
+
+keyboard {
     key "r", [KeyEvent.VK_CONTROL, KeyEvent.VK_ALT, KeyEvent.VK_R]
     key "w", [KeyEvent.VK_CONTROL, KeyEvent.VK_META, KeyEvent.VK_W]
     key "t", [KeyEvent.VK_CONTROL, KeyEvent.VK_META, KeyEvent.VK_T]
@@ -6,9 +7,7 @@ app_quick_open {
 }
 
 
-
-keyboard_single {
-
+single {
 
     key "0", "CompileDirty", "编译"
     key "1", "FindInPath", "文件中查找"
@@ -113,7 +112,7 @@ keyboard_single {
 }
 
 
-keyboard_composite {
+composite {
 
     key "gh", "HideAllWindows", "隐藏窗口"
 
@@ -158,7 +157,7 @@ keyboard_composite {
 
 }
 
-keyboard_select {
+select {
 
     key "h", "EditorLeftWithSelection", "左选择"
     key "l", "EditorRightWithSelection", "右选择"
@@ -196,7 +195,7 @@ keyboard_select {
 
 }
 
-keyboard_movement {
+movement {
 
     key "h", "EditorLeft", "左移动"
     key "H", "EditorLineStart", "左开始"
@@ -226,7 +225,7 @@ keyboard_movement {
 
 
 
-keyboard_bottom {
+bottom {
 
     key "v", "SplitVertically", "水平拆分"
     key "h", "SplitHorizontally", "垂直拆分"

@@ -33,12 +33,12 @@ Oh My Idea是一个IDEA插件，这个取名模仿了Oh My ZSH，当一个工具
 采用Kotlin静态编程语言加上Groovy DSL，如下是一个简单的配置，表示敲击h，做移动一个字符，敲击H，光标移动到行首。
 
 ```
-  keyboard_single {
+  single {
       key "h", "EditorLeft", "左移动"
       key "H", "EditorLineStart", "左开始"
  }
 ```
-keyboard_single是一个内置函数，表示单键，另外还有keyboard_composite(复键),keyboard_select（选择），keyboard_movement（移动），keyboard_bottom（底行)
+single是一个内置函数，表示单键，另外还有composite(复键),select（选择），movement（移动），bottom（底行)
 
 
 ## 缺点
@@ -57,8 +57,8 @@ keyboard_single是一个内置函数，表示单键，另外还有keyboard_compo
 
 ```
 
-//连接外部应用,先敲击a
-app_quick_open {
+//调用快捷键,先敲击a
+keyboard {
     key "r", [KeyEvent.VK_CONTROL, KeyEvent.VK_ALT, KeyEvent.VK_R]
     key "d", [KeyEvent.VK_CONTROL, KeyEvent.VK_ALT, KeyEvent.VK_D]
     key "t", [KeyEvent.VK_CONTROL, KeyEvent.VK_META, KeyEvent.VK_T]
@@ -67,7 +67,7 @@ app_quick_open {
 
 
 //单键
-keyboard_single {
+single {
 
 
     key "0", "CompileDirty", "编译"
@@ -169,7 +169,7 @@ keyboard_single {
 
 
 //复键
-keyboard_composite {
+composite {
 
     key "gh", "HideAllWindows", "隐藏窗口"
 
@@ -215,7 +215,7 @@ keyboard_composite {
 }
 
 //敲击v，选择模式
-keyboard_select {
+select {
 
     key "h", "EditorLeftWithSelection", "左选择"
     key "l", "EditorRightWithSelection", "右选择"
@@ -256,7 +256,7 @@ keyboard_select {
 }
 
 //敲击大写V，开始移动文本
-keyboard_movement {
+movement {
 
     key "h", "EditorLeft", "左移动"
     key "H", "EditorLineStart", "左开始"
@@ -286,7 +286,7 @@ keyboard_movement {
 
 
 //底行
-keyboard_bottom {
+bottom {
 
     key "v", "SplitVertically", "水平拆分"
     key "h", "SplitHorizontally", "垂直拆分"

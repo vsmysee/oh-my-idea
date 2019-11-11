@@ -53,37 +53,37 @@ class ActorContainer {
 }
 
 
-def app_quick_open = {
+def keyboard = {
     closure ->
         closure.delegate = new RobotContainer(envMap)
         closure()
 }
 
-def keyboard_select = {
+def select = {
     closure ->
         closure.delegate = new ActorContainer(vmode)
         closure()
 }
 
-def keyboard_single = {
+def single = {
     closure ->
         closure.delegate = new ActorContainer(smode)
         closure()
 }
 
-def keyboard_movement = {
+def movement = {
     closure ->
         closure.delegate = new ActorContainer(mmode)
         closure()
 }
 
-def keyboard_composite = {
+def composite = {
     closure ->
         closure.delegate = new ActorContainer(cmode)
         closure()
 }
 
-def keyboard_bottom = {
+def bottom = {
     closure ->
         closure.delegate = new ActorContainer(bmode)
         closure()
