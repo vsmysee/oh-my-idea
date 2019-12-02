@@ -37,6 +37,9 @@ object OhScript {
     [:= :OH_ShowHelpDialog :显示帮助]
     [:- :ShowPopupMenu :模拟鼠标右键]
 
+    [:` :OH_SwitchWindowAction :切换项目窗口]
+
+
     [:O :OH_ShowEnglishWordActions :补全单词]
     [:P :${'$'}EditorTranslateAction :翻译单词]
 
