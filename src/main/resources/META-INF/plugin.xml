@@ -37,8 +37,6 @@
 
         <action id="OH_ScrollToTop" class="com.codingbaby.ohmyidea.action.ScrollToScreenFirstAction" text="Scroll Top"/>
 
-        <action id="OH_NotQuickInsert" class="com.codingbaby.ohmyidea.action.NotQuickInsertAction" text="Insert Not Quick"/>
-
         <action id="OH_ShowHelpDialog" class="com.codingbaby.ohmyidea.action.ShowHelpDialogAction" text="Show Help Dialog"/>
 
         <action id="OH_RepeatCurrentAction" class="com.codingbaby.ohmyidea.action.RepeatCurrentAction" text="Repeat Current Action"/>

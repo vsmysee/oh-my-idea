@@ -53,10 +53,12 @@ class ActorContainer {
 
 }
 
+import com.intellij.openapi.actionSystem.ActionManager
+
 class ActionContainer {
 
         def reg(id,action) {
-            com.intellij.openapi.actionSystem.ActionManager.getInstance().registerAction(id, action)
+            ActionManager.getInstance().registerAction(id, action)
         }
 }
 

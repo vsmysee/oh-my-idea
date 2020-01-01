@@ -23,6 +23,3 @@ single {
     key "hello"
 
 }
-
-
-

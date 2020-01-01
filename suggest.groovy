@@ -31,9 +31,26 @@ class DeleteToFileEndAction extends EditorAction {
 
 }
 
+
+class NotQuickInsertAction extends EditorAction {
+
+    NotQuickInsertAction() {
+
+        super(new EditorActionHandler() {
+            @Override
+            protected void doExecute(@NotNull Editor editor, @Nullable Caret caret, DataContext dataContext) {
+                val oldOffset = editor.caretModel.offset
+                editor.document.insertString(oldOffset, "!")
+            }
+        })
+    }
+}
+
+
 action {
 
     reg "OH_EditorDeleteToFileEnd", new DeleteToFileEndAction()
+    reg "OH_NotQuickInsert", new NotQuickInsertAction()
 
 }
 
