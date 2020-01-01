@@ -94,8 +94,6 @@ single {
     key "j", "EditorDown", "下移动"
     key "J", "OH_MotionLastLine", "最后一行"
 
-    key "G", "DebugClass", "调试当前类"
-
 
     key "k", "EditorUp", "上移动"
     key "K", "OH_MotionFirstLine", "第一行"
@@ -155,10 +153,15 @@ single {
 
     key "I", "OH_NotQuickInsert", "快速非运算"
 
+    key "G", "OH_ShowUIToggleActions", "控制UI"
+
 }
 
 
 composite {
+
+    key "d;", "DebugClass", "调试当前类"
+
 
     key "gh", "HideAllWindows", "隐藏窗口"
 
@@ -166,8 +169,6 @@ composite {
     key "gd", "GotoDeclaration", "到声明"
     key "gm", "GotoImplementation", "到实现"
     key "gu", "GotoSuperMethod", "到超类"
-
-    key "gg", "OH_MotionFirstLine", "到第一行"
 
     key "ge", "Generate", "生成代码"
     key "gs", "SurroundWith", "代码环绕"
@@ -189,6 +190,7 @@ composite {
     key "zt", "OH_ScrollToTop", "当前行置顶"
 
     key "zj", "EditorJoinLines", "合并行"
+
     key "zs", "OH_LoadScriptAction", "加载模板"
 
     key "zf", "ExpandRegion", "打开折叠"
@@ -198,7 +200,6 @@ composite {
 
 
     key "ys", "Switcher", "选择组件"
-    key "yv", "OH_ShowUIToggleActions", "控制UI"
 
 }
 
@@ -235,7 +236,7 @@ select {
     key ".", "OH_RepeatCurrentAction", "重复上一个动作"
 
 
-    key "t", "EditorToggleColumnMode", "列模式"
+    key "c", "EditorToggleColumnMode", "列模式"
     key "s", "SurroundWith", "代码环绕"
 
 }
@@ -245,16 +246,12 @@ movement {
     key "h", "EditorLeft", "左移动"
     key "H", "EditorLineStart", "左开始"
 
-    key "0", "EditorLineStart", "左开始"
-
     key "l", "EditorRight", "右移动"
     key "L", "EditorLineEnd", "右结束"
     key "9", "EditorLineEnd", "右结束"
 
     key "j", "EditorDown", "下移动"
     key "J", "OH_MotionLastLine", "最后一行"
-
-    key "G", "OH_MotionLastLine", "最后一行"
 
     key "k", "EditorUp", "上移动"
     key "K", "OH_MotionFirstLine", "第一行"
@@ -295,6 +292,6 @@ bottom {
     key "<", "EditorCodeBlockStart", "到代码块开始"
     key ">", "EditorCodeBlockEnd", "到代码块结束"
 
-    key "n", "EditorToggleShowLineNumbers", "显示行号"
+    key "n", "EditorToggleShowLineNumbers", "定位行"
 
 }

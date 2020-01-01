@@ -5,7 +5,6 @@ class D {
 
     def key(p) {
         println p
-
     }
 }
 

@@ -46,7 +46,6 @@ object LispDef {
     [:j :EditorDown :下移动]
     [:J :OH_MotionLastLine :最后一行]
 
-    [:G :DebugClass :调试当前类]
 
     [:k :EditorUp :上移动]
     [:K :OH_MotionFirstLine :第一行]
@@ -115,7 +114,6 @@ object LispDef {
      [:gm :GotoImplementation :到实现]
      [:gu :GotoSuperMethod :到超类]
 
-     [:gg :OH_MotionFirstLine :到第一行]
 
      [:ge :Generate :生成代码]
      [:gv :IntroduceVariable :提取变量]
@@ -185,14 +183,13 @@ object LispDef {
        [:. :OH_RepeatCurrentAction :重复上一个动作]
 
 
-
-       [:t :EditorToggleColumnMode :列模式]
+       [:c :EditorToggleColumnMode :列模式]
        [:s :SurroundWith :代码环绕])
 
 
 (movement
 
- [:h :EditorLeft :左移动]
+    [:h :EditorLeft :左移动]
     [:H :EditorLineStart :左开始]
 
     [:0 :EditorLineStart :左开始]
@@ -244,7 +241,7 @@ object LispDef {
     [:< :EditorCodeBlockStart :到代码块开始]
     [:> :EditorCodeBlockEnd :到代码块结束]
 
-    [:n :EditorToggleShowLineNumbers :显示行号])
+    [:n :EditorToggleShowLineNumbers :定位到行])
 
 
 )

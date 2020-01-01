@@ -135,8 +135,7 @@
      [:yr :ReplaceInPath :文件中替换]
      [:yf :FindInPath :文件中查找]
  
-     [:ys :Switcher :选择组件]
-     [:yv :OH_ShowUIToggleActions :控制UI])
+     [:ys :Switcher :选择组件])
 
 
 (select
@@ -173,7 +172,7 @@
 
    
 
-       [:t :EditorToggleColumnMode :列模式]
+       [:c :EditorToggleColumnMode :列模式]
        [:s :SurroundWith :代码环绕])
 
 

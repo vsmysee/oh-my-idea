@@ -50,6 +50,8 @@ single是一个内置函数，表示单键，另外还有composite(复键)，sel
 
 不能和IdeaVim共存，需要改变使用快捷键的习惯
 
+比如在我的配置里,J是快速定位到文件尾，而在vim中却是合并行
+
 ## 内置关联插件
 
 * [翻译](https://yiiguxing.github.io/TranslationPlugin/)
@@ -111,8 +113,6 @@ single {
     key "j", "EditorDown", "下移动"
     key "J", "OH_MotionLastLine", "最后一行"
 
-    key "G", "OH_MotionLastLine", "最后一行"
-
     key "k", "EditorUp", "上移动"
     key "K", "OH_MotionFirstLine", "第一行"
 
@@ -168,20 +168,21 @@ single {
 
     key ":", "OH_ShowCommandAction", "命令底行开启"
 
+    key "G", "OH_ShowUIToggleActions", "控制UI"
+
 }
 
 
 //复键
 composite {
 
-    key "gh", "HideAllWindows", "隐藏窗口"
+    key "d;", "DebugClass", "调试当前类"
 
+    key "gh", "HideAllWindows", "隐藏窗口"
 
     key "gd", "GotoDeclaration", "到声明"
     key "gm", "GotoImplementation", "到实现"
     key "gu", "GotoSuperMethod", "到超类"
-
-    key "gg", "OH_MotionFirstLine", "到第一行"
 
     key "ge", "Generate", "生成代码"
     key "gs", "SurroundWith", "代码环绕"
@@ -212,7 +213,6 @@ composite {
 
 
     key "ys", "Switcher", "选择组件"
-    key "yv", "OH_ShowUIToggleActions", "控制UI"
 
 }
 
@@ -249,10 +249,9 @@ select {
 
     key ".", "OH_RepeatCurrentAction", "重复上一个动作"
 
-    key "c", "RunClass", "运行当前类"
-    key "b", "DebugClass", "调试当前类"
+    key ";", "RunClass", "运行当前类"
 
-    key "t", "EditorToggleColumnMode", "列模式"
+    key "c", "EditorToggleColumnMode", "列模式"
     key "s", "SurroundWith", "代码环绕"
 
 }
@@ -271,8 +270,6 @@ movement {
 
     key "j", "EditorDown", "下移动"
     key "J", "OH_MotionLastLine", "最后一行"
-
-    key "G", "OH_MotionLastLine", "最后一行"
 
     key "k", "EditorUp", "上移动"
     key "K", "OH_MotionFirstLine", "第一行"
@@ -314,7 +311,7 @@ bottom {
     key "<", "EditorCodeBlockStart", "到代码块开始"
     key ">", "EditorCodeBlockEnd", "到代码块结束"
 
-    key "n", "EditorToggleShowLineNumbers", "显示行号"
+    key "n", "EditorToggleShowLineNumbers", "定位到行"
 
 }
 
