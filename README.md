@@ -3,7 +3,7 @@ Oh My Idea是一个IDEA插件，这个取名模仿了Oh My ZSH
 ## 为什么要写这个插件
 
 我酷爱IDEA，但是骨子里又离不开VIM和EMACS那种运键如飞和随时随地可编程的特性，所以发明了这个插件，虽然社区已经存在IdeaVim这样的插件，但是它只能理解文本不能理解Java语言。
-使用本插件需要理解VIM模式操作, 安装本插件之后，IDE启动时默认进入命令模式，不能输入，只能控制，插件的核心功能就是对IDEA内置的Action放进一个编排上下文，我们可以任意灵活的通过DSL的方式编排这些Action。
+使用本插件需要理解VIM模式操作, 安装之后，IDE启动时默认进入命令模式，不能输入，只能控制，插件的核心功能就是把IDEA内置的Action放进一个编排上下文，我们可以任意灵活的通过DSL的方式编排这些Action。
 
 ## 设计原则
 
@@ -12,7 +12,7 @@ Oh My Idea是一个IDEA插件，这个取名模仿了Oh My ZSH
 * 灵活编排动作
 * 连接外部应用
 * 连接其他插件
-* 可编程
+* 可编程式扩展
 
 
 ## DSL编排
@@ -21,6 +21,8 @@ Oh My Idea是一个IDEA插件，这个取名模仿了Oh My ZSH
 
 
 ## 模式种类
+
+类似于vim
 
 * 插入(i)
 * 命令(esc)
@@ -32,7 +34,7 @@ Oh My Idea是一个IDEA插件，这个取名模仿了Oh My ZSH
 
 ## 技术实现
 
-采用Kotlin静态编程语言加上Groovy DSL，如下是一个简单的配置，表示敲击h，做移动一个字符，敲击H，光标移动到行首。
+采用Kotlin静态编程语言加上Groovy DSL，如下是一个简单的配置，表示敲击h，左移动一个字符，敲击H，光标移动到行首。
 
 ```
   single {
@@ -40,12 +42,13 @@ Oh My Idea是一个IDEA插件，这个取名模仿了Oh My ZSH
       key "H", "EditorLineStart", "左开始"
  }
 ```
-single是一个内置函数，表示单键，另外还有composite(复键),select（选择），movement（移动），bottom（底行)
+
+single是一个内置函数，表示单键，另外还有composite(复键)，select（选择），movement（移动），bottom（底行)
 
 
 ## 缺点
-不能和IdeaVim共存，你需要改变使用快捷键的习惯
 
+不能和IdeaVim共存，需要改变使用快捷键的习惯
 
 ## 内置关联插件
 
@@ -164,8 +167,6 @@ single {
     key "c", "ActivateVersionControlToolWindow", "打开版本改动"
 
     key ":", "OH_ShowCommandAction", "命令底行开启"
-
-    key "I", "OH_NotQuickInsert", "快速非运算"
 
 }
 
@@ -318,6 +319,38 @@ bottom {
 }
 
 ```
+
+## 如何实现自己的Action
+
+在.oh-my-idea中写入脚本
+
+```
+
+class DeleteToFileEndAction extends EditorAction {
+
+    DeleteToFileEndAction() {
+
+        super(new EditorActionHandler() {
+            @Override
+            protected void doExecute(@NotNull Editor editor, @Nullable Caret caret, DataContext dataContext) {
+                def startPos = editor.getCaretModel().offset
+                def endPos = editor.getDocument().textLength
+                editor.getDocument().deleteString(startPos, endPos)
+            }
+        })
+    }
+
+}
+
+
+action {
+
+    reg "OH_EditorDeleteToFileEnd", new DeleteToFileEndAction()
+
+}
+
+```
+
 
 
 ## 编译构建

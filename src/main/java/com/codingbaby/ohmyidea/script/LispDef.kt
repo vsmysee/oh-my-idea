@@ -103,9 +103,7 @@ object LispDef {
 
     [:: :OH_ShowCommandAction :命令底行开启]
 
-    [:; :RunClass :运行当前类]
-
-    [:I :OH_NotQuickInsert :快速非运算])
+    [:; :RunClass :运行当前类])
 
 
 (composite

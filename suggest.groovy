@@ -22,8 +22,8 @@ class DeleteToFileEndAction extends EditorAction {
         super(new EditorActionHandler() {
             @Override
             protected void doExecute(@NotNull Editor editor, @Nullable Caret caret, DataContext dataContext) {
-                var startPos = editor.getCaretModel().offset
-                var endPos = editor.getDocument().textLength
+                def startPos = editor.getCaretModel().offset
+                def endPos = editor.getDocument().textLength
                 editor.getDocument().deleteString(startPos, endPos)
             }
         })
@@ -39,7 +39,7 @@ class NotQuickInsertAction extends EditorAction {
         super(new EditorActionHandler() {
             @Override
             protected void doExecute(@NotNull Editor editor, @Nullable Caret caret, DataContext dataContext) {
-                val oldOffset = editor.caretModel.offset
+                def oldOffset = editor.caretModel.offset
                 editor.document.insertString(oldOffset, "!")
             }
         })
