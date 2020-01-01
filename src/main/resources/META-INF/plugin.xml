@@ -41,8 +41,6 @@
 
         <action id="OH_ShowHelpDialog" class="com.codingbaby.ohmyidea.action.ShowHelpDialogAction" text="Show Help Dialog"/>
 
-        <action id="OH_EditorDeleteToFileEnd" class="com.codingbaby.ohmyidea.action.DeleteToFileEndAction" text="Delete To File End"/>
-
         <action id="OH_RepeatCurrentAction" class="com.codingbaby.ohmyidea.action.RepeatCurrentAction" text="Repeat Current Action"/>
 
         <action id="OH_ShowUIToggleActions" class="com.codingbaby.ohmyidea.action.ShowUIToggleActions" text="Control UIToggle Actions"/>

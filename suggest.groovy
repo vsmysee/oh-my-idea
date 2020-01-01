@@ -1,9 +1,40 @@
-
 keyboard {
     key "r", [KeyEvent.VK_CONTROL, KeyEvent.VK_ALT, KeyEvent.VK_R]
     key "w", [KeyEvent.VK_CONTROL, KeyEvent.VK_META, KeyEvent.VK_W]
     key "t", [KeyEvent.VK_CONTROL, KeyEvent.VK_META, KeyEvent.VK_T]
     key "c", [KeyEvent.VK_CONTROL, KeyEvent.VK_META, KeyEvent.VK_C]
+}
+
+
+import com.intellij.openapi.actionSystem.DataContext
+import com.intellij.openapi.editor.Caret
+import com.intellij.openapi.editor.Editor
+import com.intellij.openapi.editor.actionSystem.EditorAction
+import com.intellij.openapi.editor.actionSystem.EditorActionHandler
+import org.jetbrains.annotations.NotNull
+import org.jetbrains.annotations.Nullable
+
+
+class DeleteToFileEndAction extends EditorAction {
+
+    DeleteToFileEndAction() {
+
+        super(new EditorActionHandler() {
+            @Override
+            protected void doExecute(@NotNull Editor editor, @Nullable Caret caret, DataContext dataContext) {
+                var startPos = editor.getCaretModel().offset
+                var endPos = editor.getDocument().textLength
+                editor.getDocument().deleteString(startPos, endPos)
+            }
+        })
+    }
+
+}
+
+action {
+
+    reg "OH_EditorDeleteToFileEnd", new DeleteToFileEndAction()
+
 }
 
 
@@ -25,7 +56,6 @@ single {
     key "8", "GotoFile", "导航到文件"
 
 
-
     key "=", "OH_ShowHelpDialog", "显示帮助"
     key "-", "ShowPopupMenu", "模拟鼠标右键"
 
@@ -34,7 +64,6 @@ single {
 
     key "O", "OH_ShowEnglishWordActions", "补全单词"
     key "P", "\$EditorTranslateAction", "翻译单词"
-
 
 
     key "h", "EditorLeft", "左移动"
@@ -136,7 +165,6 @@ composite {
     key "gi", "ShowIntentionActions", "显示意图"
 
 
-
     key "yi", "ImplementMethods", "实现方法"
     key "yo", "OverrideMethods", "重载方法"
 
@@ -222,7 +250,6 @@ movement {
 
     key "u", "\$Undo", "撤销"
 }
-
 
 
 bottom {

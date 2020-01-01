@@ -50,6 +50,20 @@ class ActorContainer {
         def key(key,action,desc) {
             outerAction.add(key, action, desc)
         }
+
+}
+
+class ActionContainer {
+
+        def reg(id,action) {
+            com.intellij.openapi.actionSystem.ActionManager.getInstance().registerAction(id, action)
+        }
+}
+
+def action = {
+ closure ->
+        closure.delegate = new ActionContainer()
+        closure()
 }
 
 

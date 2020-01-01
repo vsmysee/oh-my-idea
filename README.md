@@ -1,16 +1,9 @@
-Oh My Idea是一个IDEA插件，这个取名模仿了Oh My ZSH，当一个工具非常优秀的时候，我们总是想办法基于它发挥出想象力来更大的提高效率,向伟大的IDEA和Kotlin致敬。
-
+Oh My Idea是一个IDEA插件，这个取名模仿了Oh My ZSH
 
 ## 为什么要写这个插件
 
-这个星球上，伟大的编辑器只有两个：VIM和EMACS，我对VIM用得比较多，所以当我在使用IDEA的时候希望能够按照VIM的操作方式来提高编辑效率，虽然现在已经存在IdeaVim这样的插件，但是它只能理解文本不能理解java语言。
-于是我开始了本插件的设计，使用本插件需要理解VIM模式操作, 安装本插件之后，IDE启动时默认进入命令模式，不能输入，只能控制。
-
-关于VIM和编辑效率的文章
-
-* [七个习惯](http://blog.jobbole.com/44891/)
-* [VIM之魅](https://blog.zhenghui.org/2011/11/30/charm-of-vim-1/)
-
+我酷爱IDEA，但是骨子里又离不开VIM和EMACS那种运键如飞和随时随地可编程的特性，所以发明了这个插件，虽然社区已经存在IdeaVim这样的插件，但是它只能理解文本不能理解Java语言。
+使用本插件需要理解VIM模式操作, 安装本插件之后，IDE启动时默认进入命令模式，不能输入，只能控制，插件的核心功能就是对IDEA内置的Action放进一个编排上下文，我们可以任意灵活的通过DSL的方式编排这些Action。
 
 ## 设计原则
 
@@ -19,17 +12,26 @@ Oh My Idea是一个IDEA插件，这个取名模仿了Oh My ZSH，当一个工具
 * 灵活编排动作
 * 连接外部应用
 * 连接其他插件
+* 可编程
 
 
 ## DSL编排
+
 所有控制命令全部用字母和ESC键进行组合,这个组合由一个groovy dsl文件进行定制,并保存在home目录,命名为.oh-my-idea,可以按照需要和习惯进行调整
 
 
 ## 模式种类
-插入(i),命令(esc),选择(v),动作(a),移动(V),底行(:)
+
+* 插入(i)
+* 命令(esc)
+* 选择(v)
+* 动作(a)
+* 移动(V)
+* 底行(:)
 
 
 ## 技术实现
+
 采用Kotlin静态编程语言加上Groovy DSL，如下是一个简单的配置，表示敲击h，做移动一个字符，敲击H，光标移动到行首。
 
 ```
@@ -184,7 +186,6 @@ composite {
     key "gs", "SurroundWith", "代码环绕"
 
     key "de", "EditorDeleteToLineEnd", "删除到行尾"
-    key "dG", "OH_EditorDeleteToFileEnd", "删除到文件尾"
 
     key "gw", "JumpToLastWindow", "最近窗口"
 
