@@ -9,7 +9,7 @@
 
     <application-components>
         <component>
-            <implementation-class>com.codingbaby.ohmyidea.OhPlugin</implementation-class>
+            <implementation-class>fun.codecode.OhPlugin</implementation-class>
         </component>
     </application-components>
 
@@ -20,8 +20,6 @@
 
 
     <actions>
-
-        <action id="OH_ShortcutKeyAction" class="com.codingbaby.ohmyidea.ShortcutKeyAction" text="Shortcuts"/>
 
         <action id="OH_MotionFirstLine" class="com.codingbaby.ohmyidea.action.MotionGotoLineFirstAction" text="First Line"/>
         <action id="OH_MotionLastLine" class="com.codingbaby.ohmyidea.action.MotionGotoLineLastAction" text="Last Line"/>

@@ -1,6 +1,9 @@
-package com.codingbaby.ohmyidea
+package `fun`.codecode
 
-
+import com.codingbaby.ohmyidea.EditorStatus
+import com.codingbaby.ohmyidea.KeyHandler
+import com.codingbaby.ohmyidea.OhTypedActionHandler
+import com.codingbaby.ohmyidea.ShortcutKeyAction
 import com.codingbaby.ohmyidea.helper.EditorHelper
 import com.codingbaby.ohmyidea.script.OhScript
 import com.intellij.openapi.actionSystem.ActionManager
@@ -33,8 +36,9 @@ class OhPlugin(private val myApp: Application) : ApplicationComponent {
 
             override fun editorCreated(event: EditorFactoryEvent) {
                 val editor = event.editor
-                val action = ActionManager.getInstance().getAction(ACTION_ID)
 
+                var action = ShortcutKeyAction()
+                ActionManager.getInstance().registerAction(ACTION_ID, action)
                 action.registerCustomShortcutSet(CommonShortcuts.ESCAPE, editor.component)
 
                 if (EditorHelper.isFileEditor(editor) && active) {
@@ -73,7 +77,7 @@ class OhPlugin(private val myApp: Application) : ApplicationComponent {
         val instance: OhPlugin
             get() = ApplicationManager.getApplication().getComponent(COMPONENT_NAME) as OhPlugin
 
-        fun active(flag:Boolean) {
+        fun active(flag: Boolean) {
             instance.active = flag
             if (!flag) {
                 KeyHandler.mode(EditorStatus.Insert)

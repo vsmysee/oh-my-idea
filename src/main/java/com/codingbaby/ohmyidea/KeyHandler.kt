@@ -1,5 +1,6 @@
 package com.codingbaby.ohmyidea
 
+import `fun`.codecode.OhPlugin
 import com.intellij.openapi.actionSystem.ActionManager
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent

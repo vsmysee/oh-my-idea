@@ -1,6 +1,7 @@
 package com.codingbaby.ohmyidea
 
 
+import `fun`.codecode.OhPlugin
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.PlatformDataKeys
@@ -14,7 +15,6 @@ import javax.swing.KeyStroke
 class ShortcutKeyAction : AnAction(), DumbAware {
 
     override fun actionPerformed(anActionEvent: AnActionEvent) {
-
 
         if (!OhPlugin.instance.active) {
             return

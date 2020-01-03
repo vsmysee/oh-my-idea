@@ -1,6 +1,7 @@
 package com.codingbaby.ohmyidea
 
 
+import `fun`.codecode.OhPlugin
 import com.intellij.codeInsight.lookup.LookupManager
 import com.intellij.openapi.actionSystem.DataContext
 import com.intellij.openapi.editor.Editor
