@@ -1,9 +1,20 @@
-Oh My Idea是一个IDEA插件，这个取名模仿了Oh My ZSH
+Oh My Idea是一个IDEA插件，这个取名启发于了Oh My ZSH
 
-## 为什么要写这个插件
+Oh My Idea is an Idea plugin inspired by Oh My ZSH
+
+
+## 为什么要写这个插件 ?
+
+## Why this plug-in ?
 
 我酷爱IDEA，但是骨子里又离不开VIM和EMACS那种运键如飞和随时随地可编程的特性，所以发明了这个插件，虽然社区已经存在IdeaVim这样的插件，但是它只能理解文本不能理解Java语言。
 使用本插件需要理解VIM模式操作, 安装之后，IDE启动时默认进入命令模式，不能输入，只能控制，插件的核心功能就是把IDEA内置的Action放进一个编排上下文，我们可以任意灵活的通过DSL的方式编排这些Action。
+
+
+I'm a big fan of IDEA, but I can't get away from VIM and EMACS 'features of flying keys and being programmable anytime, anywhere. Therefore, I invented this plug-in. Although there is a plug-in like IdeaVim in the community, it can only understand text but not the Java language.
+
+You need to understand the operation in VIM mode to use this plug-in. After installation, the IDE starts up in command mode by default, which cannot be input but can only be controlled. The core function of the plug-in is to put the built-in Action of IDEA into a choreography context.
+
 
 ## 设计原则
 
@@ -14,10 +25,24 @@ Oh My Idea是一个IDEA插件，这个取名模仿了Oh My ZSH
 * 连接其他插件
 * 可编程式扩展
 
+## Design principles
+
+* minimum finger movement
+* minimum number of keystrokes
+* flexible choreography
+* connect to external applications
+* connect to other plug-ins
+* programmable extensions
+
 
 ## DSL编排
 
 所有控制命令全部用字母和ESC键进行组合,这个组合由一个groovy dsl文件进行定制,并保存在home目录,命名为.oh-my-idea,可以按照需要和习惯进行调整
+
+
+## DSL choreography
+
+All control commands are combined with the letters and ESC keys, and this combination is customized by a groovy DSL file and stored in the home directory, named .oh-my-idea, which can be adjusted as needed and customary
 
 
 ## 模式种类
@@ -30,6 +55,17 @@ Oh My Idea是一个IDEA插件，这个取名模仿了Oh My ZSH
 * 动作(a)
 * 移动(V)
 * 底行(:)
+
+Patterns List
+
+Similar to the vim
+
+* insertion (I)
+* command (esc)
+* choose (v)
+* action (a)
+* mobile (V)
+* end of line (:)
 
 
 ## 技术实现
