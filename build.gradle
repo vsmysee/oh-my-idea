@@ -1,4 +1,5 @@
 buildscript {
+    
     ext.kotlin_version = '1.3.31'
 
     repositories {
@@ -16,6 +17,7 @@ plugins {
     id "org.jetbrains.intellij" version "0.4.2"
     id 'org.jetbrains.kotlin.jvm' version '1.3.21'
 }
+
 
 repositories {
     mavenLocal()
@@ -35,16 +37,21 @@ intellij {
 
 }
 
-group 'com.codingbaby'
+group 'codecode.fun'
 version '1.0'
+
+
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 }
+
+
 compileKotlin {
     kotlinOptions {
         jvmTarget = "1.8"
     }
 }
+
 compileTestKotlin {
     kotlinOptions {
         jvmTarget = "1.8"

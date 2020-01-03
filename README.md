@@ -52,10 +52,6 @@ single是一个内置函数，表示单键，另外还有composite(复键)，sel
 
 比如在我的配置里,J是快速定位到文件尾，而在vim中却是合并行
 
-## 内置关联插件
-
-* [翻译](https://yiiguxing.github.io/TranslationPlugin/)
-* [URL导航](https://github.com/viartemev/requestmapper)
 
 
 ## 配置参考(我每天使用)
@@ -348,6 +344,23 @@ action {
 
 ```
 
+## 如何关联插件
+
+找到插件的action名字，然后在配置里定制即可
+
+比如我常用的下面两个插件
+
+* [翻译](https://yiiguxing.github.io/TranslationPlugin/)
+* [URL导航](https://github.com/viartemev/requestmapper)
+
+我的配置
+
+```
+key "3", "GoToRequestMapping", "URL查找[Request mapper插件]"
+
+key "P", "\$EditorTranslateAction", "翻译单词"
+
+```
 
 
 ## 编译构建

@@ -1,7 +1,7 @@
 <idea-plugin url="">
     <name>Oh My IDEA</name>
     <id>oh-my-idea</id>
-    <description>coding with java without mouse</description>
+    <description>this plugin can choreography action via groovy script</description>
     <version>1.0</version>
     <vendor>JetBrains</vendor>
 
@@ -17,7 +17,6 @@
     <extensions defaultExtensionNs="com.intellij">
         <completion.contributor language="any" implementationClass="com.codingbaby.ohmyidea.extensions.SnippetCompletionContributor"/>
     </extensions>
-
 
 
     <actions>

@@ -13,9 +13,12 @@ class LoadScriptAction : EditorAction(object : EditorActionHandler() {
 
     override fun doExecute(editor: Editor, caret: Caret?, dataContext: DataContext) {
         if (Messages.showYesNoDialog("是否重新加载代码模板?", "通知",
-                Messages.getQuestionIcon()) == Messages.YES) {
+                        Messages.getQuestionIcon()) == Messages.YES) {
 
             OhScript.loadGroovyScriptFile()
+
+            Messages.showInfoMessage("加载完成", "通知");
+
         }
     }
 })
