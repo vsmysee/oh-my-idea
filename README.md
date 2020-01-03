@@ -8,6 +8,7 @@ Oh My Idea is an Idea plugin inspired by Oh My ZSH
 ## Why this plug-in ?
 
 我酷爱IDEA，但是骨子里又离不开VIM和EMACS那种运键如飞和随时随地可编程的特性，所以发明了这个插件，虽然社区已经存在IdeaVim这样的插件，但是它只能理解文本不能理解Java语言。
+
 使用本插件需要理解VIM模式操作, 安装之后，IDE启动时默认进入命令模式，不能输入，只能控制，插件的核心功能就是把IDEA内置的Action放进一个编排上下文，我们可以任意灵活的通过DSL的方式编排这些Action。
 
 
