@@ -1,11 +1,26 @@
 <idea-plugin url="">
     <name>Oh My IDEA</name>
     <id>oh-my-idea</id>
-    <description>this plugin can choreography action via groovy script</description>
-    <version>1.0</version>
-    <vendor>JetBrains</vendor>
+    <description><![CDATA[
+    This plugin can choreography action via groovy script.
+    Also can define action in the groovy script the configuration it.
+    After install. set a file named .oh-my-idea at home dir where contains groovy DSL.
+    The simple config like this:
 
-    <depends>com.intellij.modules.lang</depends>
+    single {
+
+        key "0", "CompileDirty", "编译"
+    }
+
+    It means type 0, the IDEA compile action trigger.
+
+]]>
+    </description>
+
+    <version>1.0</version>
+    <vendor url="https://github.com/vsmysee/oh-my-idea">Oh My Idea</vendor>
+
+    <depends>com.intellij.modules.platform</depends>
 
     <application-components>
         <component>
@@ -15,18 +30,22 @@
 
 
     <extensions defaultExtensionNs="com.intellij">
-        <completion.contributor language="any" implementationClass="com.codingbaby.ohmyidea.extensions.SnippetCompletionContributor"/>
+        <completion.contributor language="any"
+                                implementationClass="com.codingbaby.ohmyidea.extensions.SnippetCompletionContributor"/>
     </extensions>
 
 
     <actions>
 
-        <action id="OH_MotionFirstLine" class="com.codingbaby.ohmyidea.action.MotionGotoLineFirstAction" text="First Line"/>
-        <action id="OH_MotionLastLine" class="com.codingbaby.ohmyidea.action.MotionGotoLineLastAction" text="Last Line"/>
+        <action id="OH_MotionFirstLine" class="com.codingbaby.ohmyidea.action.MotionGotoLineFirstAction"
+                text="First Line"/>
+        <action id="OH_MotionLastLine" class="com.codingbaby.ohmyidea.action.MotionGotoLineLastAction"
+                text="Last Line"/>
         <action id="OH_MotionToLine" class="com.codingbaby.ohmyidea.action.MotionToLineAction" text="Motion To Line"/>
 
 
-        <action id="OH_MotionToMatchChar" class="com.codingbaby.ohmyidea.action.MotionToMatchCharAction" text="Motion To Match"/>
+        <action id="OH_MotionToMatchChar" class="com.codingbaby.ohmyidea.action.MotionToMatchCharAction"
+                text="Motion To Match"/>
 
         <action id="OH_ShowCommandAction" class="com.codingbaby.ohmyidea.action.ShowCommandAction" text="Show Command"/>
 
@@ -34,13 +53,17 @@
 
         <action id="OH_ScrollToTop" class="com.codingbaby.ohmyidea.action.ScrollToScreenFirstAction" text="Scroll Top"/>
 
-        <action id="OH_ShowHelpDialog" class="com.codingbaby.ohmyidea.action.ShowHelpDialogAction" text="Show Help Dialog"/>
+        <action id="OH_ShowHelpDialog" class="com.codingbaby.ohmyidea.action.ShowHelpDialogAction"
+                text="Show Help Dialog"/>
 
-        <action id="OH_RepeatCurrentAction" class="com.codingbaby.ohmyidea.action.RepeatCurrentAction" text="Repeat Current Action"/>
+        <action id="OH_RepeatCurrentAction" class="com.codingbaby.ohmyidea.action.RepeatCurrentAction"
+                text="Repeat Current Action"/>
 
-        <action id="OH_ShowUIToggleActions" class="com.codingbaby.ohmyidea.action.ShowUIToggleActions" text="Control UIToggle Actions"/>
+        <action id="OH_ShowUIToggleActions" class="com.codingbaby.ohmyidea.action.ShowUIToggleActions"
+                text="Control UIToggle Actions"/>
 
-        <action id="OH_SwitchWindowAction" class="com.codingbaby.ohmyidea.action.SwitchWindowAction" text="Switch Project Window"/>
+        <action id="OH_SwitchWindowAction" class="com.codingbaby.ohmyidea.action.SwitchWindowAction"
+                text="Switch Project Window"/>
 
         <action id="OH_ShowEnglishWordActions" class="com.codingbaby.ohmyidea.ShowEnglishWordAction" text="Show Word"/>
 
