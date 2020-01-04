@@ -1,18 +1,15 @@
 package com.codingbaby.ohmyidea
 
 import `fun`.codecode.OhPlugin
-import com.intellij.openapi.editor.Editor
-import com.intellij.openapi.editor.actions.EscapeAction
 import com.codingbaby.ohmyidea.helper.RunnableHelper
 import com.codingbaby.ohmyidea.script.RobotHandler
 import com.codingbaby.ohmyidea.script.ShortHolder
 import com.codingbaby.ohmyidea.ui.RobtHolder
 import com.intellij.openapi.actionSystem.*
+import com.intellij.openapi.editor.Editor
 import com.intellij.openapi.ui.popup.JBPopupFactory
-import java.awt.Component
-
-
-import javax.swing.*
+import javax.swing.KeyStroke
+import javax.swing.SwingUtilities
 
 
 object KeyHandler {
@@ -20,10 +17,6 @@ object KeyHandler {
     var toLine: Int = 0
 
     var toChar: Char? = null
-
-    private var currentAction: AnAction? = null
-
-    private var currentDataContext: DataContext? = null
 
 
     val statusMap = hashMapOf(' ' to EditorStatus.Insert,
