@@ -37,8 +37,13 @@ class OhPlugin(private val myApp: Application) : ApplicationComponent {
             override fun editorCreated(event: EditorFactoryEvent) {
                 val editor = event.editor
 
-                var action = ShortcutKeyAction()
-                ActionManager.getInstance().registerAction(ACTION_ID, action)
+                var action = ActionManager.getInstance().getAction(ACTION_ID)
+
+                if (action == null) {
+                    action = ShortcutKeyAction()
+                    ActionManager.getInstance().registerAction(ACTION_ID, action)
+                }
+
                 action.registerCustomShortcutSet(CommonShortcuts.ESCAPE, editor.component)
 
                 if (EditorHelper.isFileEditor(editor) && active) {

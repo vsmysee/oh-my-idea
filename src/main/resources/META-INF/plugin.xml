@@ -2,17 +2,24 @@
     <name>Oh My IDEA</name>
     <id>oh-my-idea</id>
     <description><![CDATA[
-    This plugin can choreography action via groovy script.
-    Also can define action in the groovy script the configuration it.
-    After install. set a file named .oh-my-idea at home dir where contains groovy DSL.
-    The simple config like this:
+<ul>
+    <li>This plugin can choreography action via groovy script.</li>
+    <li>Also can define action in the groovy script then configuration it.</li>
+    <li>After install. set a file named .oh-my-idea at home dir where contains groovy DSL.</li>
+</ul>
 
+<br/>
+
+The simple config like this:
+
+<pre>
     single {
 
         key "0", "CompileDirty", "编译"
     }
+</pre>
 
-    It means type 0, the IDEA compile action trigger.
+It means type 0, the IDEA compile action trigger.
 
 ]]>
     </description>
