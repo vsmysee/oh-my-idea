@@ -17,13 +17,26 @@ class OhTypedActionHandler(private val origHandler: TypedActionHandler) : TypedA
 
     override fun execute(editor: Editor, charTyped: Char, dataContext: DataContext) {
 
-        if (OhPlugin.instance.active && isEnabled(editor) && OhPlugin.instance.status !== EditorStatus.Insert) {
+        if (!OhPlugin.instance.active) {
+            origHandler.execute(editor, charTyped, dataContext)
+            return
+        }
+
+        if (!isEnabled(editor)) {
+            origHandler.execute(editor, charTyped, dataContext)
+            return
+        }
+
+
+        if (OhPlugin.instance.status !== EditorStatus.Insert) {
             SwingUtilities.invokeLater {
                 KeyHandler.handleKey(editor, KeyStroke.getKeyStroke(charTyped), dataContext)
             }
-        } else {
-            origHandler.execute(editor, charTyped, dataContext)
+            return
         }
+
+        origHandler.execute(editor, charTyped, dataContext)
+
     }
 
     private fun isEnabled(editor: Editor): Boolean {
