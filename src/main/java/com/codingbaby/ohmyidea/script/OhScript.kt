@@ -1,6 +1,5 @@
 package com.codingbaby.ohmyidea.script
 
-import com.codingbaby.ohmyidea.script.LispDef.content
 import com.codingbaby.ohmyidea.script.lisp.EnvBuilder
 import com.codingbaby.ohmyidea.script.lisp.Evaler
 import com.codingbaby.ohmyidea.script.lisp.FormReader
@@ -17,6 +16,10 @@ object OhScript {
     val OH_FILE = ".oh-my-idea"
 
     fun loadGroovyScriptFile() {
+
+        val content = loadContent(OH_FILE)
+
+
         if (try {
             Class.forName("groovy.lang.GroovyClassLoader")
             false
@@ -28,7 +31,6 @@ object OhScript {
             return
         }
 
-        val content = loadContent(OH_FILE)
 
         val groovyClassLoader = GroovyClassLoader()
         val scriptClass = groovyClassLoader.parseClass(GroovyDef.groovy + content)

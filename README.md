@@ -280,7 +280,6 @@ select {
     key "n", "MoveTabRight", "编辑器右移"
     key "d", "MoveTabDown", "编辑器下移"
 
-    key ".", "OH_RepeatCurrentAction", "重复上一个动作"
 
     key ";", "RunClass", "运行当前类"
 

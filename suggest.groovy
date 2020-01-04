@@ -77,7 +77,7 @@ single {
     key "-", "ShowPopupMenu", "模拟鼠标右键"
 
 
-    key "`", "OH_SwitchWindowAction", "切换项目窗口"
+    key "`", "NextProjectWindow", "切换项目窗口"
 
     key "O", "OH_ShowEnglishWordActions", "补全单词"
     key "P", "\$EditorTranslateAction", "翻译单词"
@@ -232,8 +232,6 @@ select {
 
     key "n", "MoveTabRight", "编辑器右移"
     key "d", "MoveTabDown", "编辑器下移"
-
-    key ".", "OH_RepeatCurrentAction", "重复上一个动作"
 
 
     key "c", "EditorToggleColumnMode", "列模式"

@@ -1,17 +1,15 @@
 package com.codingbaby.ohmyidea
 
 import `fun`.codecode.OhPlugin
-import com.intellij.openapi.actionSystem.ActionManager
-import com.intellij.openapi.actionSystem.AnAction
-import com.intellij.openapi.actionSystem.AnActionEvent
-import com.intellij.openapi.actionSystem.DataContext
 import com.intellij.openapi.editor.Editor
 import com.intellij.openapi.editor.actions.EscapeAction
-import com.codingbaby.ohmyidea.action.RepeatCurrentAction
 import com.codingbaby.ohmyidea.helper.RunnableHelper
 import com.codingbaby.ohmyidea.script.RobotHandler
 import com.codingbaby.ohmyidea.script.ShortHolder
 import com.codingbaby.ohmyidea.ui.RobtHolder
+import com.intellij.openapi.actionSystem.*
+import com.intellij.openapi.ui.popup.JBPopupFactory
+import java.awt.Component
 
 
 import javax.swing.*
@@ -156,18 +154,39 @@ object KeyHandler {
         }
     }
 
-    fun executeAction(action: AnAction, context: DataContext) {
-        if (action !is EscapeAction && action !is RepeatCurrentAction) {
-            currentAction = action
-            currentDataContext = context
+
+    //copy from ideavim
+
+    fun executeAction(action: AnAction, context: DataContext): Boolean {
+        val event = AnActionEvent(null, context, ActionPlaces.ACTION_SEARCH, action.templatePresentation,
+                ActionManager.getInstance(), 0)
+
+        if (action is ActionGroup && !action.canBePerformed(context)) {
+            // Some of the AcitonGroups should not be performed, but shown as a popup
+            val popup = JBPopupFactory.getInstance()
+                    .createActionGroupPopup(event.presentation.text, action, context, false, null, -1)
+
+            val component = context.getData(PlatformDataKeys.CONTEXT_COMPONENT)
+            if (component != null) {
+                val window = SwingUtilities.getWindowAncestor(component)
+                if (window != null) {
+                    popup.showInCenterOf(window)
+                }
+                return true
+            }
+            popup.showInFocusCenter()
+            return true
+        } else {
+            // beforeActionPerformedUpdate should be called to update the action. It fixes some rider-specific problems
+            //   because rider use async update method. See VIM-1819
+            action.beforeActionPerformedUpdate(event)
+            if (event.presentation.isEnabled) {
+                action.actionPerformed(event)
+                return true
+            }
         }
-        action.actionPerformed(AnActionEvent(null, context, "", action.templatePresentation, ActionManager.getInstance(), 0))
+        return false
     }
 
-    fun repeatCurrentAction() {
-        if (currentAction != null && currentDataContext != null) {
-            currentAction!!.actionPerformed(AnActionEvent(null, currentDataContext!!, "", currentAction!!.templatePresentation, ActionManager.getInstance(), 0))
 
-        }
-    }
 }

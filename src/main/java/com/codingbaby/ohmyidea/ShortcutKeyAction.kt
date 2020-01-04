@@ -9,6 +9,7 @@ import com.intellij.openapi.project.DumbAware
 import java.awt.event.KeyEvent
 import javax.swing.KeyStroke
 
+
 /**
  * 绑定到编辑组件上的控制键行为
  */
