@@ -404,4 +404,4 @@ key "P", "\$EditorTranslateAction", "翻译单词"
 ./gradlew buildPlugin
 ```
 
-然后从build/distributions里得到安装包进行安装，兼容idea 2016 - 2019
+然后从build/distributions里得到安装包进行安装，兼容idea 2015 - 2019
