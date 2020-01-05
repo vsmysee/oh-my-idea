@@ -1,8 +1,6 @@
+
 keyboard {
-    key "r", [KeyEvent.VK_CONTROL, KeyEvent.VK_ALT, KeyEvent.VK_R]
-    key "w", [KeyEvent.VK_CONTROL, KeyEvent.VK_META, KeyEvent.VK_W]
-    key "t", [KeyEvent.VK_CONTROL, KeyEvent.VK_META, KeyEvent.VK_T]
-    key "c", [KeyEvent.VK_CONTROL, KeyEvent.VK_META, KeyEvent.VK_C]
+    key "k", [KeyEvent.VK_META,KeyEvent.VK_BACK_QUOTE]
 }
 
 
@@ -13,6 +11,8 @@ import com.intellij.openapi.editor.actionSystem.EditorAction
 import com.intellij.openapi.editor.actionSystem.EditorActionHandler
 import org.jetbrains.annotations.NotNull
 import org.jetbrains.annotations.Nullable
+
+import java.awt.event.KeyEvent
 
 
 class DeleteToFileEndAction extends EditorAction {
@@ -76,8 +76,6 @@ single {
     key "=", "OH_ShowHelpDialog", "显示帮助"
     key "-", "ShowPopupMenu", "模拟鼠标右键"
 
-
-    key "`", "NextProjectWindow", "切换项目窗口"
 
     key "O", "OH_ShowEnglishWordActions", "补全单词"
     key "P", "\$EditorTranslateAction", "翻译单词"
