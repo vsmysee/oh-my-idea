@@ -29,7 +29,9 @@ class OhTypedActionHandler(private val origHandler: TypedActionHandler) : TypedA
 
 
         if (OhPlugin.instance.status !== EditorStatus.Insert) {
-            KeyHandler.handleKey(editor, KeyStroke.getKeyStroke(charTyped), dataContext)
+            SwingUtilities.invokeLater {
+                KeyHandler.handleKey(editor, KeyStroke.getKeyStroke(charTyped), dataContext)
+            }
             return
         }
 

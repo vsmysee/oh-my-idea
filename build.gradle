@@ -15,7 +15,7 @@ apply plugin: 'java'
 
 
 intellij {
-    version '2017.3.6'
+    version '2018.3'
     pluginName 'Oh-My-IDEA'
     updateSinceUntilBuild false
 

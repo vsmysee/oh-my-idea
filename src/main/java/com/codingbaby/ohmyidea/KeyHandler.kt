@@ -5,11 +5,12 @@ import com.codingbaby.ohmyidea.helper.RunnableHelper
 import com.codingbaby.ohmyidea.script.RobotHandler
 import com.codingbaby.ohmyidea.script.ShortHolder
 import com.codingbaby.ohmyidea.ui.RobtHolder
-import com.intellij.openapi.actionSystem.*
+import com.intellij.openapi.actionSystem.ActionManager
+import com.intellij.openapi.actionSystem.AnAction
+import com.intellij.openapi.actionSystem.AnActionEvent
+import com.intellij.openapi.actionSystem.DataContext
 import com.intellij.openapi.editor.Editor
-import com.intellij.openapi.ui.popup.JBPopupFactory
 import javax.swing.KeyStroke
-import javax.swing.SwingUtilities
 
 
 object KeyHandler {
@@ -148,37 +149,8 @@ object KeyHandler {
     }
 
 
-    //copy from ideavim
-
-    fun executeAction(action: AnAction, context: DataContext): Boolean {
-        val event = AnActionEvent(null, context, ActionPlaces.ACTION_SEARCH, action.templatePresentation,
-                ActionManager.getInstance(), 0)
-
-        if (action is ActionGroup && !action.canBePerformed(context)) {
-            // Some of the AcitonGroups should not be performed, but shown as a popup
-            val popup = JBPopupFactory.getInstance()
-                    .createActionGroupPopup(event.presentation.text, action, context, false, null, -1)
-
-            val component = context.getData(PlatformDataKeys.CONTEXT_COMPONENT)
-            if (component != null) {
-                val window = SwingUtilities.getWindowAncestor(component)
-                if (window != null) {
-                    popup.showInCenterOf(window)
-                }
-                return true
-            }
-            popup.showInFocusCenter()
-            return true
-        } else {
-            // beforeActionPerformedUpdate should be called to update the action. It fixes some rider-specific problems
-            //   because rider use async update method. See VIM-1819
-            action.beforeActionPerformedUpdate(event)
-            if (event.presentation.isEnabled) {
-                action.actionPerformed(event)
-                return true
-            }
-        }
-        return false
+    fun executeAction(action: AnAction, context: DataContext) {
+        action.actionPerformed(AnActionEvent(null, context, "", action.templatePresentation, ActionManager.getInstance(), 0))
     }
 
 

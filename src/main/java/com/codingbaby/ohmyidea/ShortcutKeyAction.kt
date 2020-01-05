@@ -4,7 +4,6 @@ package com.codingbaby.ohmyidea
 import `fun`.codecode.OhPlugin
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
-import com.intellij.openapi.actionSystem.PlatformDataKeys
 import com.intellij.openapi.project.DumbAware
 import java.awt.event.KeyEvent
 import javax.swing.KeyStroke
@@ -34,19 +33,6 @@ class ShortcutKeyAction : AnAction(), DumbAware {
             KeyHandler.toChar = null
 
             CommandStatus.reset()
-        }
-
-
-    }
-
-
-    override fun update(e: AnActionEvent?) {
-        val editor = e!!.getData(PlatformDataKeys.EDITOR)
-        if (editor == null) {
-            e.presentation.isEnabled = false
-        } else {
-            val keyStroke = getKeyStroke(e)
-            e.presentation.isEnabled = keyStroke != null
         }
 
     }
