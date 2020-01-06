@@ -44,6 +44,7 @@ class OhPlugin(private val myApp: Application) : ApplicationComponent {
                     ActionManager.getInstance().registerAction(ACTION_ID, action)
                 }
 
+                //能控响应控制键
                 action.registerCustomShortcutSet(CommonShortcuts.ESCAPE, editor.component)
 
                 if (EditorHelper.isFileEditor(editor) && active) {

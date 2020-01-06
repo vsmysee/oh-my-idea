@@ -9,6 +9,7 @@ import com.intellij.openapi.actionSystem.ActionManager
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.DataContext
+import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.editor.Editor
 import javax.swing.KeyStroke
 
@@ -92,7 +93,7 @@ object KeyHandler {
         //快捷模式
         if (commandNode != null) {
 
-            KeyHandler.executeAction(commandNode.asAction(), context)
+            executeAction(false, commandNode.asAction(), context)
             CommandStatus.reset()
 
             //如果是组合命令，执行完回到命令模式
@@ -127,7 +128,7 @@ object KeyHandler {
         if (numberAction != null) {
             val count = numberAction.count
             for (i in 1..count) {
-                KeyHandler.executeAction(ShortHolder.single[KeyStroke.getKeyStroke(numberAction.key)]!!.asAction(), context)
+                executeAction(false, ShortHolder.single[KeyStroke.getKeyStroke(numberAction.key)]!!.asAction(), context)
             }
             CommandStatus.reset()
             return
@@ -135,7 +136,7 @@ object KeyHandler {
 
 
         if (CommandStatus.lastChar() != null) {
-            KeyHandler.executeAction(ShortHolder.single[KeyStroke.getKeyStroke(CommandStatus.lastChar()!!)]!!.asAction(), context)
+            executeAction(false, ShortHolder.single[KeyStroke.getKeyStroke(CommandStatus.lastChar()!!)]!!.asAction(), context)
         }
     }
 
@@ -143,15 +144,30 @@ object KeyHandler {
     fun executeAction(name: String, context: DataContext) {
         val aMgr = ActionManager.getInstance()
         val action = aMgr.getAction(name)
+
+        var w = name.contains("_W_");
+
         if (action != null) {
-            executeAction(action, context)
+            executeAction(w, action, context)
         }
     }
 
 
-    fun executeAction(action: AnAction, context: DataContext) {
-        action.actionPerformed(AnActionEvent(null, context, "", action.templatePresentation, ActionManager.getInstance(), 0))
+    fun executeAction(w: Boolean, action: AnAction, context: DataContext) {
+
+        if (w) {
+            ApplicationManager.getApplication().runWriteAction({
+                action.actionPerformed(AnActionEvent(null, context, "", action.templatePresentation, ActionManager.getInstance(), 0))
+
+            })
+        } else {
+            ApplicationManager.getApplication().runReadAction({
+                action.actionPerformed(AnActionEvent(null, context, "", action.templatePresentation, ActionManager.getInstance(), 0))
+            })
+        }
+
     }
 
-
 }
+
+

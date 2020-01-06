@@ -46,11 +46,10 @@ class NotQuickInsertAction extends EditorAction {
     }
 }
 
-
 action {
 
-    reg "OH_EditorDeleteToFileEnd", new DeleteToFileEndAction()
-    reg "OH_NotQuickInsert", new NotQuickInsertAction()
+    reg "OH_W_EditorDeleteToFileEnd", new DeleteToFileEndAction()
+    reg "OH_W_NotQuickInsert", new NotQuickInsertAction()
 
 }
 
@@ -149,7 +148,7 @@ single {
 
     key ";", "RunClass", "运行当前类"
 
-    key "I", "OH_NotQuickInsert", "快速非运算"
+    key "I", "OH_W_NotQuickInsert", "快速非运算"
 
     key "G", "OH_ShowUIToggleActions", "控制UI"
 
@@ -172,7 +171,7 @@ composite {
     key "gs", "SurroundWith", "代码环绕"
 
     key "de", "EditorDeleteToLineEnd", "删除到行尾"
-    key "dG", "OH_EditorDeleteToFileEnd", "删除到文件尾"
+    key "dG", "OH_W_EditorDeleteToFileEnd", "删除到文件尾"
 
     key "gw", "JumpToLastWindow", "最近窗口"
 

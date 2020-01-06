@@ -7,12 +7,12 @@ import com.intellij.openapi.actionSystem.DataContext
 import com.intellij.openapi.editor.Editor
 import com.intellij.openapi.editor.actionSystem.TypedActionHandler
 import javax.swing.KeyStroke
-import javax.swing.SwingUtilities
 
 /**
  * 当编辑器发生文本输入的时候，由这个action来响应
  * 此action内部维护了系统的handler，当自己不处理的时候就交给系统的handler
  */
+
 class OhTypedActionHandler(private val origHandler: TypedActionHandler) : TypedActionHandler {
 
     override fun execute(editor: Editor, charTyped: Char, dataContext: DataContext) {
@@ -29,9 +29,7 @@ class OhTypedActionHandler(private val origHandler: TypedActionHandler) : TypedA
 
 
         if (OhPlugin.instance.status !== EditorStatus.Insert) {
-            SwingUtilities.invokeLater {
-                KeyHandler.handleKey(editor, KeyStroke.getKeyStroke(charTyped), dataContext)
-            }
+            KeyHandler.handleKey(editor, KeyStroke.getKeyStroke(charTyped), dataContext)
             return
         }
 

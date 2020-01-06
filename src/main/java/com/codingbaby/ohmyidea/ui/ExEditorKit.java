@@ -93,7 +93,7 @@ public class ExEditorKit extends DefaultEditorKit {
                 if (text.length() == 1) {
                     CommandNode commandNode = ShortHolder.INSTANCE.getBottom().get(KeyStroke.getKeyStroke(text.charAt(0)));
                     if (commandNode != null) {
-                        KeyHandler.INSTANCE.executeAction(commandNode.asAction(), entryPanel.getEntry().getContext());
+                        KeyHandler.INSTANCE.executeAction(false, commandNode.asAction(), entryPanel.getEntry().getContext());
                         return;
                     }
                 }
