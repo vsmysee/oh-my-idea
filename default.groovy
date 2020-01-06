@@ -125,12 +125,10 @@ single {
     key "e", "EditorSelectWord", "选择一个单词"
     key "E", "EditorUnSelectWord", "取消选择单词"
 
-    key "q", "FindUsages", "查找使用"
 
     key "/", "Find", "查找"
     key "?", "Replace", "替换"
 
-    key "f", "SmartTypeCompletion", "智能提示"
     key "F", "FindWordAtCaret", "查找当前单词"
 
     key "n", "FindNext", "下一个"
@@ -267,26 +265,29 @@ bottom {
     key "h", "SplitHorizontally", "垂直拆分"
 
     key "s", "ActivateStructureToolWindow", "显示结构Tool"
-    key "S", "ActivateStructureToolWindow", "显示结构Tool"
 
     key "p", "ActivateProjectToolWindow", "显示项目Tool"
-    key "P", "ActivateProjectToolWindow", "显示项目Tool"
 
     key "t", "ActivateTerminalToolWindow", "显示终端Tool"
-    key "T", "ActivateTerminalToolWindow", "显示终端Tool"
 
     key "r", "ActivateRunToolWindow", "显示运行Tool"
-    key "R", "ActivateRunToolWindow", "显示运行Tool"
 
     key "b", "ActivateDebugToolWindow", "显示调试Tool"
-    key "B", "ActivateDebugToolWindow", "显示调试Tool"
 
     key "d", "ActivateTODOToolWindow", "显示终端TODO"
-    key "D", "ActivateTODOToolWindow", "显示终端TODO"
+
+    key "g", "ActivateGradleToolWindow","现实Gradle"
 
     key "<", "EditorCodeBlockStart", "到代码块开始"
+
     key ">", "EditorCodeBlockEnd", "到代码块结束"
 
     key "n", "EditorToggleShowLineNumbers", "定位行"
+
+    key "q", "FindUsages", "查找使用"
+
+    key "f", "SmartTypeCompletion", "智能提示"
+
+
 
 }

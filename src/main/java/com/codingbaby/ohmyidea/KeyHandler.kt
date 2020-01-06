@@ -5,10 +5,7 @@ import com.codingbaby.ohmyidea.helper.RunnableHelper
 import com.codingbaby.ohmyidea.script.RobotHandler
 import com.codingbaby.ohmyidea.script.ShortHolder
 import com.codingbaby.ohmyidea.ui.RobtHolder
-import com.intellij.openapi.actionSystem.ActionManager
-import com.intellij.openapi.actionSystem.AnAction
-import com.intellij.openapi.actionSystem.AnActionEvent
-import com.intellij.openapi.actionSystem.DataContext
+import com.intellij.openapi.actionSystem.*
 import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.editor.Editor
 import javax.swing.KeyStroke
@@ -156,18 +153,15 @@ object KeyHandler {
     fun executeAction(w: Boolean, action: AnAction, context: DataContext) {
 
         if (w) {
-            ApplicationManager.getApplication().runWriteAction({
-                action.actionPerformed(AnActionEvent(null, context, "", action.templatePresentation, ActionManager.getInstance(), 0))
-
-            })
+            ApplicationManager.getApplication().runWriteAction {
+                action.actionPerformed(AnActionEvent(null, context, ActionPlaces.ACTION_SEARCH, action.templatePresentation, ActionManager.getInstance(), 0))
+            }
         } else {
-            ApplicationManager.getApplication().runReadAction({
-                action.actionPerformed(AnActionEvent(null, context, "", action.templatePresentation, ActionManager.getInstance(), 0))
-            })
+            ApplicationManager.getApplication().run {
+                action.actionPerformed(AnActionEvent(null, context, ActionPlaces.ACTION_SEARCH, action.templatePresentation, ActionManager.getInstance(), 0))
+            }
         }
 
     }
 
 }
-
-
