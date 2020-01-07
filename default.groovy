@@ -232,6 +232,9 @@ select {
     key "c", "EditorToggleColumnMode", "列模式"
     key "s", "SurroundWith", "代码环绕"
 
+    key "q", "OH_ShowEnglishWordActions", "补全单词"
+
+
 }
 
 movement {

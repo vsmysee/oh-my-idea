@@ -58,7 +58,9 @@ import com.intellij.openapi.actionSystem.ActionManager
 class ActionContainer {
 
         def reg(id,action) {
-            ActionManager.getInstance().registerAction(id, action)
+            if(ActionManager.getInstance().getAction(id) == null){
+                ActionManager.getInstance().registerAction(id, action)
+            }
         }
 }
 
