@@ -4,13 +4,13 @@
     <description><![CDATA[
 <ul>
     <li>This plugin can choreography action via groovy script.</li>
-    <li>Also can define action in the groovy script then configuration it.</li>
-    <li>After install. set a file named .oh-my-idea at home dir where contains groovy DSL.</li>
+    <li>Also can define action in the groovy script then register it.</li>
 </ul>
+
 
 <br/>
 
-The simple config like this:
+The sample config like this
 
 <pre>
     single {
@@ -19,7 +19,9 @@ The simple config like this:
     }
 </pre>
 
-It means type 0, the IDEA compile action trigger.
+It means type 0, the IDEA compile action can be trigger.
+
+This config just groovy, put it at your home, named .oh-my-idea
 
 ]]>
     </description>

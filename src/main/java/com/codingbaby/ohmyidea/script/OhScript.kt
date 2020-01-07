@@ -1,8 +1,5 @@
 package com.codingbaby.ohmyidea.script
 
-import com.codingbaby.ohmyidea.script.lisp.EnvBuilder
-import com.codingbaby.ohmyidea.script.lisp.Evaler
-import com.codingbaby.ohmyidea.script.lisp.FormReader
 import groovy.lang.Binding
 import groovy.lang.GroovyClassLoader
 import org.codehaus.groovy.runtime.InvokerHelper
@@ -19,18 +16,9 @@ object OhScript {
 
         val content = loadContent(OH_FILE)
 
-
-        if (try {
-            Class.forName("groovy.lang.GroovyClassLoader")
-            false
-        } catch (e: Exception) {
-            true
-        }) {
-            val env = EnvBuilder.globalEnv()
-            Evaler.eval(FormReader.readForm(content), env)
+        if (content == "") {
             return
         }
-
 
         val groovyClassLoader = GroovyClassLoader()
         val scriptClass = groovyClassLoader.parseClass(GroovyDef.groovy + content)
