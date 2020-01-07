@@ -90,7 +90,7 @@ object KeyHandler {
         //快捷模式
         if (commandNode != null) {
 
-            executeAction(false, commandNode.asAction(), context)
+            executeAction( commandNode.asAction(), context)
             CommandStatus.reset()
 
             //如果是组合命令，执行完回到命令模式
@@ -125,7 +125,7 @@ object KeyHandler {
         if (numberAction != null) {
             val count = numberAction.count
             for (i in 1..count) {
-                executeAction(false, ShortHolder.single[KeyStroke.getKeyStroke(numberAction.key)]!!.asAction(), context)
+                executeAction(ShortHolder.single[KeyStroke.getKeyStroke(numberAction.key)]!!.asAction(), context)
             }
             CommandStatus.reset()
             return
@@ -133,7 +133,7 @@ object KeyHandler {
 
 
         if (CommandStatus.lastChar() != null) {
-            executeAction(false, ShortHolder.single[KeyStroke.getKeyStroke(CommandStatus.lastChar()!!)]!!.asAction(), context)
+            executeAction(ShortHolder.single[KeyStroke.getKeyStroke(CommandStatus.lastChar()!!)]!!.asAction(), context)
         }
     }
 
@@ -142,24 +142,16 @@ object KeyHandler {
         val aMgr = ActionManager.getInstance()
         val action = aMgr.getAction(name)
 
-        var w = name.contains("_W_");
-
         if (action != null) {
-            executeAction(w, action, context)
+            executeAction(action, context)
         }
     }
 
 
-    fun executeAction(w: Boolean, action: AnAction, context: DataContext) {
+    fun executeAction(action: AnAction, context: DataContext) {
 
-        if (w) {
-            ApplicationManager.getApplication().runWriteAction {
-                action.actionPerformed(AnActionEvent(null, context, ActionPlaces.ACTION_SEARCH, action.templatePresentation, ActionManager.getInstance(), 0))
-            }
-        } else {
-            ApplicationManager.getApplication().run {
-                action.actionPerformed(AnActionEvent(null, context, ActionPlaces.ACTION_SEARCH, action.templatePresentation, ActionManager.getInstance(), 0))
-            }
+        ApplicationManager.getApplication().run {
+            action.actionPerformed(AnActionEvent(null, context, ActionPlaces.ACTION_SEARCH, action.templatePresentation, ActionManager.getInstance(), 0))
         }
 
     }
