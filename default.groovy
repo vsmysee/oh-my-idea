@@ -1,6 +1,5 @@
-
 keyboard {
-    key "k", [KeyEvent.VK_META,KeyEvent.VK_BACK_QUOTE]
+    key "k", [KeyEvent.VK_META, KeyEvent.VK_BACK_QUOTE]
 }
 
 
@@ -18,15 +17,16 @@ import java.awt.event.KeyEvent
 class DeleteToFileEndAction extends EditorAction {
 
     DeleteToFileEndAction() {
+        super(new Handler())
+    }
 
-        super(new EditorActionHandler() {
-            @Override
-            protected void doExecute(@NotNull Editor editor, @Nullable Caret caret, DataContext dataContext) {
-                def startPos = editor.getCaretModel().offset
-                def endPos = editor.getDocument().textLength
-                editor.getDocument().deleteString(startPos, endPos)
-            }
-        })
+    static class Handler extends EditorActionHandler {
+        @Override
+        protected void doExecute(@NotNull Editor editor, @Nullable Caret caret, DataContext dataContext) {
+            def startPos = editor.getCaretModel().offset
+            def endPos = editor.getDocument().textLength
+            editor.getDocument().deleteString(startPos, endPos)
+        }
     }
 
 }
@@ -35,14 +35,15 @@ class DeleteToFileEndAction extends EditorAction {
 class NotQuickInsertAction extends EditorAction {
 
     NotQuickInsertAction() {
+        super(new Handler())
+    }
 
-        super(new EditorActionHandler() {
-            @Override
-            protected void doExecute(@NotNull Editor editor, @Nullable Caret caret, DataContext dataContext) {
-                def oldOffset = editor.caretModel.offset
-                editor.document.insertString(oldOffset, "!")
-            }
-        })
+    static class Handler extends EditorActionHandler {
+        @Override
+        protected void doExecute(@NotNull Editor editor, @Nullable Caret caret, DataContext dataContext) {
+            def oldOffset = editor.caretModel.offset
+            editor.document.insertString(oldOffset, "!")
+        }
     }
 }
 
@@ -279,7 +280,7 @@ bottom {
 
     key "d", "ActivateTODOToolWindow", "显示终端TODO"
 
-    key "g", "ActivateGradleToolWindow","现实Gradle"
+    key "g", "ActivateGradleToolWindow", "现实Gradle"
 
     key "<", "EditorCodeBlockStart", "到代码块开始"
 
