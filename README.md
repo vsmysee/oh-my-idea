@@ -386,7 +386,7 @@ action {
 
 比如我常用的下面两个插件
 
-* [翻译](https://yiiguxing.github.io/TranslationPlugin/)
+* [翻译](https://plugins.jetbrains.com/plugin/9334-translate/)
 * [URL导航](https://github.com/viartemev/requestmapper)
 
 我的配置
@@ -394,7 +394,7 @@ action {
 ```
 key "3", "GoToRequestMapping", "URL查找[Request mapper插件]"
 
-key "P", "\$EditorTranslateAction", "翻译单词"
+key "P", "TranslatePlugin.TranslateAction", "翻译单词"
 
 ```
 

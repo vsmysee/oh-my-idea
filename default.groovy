@@ -76,8 +76,9 @@ single {
     key "-", "ShowPopupMenu", "模拟鼠标右键"
 
 
-    key "O", "OH_ShowEnglishWordActions", "补全单词"
-    key "P", "\$EditorTranslateAction", "翻译单词"
+    key "q", "OH_ShowEnglishWordActions", "补全单词"
+
+    key "P", "TranslatePlugin.TranslateAction", "翻译单词"
 
 
     key "h", "EditorLeft", "左移动"
@@ -186,7 +187,6 @@ composite {
 
     key "zj", "EditorJoinLines", "合并行"
 
-    key "zs", "OH_LoadScriptAction", "加载模板"
 
     key "zf", "ExpandRegion", "打开折叠"
     key "zv", "CollapseRegion", "折叠代码"
@@ -288,6 +288,6 @@ bottom {
 
     key "f", "SmartTypeCompletion", "智能提示"
 
-
+    key "l", "OH_LoadScriptAction", "加载模板"
 
 }
