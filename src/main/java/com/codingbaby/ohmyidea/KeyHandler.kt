@@ -90,7 +90,7 @@ object KeyHandler {
         //快捷模式
         if (commandNode != null) {
 
-            executeAction( commandNode.asAction(), context)
+            executeAction(commandNode.asAction(), context)
             CommandStatus.reset()
 
             //如果是组合命令，执行完回到命令模式
@@ -150,8 +150,10 @@ object KeyHandler {
 
     fun executeAction(action: AnAction, context: DataContext) {
 
-        ApplicationManager.getApplication().run {
-            action.actionPerformed(AnActionEvent(null, context, ActionPlaces.ACTION_SEARCH, action.templatePresentation, ActionManager.getInstance(), 0))
+        if (action != null) {
+            ApplicationManager.getApplication().run {
+                action.actionPerformed(AnActionEvent(null, context, ActionPlaces.ACTION_SEARCH, action.templatePresentation, ActionManager.getInstance(), 0))
+            }
         }
 
     }
