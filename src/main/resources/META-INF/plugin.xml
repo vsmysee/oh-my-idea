@@ -15,7 +15,7 @@ The sample config like this
 <pre>
     single {
 
-        key "0", "CompileDirty", "编译"
+        key "0", "CompileDirty"
     }
 </pre>
 
@@ -45,6 +45,10 @@ This config just groovy, put it at your home, named .oh-my-idea
 
 
     <actions>
+
+        <action id="OH_PluginToggle" class="com.codingbaby.ohmyidea.action.PluginToggleAction" text="Oh My Idea" description="Toggle the ohmyidea plugin On/off">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+        </action>
 
         <action id="OH_MotionFirstLine" class="com.codingbaby.ohmyidea.action.MotionGotoLineFirstAction"
                 text="First Line"/>

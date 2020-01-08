@@ -85,7 +85,9 @@ class OhPlugin(private val myApp: Application) : ApplicationComponent {
 
         fun active(flag: Boolean) {
             instance.active = flag
-            if (!flag) {
+            if (flag) {
+                KeyHandler.mode(EditorStatus.Command)
+            } else {
                 KeyHandler.mode(EditorStatus.Insert)
             }
         }
