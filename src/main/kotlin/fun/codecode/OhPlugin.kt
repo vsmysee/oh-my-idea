@@ -23,7 +23,7 @@ class OhPlugin(private val myApp: Application) : ApplicationComponent {
 
     var status = EditorStatus.Command
 
-    var active = true;
+    var active = true
 
 
     override fun initComponent() {

@@ -1,5 +1,6 @@
 package com.codingbaby.ohmyidea.script
 
+import `fun`.codecode.OhPlugin
 import groovy.lang.Binding
 import groovy.lang.GroovyClassLoader
 import org.codehaus.groovy.runtime.InvokerHelper
@@ -17,6 +18,7 @@ object OhScript {
         val content = loadContent(OH_FILE)
 
         if (content == "") {
+            OhPlugin.active(false)
             return
         }
 

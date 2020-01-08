@@ -21,21 +21,6 @@ class RobotContainer {
 }
 
 
-class CodeContainer {
-
-        def outerList
-
-        def holder
-
-        CodeContainer(env){
-            outerList = env
-        }
-
-        def key(key,desc,code) {
-            outerList << ["key":key,"desc":desc,"code":code]
-        }
-
-}
 
 class ActorContainer {
 
@@ -47,7 +32,7 @@ class ActorContainer {
         }
 
 
-        def key(key,action,desc) {
+        def key(key,action,desc = "") {
             outerAction.add(key, action, desc)
         }
 

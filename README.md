@@ -18,7 +18,9 @@ You need to understand the operation in VIM mode to use this plug-in. After inst
 
 ## DSL choreography
 
-All control commands are combined with the letters and ESC keys, and this combination is customized by a groovy DSL file and stored in the home directory, named .oh-my-idea, which can be adjusted as needed and customary
+All control commands are combined with the letters and ESC keys, and this combination is customized by a groovy DSL file and stored in the home directory, named .oh-my-idea, which can be adjusted as needed and customary.
+
+During starting the IDE, if the plugin can not find the file .oh-my-idea, the plugin will not active.
 
 
 Patterns List
@@ -40,8 +42,8 @@ Using the Kotlin static programming language and the Groovy script as DSL, here'
 
 ```
   single {
-      key "h", "EditorLeft", "move left"
-      key "H", "EditorLineStart", "move to line start"
+      key "h", "EditorLeft"
+      key "H", "EditorLineStart"
  }
 ```
 

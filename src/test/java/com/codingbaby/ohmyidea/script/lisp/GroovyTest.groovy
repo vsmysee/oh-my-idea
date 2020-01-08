@@ -3,8 +3,9 @@ package com.codingbaby.ohmyidea.script.lisp
 
 class D {
 
-    def key(p) {
+    def key(p,t="") {
         println p
+        println t
     }
 }
 
@@ -20,5 +21,6 @@ def single = {
 single {
 
     key "hello"
+    key "hello","world"
 
 }
