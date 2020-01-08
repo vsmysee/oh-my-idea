@@ -35,7 +35,7 @@ Similar to the vim
 * end of line (:)
 
 
-## technology
+## Technology
 
 
 Using the Kotlin static programming language and the Groovy script as DSL, here's a simple configuration that represents hitting h, moving a character to the left, hitting h and moving the cursor to the beginning of the line.
@@ -55,7 +55,7 @@ Single is a built-in function that represents a single key, as well as composite
 Unable to co-exist with IdeaVim, you need to change your mind.
 
 
-## Implement your actions
+## Implement your actions and register
 
 ```
 
@@ -94,4 +94,6 @@ action {
 
 ```
 
-And then get the installation package from the build/distributions for installation, compatible with the idea of 2015-2019
+Get the installation package from the build/distributions for installation, compatible with the idea of 2015-2019
+
+Have fun!!
