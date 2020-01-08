@@ -31,6 +31,12 @@ This config just groovy, put it at your home, named .oh-my-idea
 
     <depends>com.intellij.modules.platform</depends>
 
+
+    <!-- IntelliJ IDEA 15, AppCode 3.3, CLion 1.2, DataGrip 1.0, PhpStorm 10, PyCharm 5, RubyMine 8, WebStorm 11 -->
+    <!-- http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html -->
+    <idea-version since-build="143"/>
+
+
     <application-components>
         <component>
             <implementation-class>fun.codecode.OhPlugin</implementation-class>
