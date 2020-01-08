@@ -23,7 +23,7 @@ All control commands are combined with the letters and ESC keys, and this combin
 During starting the IDE, if the plugin can not find the file .oh-my-idea, the plugin will not active.
 
 
-Patterns List
+Patterns List:
 
 Similar to the vim
 
@@ -37,17 +37,35 @@ Similar to the vim
 
 ## Technology
 
-
 Using the Kotlin static programming language and the Groovy script as DSL, here's a simple configuration that represents hitting h, moving a character to the left, hitting h and moving the cursor to the beginning of the line.
 
 ```
-  single {
+single {
       key "h", "EditorLeft"
       key "H", "EditorLineStart"
- }
+}
 ```
 
 Single is a built-in function that represents a single key, as well as composite, select, movement, and bottom.
+
+```
+composite {
+    key "gh", "HideAllWindows"
+}
+
+select {
+    key "n", "MoveTabRight"
+}
+
+movement {
+    key "e", "MoveLineUp"
+}
+
+bottom {
+    key "q", "FindUsages"
+}
+
+```
 
 
 ## Disadvantages
