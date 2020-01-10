@@ -47,17 +47,6 @@ object CommandStatus {
         return null
     }
 
-    fun numberAction(): NumberAction? {
-        if (numberActionPattern.matcher(sb.toString()).matches()) {
-            val countString = sb.substring(0, sb.length - 1)
-            val count = Integer.parseInt(countString)
-            val key = sb[sb.length - 1]
-            val numberAction = NumberAction(count, key)
-            return numberAction
-        }
-        return null
-    }
-
 
     //比如gj，j生效
     fun lastChar(): Char? {

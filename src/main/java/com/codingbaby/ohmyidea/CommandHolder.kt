@@ -8,7 +8,7 @@ import java.util.LinkedHashMap
 
 
 class CommandNode(var actionId: String) {
-    fun asAction(): AnAction {
+    fun asAction(): AnAction? {
         return ActionManager.getInstance().getAction(actionId)
     }
 }

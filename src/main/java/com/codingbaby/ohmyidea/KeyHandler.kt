@@ -120,16 +120,6 @@ object KeyHandler {
             return
         }
 
-        //可以在单字母命令敲入数字加速
-        val numberAction = CommandStatus.numberAction()
-        if (numberAction != null) {
-            val count = numberAction.count
-            for (i in 1..count) {
-                executeAction(ShortHolder.single[KeyStroke.getKeyStroke(numberAction.key)]!!.asAction(), context)
-            }
-            CommandStatus.reset()
-            return
-        }
 
 
         if (CommandStatus.lastChar() != null) {
@@ -155,7 +145,7 @@ object KeyHandler {
     }
 
 
-    fun executeAction(action: AnAction, context: DataContext) {
+    fun executeAction(action: AnAction?, context: DataContext) {
 
         if (action != null) {
             ApplicationManager.getApplication().run {
