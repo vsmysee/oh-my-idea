@@ -133,7 +133,14 @@ object KeyHandler {
 
 
         if (CommandStatus.lastChar() != null) {
-            executeAction(ShortHolder.single[KeyStroke.getKeyStroke(CommandStatus.lastChar()!!)]!!.asAction(), context)
+            val keyStroke = KeyStroke.getKeyStroke(CommandStatus.lastChar()!!)
+            val cn = ShortHolder.single[keyStroke]
+            if (cn == null) {
+                CommandStatus.reset()
+                return
+            }
+            var action = cn.asAction()
+            executeAction(action, context)
         }
     }
 
