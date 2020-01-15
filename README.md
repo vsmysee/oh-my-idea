@@ -1,6 +1,6 @@
-## Oh My IDEA
+## Oh My IDEA                   [chinese](https://github.com/vsmysee/oh-my-idea/blob/master/README.zh-cn.md)
 
-Oh My Idea is an Idea plugin inspired by Oh My ZSH，I can write java code quickly base on it.
+Oh My Idea is an Idea plugin inspired by Oh My ZSH，we can write java code quickly base on it.
 
 ## Why?
 
