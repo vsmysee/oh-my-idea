@@ -1,4 +1,4 @@
-## Oh My IDEA                   [english](https://github.com/vsmysee/oh-my-idea/blob/master/README.md)
+## Oh My IDEA 　　　　　　　　　　　　　　　　　　　　　　[english](https://github.com/vsmysee/oh-my-idea/blob/master/README.md)
 
 Oh My Idea 是一个受oh my zsh启发的Idea插件，我们可以基于它快速的编写java代码
 
