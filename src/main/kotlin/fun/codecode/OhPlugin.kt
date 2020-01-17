@@ -1,8 +1,7 @@
 package `fun`.codecode
 
 import com.codingbaby.ohmyidea.EditorStatus
-import com.codingbaby.ohmyidea.KeyHandler
-import com.codingbaby.ohmyidea.OhTypedActionHandler
+import com.codingbaby.ohmyidea.Oh
 import com.codingbaby.ohmyidea.ShortcutKeyAction
 import com.codingbaby.ohmyidea.helper.EditorHelper
 import com.codingbaby.ohmyidea.script.OhScript
@@ -10,14 +9,14 @@ import com.intellij.openapi.actionSystem.ActionManager
 import com.intellij.openapi.actionSystem.CommonShortcuts
 import com.intellij.openapi.application.Application
 import com.intellij.openapi.application.ApplicationManager
-import com.intellij.openapi.components.ApplicationComponent
+import com.intellij.openapi.components.BaseComponent
 import com.intellij.openapi.editor.EditorFactory
 import com.intellij.openapi.editor.actionSystem.EditorActionManager
-import com.intellij.openapi.editor.event.EditorFactoryAdapter
 import com.intellij.openapi.editor.event.EditorFactoryEvent
+import com.intellij.openapi.editor.event.EditorFactoryListener
 
 
-class OhPlugin(private val myApp: Application) : ApplicationComponent {
+class OhPlugin(private val myApp: Application) : BaseComponent {
 
     val ACTION_ID = "OH_ShortcutKeyAction"
 
@@ -32,7 +31,7 @@ class OhPlugin(private val myApp: Application) : ApplicationComponent {
         val typedAction = EditorActionManager.getInstance().typedAction
         typedAction.setupHandler(OhTypedActionHandler(typedAction.handler))
 
-        EditorFactory.getInstance().addEditorFactoryListener(object : EditorFactoryAdapter() {
+        EditorFactory.getInstance().addEditorFactoryListener(object : EditorFactoryListener {
 
             override fun editorCreated(event: EditorFactoryEvent) {
                 val editor = event.editor
@@ -80,11 +79,8 @@ class OhPlugin(private val myApp: Application) : ApplicationComponent {
 
         private val COMPONENT_NAME = "Oh My IDEA"
 
-        val instance: OhPlugin
-            get() = ApplicationManager.getApplication().getComponent(COMPONENT_NAME) as OhPlugin
-
         fun active(flag: Boolean) {
-            instance.active = flag
+            Oh.get().active = flag
             if (flag) {
                 KeyHandler.mode(EditorStatus.Command)
             } else {

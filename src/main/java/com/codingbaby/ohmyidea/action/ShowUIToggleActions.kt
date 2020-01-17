@@ -1,6 +1,6 @@
 package com.codingbaby.ohmyidea.action
 
-import com.codingbaby.ohmyidea.KeyHandler
+import `fun`.codecode.KeyHandler
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.project.DumbAwareAction
 

@@ -1,16 +1,11 @@
 package com.codingbaby.ohmyidea
 
 import javax.swing.*
-import java.util.regex.Pattern
-
-class NumberAction(var count: Int, var key: Char)
 
 
 object CommandStatus {
 
-    private val numberActionPattern = Pattern.compile("^\\d+[a-z]$")
-
-    val FORWARD_KEY = ";"
+    val FORWARD_KEY = "f"
 
     //command buffer
     private var sb = StringBuffer()

@@ -1,12 +1,12 @@
-package com.codingbaby.ohmyidea
+package `fun`.codecode
 
 
-import `fun`.codecode.OhPlugin
+import com.codingbaby.ohmyidea.EditorStatus
+import com.codingbaby.ohmyidea.Oh
 import com.intellij.codeInsight.lookup.LookupManager
 import com.intellij.openapi.actionSystem.DataContext
 import com.intellij.openapi.editor.Editor
 import com.intellij.openapi.editor.actionSystem.TypedActionHandler
-import javax.swing.KeyStroke
 
 /**
  * 当编辑器发生文本输入的时候，由这个action来响应
@@ -17,7 +17,7 @@ class OhTypedActionHandler(private val origHandler: TypedActionHandler) : TypedA
 
     override fun execute(editor: Editor, charTyped: Char, dataContext: DataContext) {
 
-        if (!OhPlugin.instance.active) {
+        if (!Oh.get().active) {
             origHandler.execute(editor, charTyped, dataContext)
             return
         }
@@ -28,8 +28,8 @@ class OhTypedActionHandler(private val origHandler: TypedActionHandler) : TypedA
         }
 
 
-        if (OhPlugin.instance.status !== EditorStatus.Insert) {
-            KeyHandler.handleKey(editor, KeyStroke.getKeyStroke(charTyped), dataContext)
+        if (Oh.get().status !== EditorStatus.Insert) {
+            KeyHandler.handleKey(editor, charTyped, dataContext)
             return
         }
 

@@ -1,7 +1,7 @@
 package com.codingbaby.ohmyidea
 
 
-import `fun`.codecode.OhPlugin
+import `fun`.codecode.KeyHandler
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.project.DumbAware
@@ -16,7 +16,7 @@ class ShortcutKeyAction : AnAction(), DumbAware {
 
     override fun actionPerformed(anActionEvent: AnActionEvent) {
 
-        if (!OhPlugin.instance.active) {
+        if (!Oh.get().active) {
             return
         }
 
@@ -24,7 +24,7 @@ class ShortcutKeyAction : AnAction(), DumbAware {
 
         if (keyStroke != null && keyStroke.keyCode == KeyEvent.VK_ESCAPE) {
 
-            if (OhPlugin.instance.status !== EditorStatus.Command) {
+            if (Oh.get().status !== EditorStatus.Command) {
                 KeyHandler.mode(EditorStatus.Command)
             }
 

@@ -1,6 +1,9 @@
-package com.codingbaby.ohmyidea
+package `fun`.codecode
 
-import `fun`.codecode.OhPlugin
+import com.codingbaby.ohmyidea.CommandNode
+import com.codingbaby.ohmyidea.CommandStatus
+import com.codingbaby.ohmyidea.EditorStatus
+import com.codingbaby.ohmyidea.Oh
 import com.codingbaby.ohmyidea.helper.RunnableHelper
 import com.codingbaby.ohmyidea.script.RobotHandler
 import com.codingbaby.ohmyidea.script.ShortHolder
@@ -28,7 +31,7 @@ object KeyHandler {
         if (status == null) {
             return
         }
-        val oh = OhPlugin.instance
+        val oh = Oh.get()
         oh.status = status
 
         oh.setCursors(status != EditorStatus.Insert)
@@ -36,18 +39,18 @@ object KeyHandler {
     }
 
 
-    fun handleKey(editor: Editor, key: KeyStroke, context: DataContext) {
+    fun handleKey(editor: Editor, charTyped: Char, context: DataContext) {
 
-        val oh = OhPlugin.instance
+        val oh = Oh.get()
 
         if (CommandStatus.isWaiting) {
-            if (statusMap[key.keyChar] != null) {
-                mode(statusMap[key.keyChar])
+            if (statusMap[charTyped] != null) {
+                mode(statusMap[charTyped])
                 return
             }
         }
 
-        CommandStatus.addChar(key.keyChar)
+        CommandStatus.addChar(charTyped)
 
         var commandNode: CommandNode? = null
         var composeCommand = false
@@ -87,7 +90,7 @@ object KeyHandler {
             }
         }
 
-        //快捷模式
+        //组合模式
         if (commandNode != null) {
 
             executeAction(commandNode.asAction(), context)
@@ -95,7 +98,7 @@ object KeyHandler {
 
             //如果是组合命令，执行完回到命令模式
             if (composeCommand && oh.status !== EditorStatus.Command) {
-                KeyHandler.mode(EditorStatus.Command)
+                mode(EditorStatus.Command)
             }
 
             return

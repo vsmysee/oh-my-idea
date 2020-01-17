@@ -1,7 +1,7 @@
 package com.codingbaby.ohmyidea.ui;
 
 import com.codingbaby.ohmyidea.CommandNode;
-import com.codingbaby.ohmyidea.KeyHandler;
+import fun.codecode.KeyHandler;
 import com.codingbaby.ohmyidea.script.ShortHolder;
 import org.apache.commons.lang.math.NumberUtils;
 
