@@ -46,6 +46,9 @@ This config just groovy, put it at your $home, named .oh-my-idea
     <extensions defaultExtensionNs="com.intellij">
         <completion.contributor language="any"
                                 implementationClass="com.codingbaby.ohmyidea.extensions.SnippetCompletionContributor"/>
+
+        <rawEditorTypedHandler implementationClass="com.codingbaby.ohmyidea.MyRawTypedHandler"/>
+
     </extensions>
 
 
