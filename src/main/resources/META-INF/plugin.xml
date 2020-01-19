@@ -54,31 +54,31 @@ This config just groovy, put it at your $home, named .oh-my-idea
 
     <actions>
 
-        <action id="OH_PluginToggle" class="com.codingbaby.ohmyidea.action.PluginToggleAction" text="Oh My Idea" description="Toggle the ohmyidea plugin On/off">
+        <action id="OH_PluginToggle" class="fun.codecode.action.PluginToggleAction" text="Oh My Idea" description="Toggle the ohmyidea plugin On/off">
             <add-to-group group-id="ToolsMenu" anchor="last"/>
         </action>
 
-        <action id="OH_MotionFirstLine" class="com.codingbaby.ohmyidea.action.MotionGotoLineFirstAction"
+        <action id="OH_MotionFirstLine" class="fun.codecode.action.MotionGotoLineFirstAction"
                 text="First Line"/>
-        <action id="OH_MotionLastLine" class="com.codingbaby.ohmyidea.action.MotionGotoLineLastAction"
+        <action id="OH_MotionLastLine" class="fun.codecode.action.MotionGotoLineLastAction"
                 text="Last Line"/>
-        <action id="OH_MotionToLine" class="com.codingbaby.ohmyidea.action.MotionToLineAction" text="Motion To Line"/>
+        <action id="OH_MotionToLine" class="fun.codecode.action.MotionToLineAction" text="Motion To Line"/>
 
 
-        <action id="OH_MotionToMatchChar" class="com.codingbaby.ohmyidea.action.MotionToMatchCharAction"
+        <action id="OH_MotionToMatchChar" class="fun.codecode.action.MotionToMatchCharAction"
                 text="Motion To Match"/>
 
-        <action id="OH_ShowCommandAction" class="com.codingbaby.ohmyidea.action.ShowCommandAction" text="Show Command"/>
+        <action id="OH_ShowCommandAction" class="fun.codecode.action.ShowCommandAction" text="Show Command"/>
 
-        <action id="OH_LoadScriptAction" class="com.codingbaby.ohmyidea.action.LoadScriptAction" text="Load Script"/>
+        <action id="OH_LoadScriptAction" class="fun.codecode.action.LoadScriptAction" text="Load Script"/>
 
-        <action id="OH_ScrollToTop" class="com.codingbaby.ohmyidea.action.ScrollToScreenFirstAction" text="Scroll Top"/>
+        <action id="OH_ScrollToTop" class="fun.codecode.action.ScrollToScreenFirstAction" text="Scroll Top"/>
 
-        <action id="OH_ShowHelpDialog" class="com.codingbaby.ohmyidea.action.ShowHelpDialogAction"
+        <action id="OH_ShowHelpDialog" class="fun.codecode.action.ShowHelpDialogAction"
                 text="Show Help Dialog"/>
 
 
-        <action id="OH_ShowUIToggleActions" class="com.codingbaby.ohmyidea.action.ShowUIToggleActions"
+        <action id="OH_ShowUIToggleActions" class="fun.codecode.action.ShowUIToggleActions"
                 text="Control UIToggle Actions"/>
 
         <action id="OH_ShowEnglishWordActions" class="com.codingbaby.ohmyidea.ShowEnglishWordAction" text="Show Word"/>

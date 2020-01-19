@@ -1,4 +1,4 @@
-package com.codingbaby.ohmyidea.action
+package `fun`.codecode.action
 
 import com.codingbaby.ohmyidea.script.OhScript
 import com.intellij.openapi.actionSystem.DataContext

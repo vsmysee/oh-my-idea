@@ -20,7 +20,8 @@ object KeyHandler {
     var toChar: Char? = null
 
 
-    val statusMap = hashMapOf(' ' to EditorStatus.Insert,
+    val statusMap = hashMapOf(
+            ' ' to EditorStatus.Insert,
             'i' to EditorStatus.Insert,
             'a' to EditorStatus.Action,
             'V' to EditorStatus.Move,

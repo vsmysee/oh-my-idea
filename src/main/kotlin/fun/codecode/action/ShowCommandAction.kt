@@ -1,4 +1,4 @@
-package com.codingbaby.ohmyidea.action
+package `fun`.codecode.action
 
 import com.intellij.openapi.actionSystem.DataContext
 import com.intellij.openapi.editor.Caret

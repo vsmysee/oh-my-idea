@@ -1,20 +1,20 @@
-package com.codingbaby.ohmyidea.action
+package `fun`.codecode.action
 
 import com.intellij.openapi.actionSystem.DataContext
 import com.intellij.openapi.editor.Caret
 import com.intellij.openapi.editor.Editor
 import com.intellij.openapi.editor.actionSystem.EditorAction
 import com.intellij.openapi.editor.actionSystem.EditorActionHandler
-import `fun`.codecode.KeyHandler
 import com.codingbaby.ohmyidea.helper.EditorHelper
 
 
-class MotionToMatchCharAction : EditorAction(object : EditorActionHandler() {
+class MotionGotoLineLastAction : EditorAction(object : EditorActionHandler() {
     override fun doExecute(editor: Editor, caret: Caret?, dataContext: DataContext) {
-        val offset = EditorHelper.findNextCharacterOnLine(editor, KeyHandler.toChar)
-        if (offset != 0) {
-            editor.caretModel.moveToOffset(offset)
-            EditorHelper.scrollCaretIntoView(editor)
+        var len = editor.document.textLength
+        if (editor.document.charsSequence[editor.document.textLength - 1] == '\n') {
+            len = len - 1
         }
+        editor.caretModel.moveToOffset(len)
+        EditorHelper.scrollCaretIntoView(editor)
     }
 })
