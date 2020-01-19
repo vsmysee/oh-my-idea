@@ -3,7 +3,7 @@ package com.codingbaby.ohmyidea
 import javax.swing.*
 
 
-object CommandStatus {
+object CommandBuffer {
 
     val FORWARD_KEY = "f"
 

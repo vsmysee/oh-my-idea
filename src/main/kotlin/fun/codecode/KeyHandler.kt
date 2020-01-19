@@ -1,8 +1,7 @@
 package `fun`.codecode
 
 import com.codingbaby.ohmyidea.CommandNode
-import com.codingbaby.ohmyidea.CommandStatus
-import com.codingbaby.ohmyidea.EditorStatus
+import com.codingbaby.ohmyidea.CommandBuffer
 import com.codingbaby.ohmyidea.Oh
 import com.codingbaby.ohmyidea.helper.RunnableHelper
 import com.codingbaby.ohmyidea.script.RobotHandler
@@ -27,50 +26,40 @@ object KeyHandler {
             'V' to EditorStatus.Move,
             'v' to EditorStatus.Select)
 
-    fun mode(status: EditorStatus?) {
-        if (status == null) {
-            return
-        }
-        val oh = Oh.get()
-        oh.status = status
-
-        oh.setCursors(status != EditorStatus.Insert)
-        CommandStatus.reset()
-    }
-
 
     fun handleKey(editor: Editor, charTyped: Char, context: DataContext) {
 
         val oh = Oh.get()
 
-        if (CommandStatus.isWaiting) {
-            if (statusMap[charTyped] != null) {
-                mode(statusMap[charTyped])
+        if (CommandBuffer.isWaiting) {
+            val editorStatus = statusMap[charTyped]
+            if (editorStatus != null) {
+                OhPlugin.mode(editorStatus)
                 return
             }
         }
 
-        CommandStatus.addChar(charTyped)
+        CommandBuffer.addChar(charTyped)
 
         var commandNode: CommandNode? = null
         var composeCommand = false
 
 
-        //single char
-        if (CommandStatus.hasStroke()) {
+        //单键
+        if (CommandBuffer.hasStroke()) {
             if (oh.status === EditorStatus.Command) {
-                commandNode = ShortHolder.single[CommandStatus.stroke()]
+                commandNode = ShortHolder.single[CommandBuffer.stroke()]
             }
             if (oh.status === EditorStatus.Select) {
-                commandNode = ShortHolder.select[CommandStatus.stroke()]
+                commandNode = ShortHolder.select[CommandBuffer.stroke()]
             }
             if (oh.status === EditorStatus.Move) {
-                commandNode = ShortHolder.movement[CommandStatus.stroke()]
+                commandNode = ShortHolder.movement[CommandBuffer.stroke()]
             }
 
             if (oh.status === EditorStatus.Action) {
                 //最后理解为快捷键映射
-                var events = RobotHandler.holder[CommandStatus.fistChar().toString()]
+                var events = RobotHandler.holder[CommandBuffer.fistChar().toString()]
                 Thread.sleep(500)
 
                 if (events != null) {
@@ -84,7 +73,7 @@ object KeyHandler {
             }
 
         } else {
-            commandNode = ShortHolder.compose[CommandStatus.command()]
+            commandNode = ShortHolder.compose[CommandBuffer.command()]
             if (commandNode != null) {
                 composeCommand = true
             }
@@ -94,11 +83,11 @@ object KeyHandler {
         if (commandNode != null) {
 
             executeAction(commandNode.asAction(), context)
-            CommandStatus.reset()
+            CommandBuffer.reset()
 
             //如果是组合命令，执行完回到命令模式
             if (composeCommand && oh.status !== EditorStatus.Command) {
-                mode(EditorStatus.Command)
+                OhPlugin.mode(EditorStatus.Command)
             }
 
             return
@@ -106,10 +95,10 @@ object KeyHandler {
 
 
         //行字符搜索
-        if (CommandStatus.isForward()) {
+        if (CommandBuffer.isForward()) {
 
-            if (CommandStatus.forwardChar() != null) {
-                toChar = CommandStatus.forwardChar()
+            if (CommandBuffer.forwardChar() != null) {
+                toChar = CommandBuffer.forwardChar()
             }
 
             if (toChar == null) {
@@ -119,17 +108,16 @@ object KeyHandler {
             val project = editor.project
             val cmd = Runnable { executeAction("OH_MotionToMatchChar", context) }
             RunnableHelper.runReadCommand(project!!, cmd, "moveCharInLine", cmd)
-            CommandStatus.reset()
+            CommandBuffer.reset()
             return
         }
 
-
-
-        if (CommandStatus.lastChar() != null) {
-            val keyStroke = KeyStroke.getKeyStroke(CommandStatus.lastChar()!!)
+        //最后一个字符
+        if (CommandBuffer.lastChar() != null) {
+            val keyStroke = KeyStroke.getKeyStroke(CommandBuffer.lastChar()!!)
             val cn = ShortHolder.single[keyStroke]
             if (cn == null) {
-                CommandStatus.reset()
+                CommandBuffer.reset()
                 return
             }
             var action = cn.asAction()

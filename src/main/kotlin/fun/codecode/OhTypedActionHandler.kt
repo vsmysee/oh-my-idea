@@ -1,7 +1,6 @@
 package `fun`.codecode
 
 
-import com.codingbaby.ohmyidea.EditorStatus
 import com.codingbaby.ohmyidea.Oh
 import com.intellij.codeInsight.lookup.LookupManager
 import com.intellij.openapi.actionSystem.DataContext

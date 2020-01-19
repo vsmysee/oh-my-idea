@@ -4,7 +4,9 @@ import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.editor.actionSystem.TypedActionHandler;
+import fun.codecode.EditorStatus;
 import fun.codecode.KeyHandler;
+import fun.codecode.OhPlugin;
 import org.jetbrains.annotations.NotNull;
 
 public class MyRawTypedHandler extends com.intellij.openapi.editor.impl.EditorFactoryImpl.MyRawTypedHandler {
@@ -17,7 +19,8 @@ public class MyRawTypedHandler extends com.intellij.openapi.editor.impl.EditorFa
     public void execute(@NotNull Editor editor, char charTyped, @NotNull DataContext dataContext) {
 
         if (!editor.getDocument().isWritable()) {
-            KeyHandler.INSTANCE.mode(EditorStatus.Command);
+
+            OhPlugin.Companion.mode(EditorStatus.Command);
 
             ApplicationManager.getApplication().runReadAction(() -> {
                 KeyHandler.INSTANCE.handleKey(editor, charTyped, dataContext);

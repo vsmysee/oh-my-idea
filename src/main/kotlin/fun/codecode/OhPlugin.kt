@@ -1,6 +1,6 @@
 package `fun`.codecode
 
-import com.codingbaby.ohmyidea.EditorStatus
+import com.codingbaby.ohmyidea.CommandBuffer
 import com.codingbaby.ohmyidea.Oh
 import com.codingbaby.ohmyidea.ShortcutKeyAction
 import com.codingbaby.ohmyidea.helper.EditorHelper
@@ -46,9 +46,9 @@ class OhPlugin(private val myApp: Application) : BaseComponent {
                 action.registerCustomShortcutSet(CommonShortcuts.ESCAPE, editor.component)
 
                 if (EditorHelper.isFileEditor(editor) && active) {
-                    KeyHandler.mode(EditorStatus.Command)
+                    mode(EditorStatus.Command)
                 } else {
-                    KeyHandler.mode(EditorStatus.Insert)
+                    mode(EditorStatus.Insert)
                 }
             }
 
@@ -81,10 +81,18 @@ class OhPlugin(private val myApp: Application) : BaseComponent {
         fun active(flag: Boolean) {
             Oh.get().active = flag
             if (flag) {
-                KeyHandler.mode(EditorStatus.Command)
+                mode(EditorStatus.Command)
             } else {
-                KeyHandler.mode(EditorStatus.Insert)
+                mode(EditorStatus.Insert)
             }
+        }
+
+        fun mode(status: EditorStatus) {
+            val oh = Oh.get()
+            oh.status = status
+
+            oh.setCursors(status != EditorStatus.Insert)
+            CommandBuffer.reset()
         }
     }
 

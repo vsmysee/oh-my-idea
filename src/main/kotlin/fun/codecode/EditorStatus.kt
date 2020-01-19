@@ -1,4 +1,4 @@
-package com.codingbaby.ohmyidea
+package `fun`.codecode
 
 enum class EditorStatus {
 
