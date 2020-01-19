@@ -15,8 +15,19 @@ object OhScript {
 
     fun loadGroovyScriptFile() {
 
-        val content = loadContent(OH_FILE)
+        //check groovy jar
+        if (try {
+                    Class.forName("groovy.lang.GroovyClassLoader")
+                    false
+                } catch (e: Exception) {
+                    true
+                }) {
+            OhPlugin.active(false)
+            return
+        }
 
+        //check config file
+        val content = loadContent(OH_FILE)
         if (content == "") {
             OhPlugin.active(false)
             return
