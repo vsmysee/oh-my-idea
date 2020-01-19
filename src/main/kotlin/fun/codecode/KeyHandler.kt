@@ -73,7 +73,7 @@ object KeyHandler {
             }
 
         } else {
-            commandNode = ShortHolder.compose[CommandBuffer.command()]
+            commandNode = ShortHolder.composite[CommandBuffer.command()]
             if (commandNode != null) {
                 composeCommand = true
             }

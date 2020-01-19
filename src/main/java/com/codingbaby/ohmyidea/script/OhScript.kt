@@ -13,6 +13,14 @@ object OhScript {
 
     val OH_FILE = ".oh-my-idea"
 
+    val keyMap = hashMapOf(
+            "single" to ShortHolder.single,
+            "select" to ShortHolder.select,
+            "movement" to ShortHolder.movement,
+            "composite" to ShortHolder.composite,
+            "bottom" to ShortHolder.bottom
+    )
+
     fun loadGroovyScriptFile() {
 
         //check groovy jar
@@ -43,11 +51,7 @@ object OhScript {
 
         ShortHolder.clear()
 
-        bind.setVariable("smode", ShortHolder.single)
-        bind.setVariable("vmode", ShortHolder.select)
-        bind.setVariable("mmode", ShortHolder.movement)
-        bind.setVariable("cmode", ShortHolder.compose)
-        bind.setVariable("bmode", ShortHolder.bottom)
+        bind.setVariable("keyMap", keyMap)
 
         InvokerHelper.createScript(scriptClass, bind).run()
 

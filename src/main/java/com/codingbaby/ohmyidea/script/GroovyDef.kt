@@ -64,34 +64,33 @@ def keyboard = {
 
 def select = {
     closure ->
-        closure.delegate = new ActorContainer(vmode)
+        closure.delegate = new ActorContainer(keyMap['select'])
         closure()
 }
 
 def single = {
     closure ->
-        closure.delegate = new ActorContainer(smode)
+        closure.delegate = new ActorContainer(keyMap['single'])
         closure()
 }
 
 def movement = {
     closure ->
-        closure.delegate = new ActorContainer(mmode)
+        closure.delegate = new ActorContainer(keyMap['movement'])
         closure()
 }
 
 def composite = {
     closure ->
-        closure.delegate = new ActorContainer(cmode)
+        closure.delegate = new ActorContainer(keyMap['composite'])
         closure()
 }
 
 def bottom = {
     closure ->
-        closure.delegate = new ActorContainer(bmode)
+        closure.delegate = new ActorContainer(keyMap['bottom'])
         closure()
 }
-
 
 """
 

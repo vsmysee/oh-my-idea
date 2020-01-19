@@ -30,7 +30,7 @@ public class FuncArray<T> {
             }
 
             if (key.equals("composite")) {
-                ShortHolder.INSTANCE.getCompose().add(elements.get(0).toString(), elements.get(1).toString(), elements.get(2).toString());
+                ShortHolder.INSTANCE.getComposite().add(elements.get(0).toString(), elements.get(1).toString(), elements.get(2).toString());
             }
 
             if (key.equals("select")) {

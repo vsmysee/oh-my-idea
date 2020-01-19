@@ -25,7 +25,7 @@ public class HelpDialog extends DialogWrapper {
     protected JComponent createCenterPanel() {
         JTabbedPane tabs = new JBTabbedPane();
         tabs.add("单击", new HelpPanel(ShortHolder.INSTANCE.getSingle().getCommandDesc()));
-        tabs.add("组合", new HelpPanel(ShortHolder.INSTANCE.getCompose().getCommandDesc()));
+        tabs.add("组合", new HelpPanel(ShortHolder.INSTANCE.getComposite().getCommandDesc()));
         tabs.add("选择", new HelpPanel(ShortHolder.INSTANCE.getSelect().getCommandDesc()));
         tabs.add("底行", new HelpPanel(ShortHolder.INSTANCE.getBottom().getCommandDesc()));
         tabs.add("移动", new HelpPanel(ShortHolder.INSTANCE.getMovement().getCommandDesc()));
