@@ -2,6 +2,8 @@
 
 Oh My Idea is an Idea plugin inspired by Oh My ZSH，we can write java code quickly base on it.
 
+![](https://github.com/vsmysee/oh-my-idea/blob/master/oh-my-idea.gif)
+
 ## Why?
 
 I'm a big fan of IDEA, but I can't get away from VIM and EMACS 'features of flying keys and being programmable anytime, anywhere. Therefore, I invented this plug-in. Although there is a plug-in like IdeaVim in the community, it can only understand text but not the Java language.
