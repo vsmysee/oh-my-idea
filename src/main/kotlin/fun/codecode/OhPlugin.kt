@@ -52,6 +52,11 @@ class OhPlugin(private val myApp: Application) : BaseComponent {
                 }
             }
 
+            override fun editorReleased(event: EditorFactoryEvent) {
+                mode(EditorStatus.Command)
+                super.editorReleased(event)
+            }
+
         }, myApp)
 
         //on idea has groovy lib
