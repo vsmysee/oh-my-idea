@@ -2,7 +2,30 @@
 
 Oh My Idea is an Idea plugin inspired by Oh My ZSH，we can write java code quickly base on it.
 
-![](https://github.com/vsmysee/oh-my-idea/blob/master/oh-my-idea.gif)
+![](https://github.com/vsmysee/oh-my-idea/blob/master/img/oh-my-idea.gif)
+
+## Quickstart
+
+After install this plugin, you can see a tool item
+
+![](https://github.com/vsmysee/oh-my-idea/blob/master/img/tool.png)
+
+Create a file named .oh-my-idea at you home, such as on my macOs:
+
+```
+/Users/codingbaby/.oh-my-idea
+```
+
+Type dsl config for the IDEA action
+
+```
+single {
+      key "h", "EditorLeft"
+      key "H", "EditorLineStart"
+}
+```
+Then click Tools/Oh My Idea, now in you editor, you can type h to move the cursor.
+
 
 ## Why?
 

@@ -2,7 +2,7 @@
 
 Oh My Idea 是一个受oh my zsh启发的Idea插件，我们可以基于它快速的编写java代码
 
-![](https://github.com/vsmysee/oh-my-idea/blob/master/oh-my-idea.gif)
+![](https://github.com/vsmysee/oh-my-idea/blob/master/img/oh-my-idea.gif)
 
 
 ## 为什么需要编写这个插件?

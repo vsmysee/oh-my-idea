@@ -7,7 +7,7 @@ object PluginStatus {
 
     var status = EditorStatus.Command
 
-    var active = true
+    var active = false
 
     fun active(flag: Boolean) {
         active = flag

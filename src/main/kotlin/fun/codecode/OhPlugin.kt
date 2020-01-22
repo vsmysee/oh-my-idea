@@ -21,7 +21,6 @@ class OhPlugin(private val myApp: Application) : BaseComponent {
     val COMPONENT_NAME = "Oh My IDEA"
 
 
-
     override fun initComponent() {
 
         //替换系统的TypedActionHandler
@@ -57,7 +56,8 @@ class OhPlugin(private val myApp: Application) : BaseComponent {
         }, myApp)
 
         //on idea has groovy lib
-        OhScript.loadGroovyScriptFile()
+        val load = OhScript.loadGroovyScriptFile()
+        PluginStatus.active = load
     }
 
     override fun disposeComponent() {
@@ -67,9 +67,6 @@ class OhPlugin(private val myApp: Application) : BaseComponent {
     override fun getComponentName(): String {
         return COMPONENT_NAME
     }
-
-
-
 
 
 }
