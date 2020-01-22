@@ -54,12 +54,12 @@ Patterns List:
 
 Similar to the vim
 
-* insertion (I)
-* command (esc)
-* choose (v)
-* action (a)
-* mobile (V)
-* end of line (:)
+* Insertion (I)
+* Command (esc)
+* Choose (v)
+* Action (a)
+* Mobile (V)
+* Last line mode (:)
 
 
 ## Technology
@@ -130,6 +130,9 @@ action {
 
 ```
 
+## Know Issue
+
+Now the Action mode can't work, will be released soon.
 
 
 ## How to build
