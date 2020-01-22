@@ -10,7 +10,7 @@ After install this plugin, you can see a tool item
 
 ![](https://github.com/vsmysee/oh-my-idea/blob/master/img/tool.png)
 
-Create a file named .oh-my-idea at you home, such as on my macOs:
+Create a file named .oh-my-idea at you home, such as on my macOS:
 
 ```
 /Users/codingbaby/.oh-my-idea
