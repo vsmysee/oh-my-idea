@@ -1,6 +1,7 @@
 package com.codingbaby.ohmyidea.script
 
-import `fun`.codecode.OhPlugin
+
+import `fun`.codecode.PluginStatus
 import groovy.lang.Binding
 import groovy.lang.GroovyClassLoader
 import org.codehaus.groovy.runtime.InvokerHelper
@@ -21,7 +22,7 @@ object OhScript {
             "bottom" to ShortHolder.bottom
     )
 
-    fun loadGroovyScriptFile() {
+    fun loadGroovyScriptFile(): Boolean {
 
         //check groovy jar
         if (try {
@@ -30,15 +31,15 @@ object OhScript {
                 } catch (e: Exception) {
                     true
                 }) {
-            OhPlugin.active(false)
-            return
+            PluginStatus.active(false)
+            return false
         }
 
         //check config file
         val content = loadContent(OH_FILE)
         if (content == "") {
-            OhPlugin.active(false)
-            return
+            PluginStatus.active(false)
+            return false
         }
 
         val groovyClassLoader = GroovyClassLoader()
@@ -57,6 +58,8 @@ object OhScript {
 
         RobotHandler.holder.clear()
         RobotHandler.holder.putAll(robotHolder)
+
+        return true
 
     }
 

@@ -2,7 +2,6 @@ package `fun`.codecode
 
 import com.codingbaby.ohmyidea.CommandNode
 import com.codingbaby.ohmyidea.CommandBuffer
-import com.codingbaby.ohmyidea.Oh
 import com.codingbaby.ohmyidea.helper.RunnableHelper
 import com.codingbaby.ohmyidea.script.RobotHandler
 import com.codingbaby.ohmyidea.script.ShortHolder
@@ -30,12 +29,10 @@ object KeyHandler {
 
     fun handleKey(editor: Editor, charTyped: Char, context: DataContext) {
 
-        val oh = Oh.get()
-
         if (CommandBuffer.isWaiting) {
             val editorStatus = statusMap[charTyped]
             if (editorStatus != null) {
-                OhPlugin.mode(editorStatus)
+                PluginStatus.mode(editorStatus)
                 return
             }
         }
@@ -46,19 +43,20 @@ object KeyHandler {
         var composeCommand = false
 
 
+        var status = PluginStatus.status
         //单键
         if (CommandBuffer.hasStroke()) {
-            if (oh.status === EditorStatus.Command) {
+            if (status === EditorStatus.Command) {
                 commandNode = ShortHolder.single[CommandBuffer.stroke()]
             }
-            if (oh.status === EditorStatus.Select) {
+            if (status === EditorStatus.Select) {
                 commandNode = ShortHolder.select[CommandBuffer.stroke()]
             }
-            if (oh.status === EditorStatus.Move) {
+            if (status === EditorStatus.Move) {
                 commandNode = ShortHolder.movement[CommandBuffer.stroke()]
             }
 
-            if (oh.status === EditorStatus.Action) {
+            if (status === EditorStatus.Action) {
                 //最后理解为快捷键映射
                 var events = RobotHandler.holder[CommandBuffer.fistChar().toString()]
                 Thread.sleep(500)
@@ -87,8 +85,8 @@ object KeyHandler {
             CommandBuffer.reset()
 
             //如果是组合命令，执行完回到命令模式
-            if (composeCommand && oh.status !== EditorStatus.Command) {
-                OhPlugin.mode(EditorStatus.Command)
+            if (composeCommand && status !== EditorStatus.Command) {
+                PluginStatus.mode(EditorStatus.Command)
             }
 
             return

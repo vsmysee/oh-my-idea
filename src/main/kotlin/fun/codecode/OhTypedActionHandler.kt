@@ -1,7 +1,6 @@
 package `fun`.codecode
 
 
-import com.codingbaby.ohmyidea.Oh
 import com.intellij.codeInsight.lookup.LookupManager
 import com.intellij.openapi.actionSystem.DataContext
 import com.intellij.openapi.editor.Editor
@@ -16,7 +15,7 @@ class OhTypedActionHandler(private val origHandler: TypedActionHandler) : TypedA
 
     override fun execute(editor: Editor, charTyped: Char, dataContext: DataContext) {
 
-        if (!Oh.get().active) {
+        if (!PluginStatus.active) {
             origHandler.execute(editor, charTyped, dataContext)
             return
         }
@@ -27,7 +26,7 @@ class OhTypedActionHandler(private val origHandler: TypedActionHandler) : TypedA
         }
 
 
-        if (Oh.get().status !== EditorStatus.Insert) {
+        if (PluginStatus.status !== EditorStatus.Insert) {
             KeyHandler.handleKey(editor, charTyped, dataContext)
             return
         }

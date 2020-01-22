@@ -12,12 +12,17 @@ import com.intellij.openapi.ui.Messages
 class LoadScriptAction : EditorAction(object : EditorActionHandler() {
 
     override fun doExecute(editor: Editor, caret: Caret?, dataContext: DataContext) {
-        if (Messages.showYesNoDialog("是否重新加载代码模板?", "通知",
+        if (Messages.showYesNoDialog("Reload the config?", "info",
                         Messages.getQuestionIcon()) == Messages.YES) {
 
-            OhScript.loadGroovyScriptFile()
+            val loadGroovyScriptFile = OhScript.loadGroovyScriptFile()
 
-            Messages.showInfoMessage("加载完成", "通知");
+            if (loadGroovyScriptFile) {
+                Messages.showInfoMessage("Load Success", "info");
+            } else {
+                Messages.showInfoMessage("Load Fail", "info");
+            }
+
 
         }
     }

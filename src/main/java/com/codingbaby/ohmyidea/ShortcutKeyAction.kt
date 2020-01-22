@@ -3,7 +3,7 @@ package com.codingbaby.ohmyidea
 
 import `fun`.codecode.EditorStatus
 import `fun`.codecode.KeyHandler
-import `fun`.codecode.OhPlugin
+import `fun`.codecode.PluginStatus
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.project.DumbAware
@@ -18,7 +18,7 @@ class ShortcutKeyAction : AnAction(), DumbAware {
 
     override fun actionPerformed(anActionEvent: AnActionEvent) {
 
-        if (!Oh.get().active) {
+        if (!PluginStatus.active) {
             return
         }
 
@@ -26,8 +26,8 @@ class ShortcutKeyAction : AnAction(), DumbAware {
 
         if (keyStroke != null && keyStroke.keyCode == KeyEvent.VK_ESCAPE) {
 
-            if (Oh.get().status !== EditorStatus.Command) {
-                OhPlugin.mode(EditorStatus.Command)
+            if (PluginStatus.status !== EditorStatus.Command) {
+                PluginStatus.mode(EditorStatus.Command)
             }
 
             //将esc传递到IDE

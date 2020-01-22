@@ -1,7 +1,6 @@
 package `fun`.codecode
 
-import com.codingbaby.ohmyidea.CommandBuffer
-import com.codingbaby.ohmyidea.Oh
+
 import com.codingbaby.ohmyidea.ShortcutKeyAction
 import com.codingbaby.ohmyidea.helper.EditorHelper
 import com.codingbaby.ohmyidea.script.OhScript
@@ -19,9 +18,8 @@ class OhPlugin(private val myApp: Application) : BaseComponent {
 
     val ACTION_ID = "OH_ShortcutKeyAction"
 
-    var status = EditorStatus.Command
+    val COMPONENT_NAME = "Oh My IDEA"
 
-    var active = true
 
 
     override fun initComponent() {
@@ -45,10 +43,10 @@ class OhPlugin(private val myApp: Application) : BaseComponent {
                 //能控响应控制键
                 action.registerCustomShortcutSet(CommonShortcuts.ESCAPE, editor.component)
 
-                if (EditorHelper.isFileEditor(editor) && active) {
-                    mode(EditorStatus.Command)
+                if (EditorHelper.isFileEditor(editor) && PluginStatus.active) {
+                    PluginStatus.mode(EditorStatus.Command)
                 } else {
-                    mode(EditorStatus.Insert)
+                    PluginStatus.mode(EditorStatus.Insert)
                 }
             }
 
@@ -71,34 +69,7 @@ class OhPlugin(private val myApp: Application) : BaseComponent {
     }
 
 
-    fun setCursors(isBlock: Boolean) {
-        val editors = EditorFactory.getInstance().allEditors
-        for (editor in editors) {
-            editor.settings.isBlockCursor = isBlock
-        }
-    }
 
-    companion object {
-
-        private val COMPONENT_NAME = "Oh My IDEA"
-
-        fun active(flag: Boolean) {
-            Oh.get().active = flag
-            if (flag) {
-                mode(EditorStatus.Command)
-            } else {
-                mode(EditorStatus.Insert)
-            }
-        }
-
-        fun mode(status: EditorStatus) {
-            val oh = Oh.get()
-            oh.status = status
-
-            oh.setCursors(status != EditorStatus.Insert)
-            CommandBuffer.reset()
-        }
-    }
 
 
 }

@@ -8,7 +8,7 @@ import com.intellij.openapi.editor.actionSystem.TypedActionHandler;
 import com.intellij.openapi.editor.actionSystem.TypedActionHandlerEx;
 import fun.codecode.EditorStatus;
 import fun.codecode.KeyHandler;
-import fun.codecode.OhPlugin;
+import fun.codecode.PluginStatus;
 import org.jetbrains.annotations.NotNull;
 
 public class MyRawTypedHandler implements TypedActionHandlerEx {
@@ -31,7 +31,7 @@ public class MyRawTypedHandler implements TypedActionHandlerEx {
 
         if (!editor.getDocument().isWritable()) {
 
-            OhPlugin.Companion.mode(EditorStatus.Command);
+            PluginStatus.INSTANCE.mode(EditorStatus.Command);
 
             ApplicationManager.getApplication().runReadAction(() -> {
                 KeyHandler.INSTANCE.handleKey(editor, charTyped, dataContext);
