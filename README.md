@@ -58,7 +58,7 @@ Similar to the vim
 * Command (esc)
 * Choose (v)
 * Action (a)
-* Mobile (V)
+* Move (V)
 * Last line mode (:)
 
 
