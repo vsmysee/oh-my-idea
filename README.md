@@ -47,7 +47,7 @@ You need to understand the operation in VIM mode to use this plug-in. After inst
 
 All control commands are combined with the letters and ESC keys, and this combination is customized by a groovy DSL file and stored in the home directory, named .oh-my-idea, which can be adjusted as needed and customary.
 
-During starting the IDE, if the plugin can not find the file .oh-my-idea, the plugin will not active.
+During starting the IDE, if the plugin can not find the file .oh-my-idea, the plugin will not be active.
 
 
 Patterns List:
@@ -64,7 +64,7 @@ Similar to the vim
 
 ## Technology
 
-Using the Kotlin static programming language and the Groovy script as DSL, here's a simple configuration that represents hitting h, moving a character to the left, hitting h and moving the cursor to the beginning of the line.
+Using the Kotlin static programming language and the Groovy script as DSL, here's a simple configuration that represents hitting 'h', moving a character to the left, hitting 'H' and moving the cursor to the beginning of the line.
 
 ```
 single {
