@@ -24,7 +24,7 @@ single {
       key "H", "EditorLineStart"
 }
 ```
-Then click Tools/Oh My Idea to active the plugin, now in you editor, you can type h to move the cursor.
+Then click Tools/Oh My Idea to active the plugin, now in you editor, you can type 'h' to move the cursor.
 
 
 ## Why?
