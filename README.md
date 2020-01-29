@@ -2,7 +2,6 @@
 
 Oh My Idea is an Idea plugin inspired by Oh My ZSH，we can do coding quickly base on it.
 
-![](https://github.com/vsmysee/oh-my-idea/blob/master/img/oh-my-idea.gif)
 
 ## Quickstart
 
@@ -26,6 +25,11 @@ single {
 ```
 Then click Tools/Oh My Idea to active the plugin, now in you editor, you can type 'h' to move the cursor.
 
+## My Config
+
+[script](https://github.com/vsmysee/oh-my-idea/blob/master/default.groovy)
+
+![](https://github.com/vsmysee/oh-my-idea/blob/master/img/oh-my-idea.gif)
 
 ## Why?
 
