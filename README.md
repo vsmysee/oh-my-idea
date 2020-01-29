@@ -27,6 +27,8 @@ Then click Tools/Oh My Idea to active the plugin, now in you editor, you can typ
 
 ## My Config
 
+I am using this config every day
+
 [script](https://github.com/vsmysee/oh-my-idea/blob/master/default.groovy)
 
 ![](https://github.com/vsmysee/oh-my-idea/blob/master/img/oh-my-idea.gif)
