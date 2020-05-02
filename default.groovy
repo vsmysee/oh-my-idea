@@ -57,20 +57,16 @@ action {
 
 single {
 
-    key "0", "CompileDirty", "编译"
     key "1", "FindInPath", "文件中查找"
     key "2", "ReplaceInPath", "文件中替换"
     key "3", "GoToRequestMapping", "URL查找[Request mapper插件]"
-
     key "4", "\$Cut", "剪切"
     key "5", "EditorDuplicate", "复制行"
     key "6", "IntroduceVariable", "提取变量"
-
     key "7", "EditorDeleteLine", "删除行"
-
-
-    key "9", "GotoClass", "导航到类"
     key "8", "GotoFile", "导航到文件"
+    key "9", "GotoClass", "导航到类"
+    key "0", "CompileDirty", "编译"
 
 
     key "=", "OH_ShowHelpDialog", "显示帮助"
@@ -151,6 +147,8 @@ single {
     key "I", "OH_W_NotQuickInsert", "快速非运算"
 
     key "G", "OH_ShowUIToggleActions", "控制UI"
+
+    key "`", "ToggleZenMode", "Zen"
 
 }
 
