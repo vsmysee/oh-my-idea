@@ -268,6 +268,8 @@ bottom {
 
     key "s", "ActivateStructureToolWindow", "显示结构Tool"
 
+    key "c", "ActivateCommitToolWindow", "显示提交tool"
+
     key "p", "ActivateProjectToolWindow", "显示项目Tool"
 
     key "t", "ActivateTerminalToolWindow", "显示终端Tool"
