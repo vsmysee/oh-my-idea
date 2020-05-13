@@ -11,13 +11,13 @@ public class HelpPanel extends JPanel {
 
     public HelpPanel(Map<String,String> data) {
         JBTable myTable = new JBTable();
-        final DefaultTableModel model = new DefaultTableModel(createTableModel(new HashMap<String, String>()), new Object[]{"快捷键", "描述"}) {
+        final DefaultTableModel model = new DefaultTableModel(createTableModel(new HashMap<>()), new Object[]{"ShortKey", "Description"}) {
             public boolean isCellEditable(final int row, final int column) {
                 return false;
             }
         };
 
-        model.setDataVector(createTableModel(data), new Object[] {"快捷键", "描述"});
+        model.setDataVector(createTableModel(data), new Object[] {"ShortKey", "Description"});
 
         myTable.setModel(model);
         myTable.setShowVerticalLines(true);
