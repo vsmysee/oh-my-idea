@@ -44,11 +44,7 @@ This config just groovy, put it at your $home, named .oh-my-idea
 
 
     <extensions defaultExtensionNs="com.intellij">
-        <completion.contributor language="any"
-                                implementationClass="com.codingbaby.ohmyidea.extensions.SnippetCompletionContributor"/>
-
         <rawEditorTypedHandler implementationClass="com.codingbaby.ohmyidea.MyRawTypedHandler"/>
-
     </extensions>
 
 
@@ -74,14 +70,9 @@ This config just groovy, put it at your $home, named .oh-my-idea
 
         <action id="OH_ScrollToTop" class="fun.codecode.action.ScrollToScreenFirstAction" text="Scroll Top"/>
 
-        <action id="OH_ShowHelpDialog" class="fun.codecode.action.ShowHelpDialogAction"
-                text="Show Help Dialog"/>
-
-
         <action id="OH_ShowUIToggleActions" class="fun.codecode.action.ShowUIToggleActions"
                 text="Control UIToggle Actions"/>
 
-        <action id="OH_ShowEnglishWordActions" class="com.codingbaby.ohmyidea.ShowEnglishWordAction" text="Show Word"/>
 
     </actions>
 

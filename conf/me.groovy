@@ -69,11 +69,9 @@ single {
     key "0", "CompileDirty", "编译"
 
 
-    key "=", "OH_ShowHelpDialog", "显示帮助"
     key "-", "ShowPopupMenu", "模拟鼠标右键"
 
 
-    key "q", "OH_ShowEnglishWordActions", "补全单词"
 
     key "P", "TranslatePlugin.TranslateAction", "翻译单词"
 
@@ -230,9 +228,6 @@ select {
 
     key "c", "EditorToggleColumnMode", "列模式"
     key "s", "SurroundWith", "代码环绕"
-
-    key "q", "OH_ShowEnglishWordActions", "补全单词"
-
 
 }
 
