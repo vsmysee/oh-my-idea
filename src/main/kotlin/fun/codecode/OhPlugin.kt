@@ -6,6 +6,7 @@ import com.codingbaby.ohmyidea.helper.EditorHelper
 import com.codingbaby.ohmyidea.script.OhScript
 import com.intellij.openapi.actionSystem.ActionManager
 import com.intellij.openapi.actionSystem.CommonShortcuts
+import com.intellij.openapi.actionSystem.CustomShortcutSet
 import com.intellij.openapi.application.Application
 import com.intellij.openapi.components.BaseComponent
 import com.intellij.openapi.editor.EditorFactory
@@ -39,8 +40,8 @@ class OhPlugin(private val myApp: Application) : BaseComponent {
                     ActionManager.getInstance().registerAction(ACTION_ID, action)
                 }
 
-                //能控响应控制键
-                action.registerCustomShortcutSet(CommonShortcuts.ESCAPE, editor.component)
+                val shortcutSet = CustomShortcutSet.fromString("ctrl 9")
+                action.registerCustomShortcutSet(shortcutSet, editor.component)
 
                 if (EditorHelper.isFileEditor(editor) && PluginStatus.active) {
                     PluginStatus.mode(EditorStatus.Command)
