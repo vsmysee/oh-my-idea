@@ -40,7 +40,7 @@ class OhPlugin(private val myApp: Application) : BaseComponent {
                     ActionManager.getInstance().registerAction(ACTION_ID, action)
                 }
 
-                val shortcutSet = CustomShortcutSet.fromString("ctrl i")
+                val shortcutSet = CustomShortcutSet.fromString("ctrl I")
                 action.registerCustomShortcutSet(shortcutSet, editor.component)
 
                 if (EditorHelper.isFileEditor(editor) && PluginStatus.active) {
