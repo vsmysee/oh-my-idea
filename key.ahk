@@ -82,3 +82,6 @@ CapsLock & u::Send, {ESC}                   ; Vimer's love
 ;;=========================Application==============================||
 CapsLock & e:: Run https://www.infoq.cn 	
 CapsLock & g:: Run https://www.google.com.hk
+
+
+::vp::vsce package
