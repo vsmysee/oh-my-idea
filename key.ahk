@@ -69,6 +69,9 @@ CapsLock & b:: Send, +{Home}{Del}       ; b = Del all  before;
 ;;============================Special Char==========================||
 CapsLock & ':: Send, =                  ; ' = =
 CapsLock & `;:: Send, {Enter}           ; ; = Enter
+CapsLock & 8:: Send, {!}                 ; 8 = !
+CapsLock & 1::send,``
+CapsLock & 2::send,{~}
 
 
 ;;===========================Controller=============================||
@@ -76,3 +79,6 @@ CapsLock:: Send, ^i                 ; Close Tag     W = {Ctr + i}
 CapsLock & u::Send, {ESC}                   ; Vimer's love
 
 
+;;=========================Application==============================||
+CapsLock & e:: Run https://www.infoq.cn 	
+CapsLock & g:: Run https://www.google.com.hk
