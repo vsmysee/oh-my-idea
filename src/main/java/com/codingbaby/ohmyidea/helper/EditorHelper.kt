@@ -219,8 +219,8 @@ object EditorHelper {
         }
 
         val line = editor.caretModel.logicalPosition.line
-        val start = EditorHelper.getLineStartOffset(editor, line)
-        val end = EditorHelper.getLineEndOffset(editor, line)
+        val start = getLineStartOffset(editor, line)
+        val end = getLineEndOffset(editor, line)
         val chars = editor.document.charsSequence
         val current = editor.caretModel.offset
         var pos = current + 1

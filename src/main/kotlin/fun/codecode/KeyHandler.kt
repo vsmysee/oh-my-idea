@@ -1,11 +1,9 @@
 package `fun`.codecode
 
-import com.codingbaby.ohmyidea.CommandNode
 import com.codingbaby.ohmyidea.CommandBuffer
+import com.codingbaby.ohmyidea.CommandNode
 import com.codingbaby.ohmyidea.helper.RunnableHelper
-import com.codingbaby.ohmyidea.script.RobotHandler
 import com.codingbaby.ohmyidea.script.ShortHolder
-import com.codingbaby.ohmyidea.ui.RobtHolder
 import com.intellij.openapi.actionSystem.*
 import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.editor.Editor
@@ -54,21 +52,6 @@ object KeyHandler {
             }
             if (status === EditorStatus.Move) {
                 commandNode = ShortHolder.movement[CommandBuffer.stroke()]
-            }
-
-            if (status === EditorStatus.Action) {
-                //最后理解为快捷键映射
-                var events = RobotHandler.holder[CommandBuffer.fistChar().toString()]
-                Thread.sleep(500)
-
-                if (events != null) {
-                    for (i in events) {
-                        RobtHolder.robot.keyPress(i)
-                    }
-                    for (i in events) {
-                        RobtHolder.robot.keyRelease(i)
-                    }
-                }
             }
 
         } else {

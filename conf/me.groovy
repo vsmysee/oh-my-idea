@@ -1,8 +1,3 @@
-keyboard {
-    key "k", [KeyEvent.VK_META, KeyEvent.VK_BACK_QUOTE]
-}
-
-
 import com.intellij.openapi.actionSystem.DataContext
 import com.intellij.openapi.editor.Caret
 import com.intellij.openapi.editor.Editor

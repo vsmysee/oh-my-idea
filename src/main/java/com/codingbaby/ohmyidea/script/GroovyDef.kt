@@ -4,24 +4,6 @@ object GroovyDef {
 
     var groovy = """
 
-import java.awt.Robot;
-import java.awt.event.KeyEvent;
-
-class RobotContainer {
-
-        def outerList
-
-        RobotContainer(env){
-            outerList = env
-        }
-
-        def key(key,list) {
-            outerList[key] = list
-        }
-}
-
-
-
 class ActorContainer {
 
         def outerAction
@@ -52,13 +34,6 @@ class ActionContainer {
 def action = {
  closure ->
         closure.delegate = new ActionContainer()
-        closure()
-}
-
-
-def keyboard = {
-    closure ->
-        closure.delegate = new RobotContainer(envMap)
         closure()
 }
 

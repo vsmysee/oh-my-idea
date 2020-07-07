@@ -1,14 +1,11 @@
 package com.codingbaby.ohmyidea.script
 
-
 import `fun`.codecode.PluginStatus
 import groovy.lang.Binding
 import groovy.lang.GroovyClassLoader
 import org.codehaus.groovy.runtime.InvokerHelper
 import java.io.File
 import java.io.IOException
-import java.util.*
-
 
 object OhScript {
 
@@ -45,19 +42,13 @@ object OhScript {
         val groovyClassLoader = GroovyClassLoader()
         val scriptClass = groovyClassLoader.parseClass(GroovyDef.groovy + content)
 
-        var robotHolder = HashMap<String, List<Int>>()
-
         var bind = Binding()
-        bind.setVariable("envMap", robotHolder)
 
         ShortHolder.clear()
 
         bind.setVariable("keyMap", keyMap)
 
         InvokerHelper.createScript(scriptClass, bind).run()
-
-        RobotHandler.holder.clear()
-        RobotHandler.holder.putAll(robotHolder)
 
         return true
 
