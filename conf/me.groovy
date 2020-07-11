@@ -6,9 +6,6 @@ import com.intellij.openapi.editor.actionSystem.EditorActionHandler
 import org.jetbrains.annotations.NotNull
 import org.jetbrains.annotations.Nullable
 
-import java.awt.event.KeyEvent
-
-
 class DeleteToFileEndAction extends EditorAction {
 
     DeleteToFileEndAction() {
@@ -54,7 +51,6 @@ single {
 
     key "1", "FindInPath", "文件中查找"
     key "2", "ReplaceInPath", "文件中替换"
-    key "3", "GoToRequestMapping", "URL查找[Request mapper插件]"
     key "4", "\$Cut", "剪切"
     key "5", "EditorDuplicate", "复制行"
     key "6", "IntroduceVariable", "提取变量"
@@ -63,13 +59,7 @@ single {
     key "9", "GotoClass", "导航到类"
     key "0", "CompileDirty", "编译"
 
-
     key "-", "ShowPopupMenu", "模拟鼠标右键"
-
-
-
-    key "P", "TranslatePlugin.TranslateAction", "翻译单词"
-
 
     key "h", "EditorLeft", "左移动"
     key "H", "EditorLineStart", "左开始"
@@ -154,6 +144,9 @@ composite {
     key "gh", "HideAllWindows", "隐藏窗口"
 
 
+    key "gl", "ReformatCode", "格式化代码"
+
+
     key "gd", "GotoDeclaration", "到声明"
     key "gm", "GotoImplementation", "到实现"
     key "gu", "GotoSuperMethod", "到超类"
@@ -209,7 +202,6 @@ select {
 
     key "/", "CommentByBlockComment", "块注释"
     key "x", "\$Delete", "删除字符"
-    key "r", "ReformatCode", "格式化代码"
     key "o", "OptimizeImports", "优化导入"
 
     key "e", "JumpToLastChange", "跳转到最近改动"
