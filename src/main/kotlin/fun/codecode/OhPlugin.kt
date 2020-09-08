@@ -5,7 +5,6 @@ import com.codingbaby.ohmyidea.ShortcutKeyAction
 import com.codingbaby.ohmyidea.helper.EditorHelper
 import com.codingbaby.ohmyidea.script.OhScript
 import com.intellij.openapi.actionSystem.ActionManager
-import com.intellij.openapi.actionSystem.CommonShortcuts
 import com.intellij.openapi.actionSystem.CustomShortcutSet
 import com.intellij.openapi.application.Application
 import com.intellij.openapi.components.BaseComponent
@@ -13,6 +12,11 @@ import com.intellij.openapi.editor.EditorFactory
 import com.intellij.openapi.editor.actionSystem.EditorActionManager
 import com.intellij.openapi.editor.event.EditorFactoryEvent
 import com.intellij.openapi.editor.event.EditorFactoryListener
+import jodd.http.HttpRequest
+import org.apache.commons.io.FileUtils
+
+import java.io.File
+import java.io.IOException
 
 
 class OhPlugin(private val myApp: Application) : BaseComponent {
@@ -21,8 +25,24 @@ class OhPlugin(private val myApp: Application) : BaseComponent {
 
     val COMPONENT_NAME = "Oh My IDEA"
 
+    val REMOTE_SCRIPT = "https://raw.githubusercontent.com/vsmysee/oh-my-idea/master/conf/me.groovy"
+
+    private fun initScript() {
+        val userHome = System.getProperty("user.home")
+        val configFile = File(userHome, ".oh-my-idea")
+        if (!configFile.exists()) {
+            try {
+                val res = HttpRequest.get(REMOTE_SCRIPT).send().bodyText()
+                FileUtils.writeStringToFile(configFile, res, "UTF-8")
+            } catch (e: IOException) {
+            }
+        }
+    }
+
 
     override fun initComponent() {
+
+        initScript()
 
         //替换系统的TypedActionHandler
         val typedAction = EditorActionManager.getInstance().typedAction
