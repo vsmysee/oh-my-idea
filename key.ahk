@@ -1,4 +1,5 @@
 SetCapsLockState, AlwaysOff
+#Hotstring EndChars `;
 
 ;===========================;I = Home
 CapsLock & i::
@@ -51,9 +52,9 @@ return
 
 
 ;;============================Editor================================||
-CapsLock & x:: Send, ^x                 ; X = Cut
-CapsLock & c:: Send, ^c                 ; C = Copy
-CapsLock & v:: Send, ^v                 ; V = Paste
+CapsLock & f:: Send, ^x
+CapsLock & y:: Send, ^c
+CapsLock & p:: Send, ^v
 
 
 ;;=============================Deletor==============================||
@@ -61,27 +62,31 @@ CapsLock & ,:: Send, {Del}              ; , = Del char after
 CapsLock & .:: Send, ^{Del}             ; . = Del word after
 CapsLock & /:: Send, +{End}{Del}        ; / = Del all  after
 
-CapsLock & m:: Send, {BS}               ; m = Del char before; 
-CapsLock & n:: Send, ^{BS}              ; n = Del word before; 			
-CapsLock & b:: Send, +{Home}{Del}       ; b = Del all  before; 
+CapsLock & m:: Send, {BS}               ; m = Del char before;
+CapsLock & n:: Send, ^{BS}              ; n = Del word before;
+CapsLock & b:: Send, +{Home}{Del}       ; b = Del all  before;
 
 
 ;;============================Special Char==========================||
-CapsLock & ':: Send, =                  ; ' = =
-CapsLock & `;:: Send, {Enter}           ; ; = Enter
-CapsLock & 8:: Send, {!}                 ; 8 = !
+CapsLock & ':: Send, =
+CapsLock & `;:: Send, |
+CapsLock & 8:: Send, {!}
 CapsLock & 1::send,``
 CapsLock & 2::send,{~}
 
 
 ;;===========================Controller=============================||
-CapsLock:: Send, ^i                 ; Close Tag     W = {Ctr + i}
-CapsLock & u::Send, {ESC}                   ; Vimer's love
+CapsLock:: Send, ^i
+CapsLock & u::Send, {ESC}
 
 
 ;;=========================Application==============================||
-CapsLock & e:: Run https://www.infoq.cn 	
+CapsLock & e:: Run https://www.infoq.cn
 CapsLock & g:: Run https://www.google.com.hk
 
 
+CapsLock & +::send,{Volume_Up}
+CapsLock & -::send,{Volume_Down}
+
 ::vp::vsce package
+::repo::repo sync -c -j4
