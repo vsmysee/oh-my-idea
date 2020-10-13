@@ -3,9 +3,9 @@ package `fun`.codecode.action
 import `fun`.codecode.PluginStatus
 import com.codingbaby.ohmyidea.script.OhScript
 import com.intellij.openapi.actionSystem.AnActionEvent
-import com.intellij.openapi.project.DumbAwareToggleAction
+import com.intellij.openapi.actionSystem.ToggleAction
 
-class PluginToggleAction : DumbAwareToggleAction() {
+class PluginToggleAction : ToggleAction() {
 
     override fun isSelected(e: AnActionEvent): Boolean {
         return PluginStatus.active
