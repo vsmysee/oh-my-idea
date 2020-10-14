@@ -1,6 +1,5 @@
 SetCapsLockState, AlwaysOff
 
-;===========================;I = Home
 CapsLock & i::
 if getkeystate("alt") = 0
 Send, {Home}
@@ -8,7 +7,6 @@ else
 Send, +{Home}
 return
 
-;===========================;O = End
 CapsLock & o::
 if getkeystate("alt") = 0
 Send, {End}
@@ -17,7 +15,6 @@ Send, +{End}
 return
 
 
-;===========================;H = Left
 CapsLock & h::
 if getkeystate("alt") = 0
 Send, {Left}
@@ -25,7 +22,7 @@ else
 Send, +{Left}
 return
 
-;===========================;J = Down
+
 CapsLock & j::
 if getkeystate("alt") = 0
 Send, {Down}
@@ -33,7 +30,7 @@ else
 Send, +{Down}
 return
 
-;===========================;K = UP
+
 CapsLock & k::
 if getkeystate("alt") = 0
 Send, {Up}
@@ -41,7 +38,6 @@ else
 Send, +{Up}
 return
 
-;===========================;L = Right
 CapsLock & l::
 if getkeystate("alt") = 0
 Send, {Right}
@@ -50,36 +46,28 @@ Send, +{Right}
 return
 
 
-;;============================Editor================================||
 CapsLock & f:: Send, ^x
 CapsLock & y:: Send, ^c
 CapsLock & p:: Send, ^v
 
 
-;;=============================Deletor==============================||
-CapsLock & ,:: Send, {Del}              ; , = Del char after
-CapsLock & .:: Send, ^{Del}             ; . = Del word after
-CapsLock & /:: Send, +{End}{Del}        ; / = Del all  after
-
-CapsLock & m:: Send, {BS}               ; m = Del char before;
-CapsLock & n:: Send, ^{BS}              ; n = Del word before;
-CapsLock & b:: Send, +{Home}{Del}       ; b = Del all  before;
+CapsLock & ,:: Send, {Del}
+CapsLock & .:: Send, ^{Del}
+CapsLock & /:: Send, +{End}{Del}
 
 
-;;============================Special Char==========================||
-CapsLock & ':: Send, =
-CapsLock & `;:: Send, |
-CapsLock & 8:: Send, {!}
-CapsLock & 1::send,``
-CapsLock & 2::send,{~}
+CapsLock & m:: Send, {BS}
+CapsLock & n:: Send, ^{BS}
+CapsLock & b:: Send, +{Home}{Del}
 
 
-;;===========================Capslock=============================||
+
 CapsLock::
 Send, ^i
 Send, {ESC}
 return
 
+CapsLock & `;::send,{LShift}
 
 
 CapsLock & e:: Run https://www.infoq.cn
