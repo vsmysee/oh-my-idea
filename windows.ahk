@@ -1,5 +1,4 @@
 SetCapsLockState, AlwaysOff
-#Hotstring EndChars `;
 
 ;===========================;I = Home
 CapsLock & i::
@@ -80,13 +79,10 @@ CapsLock:: Send, ^i
 CapsLock & u::Send, {ESC}
 
 
-;;=========================Application==============================||
+
 CapsLock & e:: Run https://www.infoq.cn
 CapsLock & g:: Run https://www.google.com.hk
 
 
 CapsLock & +::send,{Volume_Up}
 CapsLock & -::send,{Volume_Down}
-
-::vp::vsce package
-::repo::repo sync -c -j4
