@@ -1,0 +1,37 @@
+{
+  "title": "Change caps_lock key",
+  "rules": [
+    {
+      "description": "to escape and ctrl i",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "caps_lock",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "left_control"
+            },
+            {
+              "key_code": "i",
+              "modifiers": [
+                "left_control"
+              ]
+            }
+          ],
+          "to_if_alone": [
+            {
+              "key_code": "escape"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
