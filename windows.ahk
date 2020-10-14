@@ -74,9 +74,11 @@ CapsLock & 1::send,``
 CapsLock & 2::send,{~}
 
 
-;;===========================Controller=============================||
-CapsLock:: Send, ^i
-CapsLock & u::Send, {ESC}
+;;===========================Capslock=============================||
+CapsLock::
+Send, ^i
+Send, {ESC}
+return
 
 
 
