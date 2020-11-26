@@ -67,12 +67,6 @@ Send, ^i
 Send, {ESC}
 return
 
-CapsLock & `;::send,{LShift}
-
-
-CapsLock & e:: Run https://www.infoq.cn
-CapsLock & g:: Run https://www.google.com.hk
-
 
 CapsLock & +::send,{Volume_Up}
 CapsLock & -::send,{Volume_Down}
