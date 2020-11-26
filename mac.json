@@ -30,6 +30,20 @@
               "key_code": "escape"
             }
           ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "j",
+            "modifiers": {
+              "mandatory": ["caps_lock"]
+            }
+          },
+          "to": [
+            {
+              "key_code": "down_arrow"
+            }
+          ]
         }
       ]
     }
