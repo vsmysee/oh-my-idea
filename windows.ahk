@@ -1,19 +1,5 @@
 SetCapsLockState, AlwaysOff
 
-CapsLock & i::
-if getkeystate("alt") = 0
-Send, {Home}
-else
-Send, +{Home}
-return
-
-CapsLock & o::
-if getkeystate("alt") = 0
-Send, {End}
-else
-Send, +{End}
-return
-
 
 CapsLock & h::
 if getkeystate("alt") = 0
@@ -51,22 +37,34 @@ CapsLock & y:: Send, ^c
 CapsLock & p:: Send, ^v
 
 
-CapsLock & ,:: Send, {Del}
-CapsLock & .:: Send, ^{Del}
-CapsLock & /:: Send, +{End}{Del}
+CapsLock & ,:: Send, {Del}              
+CapsLock & .:: Send, ^{Del}             
+CapsLock & /:: Send, +{End}{Del}        
 
 
-CapsLock & m:: Send, {BS}
-CapsLock & n:: Send, ^{BS}
-CapsLock & b:: Send, +{Home}{Del}
+CapsLock & m:: Send, {BS}               
+CapsLock & n:: Send, ^{BS}              
+CapsLock & b:: Send, +{Home}{Del}       
 
+
+CapsLock & i::
+Send, ^+0
+return
 
 
 CapsLock::
 Send, ^i
 Send, {ESC}
+SwitchIME(0x08040804)
 return
 
 
 CapsLock & +::send,{Volume_Up}
 CapsLock & -::send,{Volume_Down}
+
+SwitchIME(dwLayout){
+    HKL:=DllCall("LoadKeyboardLayout", Str, dwLayout, UInt, 1)
+    ControlGetFocus,ctl,A
+    SendMessage,0x50,0,HKL,%ctl%,A
+}
+
