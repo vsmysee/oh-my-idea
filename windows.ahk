@@ -1,6 +1,16 @@
 SetCapsLockState, AlwaysOff
 
 
+#s::Send, ^s
+
+#a::Send, ^a
+
+#c::Send, ^c
+
+#v::Send, ^v
+
+#x::Send, ^x
+
 CapsLock & h::
 if getkeystate("alt") = 0
 Send, {Left}
